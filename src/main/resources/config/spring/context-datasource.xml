@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:/config/properties/globals-${spring.profiles.active}.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Multi dataSource -->
+    <alias name="dataSource-${application.db.DbType}" alias="dataSourceMysql"/>
+    <alias name="dataSource-${application.db.DbType2}" alias="dataSourcePostgres"/>
+
+    <!-- MySQL -->
+    <bean id="dataSource-mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${application.db.DriverClassName}"/>
+        <property name="url" value="${application.db.Url}" />
+        <property name="username" value="${application.db.UserName}"/>
+        <property name="password" value="${application.db.Password}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="validationQuery" value="select 1" />
+        <property name="testWhileIdle" value="true" />
+    </bean>
+
+    <!-- Postgres -->
+    <bean id="dataSource-Postgres" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${application.db.DriverClassName2}"/>
+        <property name="url" value="${application.db.Url2}" />
+        <property name="username" value="${application.db.UserName2}"/>
+        <property name="password" value="${application.db.Password2}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="validationQuery" value="select 1" />
+        <property name="testWhileIdle" value="true" />
+    </bean>
+
+
+</beans>

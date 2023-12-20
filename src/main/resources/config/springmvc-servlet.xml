@@ -11,11 +11,11 @@
 	http://www.springframework.org/schema/task/spring-task.xsd
 	">
 
-<!--    <util:properties id="prop" location="classpath:/config/properties/globals-${spring.profiles.active}.properties" />-->
+    <util:properties id="prop" location="classpath:/config/properties/globals-${spring.profiles.active}.properties" />
 
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="net">
+    <context:component-scan base-package="com.test">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Service" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Repository" type="annotation" />
@@ -28,8 +28,13 @@
 <!--            </list>-->
 <!--        </property>-->
 <!--    </bean>-->
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="0"
-          p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
+<!--    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="0"-->
+<!--          p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+        p:viewClass="org.springframework.web.servlet.view.JstlView" p:order="1"
+          p:prefix="/WEB-INF/view/" p:suffix=".jsp"
+    />
 
     <!-- @ResponseBody 를 지원하기 위한 JSON MessageConverter -->
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -79,4 +84,7 @@
     <task:scheduler id="jobScheduler" pool-size="10" />
     <task:annotation-driven scheduler="jobScheduler" />
     -->
+
+
+
 </beans>
