@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+
+/*******************^********************
+*                 datatable             *
+****************************************/
+
+.dataTable {
+    margin-left: 0;
+}
+/*
+#datatable_wrapper{
+    height: 663px;
+}
+*/
+#datatable_paginate {
+    margin-top: 0px;
+    position: relative;
+}
+#datatable_info{
+    margin-top: 5px;
+    padding-left: 10px;
+}
+.pagination {
+    display: block;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.pagination {
+    display: block;
+    vertical-align: middle; /* margin: 0 5px; */
+}
+
+.pagination > li {
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+#datatable_previous {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    background: url(../../../images/immediateReduction/icon_btn_prev.png) 50% 50% no-repeat;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+#datatable_next {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+    background: url(../../../images/immediateReduction/icon_btn_next.png) 50% 50% no-repeat;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+.pagination li a { /* display: inline-block; */
+}
+
+.pagination li a:hover {
+    color: #356aba;
+}
+
+.pagination .active {
+    color: #356aba;
+    text-decoration: underline;
+}
+
+#datatable_info {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    top: 17px;
+}
+
+/*******************^********************
+*                 Button                *
+****************************************/
+.btn-select+.list-select{
+    z-index: 1;
+}
+
+
+/* Loading */
+.wrap-loading{ /*占쎌넅筌롳옙 占쎌읈筌ｋ�占쏙옙 占쎈선占쎈ぜ野껓옙 占쎈�占쎈빍占쎈뼄.*/
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background: rgba(0,0,0,0.2); /*not in ie */
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+    z-index: 999999;
+}
+.wrap-loading div{ /*嚥≪뮆逾� 占쎌뵠沃섎챷占�*/
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -119px;
+    margin-top: -117px;
+}
+
+.display-none{
+    display:none;
+}
+
+.btn-top10 {top:10px;}
+
+.btn-position{
+    position: absolute;
+    width: 100%;
+    right: 0px;
+    text-align: -webkit-right;
+    top: 10px;}
+
+.btn-position .right-position {position: absolute; right:0px }
+.btn-position .left-position {position: absolute; right:140px }
+
+

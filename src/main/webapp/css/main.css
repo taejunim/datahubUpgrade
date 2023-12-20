@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+/*******************^********************
+*               Main Page               *
+****************************************/
+
+.main{min-height: -webkit-calc(100vh - 310px); min-height: -moz-calc(100vh - 310px); min-height: calc(100vh - 310px); margin-top: 30px; background-color: #fff;}
+
+#datatable{margin-top: 50px;}
+
+/*******************^********************
+*              Login Page               *
+****************************************/
+
+.loginPage{height: 100vh; background: url(../images/login-background.png)50% 100% #e5ecf6; display: flex; flex-direction: column; justify-content: space-around;}
+
+.loginHeader{display: flex; flex-direction: row; align-items: center; justify-content: space-around; height: 15%}
+
+.rightFrame{display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px;}
+
+.loginPage .logo{width: 124px; height: 41px; border-radius: 21px; background:rgba(217, 217, 217, 0.34);}
+
+.loginPage .logoName{display: flex;width: 100%;height: 100%;align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
+
+.loginPage .home{width: 124px; height: 41px; border-radius: 21px; background:rgba(217, 217, 217, 0.34); }
+
+.loginPage .home .homeButton{display: flex;width: 100%;height: 100%;align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
+
+.loginPage .signUp{width: 124px; height: 41px; border-radius: 21px; background: rgba(217, 217, 217, 0.34); }
+
+.loginPage .signUp .signUpButton{display: flex;width: 100%;height: 100%;align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
+
+.loginPage .loginBox{width: 100%; height: 100%; display: flex; align-content: center; justify-content: center; align-items: center; flex-direction: column;}
+
+.loginPage .loginBox .frame{width: 48vh; height: 70vh; position: relative;}
+
+.loginPage .loginBox .frame .topBox{width: 100%; height: 100%; background: linear-gradient(180deg, rgba(105.44, 100.17, 100.17, 0.13) 27%, rgba(255, 255, 255, 0.01) 100%); border-radius: 33px; display: flex; flex-direction: column; justify-content: flex-end;}
+
+.loginPage .loginBox .frame .bottomBox{width: 100%; height: 85%; background: linear-gradient(180deg, rgba(105.44, 100.17, 100.17, 0.46) 27%, rgba(255, 255, 255, 0.01) 100%); border-radius: 33px}
+
+.loginPage .loginBox .frame .loginType{height: 15%; display: flex; flex-direction: row; justify-content: space-around; align-items: center;}
+
+.loginPage .loginBox .frame .content{position: relative; width: 100%; height: 100%;}
+
+.loginPage .loginBox .boxTitle{font-size: 42px; font-weight: bold; color: #707070; text-align: center;}
+
+.loginPage .loginBox label{font-size: 18px; font-weight: bold; color: #707070; line-height: 42px; display: inline-block; text-align: left;}
+.loginPage .loginBox .checkboxLabel{font-size: 14px; font-weight: normal;}
+
+.loginPage .loginBox .loginFail{font-size: 14px; margin-top: 20px; margin-left: 27.5%;}
+
+.loginPage .info{font-size: 16px; margin-top: 25px;}
+
+
+.font-s16.font-bold.txtcenter.inlineMid{margin-left: 8px}
+
+
+@media screen and (max-width:1024px){
+  .loginPage {width: 1024px; overflow: auto;}
+}
