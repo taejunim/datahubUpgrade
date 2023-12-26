@@ -3,27 +3,27 @@
 @font-face {
     font-family: 'Noto Sans KR';
     font-style: normal;font-weight: 300;
-    src: url(../../../fonts/NotoSansKR-Light.otf) format('opentype'),
-    url(../../../fonts/NotoSansKR-Light.woff) format('woff'),
-    url(../../../fonts/NotoSansKR-Light.woff2) format('woff2');
+    src: url(../fonts/NotoSansKR-Light.otf) format('opentype'),
+    url(../fonts/NotoSansKR-Light.woff) format('woff'),
+    url(../fonts/NotoSansKR-Light.woff2) format('woff2');
 }
 
 @font-face {
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 400;
-    src: url(../../../fonts/NotoSansKR-Regular.otf) format('opentype'),
-    url(../../../fonts/NotoSansKR-Regular.woff) format('woff'),
-    url(../../../fonts/NotoSansKR-Regular.woff2) format('woff2');
+    src: url(../fonts/NotoSansKR-Regular.otf) format('opentype'),
+    url(../fonts/NotoSansKR-Regular.woff) format('woff'),
+    url(../fonts/NotoSansKR-Regular.woff2) format('woff2');
 }
 
 @font-face {
     font-family: 'Noto Sans KR';
     font-style: normal;
     font-weight: 700;
-    src: url(../../../fonts/NotoSansKR-Bold.otf) format('opentype'),
-    url(../../../fonts/NotoSansKR-Bold.woff) format('woff'),
-    url(../../../fonts/NotoSansKR-Bold.woff2) format('woff2');
+    src: url(../fonts/NotoSansKR-Bold.otf) format('opentype'),
+    url(../fonts/NotoSansKR-Bold.woff) format('woff'),
+    url(../fonts/NotoSansKR-Bold.woff2) format('woff2');
 }
 
 /*@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');*/
@@ -246,14 +246,19 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
 .h100p{height: 100%;}
 .min-h200{min-height: 200px;}
 
+.h20p{height: 20%;}
+
+.wh100{width: 100%; height: 100%;}
 
 
 /***************************************
 *                 font                 *
 ***************************************/
 
-.font-sky{color:#0391bf;} .font-red{color:#d72800;} .font-blue{color: #0a51a1;}
-.font-navy{color: #004376;} .font-gray{color:#777;} .font-blk{color:#000;}
+.font-sky{color:#0391bf;} .font-red{color:#d72800;} .font-blue{color: #0a51a1;} .font-opacity{color:rgba(255, 255, 255, 0.74)!important;}
+.font-navy{color: #004376;} .font-gray{color:#777;} .font-blk{color:#000;} .font-white{color:#ffffff}
+
+ .font-12{font-size: 0.75rem!important;} .font-14{font-size: 0.875rem!important;} .font-20{font-size: 1.25rem!important;}
 
 .font-s14{font-size: 14px;} .font-s15{font-size: 15px;} .font-s16{font-size: 16px;} .font-s18{font-size: 18px;}
 .font-s20{font-size: 20px;} .font-s22{font-size: 22px;} .font-s24{font-size: 24px;} .font-s28{font-size: 28px;}
@@ -265,6 +270,7 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
 
 .txtcenter{text-align: center;} .txtright{text-align: right;} .txtleft{text-align: left;}
 
+ .letter-spacing0{letter-spacing: 0;}
 
 /***************************************
 *           margin / padding           *

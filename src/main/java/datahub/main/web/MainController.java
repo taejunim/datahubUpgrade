@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
 
-    @RequestMapping(value="/",method = RequestMethod.GET)
-    public String index() {
-        return "index";
-    }
-
     @RequestMapping(value="/login.do",method = RequestMethod.GET)
     public String login() {
         return "login";
+    }
+
+    @RequestMapping(value="/main.do",method = RequestMethod.GET)
+    public String main() {
+        return "main";
     }
 }

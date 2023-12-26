@@ -11,55 +11,58 @@
     <div class="loginHeader">
         <div class="leftFrame">
             <h1 class="logo">
-                <div class="logoName">LOGO</div>
+                <div class="logoName wh100">LOGO</div>
             </h1>
         </div>
         <div class="rightFrame">
             <h1 class="home">
-                <div class="homeButton">HOME</div>
+                <div class="homeButton wh100">HOME</div>
             </h1>
             <h1 class="signUp">
-                <div class="signUpButton">SIGNUP</div>
+                <div class="signUpButton wh100">SIGNUP</div>
             </h1>
         </div>
     </div>
     <form action="<c:url value="/"/>" method="post" id="loginForm" class="form-horizontal">
-        <div class="loginBox">
+        <div class="loginBox wh100">
             <div class="frame">
-                <div class="topBox">
+                <div class="topBox wh100">
                     <div class="loginType">
-                        <div class="type">
-                            <div style="left: 67px; top: 26px; color: white; font-size: 20px; font-family: Inter; font-weight: 400; word-wrap: break-word; ">EMAIL ID </div>
-                            <div style="width: 68px; height: 0px; left: 235px; top: 560px; border: 1px rgba(255, 255, 255, 0.70) solid"></div>
+                        <div class="">
+                            <div class="type">EMAIL ID</div>
+                            <div class="line"></div>
                         </div>
-                        <div class="type">
-                            <div style="left: 67px; top: 26px; color: white; font-size: 20px; font-family: Inter; font-weight: 400; word-wrap: break-word">EMAIL ID </div>
-                            <div style="width: 68px; height: 0px; left: 235px; top: 560px; border: 1px rgba(255, 255, 255, 0.70) solid"></div>
+                        <div class="">
+                            <div class="type"></div>
+                            <div class=""></div>
                         </div>
-
                     </div>
                     <div class="bottomBox">
+                        <div class="userIcon"></div>
+                        <div class="line">
+                            <div class=""></div>
+                            <div class="font-white">or</div>
+                            <div class=""></div>
+                        </div>
+                        <div class="loginInfo">
+                            <input type="text" class="idBox font-opacity" placeholder="EMAIL ID / USER NAME"/>
+                            <input type="text" class="pwBox font-opacity" placeholder="PASSWORD"/>
+                        </div>
+                        <div class="rememberAccount">
+                            <div class="check">
+                                <input type="checkbox" id="saveID">
+                                <label class="w16rem h16rem font-white font-12" for="saveID">Remember</label>
+                            </div>
+<%--                            <label for="saveID" class="w16rem h16rem font-white font-12">--%>
+<%--                                <input type="checkbox" name="saveID" id="saveID" >Remember me--%>
+<%--                            </label>--%>
+                            <div class="font-white font-12">Forget Password</div>
+                        </div>
+                        <div class="loginBtn p5 mt20 font-white" onclick="location.href='<c:url value="/main.do"/>'">LOGIN</div>
+                        <div class="h20p font-12 font-white letter-spacing0">Not a member? Sign up now</div>
                     </div>
                 </div>
             </div>
-            <%--            <h2 class="boxTitle">LOGIN</h2>--%>
-<%--            <div class="inlineWrap mt50 ml15p">--%>
-<%--                <label for="userLoginId" class="w20p">아이디</label>--%>
-<%--                <input type="text" name="userLoginId"  id="userLoginId" class="w50p">--%>
-<%--            </div>--%>
-<%--            <div class="inlineWrap mt20 ml15p">--%>
-<%--                <label for="userPwd" class="w20p">비밀번호</label>--%>
-<%--                <input type="password" name="userPwd" id="userPwd" class="w50p">--%>
-<%--            </div>--%>
-<%--            <div class="inlineWrap ml15p">--%>
-<%--                <label for="saveID" class="ml20p checkboxLabel">--%>
-<%--                    <input type="checkbox" name="saveID" id="saveID" >아이디 저장--%>
-<%--                </label>--%>
-<%--            </div>--%>
-<%--            <div class="ml15p">--%>
-<%--                <button class="btn btn-navy btncenter w50p mt20 ml20p loginBtn" id="loginButton"> 로그인</button>--%>
-<%--                <p class="font-red loginFail"> </p>--%>
-<%--            </div>--%>
         </div>
     </form>
 </div>
