@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
   <link rel="stylesheet" href="<c:url value="/css/common.css" />">
   <link rel="stylesheet" href="<c:url value="/css/main.css" />">
+  <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
   <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
   <script src="<c:url value="/js/common.js"/>"></script>
 </head>
@@ -26,8 +27,10 @@
     <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
   </div>
   <div class="wrapper">
-<%--    <tiles:insertAttribute name="header"/>--%>
-    <div class="content-wrapper">
+    <tiles:insertAttribute name="sidebar"/>
+
+    <div class="content-wrapper wh100">
+      <tiles:insertAttribute name="header"/>
       <tiles:insertAttribute name="content"/>
     </div>
   </div>

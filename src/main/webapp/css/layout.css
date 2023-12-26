@@ -42,8 +42,7 @@
 *************************************/
 
 /* Wrap */
-.fluidWrap{width:100%;}
-.innerWrap{width:1200px; margin: 0 auto;}
+.innerWrap{width:100%; margin: 0 auto;}
 
 .inlineWrap{font-size: 0;}
 .inlineTop{display: inline-block; vertical-align: top;}
@@ -257,6 +256,7 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
 
 .font-sky{color:#0391bf;} .font-red{color:#d72800;} .font-blue{color: #0a51a1;} .font-opacity{color:rgba(255, 255, 255, 0.74)!important;}
 .font-navy{color: #004376;} .font-gray{color:#777;} .font-blk{color:#000;} .font-white{color:#ffffff}
+.font-lightGray{color: #87888C!important;}
 
  .font-12{font-size: 0.75rem!important;} .font-14{font-size: 0.875rem!important;} .font-20{font-size: 1.25rem!important;}
 

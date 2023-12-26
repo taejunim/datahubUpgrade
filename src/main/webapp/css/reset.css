@@ -9,9 +9,8 @@ article, aside, figure, figcaption, footer, header, main, nav, section{
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 1rem;
+    font-size: 1vw;
     line-height: 1;
-    color: #383838;
     letter-spacing: -1px;
 }
 article, aside, figcaption, figure,

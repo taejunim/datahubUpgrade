@@ -53,9 +53,6 @@
                                 <input type="checkbox" id="saveID">
                                 <label class="w16rem h16rem font-white font-12" for="saveID">Remember</label>
                             </div>
-<%--                            <label for="saveID" class="w16rem h16rem font-white font-12">--%>
-<%--                                <input type="checkbox" name="saveID" id="saveID" >Remember me--%>
-<%--                            </label>--%>
                             <div class="font-white font-12">Forget Password</div>
                         </div>
                         <div class="loginBtn p5 mt20 font-white"
