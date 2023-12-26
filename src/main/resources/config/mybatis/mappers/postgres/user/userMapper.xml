@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="datahub.main.user.mappers.postgres.UserMapper">
+    <insert id="userJoin" parameterType="userDto">
+        INSERT INTO
+            "datahubUpgrade".dh_user
+        VALUES
+            (
+             #{userId}
+            ,#{userPwd}
+            ,#{userName}
+            ,#{userBirth}
+            ,#{userPhone}
+            ,'001'
+            ,now()
+            )
+    </insert>
+    <select id="userLogin" parameterType="userDto" resultType="userDto">
+        select *
+        from "datahubUpgrade".dh_user
+        where 1 = 1
+        AND user_id = #{userId}
+        AND user_type = '001'
+    </select>
+</mapper>

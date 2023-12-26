@@ -18,18 +18,21 @@
 	</bean>
 
 	<bean id="scannerMysql" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="datahub.mapper.mysql"/>
+		<property name="basePackage" value="datahub.main.**.mappers.mysql"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionMysql"/>
 	</bean>
 
 	<bean id="scannerPostgres" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="datahub.mapper.postgres"/>
+		<property name="basePackage" value="datahub.main.**.mappers.postgres"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionPostgres"/>
 	</bean>
 
 	<bean class="egovframework.rte.psl.dataaccess.mapper.MapperConfigurer">
-		<property name="basePackage" value="datahub.**.mapper" />
+		<property name="basePackage" value="datahub.main.**.mappers" />
 	</bean>
 
-	<context:component-scan base-package="datahub.**.service"/>
+
+
+
+	<context:component-scan base-package="datahub.main.**.service"/>
 </beans>

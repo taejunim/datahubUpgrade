@@ -45,8 +45,8 @@
                             <div class=""></div>
                         </div>
                         <div class="loginInfo">
-                            <input type="text" class="idBox font-opacity" placeholder="EMAIL ID / USER NAME"/>
-                            <input type="text" class="pwBox font-opacity" placeholder="PASSWORD"/>
+                            <input type="text" class="idBox font-opacity" placeholder="EMAIL ID / USER NAME" name="userId" id="userId"/>
+                            <input type="text" class="pwBox font-opacity" placeholder="PASSWORD" name="userPwd" id="userPwd"/>
                         </div>
                         <div class="rememberAccount">
                             <div class="check">
@@ -58,7 +58,9 @@
 <%--                            </label>--%>
                             <div class="font-white font-12">Forget Password</div>
                         </div>
-                        <div class="loginBtn p5 mt20 font-white" onclick="location.href='<c:url value="/main.do"/>'">LOGIN</div>
+                        <div class="loginBtn p5 mt20 font-white"
+<%--                             onclick="location.href='<c:url value="/main.do"/>'" --%>
+                             id="login">LOGIN</div>
                         <div class="h20p font-12 font-white letter-spacing0">Not a member? Sign up now</div>
                     </div>
                 </div>
@@ -66,3 +68,31 @@
         </div>
     </form>
 </div>
+<script>
+    $('#login').click(function () {
+        var userId = document.getElementById('userId').value;
+        var userPwd = document.getElementById('userPwd').value;
+
+        fetch('/userLogin.mng',{
+            method : "POST",
+            headers : {
+                "Content-Type": "application/json",
+            },
+            body : JSON.stringify({
+                userId : userId,
+                userPwd : userPwd
+            }),
+        })
+        .then((data) => data.text())
+        .then((data) => {
+            console.log("data : " + data)
+            if (data == "NOT FOUND USER" ||data == "NOT MATCHES PASSWORD") {
+                alert('등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다.')
+                window.location.href = '/login.do';
+            } else {
+                alert('환영합니다!')
+                window.location.href = '/success.do';
+            }
+        })
+    })
+</script>

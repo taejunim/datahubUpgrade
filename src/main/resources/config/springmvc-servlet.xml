@@ -15,7 +15,7 @@
 
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="datahub">
+    <context:component-scan base-package="datahub.main">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Service" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Repository" type="annotation" />

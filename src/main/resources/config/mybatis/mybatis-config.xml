@@ -11,6 +11,7 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
 	<typeAliases>
+		<typeAlias type="datahub.main.user.dto.UserDto" alias="userDto" />
 <!--		<typeAlias alias="cmsMenuConnHist" type="net.jcms.framework.menu.model.MenuConnHist" />-->
 <!--		<typeAlias alias="cmsMenuConnHistSearch" type="net.jcms.framework.menu.model.MenuConnHistSearch" />-->
 
