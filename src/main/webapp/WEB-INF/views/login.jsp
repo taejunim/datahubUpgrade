@@ -88,7 +88,7 @@
                 window.location.href = '/login.do';
             } else {
                 alert('환영합니다!')
-                window.location.href = '/success.do';
+                window.location.href = '/main.do';
             }
         })
     })
