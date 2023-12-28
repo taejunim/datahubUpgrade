@@ -36,7 +36,7 @@ public class MainController {
     @RequestMapping(value="/login.do")
     public String login(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER,"WAIT");
+        session.setAttribute(SessionConst.LOGIN_MEMBER,"WAIT");                             // 로그인 화면 진입 시 대기상태를 세션에 저장한다.
 
         return "login";
     }
@@ -44,7 +44,7 @@ public class MainController {
     @RequestMapping(value="/main.do",method = RequestMethod.GET)
     public String main(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_MEMBER,"FINISH");
+        session.setAttribute(SessionConst.LOGIN_MEMBER,"FINISH");                           // 로그인 후 메인화면 집입 시 완료상태를 세션의 저장한다.
         return "main";
     }
 
@@ -72,19 +72,20 @@ public class MainController {
         message = userService.userLogin(userDto);
         HttpSession session = request.getSession();
 
-        if(bindingResult.hasErrors()) {
+        if(bindingResult.hasErrors()) {                                                             // 로그인 실패시 세션에 Null을 저장한다.
             message = "NOT FOUND USER";
             session.setAttribute(SessionConst.LOGIN_MEMBER, null);
             return message;
         }
 
-        if (message.equals("NOT FOUND USER") || message.equals("NOT MATCHES PASSWORD")) {
+        if (message.equals("NOT FOUND USER") || message.equals("NOT MATCHES PASSWORD")) {           // 로그인 실패시 세션에 Null을 저장한다.
             bindingResult.reject("loginFail","아이디 또는 비밀번호가 맞지 않습니다.");
             session.setAttribute(SessionConst.LOGIN_MEMBER, null);
             return message;
         }
 
-        session.setAttribute(SessionConst.LOGIN_MEMBER, message);
+        session.setAttribute(SessionConst.LOGIN_MEMBER, message);                                   // 로그인에 성공하면 세션에 내용을 저장한다.
+        session.setMaxInactiveInterval(3600);                                                       // 세션 시간을 설정한다.
 
         LOG.info("result : " + message);
 

@@ -18,7 +18,7 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         HttpSession session = request.getSession();
-        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);
+        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);        // 컨트롤러 가기 전 인터셉트를 거쳐서 세션을 확인한다.
 
         logger.info("session : {} ", result);
 
