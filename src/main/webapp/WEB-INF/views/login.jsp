@@ -10,16 +10,16 @@
 <div class="loginPage">
     <div class="loginHeader">
         <div class="leftFrame">
-            <h1 class="logo">
-                <div class="logoName wh100">LOGO</div>
+            <h1 class="">
+                <div class=" wh100">LOGO</div>
             </h1>
         </div>
         <div class="rightFrame">
-            <h1 class="home">
-                <div class="homeButton wh100">HOME</div>
+            <h1 class="">
+                <div class=" wh100">HOME</div>
             </h1>
-            <h1 class="signUp">
-                <div class="signUpButton wh100">SIGNUP</div>
+            <h1 class="">
+                <div class=" wh100">SIGNUP</div>
             </h1>
         </div>
     </div>

@@ -14,25 +14,39 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="<c:url value="/css/reset.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/common.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/main.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
-  <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
-  <script src="<c:url value="/js/common.js"/>"></script>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-  <div class="wrap-loading display-none">
-    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
-  </div>
-  <div class="wrapper">
-    <tiles:insertAttribute name="sidebar"/>
+<link rel="stylesheet" href="<c:url value="/css/jquery/jquery-ui.min.css" />">
+<link rel="stylesheet" href="<c:url value="/css/reset.css" />">
+<link rel="stylesheet" href="<c:url value="/css/layout.css" />">
+<link rel="stylesheet" href="<c:url value="/css/common.css" />">
+<link rel="stylesheet" href="<c:url value="/css/main.css" />">
+<link rel="stylesheet" href="<c:url value="/css/custom.css" />">
+<link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2-bootstrap4.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/plugins/datetimepicker/datetimepicker.css"/>">
 
-    <div class="content-wrapper wh100">
-      <tiles:insertAttribute name="header"/>
-      <tiles:insertAttribute name="content"/>
-    </div>
+
+<script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
+<script src="<c:url value="/js/jquery/jquery-ui.min.js"/>"></script>
+<script src="<c:url value="/js/bootstrap.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatables/jquery.dataTables.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatables/dataTables.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/common.js"/>"></script>
+<script src="<c:url value='/js/plugins/select2/select2.min.js' />"></script>
+<script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
+
+
+</head>
+<body class="">
+<div class="wrap-loading display-none">
+  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
+</div>
+<div class="wrapper w100p">
+  <tiles:insertAttribute name="sidebar"/>
+
+  <div class="content-wrapper w85p h100p">
+    <tiles:insertAttribute name="header"/>
+    <tiles:insertAttribute name="content"/>
   </div>
+</div>
 </body>
 </html>

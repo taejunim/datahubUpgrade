@@ -11,7 +11,7 @@
 <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
 
 <header class="w100p">
-    <div class="clearfix innerWrap">
+    <div class="clearfix headerWrap">
         <div class="header">
             <div class="info">
                 <div>
@@ -25,10 +25,10 @@
                         <div class="dropbtn">
                             <div class="bottom"></div>
                         </div>
-                        <div class="dropdown-content">
-                            <a href="#">Settings</a>
-                            <a href="#">Signout</a>
-                        </div>
+<%--                        <div class="dropdown-content">--%>
+<%--                            <a href="#">Settings</a>--%>
+<%--                            <a href="#">Signout</a>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>

@@ -12,23 +12,25 @@
 
 <div class="sideBar">
     <div class="menu">
-        <div class="menuActive font-lightGray">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'main.do')>-1}">menuActive</c:if>"
+             onclick="location.href='<c:url value="/main.do"/>'">
             <div class="dashboard"></div>
             <div class="">Dashboard</div>
         </div>
-        <div class="font-lightGray">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'evChargerDemand.do')>-1}">menuActive</c:if>"
+             onclick="location.href='<c:url value="/evChargerDemand.do"/>'">
             <div class="evDemand"></div>
             <div class="">EV Charger Demand</div>
         </div>
-        <div class="font-lightGray">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'evChargerCurrent.do')>-1}">menuActive</c:if>">
             <div class="evCurrent"></div>
             <div class="">EV Charger Current</div>
         </div>
-        <div class="font-lightGray">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'user.do')>-1}">menuActive</c:if>">
             <div class="userInfo"></div>
             <div class="">User</div>
         </div>
-        <div class="font-lightGray">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'setting.do')>-1}">menuActive</c:if>">
             <div class="setting"></div>
             <div class="">Settings</div>
         </div>

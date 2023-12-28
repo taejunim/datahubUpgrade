@@ -44,6 +44,11 @@ public class MainController {
         return "main";
     }
 
+    @RequestMapping(value="/evChargerDemand.do",method = RequestMethod.GET)
+    public String evChargerDemand() {
+        return "evChargerDemand";
+    }
+
 
     @RequestMapping(value = "/join.mng")
     @ResponseBody

@@ -4,64 +4,32 @@
 *               Main Page               *
 ****************************************/
 
-.innerWrap .header{width: 100%; height: 7vh; display: flex; flex-direction: row; justify-content: flex-end;}
+.wrapper {height: 100vh; background: #171821; display: flex; flex-direction: row; align-items: flex-start;}
 
-.innerWrap .header .info{width: 15vw; display: flex; flex-direction: row; justify-content: center; align-items: center;}
-
-.innerWrap .header .info .alarm{width: 2.6vw; height: 3.5vh; background: url(../images/alarm.png) no-repeat center/50%;}
-
-.innerWrap .header .info .userInfo{width: 4vw; height: 6vh; background: url(../images/user-icon.png) no-repeat center/50%;}
-
-.innerWrap .header .info .bottom{width: 1.3vw; height: 5vh; background: url(../images/bottom.png) no-repeat center/50%; cursor: pointer; }
-
-.dropdown{ position : relative; display : inline-block; }
-
-.dropdown-content{
-  display : none;
-  position : absolute;
-  z-index : 1;
-  right: -2vw;
-  width: 5vw;
-  border: 1px solid white;
-  border-radius: 6px;
-}
-
-.dropdown-content a{display: block; width: 100%; text-align: center; color: white; padding: 10px; border-bottom: 1px solid gray; }
-
-.dropdown:hover .dropdown-content { display: block; }
-
-.sideBar{width: 20vw; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
-
-.sideBar .menu{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; padding: 7vh 0.5vw; justify-content: flex-start;}
-
-.sideBar .menu > div{ width: 100%; height: 6vh; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 0.5vw; padding: 0 1vw}
-
-.sideBar .menu > div:hover{background: #FFFFFF; border-radius: 6px;}
-
-.sideBar .menu .menuActive{border-radius: 6px; background: #A9DFD8; color: #171821 !important;}
-
-.sideBar .line{width: 1%; height: 95%; background: #2C2D33;}
-
-.sideBar .menu .dashboard{width: 1vw; height: 3vh; background: url(../images/dashboard.png) no-repeat center/100%;}
-
-.sideBar .menu .evDemand{width: 1vw; height: 3vh; background: url(../images/evDemand.png) no-repeat center/100%;}
-
-.sideBar .menu .evCurrent{width: 1vw; height: 3vh; background: url(../images/evCurrent.png) no-repeat center/100%;}
-
-.sideBar .menu .userInfo{width: 1vw; height: 3vh; background: url(../images/user.png) no-repeat center/100%;}
-
-.sideBar .menu .setting{width: 1vw; height: 3vh; background: url(../images/setting.png) no-repeat center/100%;}
-
-.sideBar .menu .signout{width: 1vw; height: 3vh; background: url(../images/signout.png) no-repeat center/100%;}
-
-
-
-.wrapper { height: 100vh; background: #171821; display: flex; flex-direction: row; align-items: flex-start;}
 .content-wrapper{display: flex; flex-direction: column; align-items: flex-start;}
 
-.main{width: 100%; height: 100%;}
+.main{display: flex; flex-direction: row; justify-content: center; gap:1vw;}
 
-#datatable{margin-top: 50px;}
+.main .left{width: 30%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 2vh;}
+
+.main .right{width: 65%; height: 100%; display: flex; align-items: flex-start; flex-direction: column; gap: 1.5vh;}
+
+.main .card{width: 100%; border-radius: 10px; background: #21222D; padding: 0.7em;}
+
+.main .display-column{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;}
+
+.main .display-row{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; gap: 0.8vw;}
+
+.main .display-row-center{display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+
+.main .sm-card{width: 100%; height: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.25em 0.25em 0.25em; gap: 0.4vw;}
+
+.icon-total{width: 2.5vw; height: 2.5vw; background: url(../images/icon_total.png) no-repeat center/100%;}
+
+.icon_normal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_normal.png) no-repeat center/100%;}
+
+.icon_abnormal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
+
 
 /*******************^********************
 *              Login Page               *
@@ -73,21 +41,13 @@
 
 .rightFrame{display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 10px;}
 
-.loginPage .logo{width: 124px; height: 41px; border-radius: 21px; background:rgba(217, 217, 217, 0.34);}
+.loginPage h1{width: 6vw; height: 2vw; border-radius: 21px; background:rgba(217, 217, 217, 0.34); }
 
-.loginPage .logoName{display: flex; align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
-
-.loginPage .home{width: 124px; height: 41px; border-radius: 21px; background:rgba(217, 217, 217, 0.34); }
-
-.loginPage .home .homeButton{display: flex; align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
-
-.loginPage .signUp{width: 124px; height: 41px; border-radius: 21px; background: rgba(217, 217, 217, 0.34); }
-
-.loginPage .signUp .signUpButton{display: flex; align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
+.loginPage h1 > div{display: flex; align-items: center;justify-content: center;color:rgba(255, 255, 255, 1);}
 
 .loginPage .loginBox{display: flex; align-content: center; justify-content: center; align-items: center; flex-direction: column;}
 
-.loginPage .loginBox .frame{width: 48vh; height: 70vh; position: relative;}
+.loginPage .loginBox .frame{width: 25vw; height: 35vw; position: relative;}
 
 .loginPage .loginBox .frame .topBox{ background: linear-gradient(180deg, rgba(105.44, 100.17, 100.17, 0.13) 27%, rgba(255, 255, 255, 0.01) 100%); border-radius: 33px; display: flex; flex-direction: column; justify-content: flex-end;}
 
@@ -97,7 +57,7 @@
 
 .loginPage .loginBox .frame .loginType .type{left: 67px; top: 26px; color: white; word-wrap: break-word;}
 
-.loginPage .loginBox .frame .loginType .line{width: 68px; height: 0px; left: 235px; top: 560px; border: 1px rgba(255, 255, 255, 0.70) solid;}
+.loginPage .loginBox .frame .loginType .line{width: 3.8vw; height: 0px; left: 235px; top: 560px; border: 1px rgba(255, 255, 255, 0.70) solid;}
 
 .loginPage .loginBox .frame .topBox .bottomBox{width:100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 10px; gap: 10px;}
 
@@ -118,37 +78,11 @@
 .loginPage .loginBox .frame .topBox .bottomBox .loginBtn{width: 40%; height: 10%; cursor: pointer; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; justify-content: center;}
 
 
-/***************************************
-*           checkbox                   *
-***************************************/
 
-.check input[type="checkbox"] {
-  width: 1rem;
-  height: 100%;
-  -webkit-appearance: none;
-  position: relative;
-  cursor:pointer;
-  outline: none !important;
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.26);
-}
-.check input[type="checkbox"]::before {
-  content: "\2714";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  overflow: hidden;
-  transform: scale(0) translate(-50%, -50%);
-  line-height: 1;
-}
-.check input[type="checkbox"]:checked {
-  color: rgba(255, 255, 255, 0.60);
-}
-.check input[type="checkbox"]:checked::before {
-  border-radius: 4px;
-  transform: scale(1) translate(-50%, -50%)
+@media screen and (max-width:1280px){
+  .wrapper {width: 1280px; overflow: auto; }
 }
 
-@media screen and (max-width:1024px){
-  .loginPage {width: 1024px; overflow: auto;}
+@media screen and (max-height:658px){
+  .wrapper {height: 658px; overflow: auto; }
 }

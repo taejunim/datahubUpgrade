@@ -86,7 +86,7 @@
 
 
 /* Loading */
-.wrap-loading{ /*占쎌넅筌롳옙 占쎌읈筌ｋ�占쏙옙 占쎈선占쎈ぜ野껓옙 占쎈�占쎈빍占쎈뼄.*/
+.wrap-loading{
     position: fixed;
     left:0;
     right:0;
@@ -96,7 +96,7 @@
     filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
     z-index: 999999;
 }
-.wrap-loading div{ /*嚥≪뮆逾� 占쎌뵠沃섎챷占�*/
+.wrap-loading div{
     position: absolute;
     top:50%;
     left:50%;
@@ -119,5 +119,46 @@
 
 .btn-position .right-position {position: absolute; right:0px }
 .btn-position .left-position {position: absolute; right:140px }
+
+/*******************^********************
+*            progressbar                *
+****************************************/
+
+progress{ appearance: none;}
+
+prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10px; }
+
+.progress-orange::-webkit-progress-value { transition: width 1.0s; border-radius:10px; background: rgba(252, 184, 89, 1);}
+
+.progress-blue::-webkit-progress-value { ransition: width 1.0s; border-radius:10px; background: rgba(169, 223, 216, 1);}
+
+
+/*******************^********************
+*            iconBox                *
+****************************************/
+
+
+.percent-orange-box{
+    border-radius: 4px;
+    border: 0.5px solid #FCB859;
+    background: rgba(252, 184, 89, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#FCB859;
+}
+
+.percent-blue-box{
+    border-radius: 4px;
+    border: 0.5px solid #A9DFD8;
+    background: rgba(169, 223, 216, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#A9DFD8;
+}
+
+
+
 
 

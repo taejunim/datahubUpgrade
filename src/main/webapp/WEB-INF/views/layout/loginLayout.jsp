@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="<c:url value="/css/common.css" />">
     <link rel="stylesheet" href="<c:url value="/css/main.css" />">
     <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
-    <script src="<c:url value="/js/common.js"/>"></script>
 </head>
 <body>
 <tiles:insertAttribute name="content" />
