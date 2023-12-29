@@ -27,38 +27,19 @@ public class MainController {
     }
 
     @RequestMapping(value="/login.do")
-    public String login(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);
-//        LOG.info("result : {}",result);
-//
-//        if (result != null) {
-//            return "redirect:/main.do";
-//        }
+    public String login() {
 
         return "login";
     }
 
     @RequestMapping(value="/main.do",method = RequestMethod.GET)
-    public String main(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);
-//
-//        if (result == null) {
-//            return "redirect:/login.do";
-//        }
+    public String main() {
 
         return "main";
     }
 
     @RequestMapping(value="/evChargerDemand.do",method = RequestMethod.GET)
-    public String evChargerDemand(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);
-//
-//        if (result == null) {
-//            return "redirect:/login.do";
-//        }
+    public String evChargerDemand() {
 
         return "evChargerDemand";
     }
@@ -70,13 +51,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/join.do")
-    public String join(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);
-//
-//        if (result == null) {
-//            return "redirect:/login.do";
-//        }
+    public String join() {
         return "join";
     }
 
@@ -90,11 +65,8 @@ public class MainController {
         }
         HttpSession session = request.getSession();
 
-
         session.setAttribute(SessionConst.LOGIN_MEMBER, user.getUserId());                                   // 로그인에 성공하면 세션에 내용을 저장한다.
         session.setMaxInactiveInterval(3600);                                                       // 세션 시간을 설정한다.
-
-        LOG.info("result : " + session.getAttribute(SessionConst.LOGIN_MEMBER));
 
         return user.getUserId();
     }

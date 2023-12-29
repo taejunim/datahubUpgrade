@@ -17,13 +17,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String contextPath = request.getContextPath();
         String uri = request.getRequestURI();
 
         HttpSession session = request.getSession();
         Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);        // 컨트롤러 가기 전 인터셉트를 거쳐서 세션을 확인한다.
-
-        logger.info("session : {} contextPath :  {} uri : {} ", result, contextPath, uri);
 
         if(uri.equals("/login.do") && result != null) {
             response.sendRedirect("/main.do");
@@ -31,7 +28,6 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
         if(result == null) {
             response.sendRedirect("/login.do");
         }
-
         return super.preHandle(request, response, handler);
     }
 
