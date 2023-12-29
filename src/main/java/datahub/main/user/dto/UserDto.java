@@ -16,4 +16,6 @@ public class UserDto {
     private String userPhone;               // 사용자 전화번호
     private String userType;                // 사용자 타입 '001' 관리자 , '002' 일반 사용자
     private String regDt;                   // 사용자 가입 날짜
+
+    private String saveID;                  // 자동로그인 여부
 }

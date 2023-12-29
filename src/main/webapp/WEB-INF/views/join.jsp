@@ -34,7 +34,7 @@
         let userBirth = document.getElementById('userBirth').value;
         let userPhone = document.getElementById('userPhone').value;
 
-        fetch('/api/join.mng',{
+        fetch('/join.mng',{
             method : "POST",
             headers : {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@
             }),
         })
         .then((data) => console.log(data))
-        .then(window.location.href = '/success.do')
+        .then(window.location.href = '/main.do')
     }
 </script>
 </html>

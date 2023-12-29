@@ -17,29 +17,26 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
+        String contextPath = request.getContextPath();
+        String uri = request.getRequestURI();
+
         HttpSession session = request.getSession();
         Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);        // 컨트롤러 가기 전 인터셉트를 거쳐서 세션을 확인한다.
 
-        logger.info("session : {} ", result);
+        logger.info("session : {} contextPath :  {} uri : {} ", result, contextPath, uri);
 
-        if (result == null) {
-            logger.info("current user is not logined");
-
-            response.sendRedirect("/");
-        } else if (result.equals("SUCCESS")){
-            logger.info("current user is login");
-
+        if(uri.equals("/login.do") && result != null) {
             response.sendRedirect("/main.do");
         }
+        if(result == null) {
+            response.sendRedirect("/login.do");
+        }
 
-        System.out.println("pre Handler...!");
         return super.preHandle(request, response, handler);
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        System.out.println("post Handler...!");
-
         super.postHandle(request, response, handler, modelAndView);
     }
 }

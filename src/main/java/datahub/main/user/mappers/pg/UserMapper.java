@@ -1,4 +1,4 @@
-package datahub.main.user.mappers.postgres;
+package datahub.main.user.mappers.pg;
 
 
 import datahub.main.user.dto.UserDto;

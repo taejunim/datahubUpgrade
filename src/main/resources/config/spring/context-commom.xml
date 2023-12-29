@@ -42,4 +42,16 @@
     <!--configure scheduler-->
     <task:annotation-driven />
 
+    <!-- For Pagination Tag -->
+<!--    <bean id="imageRenderer" class=""/>--> <!-- 전자정부 커스텀 페이징 사용시 -->
+    <bean id="textRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>
+    <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+        <property name="rendererType">
+            <map>
+                <entry key="text" value-ref="textRenderer"/>
+<!--                <entry key="image" value-ref="imageRenderer"/>--> <!-- 전자정부 커스텀 페이징 사용시 -->
+            </map>
+        </property>
+    </bean>
+
 </beans>

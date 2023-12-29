@@ -1,14 +1,13 @@
 package datahub.main.user.service.impl;
 
 import datahub.main.user.dto.UserDto;
-import datahub.main.user.mappers.postgres.UserMapper;
+import datahub.main.user.mappers.pg.UserMapper;
 import datahub.main.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Optional;
 
 
 @Service
@@ -20,15 +19,16 @@ public class UserServiceImpl implements UserService {
     private BCryptPasswordEncoder encoder;
 
     @Override
-    public String userLogin(UserDto userDto) throws Exception {
-        Optional<UserDto> result = Optional.ofNullable(userMapper.userLogin(userDto));
-        if (!result.isPresent()) {
-            return "NOT FOUND USER";
+    public UserDto userLogin(UserDto userDto) throws Exception {
+        UserDto result = userMapper.userLogin(userDto);
+        if (result == null) {
+            return null;
         }
-        if(!encoder.matches(userDto.getUserPwd(), result.get().getUserPwd())) {
-            return "NOT MATCHES PASSWORD";
+        if (!encoder.matches(userDto.getUserPwd(), result.getUserPwd())) {
+            return null;
         }
-        return "SUCCESS";
+
+        return result;
     }
 
     @Override

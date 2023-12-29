@@ -23,7 +23,7 @@
 	</bean>
 
 	<bean id="scannerPostgres" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="datahub.main.**.mappers.postgres"/>
+		<property name="basePackage" value="datahub.main.**.mappers.pg"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionPostgres"/>
 	</bean>
 
