@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 
         HttpSession session = request.getSession();
         Object result = session.getAttribute(SessionConst.LOGIN_MEMBER);        // 컨트롤러 가기 전 인터셉트를 거쳐서 세션을 확인한다.
+
+        for (Cookie cookie : request.getCookies()) {
+            logger.info("cookies : {}",  cookie);
+        }
 
         if(uri.equals("/login.do") && result != null) {
             response.sendRedirect("/main.do");

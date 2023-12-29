@@ -66,6 +66,20 @@
     </form>
 </div>
 <script>
+    var rememberChecked = $("input:checkbox[id=saveID]:checked").val();
+    $(document).ready(function () {
+
+        $('#saveID').change(function () {
+            if ($('#saveID').is(":checked")) {
+                rememberChecked = 'Y'
+                console.log(rememberChecked);
+            } else {
+                rememberChecked = 'N'
+                console.log(rememberChecked);
+                alert("체크박스 해제");
+            }
+        })
+    })
     $('#login').click(function () {
         var userId = document.getElementById('userId').value;
         var userPwd = document.getElementById('userPwd').value;
@@ -77,7 +91,8 @@
             },
             body : JSON.stringify({
                 userId : userId,
-                userPwd : userPwd
+                userPwd : userPwd,
+                saveId : rememberChecked
             }),
         })
         .then((data) => data.text())

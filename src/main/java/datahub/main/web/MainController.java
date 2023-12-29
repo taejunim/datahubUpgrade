@@ -10,7 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -27,7 +29,13 @@ public class MainController {
     }
 
     @RequestMapping(value="/login.do")
-    public String login() {
+    public String login(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Object save = session.getAttribute(SessionConst.SAVE_ID);
+
+        if (save != null) {
+            return "redirect:/main.do";
+        }
 
         return "login";
     }
@@ -57,7 +65,7 @@ public class MainController {
 
     @RequestMapping(value = "/userLogin.mng", method = RequestMethod.POST)
     @ResponseBody
-    public String userLogin(@RequestBody UserDto userDto,HttpServletRequest request) throws Exception {
+    public String userLogin(@RequestBody UserDto userDto, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         UserDto user = userService.userLogin(userDto);
         if(user == null) {
@@ -67,6 +75,11 @@ public class MainController {
 
         session.setAttribute(SessionConst.LOGIN_MEMBER, user.getUserId());                                   // 로그인에 성공하면 세션에 내용을 저장한다.
         session.setMaxInactiveInterval(3600);                                                       // 세션 시간을 설정한다.
+
+        if (userDto.getSaveId().equals("Y")) {
+            session.setAttribute(SessionConst.SAVE_ID, user.getUserId());
+            session.setMaxInactiveInterval(3600);
+        }
 
         return user.getUserId();
     }
