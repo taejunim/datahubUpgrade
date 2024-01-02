@@ -50,6 +50,11 @@ public class MainController {
         return "evChargerDemand";
     }
 
+    @RequestMapping(value="/evChargerCurrent.do",method = RequestMethod.GET)
+    public String evChargerCurrent() {
+        return "evChargerCurrent";
+    }
+
     @RequestMapping(value = "/join.mng")
     @ResponseBody
     public void userJoin(@RequestBody UserDto userDto) throws Exception {

@@ -117,3 +117,28 @@
 }
 
 
+/***************************************
+*           images                   *
+***************************************/
+
+.icon-total{width: 2.5vw; height: 2.5vw; background: url(../images/icon_total.png) no-repeat center/100%;}
+
+.icon_normal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_normal.png) no-repeat center/100%;}
+
+.icon_abnormal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
+
+.icon_eyes{width: 2.5vw; height: 2.5vw; background: url(../images/icon_eyes.png) no-repeat center/100%;}
+
+.icon_calendar{background-size: 1.4rem; background-image: url(../images/calendar.png); background-repeat: no-repeat; background-position: right; background-origin: content-box;}
+
+.icon_cross{ width:1.2rem; height: 0.9rem; background-size: 0.9rem; background-image: url(../images/icon_cross.png); background-repeat: no-repeat; background-position: right; background-origin: content-box;}
+
+.icon_search{
+    background-size: 1rem;
+    background-image: url(../images/icon_search.png);
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    text-align: -webkit-center;
+}

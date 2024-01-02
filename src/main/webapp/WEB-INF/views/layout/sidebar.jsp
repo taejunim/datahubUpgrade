@@ -22,19 +22,23 @@
             <div class="evDemand"></div>
             <div class="">EV Charger Demand</div>
         </div>
-        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'evChargerCurrent.do')>-1}">menuActive</c:if>">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'evChargerCurrent.do')>-1}">menuActive</c:if>"
+            onclick="location.href='<c:url value="/evChargerCurrent.do"/>'">
             <div class="evCurrent"></div>
             <div class="">EV Charger Current</div>
         </div>
-        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'user.do')>-1}">menuActive</c:if>">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'user.do')>-1}">menuActive</c:if>"
+             onclick="location.href='<c:url value="/userInfo.do"/>'">
             <div class="userInfo"></div>
             <div class="">User</div>
         </div>
-        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'setting.do')>-1}">menuActive</c:if>">
+        <div class="font-lightGray <c:if test="${fn:indexOf(path, 'setting.do')>-1}">menuActive</c:if>"
+             onclick="location.href='<c:url value="/Settings.do"/>'">
             <div class="setting"></div>
             <div class="">Settings</div>
         </div>
-        <div class="font-lightGray" onclick="location.href='<c:url value="/logout.mng"/>'">
+        <div class="font-lightGray" onclick="location.href='<c:url value="/logout.mng"/>'"
+             onclick="location.href='<c:url value="/signout.do"/>'">
             <div class="signout"></div>
             <div class="">Signout</div>
         </div>

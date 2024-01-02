@@ -24,12 +24,6 @@
 
 .main .sm-card{width: 100%; height: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.25em 0.25em 0.25em; gap: 0.4vw;}
 
-.icon-total{width: 2.5vw; height: 2.5vw; background: url(../images/icon_total.png) no-repeat center/100%;}
-
-.icon_normal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_normal.png) no-repeat center/100%;}
-
-.icon_abnormal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
-
 
 /*******************^********************
 *              Login Page               *

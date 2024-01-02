@@ -11,7 +11,7 @@
 <div class="main wh100">
     <div class="left">
         <div class="card h22p">
-            <div class="display-column wh100" style="gap: 1vh">
+            <div class="display-column wh100 gap04v">
                 <div class="font-20 font-bold font-white">Building info</div>
                 <div class="font-14 font-white">building suummary</div>
                 <div class="display-row wh100">
@@ -44,11 +44,11 @@
             <div class="display-row w100p h80p">
                 <table class="table type1 wh100">
                     <colgroup>
-                    <col width="5%">
-                    <col width="20%">
-                    <col width="20%">
-                    <col width="45%">
-                    <col width="10%">
+                        <col width="5%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="45%">
+                        <col width="10%">
                     </colgroup>
                     <thead>
                     <tr>
@@ -136,12 +136,31 @@
                 </table>
             </div>
         </div>
-        <div class="card h28p"></div>
+        <div class="card h28p display-row gap0">
+            <div class="display-column w80p">
+                <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
+                <div class=""></div><%--차트영역--%>
+            </div>
+            <div class="display-column justify-content-end w20p gap02v">
+                <div class="display-row gap04v">
+                    <div class="font-lightGray font-12">총 건물</div>
+                    <div class="font-lightGray font-12 font-bold">7000 대</div>
+                </div>
+                <div class="display-row gap04v">
+                    <div class="font-lightGray font-12">적합</div>
+                    <div class="font-lightGray font-12 font-bold">4000 대</div>
+                </div>
+                <div class="display-row gap04v">
+                    <div class="font-lightGray font-12">부적합</div>
+                    <div class="font-lightGray font-12 font-bold">3000 대</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="line"></div>
     <div class="right">
         <div class="card h22p">
-            <div class="display-column wh100" style="gap: 1vh">
+            <div class="display-column wh100 gap04v">
                 <div class="font-20 font-bold font-white">EV Charger Info</div>
                 <div class="font-14 font-white">EV Charger suummary</div>
                 <div class="display-row wh100">
@@ -184,8 +203,8 @@
                 </div>
             </div>
         </div>
-        <div class="input-group w100p h73p" style="gap: 1vw;">
-            <div class="input-group-column wh100" style="gap: 1.5vh;">
+        <div class="group w100p h73p gap1v">
+            <div class="group-column wh100 gap15h">
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
@@ -388,7 +407,7 @@
                 </div>
             </div>
             <div class="line"></div>
-            <div class="input-group-column wh100" style="gap: 1.5vh;">
+            <div class="group-column wh100 gap15h">
                 <div class="card h50p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">미사용 TOP EV 충전기</div>

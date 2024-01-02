@@ -10,7 +10,7 @@
 
 <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
 
-<header class="w100p">
+<header class="w100p h5p">
     <div class="clearfix headerWrap">
         <div class="header">
             <div class="info">

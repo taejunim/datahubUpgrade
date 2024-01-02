@@ -43,7 +43,6 @@
     vertical-align: top;
     width: 20px;
     height: 20px;
-    background: url(../../../images/immediateReduction/icon_btn_prev.png) 50% 50% no-repeat;
     cursor: pointer;
     text-indent: -999999em;
 }
@@ -53,7 +52,6 @@
     vertical-align: top;
     width: 20px;
     height: 20px;
-    background: url(../../../images/immediateReduction/icon_btn_next.png) 50% 50% no-repeat;
     cursor: pointer;
     text-indent: -999999em;
 }
@@ -104,9 +102,7 @@
     margin-top: -117px;
 }
 
-.display-none{
-    display:none;
-}
+.hidden{ display:none!important; }
 
 .btn-top10 {top:10px;}
 
@@ -132,12 +128,11 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 
 .progress-blue::-webkit-progress-value { ransition: width 1.0s; border-radius:10px; background: rgba(169, 223, 216, 1);}
 
-
 /*******************^********************
 *            iconBox                *
 ****************************************/
 
-
+/*메인 화면 퍼센테이지 박스*/
 .percent-orange-box{
     border-radius: 4px;
     border: 0.5px solid #FCB859;
@@ -158,7 +153,32 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
     color:#A9DFD8;
 }
 
+/*적합 판단 박스*/
+.judgment-box{ border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.7rem 1rem; text-align: center; font-weight: 900;}
 
+/*급속전력 박스*/
+.rapidity-box {border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: #FFFFFF;}
 
+/*상태 박스*/
+.status-red-box {border-radius: 20px; background: rgba(243, 18, 96, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(243, 18, 96, 1);}
+.status-green-box {border-radius: 20px; background: rgba(24, 201, 100, 0.20); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(18, 161, 80, 1);}
+.status-orange-box {border-radius: 20px; background: rgba(245, 165, 36, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(195, 132, 29, 1);}
 
+/*******************^********************
+*            Modal                  *
+****************************************/
+
+.modal-dialog{width: 65% !important; max-width: none !important;}
+
+.modal .display-column{display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;}
+
+.modal .display-row{display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+
+.modal-content{ background-color: #171821 !important; color: #FFFFFF;}
+
+.modal-header{border-bottom: none !important;}
+
+.modal-header button > span{color:#FFFFFF;}
+
+.modal-body .content-box{border-radius: 10px; border: 1px solid #000000; padding: 1rem; font-weight: 900; background-color: #21222D;}
 
