@@ -15,7 +15,7 @@
 
     <mvc:annotation-driven />
 
-    <context:component-scan base-package="datahub.main">
+    <context:component-scan base-package="datahub">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Service" type="annotation" />
         <context:exclude-filter expression="org.springframework.stereotype.Repository" type="annotation" />
@@ -77,11 +77,12 @@
             <mvc:exclude-mapping path="/login.do"/>
             <mvc:exclude-mapping path="/join.*"/>
             <mvc:exclude-mapping path="/userLogin.mng"/>
+            <mvc:exclude-mapping path="/logout.*"/>
             <mvc:exclude-mapping path="/"/>
             <mvc:exclude-mapping path="/css/**"/>
             <mvc:exclude-mapping path="/js/**"/>
             <mvc:exclude-mapping path="/images/**"/>
-            <bean class="datahub.main.interceptor.LoginCheckInterceptor"/>
+            <bean class="datahub.interceptor.LoginCheckInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

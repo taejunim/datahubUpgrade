@@ -17,19 +17,19 @@
                 <div class="display-row wh100">
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
-                        <div class="font-20 font-white">1,100</div>
+                        <div class="font-20 font-white"><c:out value="${buildingInfo.totalBuilding}"/></div>
                         <div class="font-14 font-white">Total Building</div>
                         <div class="font-10 font-orange">총 EV 주차장 수요 대상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_normal"></div>
-                        <div class="font-20 font-white">891</div>
+                        <div class="font-20 font-white"><c:out value="${buildingInfo.normalBuilding}"/></div>
                         <div class="font-14 font-white">Normal Building</div>
                         <div class="font-10 font-normal">EV 주차장 수요 정상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
+                        <div class="font-20 font-white"><c:out value="${buildingInfo.abnormalBuilding}"/></div>
                         <div class="font-14 font-white">Abnormal Building</div>
                         <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
                     </div>

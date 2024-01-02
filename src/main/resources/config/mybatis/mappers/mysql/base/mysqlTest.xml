@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="datahub.mapper.mysql.MysqlTestMapper">
-    <select id="mysqlCount" resultType="int">
-        SELECT COUNT(*)
-        FROM jj_weather_info
+<mapper namespace="datahub.main.mappers.my.MainMapper">
+    <select id="mainBuildingInfo" resultType="buildingDto">
+        SELECT
+            '1023' AS "TOTAL_BUILDING"
+             ,'820' AS NORMAL_BUILDING
+             ,'112' AS ABNORMAL_BUILDING
+        FROM DUAL
     </select>
 </mapper>
