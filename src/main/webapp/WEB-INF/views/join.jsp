@@ -48,7 +48,7 @@
             }),
         })
         .then((data) => console.log(data))
-        .then(window.location.href = '/main.do')
+        .then(window.location.href = '/login.do')
     }
 </script>
 </html>

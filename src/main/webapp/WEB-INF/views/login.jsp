@@ -84,28 +84,29 @@
         var userId = document.getElementById('userId').value;
         var userPwd = document.getElementById('userPwd').value;
 
-        $.ajax({
-            type : "POST",
-            url : "/userLogin.mng",
-            contentType : "application/json",
-            data : JSON.stringify({
-                userId : userId,
-                userPwd : userPwd,
-                saveId : rememberChecked
-            }),
-            success : function (result) {
-                if (result == "EMPTY USER") {
-                    console.log("result : " + result);
-                    alert("등록되지 않은 사용자 이거나, 아이디 또는 비밀번호가 맞지 않습니다.");
-                } else {
-                    console.log("result : " + result);
-                    alert("환영합니다.")
-                    window.location.href = "/main.do";
-                }
-            },
-            error : function (err) {
-                alert("err : " + err);
-            }
+        const params = JSON.stringify({
+            "userId" : userId,
+            "userPwd" : userPwd,
+            "saveId" : rememberChecked
         })
+
+        fetch('/userLogin.mng',{
+            method : "POST",
+            headers : {
+                "Content-Type": "application/json",
+            },
+            body : params,
+        })
+            .then((data) => data.text())
+            .then((data) => {
+                console.log("data : " + data)
+                if (data == "EMPTY USER") {
+                    alert('등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다.')
+                    window.location.href = '/login.do';
+                } else {
+                    alert('환영합니다!')
+                    window.location.href = '/main.do';
+                }
+            })
     })
 </script>

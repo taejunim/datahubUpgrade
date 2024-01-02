@@ -62,8 +62,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/userLogin.mng", method = RequestMethod.POST)
-    @ResponseBody
-    public String userLogin(@RequestBody UserDto userDto, HttpServletRequest request) throws Exception {
+    public @ResponseBody String userLogin(@RequestBody UserDto userDto, HttpServletRequest request) throws Exception {
 
         UserDto user = userService.userLogin(userDto);
         if(user == null) {
