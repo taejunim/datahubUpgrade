@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/views/include/tags.jspf" %>
+<script type="text/javascript" src="/js/views/join.js"></script>
+
 <html>
 <head>
     <title>회원가입 임시</title>
@@ -27,28 +29,6 @@
     </form>
 </body>
 <script>
-    function login() {
-        let userId = document.getElementById('userId').value;
-        let userPwd = document.getElementById('userPwd').value;
-        let userName = document.getElementById('userName').value;
-        let userBirth = document.getElementById('userBirth').value;
-        let userPhone = document.getElementById('userPhone').value;
 
-        fetch('/join.mng',{
-            method : "POST",
-            headers : {
-                "Content-Type": "application/json",
-            },
-            body : JSON.stringify({
-                userId : userId,
-                userPwd : userPwd,
-                userName : userName,
-                userBirth : userBirth,
-                userPhone : userPhone
-            }),
-        })
-        .then((data) => console.log(data))
-        .then(window.location.href = '/login.do')
-    }
 </script>
 </html>
