@@ -141,18 +141,18 @@
                 <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
                 <div class=""></div><%--차트영역--%>
             </div>
-            <div class="display-column justify-content-end w20p gap02v">
-                <div class="display-row gap04v">
-                    <div class="font-lightGray font-12">총 건물</div>
-                    <div class="font-lightGray font-12 font-bold">7000 대</div>
+            <div class="display-column w20p gap03v">
+                <div class="display-row gap0 wh100 text-right">
+                    <div class="font-lightGray font-14 w40p">총 건물</div>
+                    <div class="font-lightGray font-14 font-bold w60p">7000 대</div>
                 </div>
-                <div class="display-row gap04v">
-                    <div class="font-lightGray font-12">적합</div>
-                    <div class="font-lightGray font-12 font-bold">4000 대</div>
+                <div class="display-row gap0 wh100 text-right">
+                    <div class="font-lightGray font-14 w40p">적합</div>
+                    <div class="font-lightGray font-14 font-bold w60p">4000 대</div>
                 </div>
-                <div class="display-row gap04v">
-                    <div class="font-lightGray font-12">부적합</div>
-                    <div class="font-lightGray font-12 font-bold">3000 대</div>
+                <div class="display-row gap0 wh100 text-right">
+                    <div class="font-lightGray font-14 w40p">부적합</div>
+                    <div class="font-lightGray font-14 font-bold w60p ">3000 대</div>
                 </div>
             </div>
         </div>

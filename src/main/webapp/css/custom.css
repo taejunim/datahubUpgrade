@@ -90,7 +90,7 @@
     right:0;
     top:0;
     bottom:0;
-    background: rgba(0,0,0,0.2); /*not in ie */
+    background: rgba(0,0,0,0.4); /*not in ie */
     filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
     z-index: 999999;
 }

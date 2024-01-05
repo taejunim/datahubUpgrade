@@ -22,7 +22,7 @@
 
 .main .display-row-center{display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
 
-.main .sm-card{width: 100%; height: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.25em 0.25em 0.25em; gap: 0.4vw;}
+.main .sm-card{width: 100%; height: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.25em 0.25em 0.25em; gap: 0.4rem;}
 
 
 /*******************^********************

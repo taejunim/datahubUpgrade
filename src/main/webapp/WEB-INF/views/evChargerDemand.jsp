@@ -84,8 +84,8 @@
             </div>
         </div>
     </div>
-    <div class="frame w95p h78p">
-        <table id="datatable" class="table type2 wh100">
+    <div class="frame h78p display-column">
+        <table id="datatable" class="table type2 w95p">
             <colgroup>
                 <col width="20%">
                 <col width="15%">
@@ -308,6 +308,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="h15p w100p">
+                    <div class="content-box">건축물 상세정보</div>
+                </div>
+
             </div>
         </div>
     </div>
