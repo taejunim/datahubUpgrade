@@ -47,7 +47,7 @@
                         </div>
                         <div class="loginInfo">
                             <input type="text" class="idBox font-opacity" placeholder="EMAIL ID / USER NAME" name="userId" id="userId"/>
-                            <input type="text" class="pwBox font-opacity" placeholder="PASSWORD" name="userPwd" id="userPwd"/>
+                            <input type="password" class="pwBox font-opacity" placeholder="PASSWORD" name="userPwd" id="userPwd"/>
                         </div>
                         <div class="rememberAccount">
                             <div class="check">
