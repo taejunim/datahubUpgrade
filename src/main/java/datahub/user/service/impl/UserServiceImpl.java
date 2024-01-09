@@ -35,4 +35,17 @@ public class UserServiceImpl implements UserService {
         userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
         int result = userMapper.userJoin(userDto);
     }
+
+    /**
+     * 사용자 정보 조회 -- userId
+     * @param userDto
+     * @return
+     */
+    @Override
+    public UserDto selectUser(UserDto userDto) throws Exception {
+
+        userDto = userMapper.userLogin(userDto);
+
+        return userDto;
+    }
 }

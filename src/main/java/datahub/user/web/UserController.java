@@ -3,6 +3,8 @@ package datahub.user.web;
 import datahub.common.SessionConst;
 import datahub.user.dto.UserDto;
 import datahub.user.service.UserService;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,10 +33,50 @@ public class UserController {
         return "login";
     }
 
-    @RequestMapping(value = "/join.mng")
+    /**
+     * 회원 가입 화면
+     * @return
+     */
+    @RequestMapping(value="/join.do")
+    public String join() {
+
+        return "join";
+    }
+
+    /**
+     * 사용자 등록
+     * @param userDto
+     * @throws Exception
+     */
+    @RequestMapping(value = "/join.json", method = RequestMethod.POST)
     @ResponseBody
-    public void userJoin(@RequestBody UserDto userDto) throws Exception {
-        userService.join(userDto);
+    public Map<String,Object> userJoin(@RequestBody UserDto userDto) throws Exception {
+        Map<String ,Object> result = new HashMap<String ,Object>();
+        try {
+
+            userService.join(userDto);
+
+            result.put("result", "success");
+
+        } catch (Exception e) {
+            result.put("result", "fail");
+        }
+
+        return result;
+
+    }
+
+
+    /**
+     * 사용자 정보 조회 -- userId
+     * @param userDto
+     * @return
+     */
+    @RequestMapping(value ="/selectUser.json", method = RequestMethod.POST)
+    @ResponseBody
+    public UserDto selectUser(@RequestBody UserDto userDto) throws Exception {
+
+        return userService.selectUser(userDto);
     }
 
     @RequestMapping(value = "/userLogin.mng", method = RequestMethod.POST)

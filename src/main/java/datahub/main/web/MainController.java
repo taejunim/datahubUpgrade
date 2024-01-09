@@ -16,11 +16,6 @@ public class MainController {
     @Autowired
     private MainService mainService;
 
-    @RequestMapping(value="/")
-    public String index() {
-        return "index";
-    }
-
     @RequestMapping(value="/main.do",method = RequestMethod.GET)
     public String main(ModelMap model) throws Exception {
         model.addAttribute("buildingInfo",mainService.mainBuildingInfo());
@@ -37,11 +32,5 @@ public class MainController {
     public String evChargerCurrent() {
         return "evChargerCurrent";
     }
-
-    @RequestMapping(value = "/join.do")
-    public String join() {
-        return "join";
-    }
-
 
 }

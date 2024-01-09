@@ -12,6 +12,9 @@
         <put-attribute name="content"   value="/WEB-INF/views/login.jsp" />
     </definition>
 
+    <definition name="join" extends="login-layout">
+        <put-attribute name="content"   value="/WEB-INF/views/join.jsp" />
+    </definition>
 
     <definition name="datahub-layout" template="/WEB-INF/views/layout/layout.jsp">
         <put-attribute name="header"    value="/WEB-INF/views/layout/header.jsp" />

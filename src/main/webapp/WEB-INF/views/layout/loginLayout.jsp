@@ -13,13 +13,21 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>데이터허브 고도화</title>
+    <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
     <link rel="stylesheet" href="<c:url value="/css/reset.css" />">
     <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
     <link rel="stylesheet" href="<c:url value="/css/common.css" />">
     <link rel="stylesheet" href="<c:url value="/css/main.css" />">
     <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
+    <script src="<c:url value="/js/common.js"/>"></script>
+    <script src="<c:url value='/js/plugins/select2/select2.min.js' />"></script>
+    <script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
+
 </head>
 <body>
+<div class="wrap-loading hidden">
+    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
+</div>
 <tiles:insertAttribute name="content" />
 </body>
 </html>
