@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
-<script type="text/javascript" src="/js/views/main.js"></script>
+<%--<script type="text/javascript" src="/js/views/main.js"></script>--%>
 
 <div class="main wh100">
     <div class="left">
@@ -548,6 +548,7 @@
                             </tbody>
                         </table>
                     </div>
+                    <a href="pdf.mng">PDF 출력</a>
                 </div>
             </div>
         </div>

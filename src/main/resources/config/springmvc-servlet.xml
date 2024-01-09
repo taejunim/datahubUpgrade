@@ -87,4 +87,10 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <!-- 빈객체 생성 -->
+    <context:component-scan base-package="datahub.main.pdf.*" />
+
+    <!-- pdf라는 뷰 이름이 왔을 때 출력할 뷰를 설정 -->
+    <bean id="pdf" class="datahub.main.pdf.view.PdfDownView"/>
+
 </beans>

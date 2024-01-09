@@ -55,7 +55,7 @@ public class UserController {
     @RequestMapping(value = "/join.json", method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> userJoin(@RequestBody UserDto userDto) throws Exception {
-        Map<String ,Object> result = new HashMap<String ,Object>();
+        Map<String ,Object> result = new HashMap<>();
         try {
 
             userService.join(userDto);
