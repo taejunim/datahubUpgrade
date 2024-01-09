@@ -548,7 +548,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <a href="pdf.mng">PDF 출력</a>
                 </div>
             </div>
         </div>

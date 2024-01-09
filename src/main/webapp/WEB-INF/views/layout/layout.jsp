@@ -48,8 +48,8 @@
   <tiles:insertAttribute name="sidebar"/>
 
   <div class="content-wrapper w85p h100p">
-    <tiles:insertAttribute name="header"/>
-    <tiles:insertAttribute name="content"/>
+    <tiles:insertAttribute name="header" ignore="true"/>
+    <tiles:insertAttribute name="content" ignore="true"/>
   </div>
 </div>
 </body>

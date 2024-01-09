@@ -8,3 +8,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
 <script type="text/javaScript">document.location.href="<c:url value='/login.do'/>"</script>
+<%--<a href="pdf.mng">PDF 출력</a>--%>
