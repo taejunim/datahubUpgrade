@@ -21,16 +21,23 @@ public class MainController {
         model.addAttribute("buildingInfo",mainService.mainBuildingInfo());
         return "main";
     }
-
+    /**
+     * evChargerDemand 페이지
+     * @method GET
+     * @return evChargerDemand
+     * */
     @RequestMapping(value="/evChargerDemand.do",method = RequestMethod.GET)
     public String evChargerDemand() {
 
         return "evChargerDemand";
     }
-
+    /**
+     * evChargerCurrent 페이지
+     * @method GET
+     * @return evChargerCurrent
+     * */
     @RequestMapping(value="/evChargerCurrent.do",method = RequestMethod.GET)
     public String evChargerCurrent() {
         return "evChargerCurrent";
     }
-
 }

@@ -25,6 +25,7 @@
 .main .sm-card{width: 100%; height: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.5em; gap: 1.2vh;}
 
 
+
 /*******************^********************
 *              Login Page               *
 ****************************************/
@@ -72,7 +73,6 @@
 .loginPage .loginBox .frame .topBox .bottomBox .rememberAccount{width: 70%; height: 3%; display: flex; align-items: center; justify-content: space-between;}
 
 .loginPage .loginBox .frame .topBox .bottomBox .loginBtn{width: 40%; height: 10%; cursor: pointer; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; justify-content: center;}
-
 
 
 @media screen and (max-width:1280px){

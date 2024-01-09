@@ -101,6 +101,32 @@ $(document).ready(function() {
   });
 });
 
+function createRoot(name) {
+
+  let scale;
+
+  if (name == "mainChart") {
+    scale = 3
+  } else {
+    scale = 1.1
+  }
+
+  var root = am5.Root.new(name, {
+    calculateSize: function(dimensions) {
+      return {
+        width: dimensions.width * scale,
+        height: dimensions.height * scale
+      };
+    }
+  })
+  root._logo.dispose();           // water mark 제거
+
+  root.setThemes([
+    am5themes_Animated.new(root)
+  ]);
+
+  return root;
+}
 
 /**
  * javascript SimpleDateFormat 함수

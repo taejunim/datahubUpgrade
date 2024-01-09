@@ -7,7 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
-
+<script src="<c:url value="/js/views/evChargerCurrent.js"/>"></script>
 
 <div class="rowWrap">
 <%--    검색--%>
@@ -264,15 +264,15 @@
                     </div>
                 </div>
                 <div class="gray-layer h25p">
-                    <div class="display-column align-items-start">
+                    <div class="display-column align-items-start wh100 h100p">
                         <div class="font-white font-18">EV Charger USE Time/Count</div>
-                        <div class=""></div> <%--차트영역--%>
+                        <div class="CurrentChart" id="CurrentChart"></div> <%--차트영역--%>
                     </div>
                 </div>
                 <div class="gray-layer h25p">
-                    <div class="display-column align-items-start">
+                    <div class="display-column align-items-start wh100 h100p">
                         <div class="font-white font-18">EV Charger USE Time/Count</div>
-                        <div class=""></div> <%--차트영역--%>
+                        <div class="CurrentChart" id="CurrentChart1"></div> <%--차트영역--%>
                     </div>
                 </div>
             </div>

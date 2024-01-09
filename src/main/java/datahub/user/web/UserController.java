@@ -20,7 +20,12 @@ public class UserController {
 
     @Inject
     private UserService userService;
-
+    /**
+     * 로그인 페이지
+     * @method GET
+     * @param request
+     * @return login.jsp
+     * */
     @RequestMapping(value="/login.do")
     public String login(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -32,7 +37,6 @@ public class UserController {
 
         return "login";
     }
-
     /**
      * 회원 가입 화면
      * @return
@@ -78,7 +82,13 @@ public class UserController {
 
         return userService.selectUser(userDto);
     }
-
+    /**
+     * 로그인 비동기 처리
+     * @method POST
+     * @param userDto
+     * @param request
+     * @return user.getUserId()
+     * */
     @RequestMapping(value = "/userLogin.mng", method = RequestMethod.POST)
     public @ResponseBody String userLogin(@RequestBody UserDto userDto, HttpServletRequest request) throws Exception {
 
@@ -97,7 +107,12 @@ public class UserController {
         }
         return user.getUserId();
     }
-
+    /**
+     * 로그아웃
+     * @method GET
+     * @param request
+     * @return user.getUserId()
+     * */
     @RequestMapping(value = "/logout.mng", method = RequestMethod.GET)
     public String logout(HttpServletRequest request) {
         request.getSession().invalidate();

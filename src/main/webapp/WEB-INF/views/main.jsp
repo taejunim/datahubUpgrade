@@ -138,9 +138,9 @@
             </div>
         </div>
         <div class="card h28p display-row gap0">
-            <div class="display-column w80p">
+            <div class="display-column w80p" style="height: 100%">
                 <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
-                <div class=""></div><%--차트영역--%>
+                <div id="mainChart" class="chartdiv"></div><%--차트영역--%>
             </div>
             <div class="display-column w20p gap03v">
                 <div class="display-row gap0 wh100 text-right">

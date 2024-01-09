@@ -34,6 +34,10 @@
 <script src="<c:url value="/js/common.js"/>"></script>
 <script src="<c:url value='/js/plugins/select2/select2.min.js' />"></script>
 <script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
+<script src="<c:url value="/js/plugins/amcharts5/index.js"/>"></script>
+<script src="<c:url value="/js/plugins/amcharts5/percent.js"/>"></script>
+<script src="<c:url value="/js/plugins/amcharts5/xy.js"/>"></script>
+<script src="<c:url value="/js/plugins/amcharts5/themes/Animated.js"/>"></script>
 
 </head>
 <body class="">

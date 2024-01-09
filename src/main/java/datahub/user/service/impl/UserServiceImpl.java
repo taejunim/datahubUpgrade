@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     public UserDto userLogin(UserDto userDto) throws Exception {
         UserDto result = userMapper.userLogin(userDto);
 
-        if (result == null || !encoder.matches(userDto.getUserPwd(), result.getUserPwd())) {
+        if (result == null || !encoder.matches(userDto.getUserPwd(), result.getUserPwd())) {    // 사용자가 입력한 비밀번호를 인코딩 후 디비의 비밀번호와 매칭 시킨다.
             return null;
         }
 
@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void join(UserDto userDto) throws Exception {
 
-        userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
-        int result = userMapper.userJoin(userDto);
+        userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));                               // 비밀번호를 인코딩한 뒤 insert
+        userMapper.userJoin(userDto);
     }
 
     /**
