@@ -243,6 +243,109 @@ function formatPhone(obj) {
   }
 }
 
+/**
+ * 알림창 -- ex) MsgBox.Confirm('등록', function (){caollback})
+ * @type {{Confirm: MsgBox.Confirm, Alert: MsgBox.Alert}}
+ */
+var MsgBox = {
+  /* Alert */
+  Alert: function(msg, okhandler) {
+    let map = fnMsgBoxSet(msg);
+
+    new Promise((resolve, reject) => {
+      $("#msg_popup #btn_confirm").hide();
+      $("#msg_popup #btn_alert").show();
+
+      $("#msg_popup #alert_ok").unbind();
+      $("#msg_popup .modal-title").html(map.get('title'));
+      $("#msg_popup .modal-body").html(map.get('txt'));
+      $('#msg_popup').modal('show');
+
+      $("#msg_popup #alert_ok").click(function() {
+        $('#msg_popup').modal('hide');
+      });
+
+      $("#msg_popup").on("hidden.bs.modal", function(e) {
+        e.stopPropagation();
+        if(okhandler != null) resolve();
+        else reject();
+      });
+    }).then(okhandler).catch(function() {});
+  },
+
+  /* Confirm */
+  Confirm: function(msg, yeshandler, nohandler) {
+    let map = fnMsgBoxSet(msg);
+
+    new Promise((resolve, reject) => {
+      var flag = false;
+      $("#msg_popup #btn_alert").hide();
+      $("#msg_popup #btn_confirm").show();
+
+      $("#msg_popup #confirm_yes").unbind();
+      $("#msg_popup #confirm_no").unbind();
+      $("#msg_popup .modal-title").html(map.get('title'));
+      $("#msg_popup .modal-body").html(map.get('txt'));
+      $('#msg_popup').modal('show');
+
+      $('#msg_popup').on('keypress', function (e) {
+        var keycode = (e.keyCode ? e.keyCode : e.which);
+        if(keycode == '13') {
+          flag = true;
+          $('#msg_popup').modal('hide');
+        }
+      });
+
+      $("#msg_popup #confirm_yes").click(function() {
+        flag = true;
+      });
+      $("#msg_popup #confirm_no").click(function() {
+        flag = false;
+      });
+
+      $("#msg_popup").on("hidden.bs.modal", function(e) {
+        e.stopPropagation();
+        if(yeshandler != null && flag == true) resolve(1);
+        else if(nohandler != null && flag == false) resolve(2);
+        else reject();
+      });
+
+    }).then(function(value) {
+      if(value == 1)      yeshandler();
+      else if(value == 2) nohandler();
+    }).catch(function() {});
+  },
+}
+
+/**
+ * type 별로 알림 텍스트 세팅
+ * @param type
+ */
+function fnMsgBoxSet(type){
+  let map = new Map();
+  let title = "";
+  let txt = "";
+
+  switch (type) {
+    case "insertAsk" : title = "등록"; txt = "등록 하시겠습니까?"; break;
+    case "updateAsk" : title = "수정"; txt = "수정 하시겠습니까?"; break;
+    case "deleteAsk" : title = "삭제"; txt = "삭제 하시겠습니까?"; break;
+    case "insert" : title = "등록"; txt = "등록 되었습니다."; break;
+    case "update" : title = "수정"; txt = "수정 되었습니다."; break;
+    case "delete" : title = "삭제"; txt = "삭제 되었습니다."; break;
+    case "singout" : title = "로그아웃"; txt = "로그아웃 하시겠습니까?"; break;
+    default : title = "실패"; txt = "입력정보를 확인하여 주세요."; break;
+  }
+
+  map.set('title', title);
+  map.set('txt', txt);
+
+  return map;
+}
+
+/**
+ * ajax Setup
+ */
 $.ajaxSetup({
   contentType: "application/json",
   beforeSend: function(xhr) {

@@ -64,7 +64,7 @@
                         </div>
                     </form>
                     <div class="w100p h20p joinBtn">
-                        <button type="submit" class="loginBtn p5 mt20 font-white w50p h50p" id="" onclick="return fnJoin();">가입</button>
+                        <button type="submit" class="loginBtn p5 mt20 font-white w50p h50p" id="" onclick="return fnDataValidation();">가입</button>
                     </div>
                 </div>
             </div>

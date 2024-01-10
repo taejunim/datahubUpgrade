@@ -232,7 +232,7 @@
 
 <!-- Modal -->
 <div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog demand-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Parking Lot Demand Detail Info</h5>

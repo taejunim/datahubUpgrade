@@ -7,9 +7,9 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
-<%--<script type="text/javascript" src="/js/views/main.js"></script>--%>
+<script type="text/javascript" src="/js/views/main.js"></script>
 
-<div class="main wh100">
+<div class="main w100p h93p">
     <div class="left">
         <div class="card h22p">
             <div class="display-column wh100 gap04v">
@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="card h28p display-row gap0">
-            <div class="display-column w80p" style="height: 100%">
+            <div class="display-column w80p h100p">
                 <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
                 <div id="mainChart" class="chartdiv"></div><%--차트영역--%>
             </div>
@@ -479,7 +479,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="card h50p">
+                <div class="card h50p" data-toggle="modal" data-target=".modal">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">미사용 TOP EV 충전기</div>
                         <div class="font-lightGray font-12">미사용일은 금일 기준</div>

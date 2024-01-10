@@ -41,16 +41,23 @@
 
 </head>
 <body class="">
+
 <div class="wrap-loading hidden">
   <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
 </div>
 <div class="wrapper w100p">
+  <!-- 사이드바 -->
   <tiles:insertAttribute name="sidebar"/>
 
   <div class="content-wrapper w85p h100p">
-    <tiles:insertAttribute name="header" ignore="true"/>
-    <tiles:insertAttribute name="content" ignore="true"/>
+    <!-- 헤더 -->
+    <tiles:insertAttribute name="header"/>
+    <!-- 메인 -->
+    <tiles:insertAttribute name="content"/>
   </div>
 </div>
+<!-- confirm -->
+<tiles:insertAttribute name="confirm"/>
+
 </body>
 </html>

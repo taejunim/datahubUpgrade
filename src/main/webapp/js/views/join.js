@@ -1,7 +1,7 @@
 
 
 // 등록 체크
-function fnJoin(){
+function fnDataValidation(){
 
 	// validation
 	if (!isId($('input[name=userId]').val())) {
@@ -52,7 +52,7 @@ function fnJoin(){
 			} else {
 				var strData = $("#joinForm").serializeObject();
 
-				fnInsertJoin(strData);
+				fnInsert(strData);
 			}
 		},
 		async: false
@@ -62,7 +62,7 @@ function fnJoin(){
 }
 
 // 등록
-function fnInsertJoin(strData) {
+function fnInsert(strData) {
 	$.ajax({
 		type: "POST",
 		url: "/join.json",

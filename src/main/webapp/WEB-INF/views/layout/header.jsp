@@ -10,25 +10,18 @@
 
 <c:set var="path" value="${requestScope['javax.servlet.forward.servlet_path']}" />
 
-<header class="w100p h5p">
+<header class="w100p h6p">
     <div class="clearfix headerWrap">
         <div class="header">
             <div class="info">
-                <div>
-                    <div class="alarm"></div>
-                </div>
-                <div>
-                    <div class="userInfo"></div>
-                </div>
-                <div>
-                    <div class="dropdown">
-                        <div class="dropbtn">
-                            <div class="bottom"></div>
-                        </div>
-<%--                        <div class="dropdown-content">--%>
-<%--                            <a href="#">Settings</a>--%>
-<%--                            <a href="#">Signout</a>--%>
-<%--                        </div>--%>
+                <div class="dropdown">
+                    <button class="btn font-white dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <span class="icon_user"></span> 관리자님
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">마이페이지</a>
+                        <a class="dropdown-item" onclick="MsgBox.Confirm('singout', function (){location.href='<c:url value='/logout.mng'/>'});">로그아웃
+                        </a>
                     </div>
                 </div>
             </div>

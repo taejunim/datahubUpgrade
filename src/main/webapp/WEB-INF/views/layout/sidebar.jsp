@@ -37,11 +37,6 @@
             <div class="setting"></div>
             <div class="">Settings</div>
         </div>
-        <div class="font-lightGray" onclick="location.href='<c:url value="/logout.mng"/>'"
-             onclick="location.href='<c:url value="/signout.do"/>'">
-            <div class="signout"></div>
-            <div class="">Signout</div>
-        </div>
     </div>
     <div class="line"></div>
 </div>

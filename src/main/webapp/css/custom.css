@@ -174,7 +174,9 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 *            Modal                  *
 ****************************************/
 
-.modal-dialog{width: 65% !important; max-width: none !important;}
+.demand-modal{width: 65% !important; max-width: none !important;}
+
+.custom-footer{justify-content: center!important; border-top: none!important;}
 
 .modal .display-column{display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;}
 
@@ -188,3 +190,11 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 
 .modal-body .content-box{border-radius: 10px; border: 1px solid #000000; padding: 1rem; font-weight: 900; background-color: #21222D;}
 
+
+.dropdown-menu{min-width: 8.7rem!important; text-align: center!important; background-color: #21222e!important; border: 1px solid rgba(169, 223, 216, .25)!important;}
+
+.dropdown-item{color: #FFFFFF!important; padding: 0.6rem 1rem!important;}
+
+.dropdown-item:focus, .dropdown-item:hover {color: #16181b!important; background-color: #a9dfd8!important;}
+
+.btn.focus, .btn:focus {box-shadow: 0 0 0 0.2rem rgba(169, 223, 216, .25)!important;}
