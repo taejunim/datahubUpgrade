@@ -502,7 +502,7 @@
         let captureDiv = document.getElementsByClassName('page')[0];
         let captureCanvas;
         console.log(captureDiv);
-        await html2canvas(captureDiv).then(canvas => {
+        await html2canvas(captureDiv, {scale:4}).then(canvas => {
             captureCanvas = canvas.toDataURL('image/png');
         })
 

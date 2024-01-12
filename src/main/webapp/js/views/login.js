@@ -24,6 +24,11 @@ function login() {
 	var userId = document.getElementById('userId').value;
 	var userPwd = document.getElementById('userPwd').value;
 
+	if (userId === "" || userPwd === "") {
+		alert("아이디 또는 비밀번호를 입력해주세요.");
+		return false;
+	}
+
 	const params = JSON.stringify({
 		"userId" : userId,
 		"userPwd" : userPwd,
