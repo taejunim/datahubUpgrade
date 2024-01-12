@@ -55,7 +55,7 @@
     font-size: 14px;
 }
 .evReportTable1 {
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     border-top: 2px solid black;
     height: 11rem;
 }
@@ -76,7 +76,7 @@
     border-bottom: none;
 }
 .evReportTable2 {
-    border: 2px solid black;
+    border: 1px solid black;
     height: 11rem;
 }
 .evReportTable2 > thead > tr > th {
@@ -100,7 +100,7 @@
 }
 
 .evReportTable3 {
-    border: 2px solid black;
+    border: 1px solid black;
     height: 17rem;
 }
 .evReportTable3 > thead > tr > th {
@@ -121,4 +121,18 @@
 }
 .evReportTable3 > tbody > tr:last-child > td {
     border-bottom: none;
+}
+.printingBtn {
+    background: none;
+    color: orange;
+    border: 2px solid;
+    padding: 1em 2em;
+    font-size: 1em;
+    transition: all 0.5s;
+}
+.printingBtn:hover {
+    border-color: orange;
+    color: white;
+    box-shadow: 0 0.5em 0.5em -0.4em yellow;
+    transform: translateY(-10px);
 }

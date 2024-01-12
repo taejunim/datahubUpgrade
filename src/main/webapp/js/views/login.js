@@ -11,6 +11,13 @@ $(document).ready(function () {
 			alert("체크박스 해제");
 		}
 	})
+
+	window.onkeydown = (e) => {
+			if (e.code == 'Enter') {
+				login();
+			}
+		}
+
 })
 
 function login() {

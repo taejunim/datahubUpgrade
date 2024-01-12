@@ -279,7 +279,7 @@
         </div>
     </div>
 </div>
-<button id="EvChargerReport" class="printingBtn" style="color: white">레포트 출력</button>
+<button id="EvChargerReport" class="printingBtn">레포트 출력</button>
 <div class="report-wrap">
     <div class="report-body">
         <div class="page" style="display: none">
