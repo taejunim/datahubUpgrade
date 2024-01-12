@@ -1,0 +1,124 @@
+/***************************************
+*                report                *
+***************************************/
+.report-wrap {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+}
+
+.report-body {
+    margin: 0;
+    padding: 0;
+}
+
+.report-title {
+    text-align: center;
+}
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    margin: 0 auto;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+.report-table {
+    margin: 20px auto;
+    border-spacing: 0px;
+    width: 100%;
+    text-align: center;
+}
+.evReportTable-caption {
+    margin: 0 auto;
+    position: relative;
+    top: 10px;
+}
+.evReportTable-caption-bottom {
+    position: relative;
+    bottom: 13px;
+    font-size: 14px;
+}
+.evReportTable1 {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    height: 11rem;
+}
+.evReportTable1 > thead > tr > th {
+    background-color: #E0E0E0;
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    font-weight: normal;
+    height: 2rem;
+}
+.evReportTable1 > tbody > tr > td {
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    border-bottom: 1px solid #B9B9B9;
+}
+.evReportTable1 > tbody > tr > td:last-child {
+    border-right: none;
+}
+.evReportTable1 > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+.evReportTable2 {
+    border: 2px solid black;
+    height: 11rem;
+}
+.evReportTable2 > thead > tr > th {
+    background-color: #E0E0E0;
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    font-weight: normal;
+}
+.evReportTable2 > thead > tr > th:last-child {
+    border-right: none;
+}
+.evReportTable2 > tbody > tr > td {
+    font-size: 14px;
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    border-bottom: 1px solid #B9B9B9;
+}
+.evReportTable2 > tbody > tr > td:last-child {
+    border-right: none;
+}
+.evReportTable2 > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
+.evReportTable3 {
+    border: 2px solid black;
+    height: 17rem;
+}
+.evReportTable3 > thead > tr > th {
+    background-color: #E0E0E0;
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    font-weight: normal;
+}
+.evReportTable3 > thead > tr > th:last-child {
+    border-right: none;
+}
+.evReportTable3 > tbody > tr > td {
+    font-size: 14px;
+    border-right: 2px dotted rgba(0, 0, 0, 0.20);
+    border-bottom: 1px solid #B9B9B9;
+}
+.evReportTable3 > tbody > tr > td:last-child {
+    border-right: none;
+}
+.evReportTable3 > tbody > tr:last-child > td {
+    border-bottom: none;
+}

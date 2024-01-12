@@ -29,15 +29,21 @@
         </property>
     </bean>
 
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="0"
+    <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"
+          p:order="0"
+    />
+    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
           p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
         p:viewClass="org.springframework.web.servlet.view.JstlView"
-        p:order="1"
+        p:order="2"
         p:prefix="/WEB-INF/views/"
         p:suffix=".jsp"
     />
+
+
+
 
     <!-- @ResponseBody 를 지원하기 위한 JSON MessageConverter -->
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -74,6 +80,9 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/EvCharger.mng"/>
+            <mvc:exclude-mapping path="/pdf.do"/>
+            <mvc:exclude-mapping path="/pdff.do"/>
             <mvc:exclude-mapping path="/login.do"/>
             <mvc:exclude-mapping path="/join.*"/>
             <mvc:exclude-mapping path="/selectUser.json"/>
@@ -87,10 +96,6 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-    <!-- 빈객체 생성 -->
-    <context:component-scan base-package="datahub.main.pdf.*" />
 
-    <!-- pdf라는 뷰 이름이 왔을 때 출력할 뷰를 설정 -->
-    <bean id="pdf" class="datahub.main.pdf.view.PdfDownView"/>
 
 </beans>

@@ -38,6 +38,7 @@
 <script src="<c:url value="/js/plugins/amcharts5/percent.js"/>"></script>
 <script src="<c:url value="/js/plugins/amcharts5/xy.js"/>"></script>
 <script src="<c:url value="/js/plugins/amcharts5/themes/Animated.js"/>"></script>
+<script src="<c:url value="/js/plugins/html2canvas/html2canvas.js"/>"></script>
 
 </head>
 <body class="">

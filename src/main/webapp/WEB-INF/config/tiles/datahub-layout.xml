@@ -8,20 +8,12 @@
         <put-attribute name="content"    value="" />
     </definition>
 
-    <definition name="empty-layout" template="/WEB-INF/views/layout/empty.jsp">
-        <put-attribute name="content"    value="" />
-    </definition>
-
     <definition name="login" extends="login-layout">
         <put-attribute name="content"   value="/WEB-INF/views/login.jsp" />
     </definition>
 
     <definition name="join" extends="login-layout">
         <put-attribute name="content"   value="/WEB-INF/views/join.jsp" />
-    </definition>
-
-    <definition name="empty" extends="empty-layout">
-        <put-attribute name="content"   value="/WEB-INF/views/index.jsp" />
     </definition>
 
     <definition name="datahub-layout" template="/WEB-INF/views/layout/layout.jsp">
@@ -32,10 +24,6 @@
 
     <definition name="*" extends="datahub-layout">
         <put-attribute name="content"   value="/WEB-INF/views/{1}.jsp" />
-    </definition>
-
-    <definition name="pdf" extends="empty-layout">
-        <put-attribute name="content"   value="/WEB-INF/views/pdf.jsp" />
     </definition>
 
 </tiles-definitions>
