@@ -43,8 +43,7 @@ $(document).ready(() => {
                         timeUnit: "day",
                         count: 1
                     },
-                    renderer: xRenderer,
-                    tooltip: am5.Tooltip.new(root, {})
+                    renderer: xRenderer
                 })
             );
 
@@ -137,7 +136,7 @@ $(document).ready(() => {
             // XY CHART 범례 인스턴스 생성
             var legend = chart.children.push(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
-                x: am5.percent(100),
+                x: am5.percent(80),
                 centerX: am5.percent(100),
                 y: am5.percent(90),
                 useDefaultMarker : true
@@ -158,6 +157,8 @@ $(document).ready(() => {
             legend.labels.template.set('fill' ,
                 am5.color(0xFFFFFF)
             )
+
+            legend.valueLabels.template.set("forceHidden", true);
             // XY CHART 범례 데이터 셋
             legend.data.setAll(chart.series.values);
 
@@ -240,11 +241,7 @@ $(document).ready(() => {
 
             var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
                 categoryField: "country",
-                renderer: xRenderer,
-                tooltip: am5.Tooltip.new(root, {
-                    themeTags: ["axis"],
-                    animationDuration: 200
-                })
+                renderer: xRenderer
             }));
 
             xAxis.get("renderer").labels.template.setAll({
@@ -332,7 +329,7 @@ $(document).ready(() => {
 
             var legend = chart.children.unshift(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
-                x: am5.percent(80),
+                x: am5.percent(50),
                 centerX: am5.percent(100),
                 y: am5.percent(5),
                 centerY : am5.percent(100),
@@ -356,6 +353,8 @@ $(document).ready(() => {
             legend.labels.template.set('fill' ,
                 am5.color(0xFFFFFF)
             )
+
+            legend.valueLabels.template.set("forceHidden", true);
 
             legend.data.setAll(chart.series.values);
 

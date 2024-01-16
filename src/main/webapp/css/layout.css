@@ -394,7 +394,7 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
 /***************************************
 *               chart                  *
 ***************************************/
-.chartdiv {width: 70%; height: 65%;}
+.chartdiv {width: 70%; height: 75%;}
 
 #CurrentChart {
     position: relative;

@@ -174,7 +174,8 @@
             <div class="layer-group hidden">
                 <div class="gray-layer w100p h50p">
                     <div class="display-column align-items-start wh100">
-                        <div class="font-white font-18">EV Charger Info</div>
+                        <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">EV Charger Info
+                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button></div>
                         <div class="display-column h95p">
                             <table class="table type4">
                                 <tr>
@@ -279,7 +280,6 @@
         </div>
     </div>
 </div>
-<button id="EvChargerReport" class="printingBtn">레포트 출력</button>
 <div class="report-wrap">
     <div class="report-body">
         <div class="page" style="display: none;">

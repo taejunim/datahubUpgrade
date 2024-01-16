@@ -1,7 +1,5 @@
 $(document).ready(() => {
-
 	createPieChart('mainChart')
-
 	// 미사용/고장 충전기 데이터 표출 모달
 	$('#table_popup').on('show.bs.modal', function (event) {
 		let value = $(event.relatedTarget)
@@ -119,70 +117,85 @@ function drawTable (data) {
 //     });
 // }
 
-function createPieChart (name) {
-	let root = createRoot(name)
+function createPieChart(name) {
+	let root = createRoot(name);
 
 	var chart = root.container.children.push(
 		am5percent.PieChart.new(root, {
-			width: am5.percent(50),
-			height: am5.percent(50),
-			layout: root.verticalLayout
+			width : am5.percent(50),
+			height : am5.percent(50),
+			layout : root.verticalLayout
 		})
-	)
+	);
 
 	var series = chart.series.push(
 		am5percent.PieSeries.new(root, {
-			valueField: 'value',
-			categoryField: 'EvCharger',
+			valueField: "value",
+			categoryField: "EvCharger",
 			endAngle: 270,
-			alignLabels: false,
-			legendLabelText: '[{fill}]{category}[/]'
+			alignLabels: false
 		})
-	)
+	);
 
-	series.get('colors').set('colors', [
+	series.get("colors").set("colors", [
 		am5.color(0xbae1ff),
 		am5.color(0xffb3ba)
 	])
 
-	series.states.create('hidden', {
+	series.states.create("hidden", {
 		endAngle: -90
-	})
+	});
 
 	series.labels.template.setAll({
-		fill: am5.color('#FFFFFF'),
-		inside: true
+		fill : am5.color("#FFFFFF"),
+		inside : true,
+		centerX : am5.percent(100),
+		textType: "radial",
+		text : "{valuePercentTotal.formatNumber('0.00')}%"
 	})
 
-	series.slices.template.set('toggleKey', 'none')
-
+	series.slices.template.set("toggleKey", "none");
+	// 차트 데이터 넣는곳
 	series.data.setAll([
 		{
-			EvCharger: '적합',
-			value: (4000 / 7000)
+			EvCharger: "적합",
+			value: (4000/7000)
 		}
 		, {
-			EvCharger: '부적합',
-			value: (3000 / 7000)
+			EvCharger: "부적합",
+			value: (3000/7000)
 		}
-	])
+	]);
 
 	let legend = chart.children.push(am5.Legend.new(root, {
 		layout: root.horizontalLayout,
 		x: am5.percent(100),
-		centerX: am5.percent(75)
+		centerX: am5.percent(75),
+		y : am5.percent(80),
+		centerY: am5.percent(100),
+		useDefaultMarker : true
 	}))
-
+	// XY CHART 범례 마커 Radius 조정
 	legend.markerRectangles.template.setAll({
 		cornerRadiusTL: 10,
 		cornerRadiusTR: 10,
 		cornerRadiusBL: 10,
-		cornerRadiusTR: 10
+		cornerRadiusBR: 10
 	})
 
-	legend.valueLabels.template.set('forceHidden', true)
+	// XY CHART 범례 마커 크기 조정
+	legend.markers.template.setAll({
+		width : 10,
+		height : 10
+	})
+	// XY CHART 범례 폰트 색상 변경
+	legend.labels.template.set('fill' ,
+		am5.color(0xFFFFFF)
+	)
 
-	legend.data.setAll(series.dataItems)  // 밑에 범례 추가시 사용
+	legend.valueLabels.template.set("forceHidden", true);
 
-	series.appear(1000, 100)
+	legend.data.setAll(series.dataItems);  // 밑에 범례 추가시 사용
+
+	series.appear(1000, 100);
 }
