@@ -20,17 +20,17 @@
 <link rel="stylesheet" href="<c:url value="/css/common.css" />">
 <link rel="stylesheet" href="<c:url value="/css/main.css" />">
 <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
-  <link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
+<link rel="stylesheet" href="<c:url value="/css/plugins/datatables/dataTables.bootstrap.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/plugins/datatables/buttons.bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2-bootstrap4.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datetimepicker/datetimepicker.css"/>">
 
-
 <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
 <script src="<c:url value="/js/jquery/jquery-ui.min.js"/>"></script>
-<script src="<c:url value="/js/plugins/bootstrap/bootstrap.bundle.min.js"/>"></script>
 <script src="<c:url value="/js/plugins/datatables/jquery.dataTables.min.js"/>"></script>
-<script src="<c:url value="/js/plugins/datatables/dataTables.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/bootstrap/bootstrap.bundle.min.js"/>"></script>
 <script src="<c:url value="/js/common.js"/>"></script>
 <script src="<c:url value='/js/plugins/select2/select2.min.js' />"></script>
 <script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
@@ -40,11 +40,15 @@
 <script src="<c:url value="/js/plugins/amcharts5/themes/Animated.js"/>"></script>
 <script src="<c:url value="/js/plugins/html2canvas/html2canvas.js"/>"></script>
 
+  <!-- 엑셀 -->
+  <script src="<c:url value="/js/plugins/datatables/buttons.bootstrap.min.js"/>"></script>
+  <script src="<c:url value="/js/plugins/datatables/jszip.min.js"/>"></script>
+  <script src="<c:url value="/js/plugins/datatables/buttons.html5.min.js"/>"></script>
 </head>
 <body class="">
 
 <div class="wrap-loading hidden">
-  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지"/></div>
+  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);"/></div>
 </div>
 <div class="wrapper w100p">
   <!-- 사이드바 -->

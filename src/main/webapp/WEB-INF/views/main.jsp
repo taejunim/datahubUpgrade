@@ -18,19 +18,19 @@
                 <div class="display-row wh100">
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
-                        <div class="font-20 font-white"><c:out value="${buildingInfo.totalBuilding}"/></div>
+                        <div class="font-20 font-white">${buildingInfo.totalBuilding}</div>
                         <div class="font-14 font-white">Total Building</div>
                         <div class="font-10 font-orange">총 EV 주차장 수요 대상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_normal"></div>
-                        <div class="font-20 font-white"><c:out value="${buildingInfo.normalBuilding}"/></div>
+                        <div class="font-20 font-white">${buildingInfo.normalBuilding}</div>
                         <div class="font-14 font-white">Normal Building</div>
                         <div class="font-10 font-normal">EV 주차장 수요 정상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white"><c:out value="${buildingInfo.abnormalBuilding}"/></div>
+                        <div class="font-20 font-white">${buildingInfo.abnormalBuilding}</div>
                         <div class="font-14 font-white">Abnormal Building</div>
                         <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
                     </div>
@@ -42,7 +42,10 @@
                 <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
                 <div class="font-lightGray font-12">시 기준으로 집계</div>
             </div>
-            <div class="display-row w100p h80p">
+            <div class="display-row w100p h80p" id="code_code">
+                <div class="table-loading hidden">
+                    <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                </div>
                 <table class="table type1 wh100">
                     <colgroup>
                         <col width="5%">
@@ -89,7 +92,7 @@
         </div>
         <div class="card h20p">
             <div class="display-row-center w100p h20p">
-                <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
+                <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 적합 현황</div>
                 <div class="font-lightGray font-12">시 기준으로 집계</div>
             </div>
             <div class="display-row w100p h80p">
@@ -168,38 +171,44 @@
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
                         <div class="font-20 font-white">1,100</div>
-                        <div class="font-14 font-white">Total Building</div>
-                        <div class="font-10 font-orange">총 EV 주차장 수요 대상 건물 수</div>
+                        <div class="font-14 font-white">Total EV</div>
+                        <div class="font-10 font-orange">총 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_normal"></div>
                         <div class="font-20 font-white">891</div>
-                        <div class="font-14 font-white">Normal Building</div>
-                        <div class="font-10 font-normal">EV 주차장 수요 정상 건물 수</div>
+                        <div class="font-14 font-white">Total Fast EV</div>
+                        <div class="font-10 font-normal">총 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
                         <div class="font-20 font-white">109</div>
-                        <div class="font-14 font-white">Abnormal Building</div>
-                        <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
+                        <div class="font-14 font-white">Public Fast EV</div>
+                        <div class="font-10 font-abnormal">개방형 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
                         <div class="font-20 font-white">109</div>
-                        <div class="font-14 font-white">Abnormal Building</div>
-                        <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
+                        <div class="font-14 font-white">Private Fast EV</div>
+                        <div class="font-10 font-abnormal">비개방형 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
                         <div class="font-20 font-white">109</div>
-                        <div class="font-14 font-white">Abnormal Building</div>
-                        <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
+                        <div class="font-14 font-white">Total Slow EV</div>
+                        <div class="font-10 font-abnormal">총 완속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
                         <div class="font-20 font-white">109</div>
-                        <div class="font-14 font-white">Abnormal Building</div>
-                        <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
+                        <div class="font-14 font-white">Publick Slow EV</div>
+                        <div class="font-10 font-abnormal">개방형 완속 EV 충전기 대수</div>
+                    </div>
+                    <div class="sm-card display-column">
+                        <div class="icon_abnormal"></div>
+                        <div class="font-20 font-white">109</div>
+                        <div class="font-14 font-white">Private Slow EV</div>
+                        <div class="font-10 font-abnormal">비개방형 완속 EV 충전기 대수</div>
                     </div>
                 </div>
             </div>
@@ -208,7 +217,16 @@
             <div class="group-column wh100 gap15h">
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
-                        <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
+                        <div class="selectBox w45p">
+                            <div class="w60p">
+                                <select class="form-control" data-minimum-results-for-search="Infinity">
+                                    <option>전체</option>
+                                    <option>동홍동</option>
+                                    <option>이도이동</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="font-white font-18">지역별 EV 충전기 고장 현황</div>
                         <div class="font-lightGray font-12">시 기준으로 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
@@ -224,42 +242,19 @@
                             <tr>
                                 <th>#</th>
                                 <th>지역</th>
-                                <th>부적합/총</th>
+                                <th>고장/총</th>
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
-                        <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
-                        <div class="font-lightGray font-12">시 기준으로 집계</div>
+                        <div class="font-white font-18">지역별 EV 충전기 미사용 현황</div>
+                        <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
                         <table class="table type1 wh100">
@@ -274,42 +269,19 @@
                             <tr>
                                 <th>#</th>
                                 <th>지역</th>
-                                <th>부적합/총</th>
+                                <th>미사용/총</th>
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
-                        <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
-                        <div class="font-lightGray font-12">시 기준으로 집계</div>
+                        <div class="font-white font-18">업체별 EV 충전기 미사용 현황</div>
+                        <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
                         <table class="table type1 wh100">
@@ -323,43 +295,20 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>지역</th>
-                                <th>부적합/총</th>
+                                <th>업체명</th>
+                                <th>미사용/총</th>
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
-                        <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
-                        <div class="font-lightGray font-12">시 기준으로 집계</div>
+                        <div class="font-white font-18">업체별 EV 충전기 고장 현황</div>
+                        <div class="font-lightGray font-12">업체별 기준 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
                         <table class="table type1 wh100">
@@ -373,49 +322,54 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>지역</th>
-                                <th>부적합/총</th>
+                                <th>업체명</th>
+                                <th>고장/총</th>
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>01</td>
-                                <td>제주시</td>
-                                <td>46/100</td>
-                                <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
-                                </td>
-                                <td>
-                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="line"></div>
             <div class="group-column wh100 gap15h">
-                <div class="card h50p">
+                <div class="card h25p">
+                    <div class="display-row-center w100p h20p">
+                        <div class="font-white font-18">업체별 EV 충전기 설치 현황</div>
+                        <div class="font-lightGray font-12">시 기준으로 집계</div>
+                    </div>
+                    <div class="display-row w100p h80p">
+                        <table class="table type1 wh100">
+                            <colgroup>
+                                <col width="5%">
+                                <col width="20%">
+                                <col width="20%">
+                                <col width="45%">
+                                <col width="10%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>업체</th>
+                                <th>설치</th>
+                                <th>Popularity</th>
+                                <th>%</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card h40p click" data-title="미사용 TOP EV 충전기"
+                     data-code="001" data-toggle="modal" data-target="#table_popup">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">미사용 TOP EV 충전기</div>
                         <div class="font-lightGray font-12">미사용일은 금일 기준</div>
                     </div>
                     <div class="display-row w100p h80p">
-                        <table class="table type1 wh100">
+                        <table class="table type1 wh100 ">
                             <colgroup>
                                 <col width="5%">
                                 <col width="25%">
@@ -479,13 +433,14 @@
                         </table>
                     </div>
                 </div>
-                <div class="card h50p" data-toggle="modal" data-target=".modal">
+                <div class="card h40p click" data-title="고장 TOP EV 충전기"
+                     data-code="002" data-toggle="modal" data-target="#table_popup">
                     <div class="display-row-center w100p h20p">
-                        <div class="font-white font-18">미사용 TOP EV 충전기</div>
+                        <div class="font-white font-18">고장 TOP EV 충전기</div>
                         <div class="font-lightGray font-12">미사용일은 금일 기준</div>
                     </div>
                     <div class="display-row w100p h80p">
-                        <table class="table type1 wh100">
+                        <table class="table type1 wh100" id="datatable">
                             <colgroup>
                                 <col width="5%">
                                 <col width="25%">

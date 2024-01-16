@@ -16,6 +16,8 @@
 
 .main .card{width: 100%; border-radius: 10px; background: #21222D; padding: 0.7em;}
 
+.main .click:hover{    cursor: pointer; opacity: 0.6; padding: 1rem;}
+
 .main .display-column{display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;}
 
 .main .display-row{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; gap: 0.8vw;}

@@ -131,14 +131,26 @@ Date.prototype.format = function(f) {
   });
 };
 
-// 로딩 시작
+// 화면 로딩 시작
 function fnStartLoadingBar() {
   $('.wrap-loading').removeClass('hidden');
 }
 
-// 로딩 종료
+// 화면 로딩 종료
 function fnEndLoadingBar() {
   $('.wrap-loading').addClass('hidden');
+}
+
+// 테이블 로딩 시작
+function fnTableStartLoadingBar(id) {
+  $('#' + id + ' table').addClass('hidden');
+  $('#' + id + ' .table-loading').removeClass('hidden');
+}
+
+// 테이블 로딩 종료
+function fnTableEndLoadingBar(id) {
+  $('#' + id + ' table').removeClass('hidden');
+  $('#' + id + ' .table-loading').addClass('hidden');
 }
 
 // 아이디 체크 -- 영문자로 시작하는 영문자 또는 숫자 6~20자
@@ -217,7 +229,7 @@ function formatPhone(obj) {
 }
 
 /**
- * 알림창 -- ex) MsgBox.Confirm('등록', function (){caollback})
+ * 알림창 -- ex) MsgBox.Confirm('등록', function (){callback})
  * @type {{Confirm: MsgBox.Confirm, Alert: MsgBox.Alert}}
  */
 var MsgBox = {
@@ -307,6 +319,9 @@ function fnMsgBoxSet(type){
     case "update" : title = "수정"; txt = "수정 되었습니다."; break;
     case "delete" : title = "삭제"; txt = "삭제 되었습니다."; break;
     case "singout" : title = "로그아웃"; txt = "로그아웃 하시겠습니까?"; break;
+    case "session" : title = "이동"; txt = "세션이 만료되었습니다. 로그인페이지로 이동합니다."; break;
+    case "error" : title = "문제 발생"; txt = "문제가 발생했습니다. 다시 시도해주세요."; break;
+
     default : title = "실패"; txt = "입력정보를 확인하여 주세요."; break;
   }
 
@@ -329,8 +344,10 @@ $.ajaxSetup({
   ,error: function(xhr, status, err) {
     fnEndLoadingBar();
     if (xhr.status == 403) {
-      alert("세션이 만료가 되었습니다. 로그인 페이지로 이동합니다.");
-      location.href = "<c:url value='/login.do'>";
+      MsgBox.Alert('session', function (){
+        location.href = "<c:url value='/login.do'>" })
+    } else {
+      MsgBox.Alert('error');
     }
   }
 });
