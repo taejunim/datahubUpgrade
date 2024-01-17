@@ -73,6 +73,7 @@ public class PdfController {
                 e.printStackTrace();
                 System.out.println("JRException Occured");
             } catch (IOException e) {
+                System.out.println("에러 내용 : " + e.getMessage());
                 System.out.println("IOException Occured");
             }finally {
                 if(conn != null){ try { conn.close(); } catch (SQLException e){ System.err.println("SQLException? occured"); }}

@@ -124,11 +124,15 @@ function createPieChart(name) {
 
 	var chart = root.container.children.push(
 		am5percent.PieChart.new(root, {
-			width : am5.percent(50),
-			height : am5.percent(50),
+			width : am5.percent(100),
+			height : am5.percent(100),
+			centerX : am5.percent(100),
+			x : am5.percent(95),
 			layout : root.verticalLayout
 		})
 	);
+
+
 
 	var series = chart.series.push(
 		am5percent.PieSeries.new(root, {
@@ -140,8 +144,8 @@ function createPieChart(name) {
 	);
 
 	series.get("colors").set("colors", [
-		am5.color(0xbae1ff),
-		am5.color(0xffb3ba)
+		am5.color(0x4b9375),
+		am5.color(0x7d5867)
 	])
 
 	series.states.create("hidden", {
@@ -156,7 +160,21 @@ function createPieChart(name) {
 		text : "{valuePercentTotal.formatNumber('0.00')}%"
 	})
 
+	var gradient = am5.LinearGradient.new(root, {
+		stops : [{
+			color : series.get("fill")
+		},{
+			color : am5.color(0xFFFFFF),
+			opacity : 0.6
+		}],
+		rotation: 90
+	})
+
 	series.slices.template.set("toggleKey", "none");
+	series.slices.template.setAll({
+		fillGradient : gradient,
+		fillOpacity: 0.5
+	})
 	// 차트 데이터 넣는곳
 	series.data.setAll([
 		{
@@ -172,7 +190,7 @@ function createPieChart(name) {
 	let legend = chart.children.push(am5.Legend.new(root, {
 		layout: root.horizontalLayout,
 		x: am5.percent(100),
-		centerX: am5.percent(75),
+		centerX: am5.percent(85),
 		y : am5.percent(80),
 		centerY: am5.percent(100),
 		useDefaultMarker : true

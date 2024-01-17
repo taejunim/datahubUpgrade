@@ -497,9 +497,17 @@
         var target = "제주도내 전기차 충전기 구축현황";
         let captureDiv = document.getElementsByClassName('page')[0];
         let captureCanvas;
+        var img = new Image;
         console.log(captureDiv);
-        await html2canvas(captureDiv, {scale:4}).then(canvas => {
+        await html2canvas(captureDiv, {
+            scale:4,
+            useCORS : true
+        }).then(canvas => {
             captureCanvas = canvas.toDataURL('image/png');
+
+            img.src = captureCanvas;
+            img.crossOrigin = 'Anonymous';
+            console.log("captureCanvas : " + img);
         })
 
         window.open(url,target);
@@ -507,9 +515,13 @@
         form.attr('action', url);
         form.attr('target', target); // window.open 타이틀과 매칭 되어야함
         form.attr('method', 'post');
-        form.append('<input type="text" name="capture" value="'+captureCanvas+'">');
+        form.append('<input type="text" name="capture" value="'+img.src+'">');
 
         form.submit();
         form.empty();
+    }
+
+    const domtoiamge = async () => {
+
     }
 </script>

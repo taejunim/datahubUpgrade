@@ -356,7 +356,7 @@ $.ajaxSetup({
 });
 
 /**
- *  amChart Root 생성 및 소멸 함수
+ *  amChart Root 생성 및 소멸 함수 START
  * */
 
 function createRoot(name) {
@@ -364,7 +364,7 @@ function createRoot(name) {
   let scale;
 
   if (name == "mainChart") {
-    scale = 3
+    scale = 1.2
   } else {
     scale = 1.1
   }
@@ -395,3 +395,6 @@ function maybeDisposeRoot(divId) {
     }
   });
 }
+/**
+ *  amChart Root 생성 및 소멸 함수 END
+ * */
