@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="datahub.main.mappers.pg.MainMapper">
+
+  <select id="totalBuildingCount" parameterType="buildingDto" resultType="egovMap">
+    /**MainMapper - totalBuildingCount : 건물 개수*/
+    SELECT building.*
+         ,round(100.0 * building.jeju_y_cnt / building.juju_cnt) AS jeju_y_percent
+         ,round(100.0 * building.jeju_n_cnt / building.juju_cnt) AS jeju_n_percent
+         ,round(100.0 * building.seogwipo_y_cnt / building.seogwipo_cnt) AS seogwipo_y_percent
+         ,round(100.0 * building.seogwipo_n_cnt / building.seogwipo_cnt) AS seogwipo_n_percent
+    FROM (
+           SELECT count(1) AS totalCnt
+             ,count(CASE WHEN suitability = 'Y' THEN 1 ELSE NULL END) AS y_cnt
+             ,count(CASE WHEN suitability = 'N' THEN 1 ELSE NULL END) AS n_cnt
+             ,count(CASE WHEN region = '01' THEN 1 ELSE NULL END) AS juju_cnt
+             ,count(CASE WHEN region = '01' AND suitability = 'Y' THEN 1 ELSE NULL END) AS jeju_y_cnt
+             ,count(CASE WHEN region = '01' AND suitability = 'N' THEN 1 ELSE NULL END) AS jeju_n_cnt
+             ,count(CASE WHEN region = '02' THEN 1 ELSE NULL END) AS seogwipo_cnt
+             ,count(CASE WHEN region = '02' AND suitability = 'Y' THEN 1 ELSE NULL END) AS seogwipo_y_cnt
+             ,count(CASE WHEN region = '02' AND suitability = 'N' THEN 1 ELSE NULL END) AS seogwipo_n_cnt
+           FROM "datahubUpgrade".dh_building_test
+           WHERE 1=1
+         ) building
+  </select>
+</mapper>

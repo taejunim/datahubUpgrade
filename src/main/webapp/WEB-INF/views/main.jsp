@@ -18,19 +18,19 @@
                 <div class="display-row wh100">
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
-                        <div class="font-20 font-white">${buildingInfo.totalBuilding}</div>
+                        <div class="font-20 font-white">${totalBuilding.totalcnt}</div>
                         <div class="font-14 font-white">Total Building</div>
                         <div class="font-10 font-orange">총 EV 주차장 수요 대상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_normal"></div>
-                        <div class="font-20 font-white">${buildingInfo.normalBuilding}</div>
+                        <div class="font-20 font-white">${totalBuilding.yCnt}</div>
                         <div class="font-14 font-white">Normal Building</div>
                         <div class="font-10 font-normal">EV 주차장 수요 정상 건물 수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">${buildingInfo.abnormalBuilding}</div>
+                        <div class="font-20 font-white">${totalBuilding.nCnt}</div>
                         <div class="font-14 font-white">Abnormal Building</div>
                         <div class="font-10 font-abnormal">EV 주차장 수요 비정상 건물 수</div>
                     </div>
@@ -67,23 +67,23 @@
                     <tr>
                         <td>01</td>
                         <td>제주시</td>
-                        <td>46/100</td>
+                        <td>${totalBuilding.jejuNCnt}/${totalBuilding.jujuCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                            <progress class="w90p h15p progress-orange" value="${totalBuilding.jejuNPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
-                            <div class="percent-orange-box w90p h70p font-12">46%</div>
+                            <div class="percent-orange-box w90p h70p font-12">${totalBuilding.jejuNPercent}%</div>
                         </td>
                     </tr>
                     <tr>
-                        <td>01</td>
-                        <td>제주시</td>
-                        <td>46/100</td>
+                        <td>02</td>
+                        <td>서귀포시</td>
+                        <td>${totalBuilding.seogwipoNCnt}/${totalBuilding.seogwipoCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                            <progress class="w90p h15p progress-blue" value="${totalBuilding.seogwipoNPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
-                            <div class="percent-blue-box w90p h70p font-12">46%</div>
+                            <div class="percent-blue-box w90p h70p font-12">${totalBuilding.seogwipoNPercent}%</div>
                         </td>
                     </tr>
                     </tbody>
@@ -108,7 +108,7 @@
                     <tr>
                         <th>#</th>
                         <th>지역</th>
-                        <th>부적합/총</th>
+                        <th>적합/총</th>
                         <th>Popularity</th>
                         <th>%</th>
                     </tr>
@@ -117,23 +117,23 @@
                     <tr>
                         <td>01</td>
                         <td>제주시</td>
-                        <td>46/100</td>
+                        <td>${totalBuilding.jejuYCnt}/${totalBuilding.jujuCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                            <progress class="w90p h15p progress-orange" value="${totalBuilding.jejuYPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
-                            <div class="percent-orange-box w90p h70p font-12">46%</div>
+                            <div class="percent-orange-box w90p h70p font-12">${totalBuilding.jejuYPercent}%</div>
                         </td>
                     </tr>
                     <tr>
-                        <td>01</td>
-                        <td>제주시</td>
-                        <td>46/100</td>
+                        <td>02</td>
+                        <td>서귀포시</td>
+                        <td>${totalBuilding.seogwipoYCnt}/${totalBuilding.seogwipoCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                            <progress class="w90p h15p progress-blue" value="${totalBuilding.seogwipoYPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
-                            <div class="percent-blue-box w90p h70p font-12">46%</div>
+                            <div class="percent-blue-box w90p h70p font-12">${totalBuilding.seogwipoYPercent}%</div>
                         </td>
                     </tr>
                     </tbody>
@@ -147,16 +147,16 @@
             </div>
             <div class="display-column w20p gap03v">
                 <div class="display-row gap0 wh100 text-right">
-                    <div class="font-lightGray font-14 w40p">총 건물</div>
-                    <div class="font-lightGray font-14 font-bold w60p">7000 대</div>
+                    <div class="font-lightGray font-14 w45p">총 건물</div>
+                    <div class="font-lightGray font-14 font-bold w55p">7000 대</div>
                 </div>
                 <div class="display-row gap0 wh100 text-right">
-                    <div class="font-lightGray font-14 w40p">적합</div>
-                    <div class="font-lightGray font-14 font-bold w60p">4000 대</div>
+                    <div class="font-lightGray font-14 w45p">적합</div>
+                    <div class="font-lightGray font-14 font-bold w55p">4000 대</div>
                 </div>
                 <div class="display-row gap0 wh100 text-right">
-                    <div class="font-lightGray font-14 w40p">부적합</div>
-                    <div class="font-lightGray font-14 font-bold w60p ">3000 대</div>
+                    <div class="font-lightGray font-14 w45p">부적합</div>
+                    <div class="font-lightGray font-14 font-bold w55p ">3000 대</div>
                 </div>
             </div>
         </div>
@@ -217,16 +217,19 @@
             <div class="group-column wh100 gap15h">
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
-                        <div class="selectBox w45p">
-                            <div class="w60p">
-                                <select class="form-control" data-minimum-results-for-search="Infinity">
-                                    <option>전체</option>
-                                    <option>동홍동</option>
-                                    <option>이도이동</option>
-                                </select>
-                            </div>
-                        </div>
                         <div class="font-white font-18">지역별 EV 충전기 고장 현황</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="11" id="1" value="option1" checked>
+                            <label class="form-check-label" for="1">  전체 </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="11" id="2" value="option2">
+                            <label class="form-check-label" for="2">급속</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="11" id="3" value="option3">
+                            <label class="form-check-label" for="3">완속</label>
+                        </div>
                         <div class="font-lightGray font-12">시 기준으로 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
@@ -254,6 +257,18 @@
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">지역별 EV 충전기 미사용 현황</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="22" id="4" value="option1" checked>
+                            <label class="form-check-label" for="4">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="22" id="5" value="option2">
+                            <label class="form-check-label" for="5">급속</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="22" id="6" value="option3">
+                            <label class="form-check-label" for="6">완속</label>
+                        </div>
                         <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
@@ -281,6 +296,18 @@
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">업체별 EV 충전기 미사용 현황</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="33" id="7" value="option1" checked>
+                            <label class="form-check-label" for="7">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="33" id="8" value="option2">
+                            <label class="form-check-label" for="8">급속</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="33" id="9" value="option3">
+                            <label class="form-check-label" for="9">완속</label>
+                        </div>
                         <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
@@ -308,6 +335,18 @@
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">업체별 EV 충전기 고장 현황</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="44" id="10" value="option1" checked>
+                            <label class="form-check-label" for="10">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="44" id="11" value="option2">
+                            <label class="form-check-label" for="11">급속</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="44" id="12" value="option3">
+                            <label class="form-check-label" for="12">완속</label>
+                        </div>
                         <div class="font-lightGray font-12">업체별 기준 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
@@ -338,6 +377,18 @@
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">업체별 EV 충전기 설치 현황</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="55" id="13" value="option1" checked>
+                            <label class="form-check-label" for="13">전체</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="55" id="14" value="option2">
+                            <label class="form-check-label" for="14">급속</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="55" id="15" value="option3">
+                            <label class="form-check-label" for="15">완속</label>
+                        </div>
                         <div class="font-lightGray font-12">시 기준으로 집계</div>
                     </div>
                     <div class="display-row w100p h80p">

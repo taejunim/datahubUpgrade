@@ -1,3 +1,6 @@
+window.onbeforeunload = function () { fnStartLoadingBar(); }
+
+
 $(document).ready(function() {
   // jquery 확장
   jQuery.fn.serializeObject = function() {

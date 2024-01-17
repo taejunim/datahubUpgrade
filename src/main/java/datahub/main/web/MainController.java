@@ -18,7 +18,7 @@ public class MainController {
 
     @RequestMapping(value="/main.do",method = RequestMethod.GET)
     public String main(ModelMap model) throws Exception {
-        model.addAttribute("buildingInfo",mainService.mainBuildingInfo());
+        model.addAttribute("totalBuilding",mainService.totalBuildingCount());
         return "main";
     }
 

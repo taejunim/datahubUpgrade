@@ -23,6 +23,8 @@ var datatable
 function drawTable (data) {
 	let visibleChecked = data.userType === '001' ? true : false;
 
+	$("#codeText").text(data.userType === '001' ? '미사용' : '고장');
+
 	datatable = $('.datatable').DataTable({
 		dom: 'Bfrtip',
 		buttons: [
@@ -65,8 +67,8 @@ function drawTable (data) {
 		columns: [
 			{ 'name': 'user_name', 'title': '#', 'data': 'userName' },
 			{ 'name': 'user_id', 'title': '충전기명', 'data': 'userId' },
-			{ 'name': 'user_id', 'title': '지역', 'data': 'userId' },
-			{ 'name': 'user_id', 'title': '구분', 'data': 'userId' },
+			{ 'name': 'user_id', 'title': '업체', 'data': 'userId' },
+			{ 'name': 'user_id', 'title': '충전 구분', 'data': 'userId' },
 			{ 'name': 'user_id', 'title': '미사용일', 'data': 'userId' , visible: visibleChecked},
 			{ 'name': 'user_id', 'title': '고장일', 'data': 'userId' , visible: !visibleChecked},
 			{ 'name': 'user_id', 'title': '마지막 사용일시', 'data': 'userId' },

@@ -1,8 +1,10 @@
 package datahub.main.service.impl;
 
 import datahub.main.dto.BuildingDto;
-import datahub.main.mappers.my.MainMapper;
+import datahub.main.mappers.pg.MainMapper;
 import datahub.main.service.MainService;
+import egovframework.rte.psl.dataaccess.util.EgovMap;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -14,7 +16,7 @@ public class MainServiceImpl implements MainService {
     private MainMapper mainMapper;
 
     @Override
-    public BuildingDto mainBuildingInfo() throws Exception {
-        return mainMapper.mainBuildingInfo();
+    public EgovMap totalBuildingCount() throws Exception {
+        return mainMapper.totalBuildingCount();
     }
 }

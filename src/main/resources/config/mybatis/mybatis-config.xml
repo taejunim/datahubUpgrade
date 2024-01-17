@@ -11,6 +11,8 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
 	<typeAliases>
+		<typeAlias  alias="egovMap" 				type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+
 		<typeAlias type="datahub.user.dto.UserDto" alias="userDto" />
 		<typeAlias type="datahub.main.dto.BuildingDto" alias="buildingDto" />
 <!--		<typeAlias alias="cmsMenuConnHist" type="net.jcms.framework.menu.model.MenuConnHist" />-->

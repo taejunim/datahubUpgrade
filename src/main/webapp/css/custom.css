@@ -130,6 +130,14 @@
 .btn-position .right-position {position: absolute; right:0px }
 .btn-position .left-position {position: absolute; right:140px }
 
+/*!*radio button*!*/
+.main input[type='radio'] { accent-color: #171821;}
+.main input[type='radio']:checked { accent-color:#A9DFD8; }
+.main label { padding: 0!important; cursor: pointer!important;}
+.main .form-check-label{color: #fff; font-size: 0.75rem!important;}
+.main .form-check-inline{margin-top:0.8rem!important; margin-left: -1.25rem;}
+
+
 /*******************^********************
 *            progressbar                *
 ****************************************/
