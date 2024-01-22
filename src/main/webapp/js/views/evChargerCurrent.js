@@ -7,9 +7,6 @@ $(document).ready(() => {
         createXyChart("CurrentChart");
         createBarChart("CurrentChart1");
 
-
-
-
         function createXyChart(name) {
             let root = createRoot(name);
 
@@ -23,8 +20,6 @@ $(document).ready(() => {
                     pinchZoomX: true
                 })
             );
-
-
 
             var easing = am5.ease.linear;
             chart.get("colors").set("step", 2);
@@ -162,8 +157,6 @@ $(document).ready(() => {
             // XY CHART 범례 데이터 셋
             legend.data.setAll(chart.series.values);
 
-
-
             function generateChartData(value) {
                 var data = [];
                 var firstDate = new Date();
@@ -173,17 +166,14 @@ $(document).ready(() => {
                 for (var i = 0; i < 10; i++) {
                     var newDate = new Date(firstDate);
                     newDate.setDate(newDate.getDate() + i);
-
                     value += Math.round(
                         ((Math.random() < 0.5 ? 1 : -1) * Math.random() * value) / 20
                     );
-
                     data.push({
                         date: newDate,
                         value: value
                     });
                 }
-
                 return data;
             }
         }
@@ -235,7 +225,7 @@ $(document).ready(() => {
             }];
 
             var xRenderer = am5xy.AxisRendererX.new(root, {
-                minGridDistance: 70,
+                minGridDistance: 30,
                 minorGridEnabled: true
             });
 
@@ -279,7 +269,7 @@ $(document).ready(() => {
             }));
 
             series.columns.template.setAll({
-                width: am5.percent(50),
+                width: am5.percent(40),
                 tooltipY: 0,
                 strokeOpacity: 0,
                 fillOpacity: 0.5,
@@ -288,10 +278,7 @@ $(document).ready(() => {
                 cornerRadiusTR: 10
             });
 
-
-
             series.data.setAll(data);
-
 
             var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
                 name: "USE Count",
@@ -306,7 +293,7 @@ $(document).ready(() => {
             }));
 
             series2.columns.template.setAll({
-                width: am5.percent(50),
+                width: am5.percent(40),
                 tooltipY: 0,
                 strokeOpacity: 0,
                 cornerRadiusTL: 10,
@@ -326,7 +313,6 @@ $(document).ready(() => {
             cursor.lineY.set("visible", false);
             cursor.lineX.set("visible", false);
 
-
             var legend = chart.children.unshift(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
                 x: am5.percent(50),
@@ -343,7 +329,6 @@ $(document).ready(() => {
                 cornerRadiusBL: 10,
                 cornerRadiusBR: 10
             })
-
             // XY CHART 범례 마커 크기 조정
             legend.markers.template.setAll({
                 width : 10,
@@ -357,11 +342,6 @@ $(document).ready(() => {
             legend.valueLabels.template.set("forceHidden", true);
 
             legend.data.setAll(chart.series.values);
-
         }
-
-
     });
-
-
 })

@@ -98,11 +98,11 @@ public class UserController {
         }
         HttpSession session = request.getSession();
 
-        session.setAttribute(SessionConst.LOGIN_MEMBER, user.getUserId());                                   // 로그인에 성공하면 세션에 내용을 저장한다.
+        session.setAttribute(SessionConst.LOGIN_MEMBER, user);                                   // 로그인에 성공하면 세션에 내용을 저장한다.
         session.setMaxInactiveInterval(3600);                                                                // 세션 시간을 설정한다.
 
         if (userDto.getSaveId().equals("Y")) {
-            session.setAttribute(SessionConst.SAVE_ID, user.getUserId());
+            session.setAttribute(SessionConst.SAVE_ID, user);
             session.setMaxInactiveInterval(3600);
         }
         return user.getUserId();
@@ -118,5 +118,15 @@ public class UserController {
         request.getSession().invalidate();
         request.getSession(true);
         return "redirect:/login.do";
+    }
+
+    @RequestMapping(value = "/myPage.do" , method = RequestMethod.GET)
+    public String myPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        UserDto result = (UserDto) session.getAttribute(SessionConst.LOGIN_MEMBER);
+
+        System.out.println("result : " + result);
+
+        return "myPage";
     }
 }

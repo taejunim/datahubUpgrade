@@ -14,7 +14,6 @@ $(document).ready(() => {
 		drawTable(data)
 
 	})
-
 })
 
 var datatable
@@ -118,7 +117,6 @@ function drawTable (data) {
 //         async: false
 //     });
 // }
-
 function createPieChart(name) {
 	let root = createRoot(name);
 
@@ -131,8 +129,6 @@ function createPieChart(name) {
 			layout : root.verticalLayout
 		})
 	);
-
-
 
 	var series = chart.series.push(
 		am5percent.PieSeries.new(root, {

@@ -19,7 +19,7 @@
                         <span class="icon_user"></span> 관리자님
                     </button>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">마이페이지</a>
+                        <a class="dropdown-item" href="<c:url value="/myPage.do"/>">마이페이지</a>
                         <a class="dropdown-item" onclick="MsgBox.Confirm('singout', function (){location.href='<c:url value='/logout.mng'/>'});">로그아웃
                         </a>
                     </div>

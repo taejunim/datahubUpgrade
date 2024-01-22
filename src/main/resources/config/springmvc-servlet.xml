@@ -42,9 +42,6 @@
         p:suffix=".jsp"
     />
 
-
-
-
     <!-- @ResponseBody 를 지원하기 위한 JSON MessageConverter -->
     <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
         <property name="supportedMediaTypes">

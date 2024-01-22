@@ -41,9 +41,9 @@
 <script src="<c:url value="/js/plugins/html2canvas/html2canvas.js"/>"></script>
 
   <!-- 엑셀 -->
-  <script src="<c:url value="/js/plugins/datatables/buttons.bootstrap.min.js"/>"></script>
-  <script src="<c:url value="/js/plugins/datatables/jszip.min.js"/>"></script>
-  <script src="<c:url value="/js/plugins/datatables/buttons.html5.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatables/buttons.bootstrap.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatables/jszip.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatables/buttons.html5.min.js"/>"></script>
 </head>
 <body class="">
 
