@@ -53,7 +53,7 @@
 
 .columnWrap .frame{width: 100%; background: #21222D; stroke-width: 1px; stroke: #000; border-radius: 6px;}
 
-.columnWrap .frame > div{display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 1vw;}
+.columnWrap .frame > .wh100{display: flex; flex-direction: row; justify-content: space-between; align-items: center; padding: 0 1vw;}
 
 .columnWrap .frame .searchFrame{display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 1vw;}
 
