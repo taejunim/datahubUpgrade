@@ -12,4 +12,5 @@ public interface UserService {
 
     UserDto selectUser(UserDto userDto) throws Exception;
 
+    void updateUser(UserDto userDto) throws Exception;
 }

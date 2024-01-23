@@ -48,4 +48,10 @@ public class UserServiceImpl implements UserService {
 
         return userDto;
     }
+
+    @Override
+    public void updateUser(UserDto userDto) throws Exception {
+        userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
+        userMapper.updateUser(userDto);
+    }
 }

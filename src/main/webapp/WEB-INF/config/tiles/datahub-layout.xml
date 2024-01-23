@@ -26,4 +26,14 @@
         <put-attribute name="content"   value="/WEB-INF/views/{1}.jsp" />
     </definition>
 
+    <definition name="myPage-layout" template="/WEB-INF/views/layout/myPageLayout.jsp">
+        <put-attribute name="header"    value="/WEB-INF/views/layout/header.jsp" />
+        <put-attribute name="sidebar"    value="/WEB-INF/views/layout/sidebar.jsp" />
+        <put-attribute name="confirm"    value="/WEB-INF/views/layout/confirm.jsp" />
+    </definition>
+
+    <definition name="myPage" extends="myPage-layout">
+        <put-attribute name="content" value="/WEB-INF/views/myPage.jsp"/>
+    </definition>
+
 </tiles-definitions>

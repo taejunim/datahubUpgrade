@@ -22,4 +22,12 @@
         AND user_id = #{userId}
         AND user_type = '001'
     </select>
+    <update id="updateUser" parameterType="userDto">
+        update "datahubUpgrade".dh_user
+        set
+            user_pwd = #{userPwd},
+            user_name = #{userName},
+            user_phone = #{userPhone}
+        where user_id = #{userId}
+    </update>
 </mapper>

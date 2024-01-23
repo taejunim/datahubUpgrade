@@ -10,4 +10,6 @@ public interface UserMapper {
     UserDto userLogin(UserDto userDto) throws Exception;
 
     int userJoin(UserDto userDto) throws Exception;
+
+    void updateUser(UserDto userDto) throws Exception;
 }
