@@ -100,6 +100,7 @@ public class UserController {
         HttpSession session = request.getSession();
 
         session.setAttribute(SessionConst.LOGIN_MEMBER, user);                                   // 로그인에 성공하면 세션에 내용을 저장한다.
+        session.setAttribute("userName", user.getUserName());
         session.setMaxInactiveInterval(3600);                                                                // 세션 시간을 설정한다.
 
         if (userDto.getSaveId().equals("Y")) {

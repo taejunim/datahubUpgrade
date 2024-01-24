@@ -324,6 +324,7 @@ function fnMsgBoxSet(type){
     case "singout" : title = "로그아웃"; txt = "로그아웃 하시겠습니까?"; break;
     case "session" : title = "이동"; txt = "세션이 만료되었습니다. 로그인페이지로 이동합니다."; break;
     case "error" : title = "문제 발생"; txt = "문제가 발생했습니다. 다시 시도해주세요."; break;
+    case "join" : title = "가입 완료"; txt = "가입 완료되었습니다. 로그인해주세요"; break;
 
     default : title = "실패"; txt = "입력정보를 확인하여 주세요."; break;
   }

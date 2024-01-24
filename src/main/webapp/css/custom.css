@@ -131,20 +131,62 @@
 .btn-position .left-position {position: absolute; right:140px }
 
 /*!*radio button*!*/
-.main input[type='radio'] { accent-color: #171821;}
-.main input[type='radio']:checked { accent-color:#A9DFD8; }
-.main label { padding: 0!important; cursor: pointer!important;}
+.main label { color: white; font-weight: bold; font-size: 0.8rem; cursor: pointer; user-select: none;padding: 0!important; width: 2rem;}
 .main .form-check-label{color: #fff; font-size: 0.75rem!important;}
-.main .form-check-inline{margin-top:0.8rem!important; margin-left: -1.25rem;}
+.main .form-check-inline{display: inline-block!important; margin-right: 0;}
+
+.main input[type="radio"] {appearance: none;}
+.main input[type="radio"]::before {
+  transition: all 250ms cubic-bezier(.4,.25,.3,1);
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #718380;
+  border: 0px solid #a9dfd8;
+  font-size: 0;
+  position: absolute;
+  bottom: 30%;
+  left: 0%;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+}
+
+.main input[type="radio"]::after {
+  transition: all 250ms cubic-bezier(.4,.25,.3,1);
+  content: "";
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #a9dfd8;
+  position: absolute;
+  bottom: 30%;
+  left: 0%;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+}
+
+input[type='radio']:checked::before {
+  background-color: #21222e;
+  width: 1rem;
+  height: 1rem;
+  border-width: 2px;
+  cursor: pointer;
+}
+input[type='radio']:checked::after {
+  width: 0.5rem;
+  height: 0.5rem;
+  cursor: pointer;
+}
 
 
 /*******************^********************
 *            progressbar                *
 ****************************************/
 
-progress{ appearance: none; width: 90%; height: 15%;}
+progress{ appearance: none; width: 90% !important; height: 15% !important; display: inline-block!important;}
 
-prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10px; }
+prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10px;overflow : hidden;  }
 
 .progress-orange::-webkit-progress-value { transition: width 1.0s; border-radius:10px; background: rgba(252, 184, 89, 1);}
 

@@ -9,20 +9,24 @@ $(document).ready(() => {
 
 		let data = new Object
 
-		data.userType = value.data('code')
+		data.userType = value.data('code');
+		data.title = value.data('title');
 
-		drawTable(data)
+		drawTable(data);
+	});
 
-	})
+	$("input[name=bb]").click(function() {
+		// fnSelectList('bb');
+	});
 })
 
 var datatable
 
 // 미사용, 고장 테이블 데이터 세팅
 function drawTable (data) {
-	let visibleChecked = data.userType === '001' ? true : false;
+	let type = data.userType === '001' ? '미사용' : '고장';
 
-	$("#codeText").text(data.userType === '001' ? '미사용' : '고장');
+	$("#codeText").text(type);
 
 	datatable = $('.datatable').DataTable({
 		dom: 'Bfrtip',
@@ -30,13 +34,37 @@ function drawTable (data) {
 			{
 				extend: 'excel'
 				, text: '엑셀'
-				, filename: '엑셀파일명'
-				, title: '엑셀파일 안에 쓰일 제목',
-				// action: function ( e, dt, node, config ) {
-				//     alert( 'Button activated' );
-				// }
+				, filename: data.title
+				, title: data.title
+				, customize: function(xlsx) {
+					var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+					$('row', sheet).each( function (k,v) {
+						// A열중에서 text가 '김원희'일 경우 style 20이, 해당 열의 B,C에 적용됨
+						if ( $('c[r^="A"]', this).text() == '김원희' ) {
+							$('c[r^="B"], c[r^="C"]', this).attr( 's', '20' );
+						}
+					});
+
+					$('row c[r^="C"]', sheet).each( function () {
+						// C열 중에서 인천은 style 39 를 적용
+						if ( $('is t', this).text() == '인천' ) {
+							$(this).attr( 's', '39' );
+						}
+					});
+
+					// A열의 1번째행의 제목을 수정하는 부분
+					$('c[r=A1] t', sheet).text( '제목 바꿔 치기' );
+
+					// A열의 2행, B열의 2행, C열의 2행을 수정하는 방법
+					$('c[r=A2]', sheet).attr( 's', '17' );
+					$('c[r=B2]', sheet).attr( 's', '7' );
+					$('c[r=C2]', sheet).attr( 's', '36' );
+
+				}
 			},
 		],
+		columnDefs: [{"defaultContent":"-","targets":"_all"}],
 		destroy: true,
 		serverSide: true,
 		lengthChange: false,      // 상단 엔트리 개수 설정 비활성화
@@ -47,76 +75,80 @@ function drawTable (data) {
 		order: [ [ 1, 'desc' ] ],     //order : [ [ 열 번호, 정렬 순서 ], ... ],
 		language: {
 			emptyTable: '데이터가 없습니다.',
-			info: '총 _TOTAL_건',
 			infoEmpty: '-',
 			loadingRecords: '로딩중...',
-			processing: '잠시만 기다려 주세요...',
 			zeroRecords: '조회된 데이터가 없습니다.',
 		},
 		ajax: {
-			url: '',
+			url: '/topEvChargerList.json',
 			type: 'POST',
 			data: function (d) {
-				let map = new Object
-				map = $.extend(data, d)
-				return JSON.stringify(map)
+				let map = new Object;
+				map = $.extend(data, d);
+				return JSON.stringify(map);
 			},
-			error: function () {}
+			error: function () {},
+			beforeSend: function() { fnTableStartLoadingBar(); },
+			complete:function(){ fnTableEndLoadingBar();}
 		},
 		columns: [
-			{ 'name': 'user_name', 'title': '#', 'data': 'userName' },
-			{ 'name': 'user_id', 'title': '충전기명', 'data': 'userId' },
-			{ 'name': 'user_id', 'title': '업체', 'data': 'userId' },
-			{ 'name': 'user_id', 'title': '충전 구분', 'data': 'userId' },
-			{ 'name': 'user_id', 'title': '미사용일', 'data': 'userId' , visible: visibleChecked},
-			{ 'name': 'user_id', 'title': '고장일', 'data': 'userId' , visible: !visibleChecked},
-			{ 'name': 'user_id', 'title': '마지막 사용일시', 'data': 'userId' },
+			{'title': '#', 'data': 'rowNumber' },
+			{'title': '충전기명', 'data': 'chargingStationName' },
+			{'title': '업체', 'data': 'agencyName' },
+			{'title': '충전 구분', 'data': 'chargerType', "render": function (data, type, row) {
+					var type = data === '02' ? '급속' : '완속';
+					return type;
+				}},
+			{'title': type, 'data': 'unusedDays'},
+			{'title': '마지막 사용일시', 'data': 'lastChargingEndDate' },
 		]
-	})
+	});
 
-	datatable.buttons().container().prependTo('#excelBtn')
+	datatable.buttons().container().prependTo('#excelBtn');
 }
 
 // 테이블 데이터 세팅
 // function fnSelectList(id) {
+// 	$.ajax({
+// 		type: "POST",
+// 		url: "/topEvChargerList.mng",
+// 		data: JSON.stringify({ userId: 'admin' }),
+// 		success: function (data, textStatus, jqXHR){
 //
-//     $.ajax({
-//         type: "POST",
-//         url: "/selectUser.json",
-//         data: JSON.stringify({ userId: 'admin' }),
-//         processData: false,
-//         success: function (data, textStatus, jqXHR){
-//             $('#' + id + ' tbody').empty();
+// 			if (id === null) {
+// 				drawTable(data);
+// 			} else {
+// 				$('#' + id + ' tbody').empty();
 //
-//             var html = '';
-//             var color = '';
+// 				var html = '';
+// 				var color = '';
 //
-//             $.each(data, function (index, item) {
+// 				$.each(data, function (index, item) {
 //
-//                 color =  (item === '001' ? 'orange' : 'blue');
+// 					color =  (item === '001' ? 'orange' : 'blue');
 //
-//                 html += '<tr>';
-//                 html += '   <td>' + item + '</td>';
-//                 html += '   <td>' + item + '</td>';
-//                 html += '   <td>' + item + '</td>';
-//                 html += '   <td><progress class="progress-' + color + '" min="0" max="100" value="46"></progress></td>';
-//                 html += '   <td><div class="percent-' + color+'-box">'+ item +'%</div></td>';
-//                 html += '</tr>';
-//             });
+// 					html += '<tr>';
+// 					html += '   <td>' + item + '</td>';
+// 					html += '   <td>' + item + '</td>';
+// 					html += '   <td>' + item + '</td>';
+// 					html += '   <td><progress class="progress-' + color + '" min="0" max="100" value="46"></progress></td>';
+// 					html += '   <td><div class="percent-' + color+'-box">'+ item +'%</div></td>';
+// 					html += '</tr>';
+// 				});
 //
-//             $('#' + id + ' tbody').html(html);
-//
-//         },
-//         beforeSend: function() { fnTableStartLoadingBar(id);},
-//         complete:function(){ fnTableEndLoadingBar(id);},
-//         error: function(xhr) {
-//             $('#' + id + ' tbody').empty();
-//             $('#' + id + ' tbody').append('<tr><td colspan="5">데이터를 불러올수'
-//               + ' 없습니다.</td></tr>');
-//         },
-//         async: false
-//     });
-// }
+// 				$('#' + id + ' tbody').html(html);
+// 			}
+// 		},
+// 		beforeSend: function() { fnTableStartLoadingBar(id);},
+// 		complete:function(){ fnTableEndLoadingBar(id);},
+// 		error: function(xhr) {
+// 			$('#' + id + ' tbody').empty();
+// 			$('#' + id + ' tbody').append('<tr><td colspan="5">데이터를 불러올수 없습니다.</td></tr>');
+// 		},
+// 		async: false
+// 	});
+// };
+
 function createPieChart(name) {
 	let root = createRoot(name);
 
@@ -129,6 +161,8 @@ function createPieChart(name) {
 			layout : root.verticalLayout
 		})
 	);
+
+
 
 	var series = chart.series.push(
 		am5percent.PieSeries.new(root, {

@@ -18,7 +18,7 @@
                 <div class="display-row wh100">
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
-                        <div class="font-20 font-white">${totalBuilding.totalcnt}</div>
+                        <div class="font-20 font-white">${totalBuilding.totalCnt}</div>
                         <div class="font-14 font-white">Total Building</div>
                         <div class="font-10 font-orange">총 EV 주차장 수요 대상 건물 수</div>
                     </div>
@@ -43,9 +43,6 @@
                 <div class="font-lightGray font-12">시 기준으로 집계</div>
             </div>
             <div class="display-row w100p h80p" id="code_code">
-                <div class="table-loading hidden">
-                    <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
-                </div>
                 <table class="table type1 wh100">
                     <colgroup>
                         <col width="5%">
@@ -69,7 +66,7 @@
                         <td>제주시</td>
                         <td>${totalBuilding.jejuNCnt}/${totalBuilding.jujuCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-orange" value="${totalBuilding.jejuNPercent}" min="0" max="100"></progress>
+                            <progress class="progress progress-orange" value="${totalBuilding.jejuNPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
                             <div class="percent-orange-box w90p h70p font-12">${totalBuilding.jejuNPercent}%</div>
@@ -80,7 +77,7 @@
                         <td>서귀포시</td>
                         <td>${totalBuilding.seogwipoNCnt}/${totalBuilding.seogwipoCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-blue" value="${totalBuilding.seogwipoNPercent}" min="0" max="100"></progress>
+                            <progress class="progress progress-blue" value="${totalBuilding.seogwipoNPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
                             <div class="percent-blue-box w90p h70p font-12">${totalBuilding.seogwipoNPercent}%</div>
@@ -119,7 +116,7 @@
                         <td>제주시</td>
                         <td>${totalBuilding.jejuYCnt}/${totalBuilding.jujuCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-orange" value="${totalBuilding.jejuYPercent}" min="0" max="100"></progress>
+                            <progress class="progress progress-orange" value="${totalBuilding.jejuYPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
                             <div class="percent-orange-box w90p h70p font-12">${totalBuilding.jejuYPercent}%</div>
@@ -130,7 +127,7 @@
                         <td>서귀포시</td>
                         <td>${totalBuilding.seogwipoYCnt}/${totalBuilding.seogwipoCnt}</td>
                         <td>
-                            <progress class="w90p h15p progress-blue" value="${totalBuilding.seogwipoYPercent}" min="0" max="100"></progress>
+                            <progress class="progress progress-blue" value="${totalBuilding.seogwipoYPercent}" min="0" max="100"></progress>
                         </td>
                         <td>
                             <div class="percent-blue-box w90p h70p font-12">${totalBuilding.seogwipoYPercent}%</div>
@@ -170,43 +167,43 @@
                 <div class="display-row wh100">
                     <div class="sm-card display-column">
                         <div class="icon-total"></div>
-                        <div class="font-20 font-white">1,100</div>
+                        <div class="font-20 font-white">${totalCharger.totalCharger}</div>
                         <div class="font-14 font-white">Total EV</div>
                         <div class="font-10 font-orange">총 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_normal"></div>
-                        <div class="font-20 font-white">891</div>
+                        <div class="font-20 font-white">${totalCharger.fastCharger}</div>
                         <div class="font-14 font-white">Total Fast EV</div>
                         <div class="font-10 font-normal">총 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
-                        <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
+                        <div class="icon_normal"></div>
+                        <div class="font-20 font-white">${totalCharger.publicFastCharger}</div>
                         <div class="font-14 font-white">Public Fast EV</div>
                         <div class="font-10 font-abnormal">개방형 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
-                        <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
+                        <div class="icon_normal"></div>
+                        <div class="font-20 font-white">${totalCharger.privateFastCharger}</div>
                         <div class="font-14 font-white">Private Fast EV</div>
                         <div class="font-10 font-abnormal">비개방형 급속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
+                        <div class="font-20 font-white">${totalCharger.slowCharger}</div>
                         <div class="font-14 font-white">Total Slow EV</div>
                         <div class="font-10 font-abnormal">총 완속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
-                        <div class="font-14 font-white">Publick Slow EV</div>
+                        <div class="font-20 font-white">${totalCharger.publicSlowCharger}</div>
+                        <div class="font-14 font-white">Public Slow EV</div>
                         <div class="font-10 font-abnormal">개방형 완속 EV 충전기 대수</div>
                     </div>
                     <div class="sm-card display-column">
                         <div class="icon_abnormal"></div>
-                        <div class="font-20 font-white">109</div>
+                        <div class="font-20 font-white">${totalCharger.privateSlowCharger}</div>
                         <div class="font-14 font-white">Private Slow EV</div>
                         <div class="font-10 font-abnormal">비개방형 완속 EV 충전기 대수</div>
                     </div>
@@ -218,21 +215,24 @@
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">지역별 EV 충전기 고장 현황</div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="11" id="1" value="option1" checked>
-                            <label class="form-check-label" for="1">  전체 </label>
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="bb" id="1" value="option1" checked>
+                            <label class="form-check-label" for="1">전체</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="11" id="2" value="option2">
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="bb" id="2" value="option2">
                             <label class="form-check-label" for="2">급속</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="11" id="3" value="option3">
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="radio" name="bb" id="3" value="option3">
                             <label class="form-check-label" for="3">완속</label>
                         </div>
-                        <div class="font-lightGray font-12">시 기준으로 집계</div>
+                        <div class="font-lightGray font-12 ">시 기준으로 집계</div>
                     </div>
-                    <div class="display-row w100p h80p">
+                    <div class="display-row w100p h80p" id="bb">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100">
                             <colgroup>
                                 <col width="5%">
@@ -250,7 +250,30 @@
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody id="aa">
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -272,6 +295,9 @@
                         <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100">
                             <colgroup>
                                 <col width="5%">
@@ -289,7 +315,30 @@
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -311,6 +360,9 @@
                         <div class="font-lightGray font-12">최근 3개월 미사용</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100">
                             <colgroup>
                                 <col width="5%">
@@ -328,7 +380,30 @@
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -350,6 +425,9 @@
                         <div class="font-lightGray font-12">업체별 기준 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100">
                             <colgroup>
                                 <col width="5%">
@@ -366,8 +444,32 @@
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
+
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>제주시</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -392,6 +494,9 @@
                         <div class="font-lightGray font-12">시 기준으로 집계</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100">
                             <colgroup>
                                 <col width="5%">
@@ -409,7 +514,30 @@
                                 <th>%</th>
                             </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                            <tr>
+                                <td>01</td>
+                                <td>SK 시그넷</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-orange-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>02</td>
+                                <td>중앙제어</td>
+                                <td>46/100</td>
+                                <td>
+                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                </td>
+                                <td>
+                                    <div class="percent-blue-box w90p h70p font-12">46%</div>
+                                </td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -420,21 +548,24 @@
                         <div class="font-lightGray font-12">미사용일은 금일 기준</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100 ">
                             <colgroup>
                                 <col width="5%">
                                 <col width="25%">
                                 <col width="15%">
-                                <col width="10%">
                                 <col width="15%">
-                                <col width="30%">
+                                <col width="15%">
+                                <col width="25%">
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>충전기명</th>
                                 <th>지역</th>
-                                <th>구분</th>
+                                <th>충전 구분</th>
                                 <th>미사용일</th>
                                 <th>마지막 사용일시</th>
                             </tr>
@@ -488,25 +619,28 @@
                      data-code="002" data-toggle="modal" data-target="#table_popup">
                     <div class="display-row-center w100p h20p">
                         <div class="font-white font-18">고장 TOP EV 충전기</div>
-                        <div class="font-lightGray font-12">미사용일은 금일 기준</div>
+                        <div class="font-lightGray font-12">고장일은 금일 기준</div>
                     </div>
                     <div class="display-row w100p h80p">
+                        <div class="table-loading hidden">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                        </div>
                         <table class="table type1 wh100" id="datatable">
                             <colgroup>
                                 <col width="5%">
                                 <col width="25%">
                                 <col width="15%">
-                                <col width="10%">
                                 <col width="15%">
-                                <col width="30%">
+                                <col width="15%">
+                                <col width="25%">
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>#</th>
                                 <th>충전기명</th>
                                 <th>지역</th>
-                                <th>구분</th>
-                                <th>미사용일</th>
+                                <th>충전 구분</th>
+                                <th>고장일</th>
                                 <th>마지막 사용일시</th>
                             </tr>
                             </thead>

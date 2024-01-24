@@ -5,22 +5,56 @@
   <select id="totalBuildingCount" parameterType="buildingDto" resultType="egovMap">
     /**MainMapper - totalBuildingCount : 건물 개수*/
     SELECT building.*
-         ,round(100.0 * building.jeju_y_cnt / building.juju_cnt) AS jeju_y_percent
-         ,round(100.0 * building.jeju_n_cnt / building.juju_cnt) AS jeju_n_percent
-         ,round(100.0 * building.seogwipo_y_cnt / building.seogwipo_cnt) AS seogwipo_y_percent
-         ,round(100.0 * building.seogwipo_n_cnt / building.seogwipo_cnt) AS seogwipo_n_percent
+         ,round(100.0 * building.JEJU_Y_CNT / building.JUJU_CNT) AS JEJU_Y_PERCENT
+         ,round(100.0 * building.JEJU_N_CNT / building.JUJU_CNT) AS JEJU_N_PERCENT
+         ,round(100.0 * building.SEOGWIPO_Y_CNT / building.SEOGWIPO_CNT) AS SEOGWIPO_Y_PERCENT
+         ,round(100.0 * building.SEOGWIPO_N_CNT / building.SEOGWIPO_CNT) AS SEOGWIPO_N_PERCENT
     FROM (
-           SELECT count(1) AS totalCnt
-             ,count(CASE WHEN suitability = 'Y' THEN 1 ELSE NULL END) AS y_cnt
-             ,count(CASE WHEN suitability = 'N' THEN 1 ELSE NULL END) AS n_cnt
-             ,count(CASE WHEN region = '01' THEN 1 ELSE NULL END) AS juju_cnt
-             ,count(CASE WHEN region = '01' AND suitability = 'Y' THEN 1 ELSE NULL END) AS jeju_y_cnt
-             ,count(CASE WHEN region = '01' AND suitability = 'N' THEN 1 ELSE NULL END) AS jeju_n_cnt
-             ,count(CASE WHEN region = '02' THEN 1 ELSE NULL END) AS seogwipo_cnt
-             ,count(CASE WHEN region = '02' AND suitability = 'Y' THEN 1 ELSE NULL END) AS seogwipo_y_cnt
-             ,count(CASE WHEN region = '02' AND suitability = 'N' THEN 1 ELSE NULL END) AS seogwipo_n_cnt
+           SELECT COUNT(1) AS TOTAL_CNT
+                ,COUNT(CASE WHEN suitability = 'Y' THEN 1 ELSE NULL END) AS Y_CNT
+                ,COUNT(CASE WHEN suitability = 'N' THEN 1 ELSE NULL END) AS N_CNT
+                ,COUNT(CASE WHEN region = '01' THEN 1 ELSE NULL END) AS JUJU_CNT
+                ,COUNT(CASE WHEN region = '01' AND suitability = 'Y' THEN 1 ELSE NULL END) AS JEJU_Y_CNT
+                ,COUNT(CASE WHEN region = '01' AND suitability = 'N' THEN 1 ELSE NULL END) AS JEJU_N_CNT
+                ,COUNT(CASE WHEN region = '02' THEN 1 ELSE NULL END) AS SEOGWIPO_CNT
+                ,COUNT(CASE WHEN region = '02' AND suitability = 'Y' THEN 1 ELSE NULL END) AS SEOGWIPO_Y_CNT
+                ,COUNT(CASE WHEN region = '02' AND suitability = 'N' THEN 1 ELSE NULL END) AS SEOGWIPO_N_CNT
            FROM "datahubUpgrade".dh_building_test
            WHERE 1=1
          ) building
+  </select>
+
+  <select id="totalChargerCount" parameterType="buildingDto" resultType="egovMap">
+    /**MainMapper - totalChargerCount : 충전기 개수*/
+    SELECT COUNT(1) AS TOTAL_CHARGER
+         , COUNT(CASE WHEN charger_type = '02' THEN 1 ELSE NULL END) AS FAST_CHARGER
+         , COUNT(CASE WHEN limit_yn = 'Y' AND charger_type='02' THEN 1 ELSE NULL END) AS PUBLIC_FAST_CHARGER
+         , COUNT(CASE WHEN limit_yn = 'N' AND charger_type='02' THEN 1 ELSE NULL END) AS PRIVATE_FAST_CHARGER
+         , COUNT(CASE WHEN charger_type = '06' THEN 1 ELSE NULL END) AS SLOW_CHARGER
+         , COUNT(CASE WHEN limit_yn = 'Y' AND charger_type='06' THEN 1 ELSE NULL END) AS PUBLIC_SLOW_CHARGER
+         , COUNT(CASE WHEN limit_yn = 'N' AND charger_type='06' THEN 1 ELSE NULL END) AS PRIVATE_SLOW_CHARGER
+    FROM "datahubUpgrade".dh_charger_test
+  </select>
+
+  <select id="topEvChargerList" resultType="egovMap">
+    /**MainMapper - topEvChargerList : 미사용,고장 Top 충전기 목록*/
+    SELECT charger.charging_station_name
+         , charger.agency_name
+         , charger.charger_type
+         , charger.last_charging_end_date
+         , EXTRACT(days FROM NOW() - charger.last_charging_end_date) AS unused_days
+         , row_number() over (ORDER BY EXTRACT(days FROM NOW() - charger.last_charging_end_date) DESC) AS row_number
+    FROM (
+           SELECT charging_station_id
+                , last_charging_end_date
+                , charging_station_name
+                , agency_name
+                , charger_type
+                , row_number()
+             OVER (PARTITION BY charging_station_id ORDER BY EXTRACT(days FROM NOW() - last_charging_end_date) ASC) AS rownum
+           FROM "datahubUpgrade".dh_charger_test
+         ) charger
+    WHERE 1 = 1
+      AND charger.rownum = 1
   </select>
 </mapper>

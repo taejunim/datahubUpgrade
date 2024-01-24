@@ -69,10 +69,10 @@ function fnInsert(strData) {
 		data: JSON.stringify(strData),
 		success: function (data, textStatus, jqXHR){
 			if (data.result === "success") {
-				alert(" 가입 완료되었습니다. 로그인 해주세요");
-				window.location.href = '/login.do';
+				MsgBox.Alert('join', function (){
+					location.href = "<c:url value='/login.do'>" });
 			} else {
-				alert("가입이 완료되지 않았습니다. 다시 시도해주세요.");
+				MsgBox.Alert();
 			}
 		},
 		async: false
