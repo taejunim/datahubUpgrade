@@ -27,7 +27,7 @@
                         <label class="font-white font-s14 h25p">현재 비밀번호</label>
                         <input type="password" class="inputBox w100p h55p font-opacity" placeholder="비밀번호" name="userPwdNow"  maxlength="20"/>
                         <div class="req userPwd h20p"></div>
-                        <img src="../images/icon_eyes.png" class="myPage_image1" onclick="openPassword('userPwdNow')"/>
+                        <img src="../images/icon_eyes.png" class="myPage_image1" onclick="openPassword('userPwdNow','myPage_image1')"/>
                     </div>
                     <div class="joinFrame ">
                         <label class="font-white font-s14 h25p">새 비밀번호</label>

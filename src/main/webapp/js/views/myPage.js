@@ -1,8 +1,10 @@
 function openPassword(className) {
     $('input[name='+className+']').toggleClass('active');
     if ($('input[name='+className+']').hasClass('active') == true) {
+        $(className).addClass('activeEyes');
         $('input[name='+className+']').attr('type','text');
     } else {
+        $('input[name='+className+']').removeClass('activeEyes');
         $('input[name='+className+']').attr('type','password');
     }
 }

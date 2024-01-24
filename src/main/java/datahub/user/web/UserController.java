@@ -101,7 +101,6 @@ public class UserController {
 
         session.setAttribute(SessionConst.LOGIN_MEMBER, user);                                   // 로그인에 성공하면 세션에 내용을 저장한다.
         session.setAttribute("userName", user.getUserName());
-        session.setMaxInactiveInterval(3600);                                                                // 세션 시간을 설정한다.
 
         if (userDto.getSaveId().equals("Y")) {
             session.setAttribute(SessionConst.SAVE_ID, user);
@@ -139,9 +138,7 @@ public class UserController {
         Map<String ,Object> result = new HashMap<>();
         UserDto user = new UserDto();
         user.setUserId((String) userDto.get("userId"));
-        user.setUserPwd((String) userDto.get("userPwdNow"));
-        System.out.println("userGetId : " + (String) userDto.get("userId"));
-        System.out.println("userGetId : " + (String) userDto.get("userPwdNow"));                            // 현재 비밀번호 검증
+        user.setUserPwd((String) userDto.get("userPwdNow"));                                                // 현재 비밀번호 검증
 
         try {
 
@@ -150,13 +147,15 @@ public class UserController {
                 result.put("message","not found");
                 return result;
             }
+
             userResult.setUserPwd(String.valueOf(userDto.get("userPwd")));                                  // 비밀번호 변경
             userResult.setUserName(String.valueOf(userDto.get("userName")));                                // 이름 변경
             userResult.setUserPhone(String.valueOf(userDto.get("userPhone")));                              // 휴대폰 번호 변경
-            System.out.println("userResult : " + userResult);
+
             userService.updateUser(userResult);
             HttpSession session = request.getSession();
             session.setAttribute(SessionConst.LOGIN_MEMBER,userResult);
+
             result.put("message","success");
         } catch (Exception e) {
             result.put("message","fail");
