@@ -7,6 +7,7 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
+<script type="text/javascript" src="/js/views/evChargerDemand.js"></script>
 <div class="columnWrap w100p h95p">
     <div class="frame h6p">
         <div class="title wh100">
@@ -17,30 +18,35 @@
     <div class="frame h13p">
         <div class="wh100">
             <div class="searchFrame w80p h100p">
-                <div class="w40p">
+                <div class="w20p">
                     <label class="">지역</label>
                     <div class="group w100p">
-                        <div class="selectBox w45p">
+                        <div class="selectBox w100p">
                             <div class="group-prepend w40p">
                                 <label  class="group-text" for="">시</label>
                             </div>
                             <div class="w60p">
-                                <select  class="form-control" data-minimum-results-for-search="Infinity">
-                                    <option>전체</option>
-                                    <option>제주시</option>
-                                    <option>서귀포시</option>
+                                <select id="searchRegion" class="form-control" data-minimum-results-for-search="Infinity">
+                                    <option value="">전체</option>
+                                    <option value="01">제주시</option>
+                                    <option value="02">서귀포시</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="selectBox w45p">
+                    </div>
+                </div>
+                <div class="w20p">
+                    <label class="">주용도</label>
+                    <div class="group w100p">
+                        <div class="selectBox w100p">
                             <div class="group-prepend w40p">
-                                <label  class="group-text" for="">읍면동</label>
+                                <label  class="group-text" for="">건물 용도</label>
                             </div>
                             <div class="w60p">
-                                <select class="form-control" data-minimum-results-for-search="Infinity">
-                                    <option>전체</option>
-                                    <option>동홍동</option>
-                                    <option>이도이동</option>
+                                <select id="searchPurpose" class="form-control" data-minimum-results-for-search="Infinity">
+                                    <option value="">전체</option>
+                                    <option value="02000">공동주택</option>
+                                    <option value="10000">교육시설</option>
                                 </select>
                             </div>
                         </div>
@@ -54,7 +60,7 @@
                                 <label  class="group-text" for="">적합/부적합</label>
                             </div>
                             <div class="w60p">
-                                <select  class="form-control" data-minimum-results-for-search="Infinity">
+                                <select id="searchSuitability" class="form-control" data-minimum-results-for-search="Infinity">
                                     <option>전체</option>
                                     <option>적합</option>
                                     <option>부적합</option>
@@ -67,12 +73,12 @@
                     <label class="">건축허가일</label>
                     <div class="group w100p">
                         <div class="group w45p">
-                            <input type="text" name="" id="" class="dateTime datepickerStart w100p icon_calendar"
+                            <input type="text" name="searchPermissionDateFrom" id="searchPermissionDateFrom" class="dateTime datepickerStart w100p icon_calendar"
                                    placeholder="날짜" readonly>
                         </div>
                         <span class="font-32 font-white">~</span>
                         <div class="group w45p">
-                            <input type="text" name="" id="" class="dateTime datepickerEnd w100p icon_calendar"
+                            <input type="text" name="searchPermissionDateTo" id="searchPermissionDateTo" class="dateTime datepickerEnd w100p icon_calendar"
                                    placeholder="날짜" readonly>
                         </div>
                     </div>
@@ -80,152 +86,13 @@
             </div>
             <div class="buttonFrame w20p h100p font-white">
                 <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target="#exampleModalCenter">초기화</button>
-                <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target=".modal">검색</button>
+                <button type="button" class="btn-black w40p h50p" id="searchButton">검색</button>
             </div>
         </div>
     </div>
     <div class="frame h78p display-column">
-        <table id="datatable" class="table type2 w95p">
-            <colgroup>
-                <col width="20%">
-                <col width="15%">
-                <col width="15%">
-                <col width="10%">
-                <col width="10%">
-                <col width="30%">
-            </colgroup>
-            <thead>
-            <tr>
-                <th>건물 명</th>
-                <th>적합 판단</th>
-                <th>지역</th>
-                <th>주용도</th>
-                <th>구분</th>
-                <th>건축허가일</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-green">적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            <tr>
-                <td>산학융합원</td>
-                <td>
-                    <div class="">
-                        <div class="judgment-box font-red">부적합</div>
-                    </div>
-                </td>
-                <td>제주시</td>
-                <td>공동주택(아파트)</td>
-                <td>공공</td>
-                <td>2023-09-20</td>
-            </tr>
-            </tbody>
+        <table id="dataTable" class="table type2 w95p">
+
         </table>
     </div>
 </div>

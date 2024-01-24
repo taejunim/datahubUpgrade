@@ -338,13 +338,13 @@ function fnMsgBoxSet(type){
  * ajax Setup
  */
 $.ajaxSetup({
-  contentType: "application/json",
-  beforeSend: function(xhr) {
-    fnStartLoadingBar();
-    xhr.setRequestHeader("AJAX", true);
-  }
-  ,complete:function(){ fnEndLoadingBar();}
-  ,error: function(xhr, status, err) {
+  //contentType: "application/json",
+  // beforeSend: function(xhr) {
+  //   fnStartLoadingBar();
+  //   xhr.setRequestHeader("AJAX", true);
+  // }
+  // ,complete:function(){ fnEndLoadingBar();}
+  error: function(xhr, status, err) {
     fnEndLoadingBar();
     if (xhr.status == 403) {
       MsgBox.Alert('session', function (){

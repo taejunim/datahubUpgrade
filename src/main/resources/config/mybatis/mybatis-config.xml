@@ -15,6 +15,7 @@
 
 		<typeAlias type="datahub.user.dto.UserDto" alias="userDto" />
 		<typeAlias type="datahub.main.dto.BuildingDto" alias="buildingDto" />
+		<typeAlias type="datahub.evChargerDemand.dto.EvChargerDemandDto" alias="evChargerDemandDto" />
 <!--		<typeAlias alias="cmsMenuConnHist" type="net.jcms.framework.menu.model.MenuConnHist" />-->
 <!--		<typeAlias alias="cmsMenuConnHistSearch" type="net.jcms.framework.menu.model.MenuConnHistSearch" />-->
 

@@ -1,25 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="datahub.evChargerDemand.mappers.EvChargerDemandMapper">
-    <insert id="userJoin" parameterType="userDto">
-        INSERT INTO
-            "datahubUpgrade".dh_user
-        VALUES
-            (
-             #{userId}
-            ,#{userPwd}
-            ,#{userName}
-            ,#{userBirth}
-            ,#{userPhone}
-            ,'001'
-            ,now()
-            )
-    </insert>
-    <select id="userLogin" parameterType="userDto" resultType="userDto">
-        select *
-        from "datahubUpgrade".dh_user
-        where 1 = 1
-        AND user_id = #{userId}
-        AND user_type = '001'
+<mapper namespace="datahub.evChargerDemand.mappers.pg.EvChargerDemandMapper">
+
+    <select id="selectBuildings" parameterType="evChargerDemandDto" resultType="evChargerDemandDto">
+        SELECT *
+        FROM "datahubUpgrade".dh_building_test
+        WHERE 1=1
+        <if test="searchRegion != null and searchRegion != ''">
+            AND region = #{searchRegion}
+        </if>
+        <if test="buildingPurposeCode != null and buildingPurposeCode != ''">
+            AND building_purpose_code = #{buildingPurposeCode}
+        </if>
+        <if test="suitability != null and suitability != ''">
+            AND suitability = #{suitability}
+        </if>
+        <if test="permissionDateFrom != null">
+            <![CDATA[ AND permission_date >= ]]> #{permissionDateFrom}
+        </if>
+        <if test="permissionDateTo != null">
+            <![CDATA[ AND permission_date <= ]]> #{permissionDateTo}
+        </if>
+        ORDER BY region, permission_date DESC
+        <if test="pagingYn == true and start != null and length != null" >
+            offset #{start} limit #{length}
+        </if>
     </select>
+
+    <select id="countBuildings" parameterType="evChargerDemandDto" resultType="java.lang.Integer">
+        SELECT COUNT( * )
+        FROM "datahubUpgrade".dh_building_test
+        WHERE 1=1
+        <if test="searchRegion != null and searchRegion != ''">
+            AND region = #{searchRegion}
+        </if>
+        <if test="buildingPurposeCode != null and buildingPurposeCode != ''">
+            AND building_purpose_code = #{buildingPurposeCode}
+        </if>
+        <if test="suitability != null and suitability != ''">
+            AND suitability = #{suitability}
+        </if>
+        <if test="permissionDateFrom != null">
+            <![CDATA[ AND permission_date >= ]]> #{permissionDateFrom}
+        </if>
+        <if test="permissionDateTo != null">
+            <![CDATA[ AND permission_date <= ]]> #{permissionDateTo}
+        </if>
+    </select>
+
 </mapper>
