@@ -90,10 +90,8 @@
             </div>
         </div>
     </div>
-    <div class="frame h78p display-column">
-        <table id="dataTable" class="table type2 w95p">
-
-        </table>
+    <div class="frame">
+        <table id="dataTable" class="table type2"> </table>
     </div>
 </div>
 

@@ -19,7 +19,6 @@
 <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
 <link rel="stylesheet" href="<c:url value="/css/common.css" />">
 <link rel="stylesheet" href="<c:url value="/css/main.css" />">
-<link rel="stylesheet" href="<c:url value="/css/custom.css" />">
 <link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/dataTables.bootstrap.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/buttons.bootstrap.min.css"/>">
@@ -50,7 +49,7 @@
 <div class="wrap-loading hidden">
   <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);"/></div>
 </div>
-<div class="wrapper w100p">
+<div class="wrapper">
   <!-- 사이드바 -->
   <tiles:insertAttribute name="sidebar"/>
 

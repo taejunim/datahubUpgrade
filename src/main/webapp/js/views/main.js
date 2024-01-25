@@ -24,7 +24,12 @@ var datatable
 
 // 미사용, 고장 테이블 데이터 세팅
 function drawTable (data) {
-	let type = data.userType === '001' ? '미사용' : '고장';
+	// 테이블 reset
+	if (datatable) {
+		datatable.destroy();
+	}
+
+	let type = data.userType === '001' ? '미사용일' : '고장일';
 
 	$("#codeText").text(type);
 
@@ -71,7 +76,10 @@ function drawTable (data) {
 		searching: false,         // 검색 기능 숨기기
 		ordering: false,          // 정렬 기능 숨기기
 		info: false,              //하단 페이지 수 비활성화
-		paging: false,            // 페이징 기능 숨기기
+		paging: false,
+		scrollCollapse: true,
+		scrollX: false,
+		scrollY: "50vh",
 		order: [ [ 1, 'desc' ] ],     //order : [ [ 열 번호, 정렬 순서 ], ... ],
 		language: {
 			emptyTable: '데이터가 없습니다.',
@@ -99,8 +107,13 @@ function drawTable (data) {
 					var type = data === '02' ? '급속' : '완속';
 					return type;
 				}},
-			{'title': type, 'data': 'unusedDays'},
-			{'title': '마지막 사용일시', 'data': 'lastChargingEndDate' },
+			{'title': type, 'data': 'unusedDays', "render": function (data, type, row) {
+					return data + '일';
+				}},
+			{'title': '마지막 사용일시', 'data': 'lastChargingEndDate' ,"render" : function (data, type, row) {
+					return new Date(data).format("yyyy-MM-dd hh:mm:ss");
+				}
+			}
 		]
 	});
 

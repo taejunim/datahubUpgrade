@@ -13,7 +13,6 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>데이터허브 고도화</title>
-    <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
     <link rel="stylesheet" href="<c:url value="/css/reset.css" />">
     <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
     <link rel="stylesheet" href="<c:url value="/css/common.css" />">

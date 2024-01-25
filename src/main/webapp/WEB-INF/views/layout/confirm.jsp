@@ -42,7 +42,7 @@
                 </button>
             </div>
             <div class="modal-body" style="text-align: center;">
-                <div class="font-14 pd1rme text-right font-gray"><span class="font-14" id="codeText"></span>일은 금일 기준</div>
+                <div class="font-14 pd1rme text-right font-gray"><span class="font-14" id="codeText"></span>은 금일 기준</div>
                 <table class="table type1 wh100 datatable"></table>
             </div>
             <div class="modal-footer custom-footer">

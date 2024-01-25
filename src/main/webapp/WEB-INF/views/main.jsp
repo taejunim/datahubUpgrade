@@ -11,7 +11,7 @@
 
 <div class="main w100p h93p">
     <div class="left">
-        <div class="card h22p">
+        <div class="card">
             <div class="display-column wh100 gap04v">
                 <div class="font-20 font-bold font-white">Building info</div>
                 <div class="font-14 font-white">building suummary</div>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="card h20p w100p">
+        <div class="card w100p">
             <div class="display-row-center w100p h20p">
                 <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 부적합 현황</div>
                 <div class="font-lightGray font-12">시 기준으로 집계</div>
@@ -87,7 +87,7 @@
                 </table>
             </div>
         </div>
-        <div class="card h20p">
+        <div class="card">
             <div class="display-row-center w100p h20p">
                 <div class="font-white font-18">지역별 EV 주차장 수요 대상 건물 적합 현황</div>
                 <div class="font-lightGray font-12">시 기준으로 집계</div>
@@ -137,7 +137,7 @@
                 </table>
             </div>
         </div>
-        <div class="card h28p display-row gap0">
+        <div class="card  display-row gap0" style="height: 16vw;">
             <div class="display-column w80p h100p">
                 <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
                 <div id="mainChart" class="chartdiv"></div><%--차트영역--%>
@@ -160,7 +160,7 @@
     </div>
     <div class="line"></div>
     <div class="right">
-        <div class="card h22p">
+        <div class="card">
             <div class="display-column wh100 gap04v">
                 <div class="font-20 font-bold font-white">EV Charger Info</div>
                 <div class="font-14 font-white">EV Charger suummary</div>
@@ -210,7 +210,7 @@
                 </div>
             </div>
         </div>
-        <div class="group w100p h73p gap1v">
+        <div class="group w100p gap1v">
             <div class="group-column wh100 gap15h">
                 <div class="card h25p">
                     <div class="display-row-center w100p h20p">
@@ -256,7 +256,7 @@
                                 <td>제주시</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                    <progress class="progress progress-orange" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-orange-box w90p h70p font-12">46%</div>
@@ -267,7 +267,7 @@
                                 <td>제주시</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                    <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-blue-box w90p h70p font-12">46%</div>
@@ -321,7 +321,7 @@
                                 <td>제주시</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                    <progress class="progress progress-orange" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-orange-box w90p h70p font-12">46%</div>
@@ -332,7 +332,7 @@
                                 <td>제주시</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                    <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-blue-box w90p h70p font-12">46%</div>
@@ -383,10 +383,10 @@
                             <tbody>
                             <tr>
                                 <td>01</td>
-                                <td>제주시</td>
+                                <td>SK 시그넷</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                    <progress class="progress progress-orange" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-orange-box w90p h70p font-12">46%</div>
@@ -394,10 +394,10 @@
                             </tr>
                             <tr>
                                 <td>01</td>
-                                <td>제주시</td>
+                                <td>중앙제어</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                    <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-blue-box w90p h70p font-12">46%</div>
@@ -444,15 +444,14 @@
                                 <th>Popularity</th>
                                 <th>%</th>
                             </tr>
-
                             </thead>
                             <tbody>
                             <tr>
                                 <td>01</td>
-                                <td>제주시</td>
+                                <td>SK 시그넷</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                    <progress class="progress progress-orange" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-orange-box w90p h70p font-12">46%</div>
@@ -460,10 +459,10 @@
                             </tr>
                             <tr>
                                 <td>01</td>
-                                <td>제주시</td>
+                                <td>중앙제어</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                    <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-blue-box w90p h70p font-12">46%</div>
@@ -520,18 +519,18 @@
                                 <td>SK 시그넷</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-orange" value="50" min="0" max="100"></progress>
+                                    <progress class="progress progress-orange" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-orange-box w90p h70p font-12">46%</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>02</td>
+                                <td>01</td>
                                 <td>중앙제어</td>
                                 <td>46/100</td>
                                 <td>
-                                    <progress class="w90p h15p progress-blue" value="20" min="0" max="100"></progress>
+                                    <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
                                 </td>
                                 <td>
                                     <div class="percent-blue-box w90p h70p font-12">46%</div>

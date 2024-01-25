@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
     <link rel="stylesheet" href="<c:url value="/css/common.css" />">
     <link rel="stylesheet" href="<c:url value="/css/main.css" />">
-    <link rel="stylesheet" href="<c:url value="/css/custom.css" />">
     <link rel="stylesheet" href="<c:url value="/css/myPage.css" />">
     <link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
     <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/dataTables.bootstrap.css"/>">

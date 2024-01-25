@@ -111,3 +111,383 @@
 }
 
 .icon_user{width: 2rem; height: 2rem; background: url(../images/user-icon.png) no-repeat center/95%; vertical-align: middle;}
+
+
+
+/*******************^********************
+*            datatable / paging        *
+****************************************/
+#dataTable_wrapper { margin-left: 0; height: 35.5vw; }
+
+.dataTable { margin-left: 0; }
+
+div.dataTables_processing{background: inherit!important; color: white!important; }
+
+div.dataTables_paginate{position: absolute; bottom: 1rem; left: 50em; display: flex; gap: 0.8em;}
+
+div.dataTables_paginate > span{display: flex; gap: 0.8em;}
+
+#datatable_paginate {  margin-top: 0px; position: relative; }
+
+div.dataTables_info{ color:#ffff; position: absolute; bottom: 2.5rem; right: 0.5rem;}
+
+.paginate_button{ color: #ffff; font-size: 1.2em; }
+
+.paginate_button:hover { color: #a9dfd8; cursor: pointer;}
+
+.paginate_button.current {color: #a9dfd8; text-decoration: underline;}
+
+.pagination .active { color: #a9dfd8; text-decoration: underline; }
+
+#datatable_info { display: inline-block; position: absolute; left: 10px; top: 17px; }
+
+.dataTables_paginate .first span{
+    display: inline-block;
+    vertical-align: top;
+    width: 1.2em;
+    height: 1.2em;
+    background: url(../images/double-left.png) no-repeat center/100%;;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+.dataTables_paginate .previous span{
+    display: inline-block;
+    vertical-align: top;
+    width: 1.2em;
+    height: 1.2em;
+    background: url(../images/back.png) no-repeat center/100%;;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+.dataTables_paginate .next span{
+    display: inline-block;
+    vertical-align: top;
+    width: 1.2em;
+    height: 1.2em;
+    background: url(../images/forward.png) no-repeat center/100%;;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+.dataTables_paginate .last span{
+    display: inline-block;
+    vertical-align: top;
+    width: 1.2em;
+    height: 1.2em;
+    background: url(../images/double-right.png) no-repeat center/100%;;
+    cursor: pointer;
+    text-indent: -999999em;
+}
+
+table{table-layout: fixed; width: 100%; border-collapse: collapse; font-size: 14px; letter-spacing:0px;}
+
+/* type1 - 메인화면 사용*/
+table.type1 thead th{font-size: 0.875rem; color: #87888C;}
+
+table.type1 th, table.type1 td{
+    background-color: inherit;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-top: none;
+    padding: 0.2vw !important;
+    color: #ffff;
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* type2 - 페이지 사용*/
+table.type2{  border-radius: 10px; border-collapse: collapse;}
+
+.activeCursor{cursor: pointer; background: rgba(169, 223, 216, 0.14);}
+
+table.type2 th, table.type2 td{
+    border-top:none !important;
+    padding: 0.5vw !important;
+    color: #ffff;
+    vertical-align: middle;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10)inset;
+    line-height: 1.25rem;
+}
+
+table.type2 th{background-color: #45464d; font-size: 0.9rem; border-bottom: none!important;}
+
+table.type2 td{ font-size: 0.85rem;}
+
+table.type2 th:first-child{border-top-left-radius: 10px; border: none;}
+
+table.type2 th:last-child{border-top-right-radius: 10px; border: none;}
+
+
+table.type2 td > div{display: flex;justify-content: center;}
+
+/* type2 - 모달 사용*/
+table.type3{border-radius: 10px; border-collapse: collapse; border-style: hidden; background-color: rgba(255, 255, 255, 0.1); margin:0 !important;}
+
+table.type3 th, table.type3 td{
+    border-top:none !important;
+    padding: 0.5vw !important;
+    color: #ffff;
+    vertical-align: middle;
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    line-height: 1.25rem;
+}
+
+table.type3 th{font-weight: 900; text-align: center;}
+
+table.type3 td{font-weight: 400; text-align: left; font-size: 0.7vw;}
+
+/* type4 - 레이어 사용*/
+table.type4{margin: 0; height: -webkit-fill-available;}
+
+table.type4 th, table.type4 td {border: none; color: #FFFFFF; padding: 0.1vw !important; vertical-align: middle;}
+
+table.type4 th{font-size: 0.85rem; font-weight: bold; text-align: right;}
+
+table.type4 td{
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-align: left;
+    line-height: 1.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+/* type4-3 - 충전일시, 충전시간 레이어 사용*/
+table.type4-3{width: 85%; margin: 0; height: -webkit-fill-available;}
+
+table.type4-3 th, table.type4-3 td {border: none; color: #FFFFFF; padding: 0.1vw !important; vertical-align: middle;}
+
+table.type4-3 th{font-size: 0.85rem; font-weight: bold; text-align: center;}
+
+table.type4-3 td{
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-align: right;
+    line-height: 1.25rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table tr.linkRow:hover{background-color: #ccc; cursor: pointer;}
+
+/* 말줄임표 */
+.ellipsis{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+
+/* contenteditable = "true" div */
+.editDiv{width: 100%; min-height: 80px; max-height: 300px; overflow-y: auto; border-radius: 5px; padding: 10px; background-color: #202020; text-align: left;}
+
+/* Pagination */
+.pagingWrap{text-align: center; margin: 20px auto 0;}
+.pagingWrap:after{content: ''; display: table; clear: both;}
+.pagingWrap button{float: left; width: 16px; height: 16px; padding: 0; margin: 0 10px;}
+
+ul.paging li{float: left; margin: 0 10px;}
+ul.paging li a{display: block; font-size: 16px; color: #121212;}
+ul.paging li a.on{border-bottom: 1px solid #121212;}
+
+/*******************^********************
+*                 Button                *
+****************************************/
+
+.buttons-excel{ font-size: 1rem!important; line-height: 1.5!important;}
+
+.btn-select+.list-select{ z-index: 1; }
+
+/* Loading */
+.wrap-loading{
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    background: rgba(0,0,0,0.4); /*not in ie */
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+    z-index: 999999;
+}
+.wrap-loading div{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -119px;
+    margin-top: -117px;
+}
+
+.table-loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden{ display:none!important; }
+
+.visibility-hidden{visibility: hidden!important;}
+
+.visibility-visible{visibility: visible!important;}
+
+.req{color: #ff444b; font-size: 0.75rem!important; font-weight: bold; visibility: hidden;}
+
+.btn-top10 {top:10px;}
+
+.btn-position{
+    position: absolute;
+    width: 100%;
+    right: 0px;
+    text-align: -webkit-right;
+    top: 10px;}
+
+.btn-position .right-position {position: absolute; right:0px }
+.btn-position .left-position {position: absolute; right:140px }
+
+/*!*radio button*!*/
+.main label { color: white; font-weight: bold; font-size: 0.8rem; cursor: pointer; user-select: none;padding: 0!important; width: 2rem;}
+.main .form-check-label{color: #fff; font-size: 0.75rem!important;}
+.main .form-check-inline{display: inline-block!important; margin-right: 0;}
+
+.main input[type="radio"] {appearance: none;}
+.main input[type="radio"]::before {
+    transition: all 250ms cubic-bezier(.4,.25,.3,1);
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #718380;
+    border: 0px solid #a9dfd8;
+    font-size: 0;
+    position: absolute;
+    bottom: 30%;
+    left: 0%;
+    transform: translate(-50%, 50%);
+    cursor: pointer;
+}
+
+.main input[type="radio"]::after {
+    transition: all 250ms cubic-bezier(.4,.25,.3,1);
+    content: "";
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #a9dfd8;
+    position: absolute;
+    bottom: 30%;
+    left: 0%;
+    transform: translate(-50%, 50%);
+    cursor: pointer;
+}
+
+input[type='radio']:checked::before {
+    background-color: #21222e;
+    width: 1rem;
+    height: 1rem;
+    border-width: 2px;
+    cursor: pointer;
+}
+input[type='radio']:checked::after {
+    width: 0.5rem;
+    height: 0.5rem;
+    cursor: pointer;
+}
+
+
+/*******************^********************
+*            progressbar                *
+****************************************/
+
+progress{ appearance: none; width: 90% !important; height: 15% !important; display: inline-block!important;}
+
+prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10px;overflow : hidden;  }
+
+.progress-orange::-webkit-progress-value { transition: width 1.0s; border-radius:10px; background: rgba(252, 184, 89, 1);}
+
+.progress-blue::-webkit-progress-value { ransition: width 1.0s; border-radius:10px; background: rgba(169, 223, 216, 1);}
+
+/*******************^********************
+*            iconBox                *
+****************************************/
+
+/*메인 화면 퍼센테이지 박스*/
+.percent-orange-box{
+    width: 90%;
+    height: 70%;
+    font-size: 0.75rem!important;
+    border-radius: 4px;
+    border: 0.5px solid #FCB859;
+    background: rgba(252, 184, 89, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#FCB859;
+}
+
+.percent-blue-box{
+    width: 90%;
+    height: 70%;
+    font-size: 0.75rem!important;
+    border-radius: 4px;
+    border: 0.5px solid #A9DFD8;
+    background: rgba(169, 223, 216, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#A9DFD8;
+}
+
+/*적합 판단 박스*/
+.judgment-box{ border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.7rem 1rem; text-align: center; font-weight: 900;}
+
+/*급속전력 박스*/
+.rapidity-box {border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: #FFFFFF;}
+
+/*상태 박스*/
+.status-red-box {border-radius: 20px; background: rgba(243, 18, 96, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(243, 18, 96, 1);}
+.status-green-box {border-radius: 20px; background: rgba(24, 201, 100, 0.20); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(18, 161, 80, 1);}
+.status-orange-box {border-radius: 20px; background: rgba(245, 165, 36, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(195, 132, 29, 1);}
+
+/*******************^********************
+*            Modal                  *
+****************************************/
+
+.demand-modal{width: 65% !important; max-width: none !important;}
+
+.custom-footer{justify-content: center!important; border-top: none!important;}
+
+.modal .display-column{display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start;}
+
+.modal .display-row{display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+
+.modal-content{ background-color: #171821 !important; color: #FFFFFF;}
+
+.modal-header{border-bottom: none !important;}
+
+.modal-header button > span{color:#FFFFFF;}
+
+.modal-body .content-box{border-radius: 10px; border: 1px solid #000000; padding: 1rem; font-weight: 900; background-color: #21222D;}
+
+.modal-body{height: 60vh!important;}
+
+.dropdown-menu{min-width: 8.7rem!important; text-align: center!important; background-color: #21222e!important; border: 1px solid rgba(169, 223, 216, .25)!important;}
+
+.dropdown-item{color: #FFFFFF!important; padding: 0.6rem 1rem!important;}
+
+.dropdown-item:focus, .dropdown-item:hover {color: #16181b!important; background-color: #a9dfd8!important;}
+
+.btn.focus, .btn:focus, .btn:hover {box-shadow: 0 0 0 0.2rem rgba(169, 223, 216, .25)!important;}
+
+
+@media screen and (min-width: 992px) {
+    .modal-lg, .modal-xl {
+        max-width: 70em !important;
+    }
+}
