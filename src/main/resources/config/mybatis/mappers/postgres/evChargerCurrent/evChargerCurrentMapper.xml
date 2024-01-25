@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="datahub.evChargerCurrent.mappers.pg.EvChargerCurrentMapper">
+    <select id="selectGrid" resultType="gridDto">
+        SELECT data_1000cd                                                                                          as code
+             , concat(x1, ',', y1, ' ', x2, ',', y1, ' ', x2, ',', y2, ' ', x1, ',', y2, ' ', x1, ',', y1)          as area
+        FROM (
+                 SELECT data_1000cd, MIN(data_left) x1, MAX(data_right) x2, MAX(data_top) y1, MIN(data_bottom) y2
+                 FROM "datahubUpgrade".grid_dat
+                 GROUP BY data_1000cd
+             ) a
+    </select>
+</mapper>

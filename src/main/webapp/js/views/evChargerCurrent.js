@@ -1,13 +1,153 @@
+var map;                                            //맵 변수 선언 : 지도 객체
+var view;
+const defaultPoint = [126.5443166,33.5035676];      //초기 중심 좌표
+var legendMap = {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]};
 $(document).ready(() => {
 
-    $('.search-list').click(function() {
+    $(document).on('click', '.search-list', function() {
         $('.layer-group').toggleClass('hidden');
         maybeDisposeRoot("CurrentChart");
         maybeDisposeRoot("CurrentChart1");
         createXyChart("CurrentChart");
         createBarChart("CurrentChart1");
+    });
 
-        function createXyChart(name) {
+    $('#searchButton').click(function() {
+        searchChargers();
+    });
+
+    setMap();
+
+    drawInitLayers();
+    createXyChart("CurrentChart");
+    createBarChart("CurrentChart1");
+
+    // 라디오 선택
+    $("input[name='mapControlRadio']").change(function(e) {
+        selectLayer($(e.currentTarget).attr('id'));
+    });
+
+});
+
+function setMap() {
+    view = new ol.View({ //뷰 생성
+        projection: 'EPSG:3857', //좌표계 설정 (EPSG:3857은 구글에서 사용하는 좌표계)
+        center: new ol.geom.Point(defaultPoint)  //처음 중앙에 보여질 경도, 위도
+            .transform('EPSG:4326', 'EPSG:3857') //GPS 좌표계 -> 구글 좌표계
+            .getCoordinates(), //포인트의 좌표를 리턴함
+        zoom: 16, //초기지도 zoom의 정도값
+        minZoom: 11,
+        maxZoom: 19
+    });
+
+    map = new ol.Map({ //맵 생성
+        target: 'vMap', //html 요소 id 값
+        // layers : [mapLayerBase], //레이어
+        view: view //뷰
+    });
+
+    DatahubMapObject.setMap(map);
+
+    // 기본 layer
+    DatahubMapObject.createVworldMapLayer('Base', 'base', true, 'png');
+    DatahubMapObject.createVworldMapLayer('Satellite', 'satellite', false, 'jpeg');
+    DatahubMapObject.createVworldMapLayer('Hybrid', 'hybrid', false, 'png');
+
+
+    $(".ol-zoom").hide();
+
+    proj4.defs("EPSG:5186", "+proj=tmerc +lat_0=38 +lon_0=127 +k=1 +x_0=200000 +y_0=600000 +ellps=GRS80 +units=m +no_defs");
+    proj4.defs("EPSG:5179", "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=bessel +units=m +no_defs");
+
+    ol.proj.proj4.register(proj4);
+}
+
+function drawInitLayers() {
+    var searchCharger = searchChargers();
+    var setGrid = $.ajax({
+        url: '/selectGrid.json',
+        type: "POST",
+        contentType: "application/json",
+        success: function (res) {
+            var allChargerList = res.allChargerList;
+            var locationList = [];
+            for (var i = 0; i < allChargerList.length; i++) {
+                if (allChargerList[i].location !== undefined && allChargerList[i].location !== '') {
+                    var location = allChargerList[i].location.replace(",", " ").split(" ");
+                    if (location.length > 0) {
+                        locationList.push({x: location[0], y: location[1]});
+                    }
+                }
+            }
+            DatahubMapObject.createPointLayer(locationList, 'heatMapDataLayer', false, '', false);
+
+            if(res.result !== null)
+                DatahubMapObject.setGrid(res.result);
+            drawGrid(DatahubMapObject.grid, DatahubMapObject.layerNameList[1], "52, 139, 226", "legendRange2", false);
+        }, error: function (error) {
+            console.log(error);
+        }
+    });
+
+    $.when(searchCharger, setGrid).done(function () {
+        fnEndLoadingBar();
+        selectLayer(DatahubMapObject.layerNameList[0]);
+    });
+}
+
+function searchChargers() {
+    $.ajax({
+        url: '/searchEvChargers.json',
+        type: "POST",
+        contentType: "application/json",
+        beforeSend: function () {fnStartLoadingBar();},
+        success: function (res) {
+            var result = res.result;
+
+            //마커용 List
+            var locationList = [];
+            //검색 결과용 List
+            var listDiv = '';
+
+            for(var i = 0; i < result.length; i ++) {
+                if (result[i].location !== undefined && result[i].location !== '') {
+                    var location = result[i].location.replace(",", " ").split(" ");
+                    if (location.length > 0) {
+                        locationList.push({x: location[0], y: location[1]});
+                    }
+
+                    listDiv += '<div class="search-list"><div class="first"><div class="left-txt">';
+                    listDiv += result[i].detail + '</div><div class="right-txt"><div class="rapidity-box">급속 50kw</div>';
+                    listDiv += '<div class="status-green-box">정상</div></div></div><div class="last">';
+                    listDiv += result[i].address + '</div></div>';
+                }
+            }
+            DatahubMapObject.createPointLayer(locationList, DatahubMapObject.layerNameList[0], true, '/images/chargers/charger-green.png', false);
+            $('.search-list-form').html(listDiv);
+            $("#searchListCount").text(result.length.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
+
+        }, error: function(error) {
+            console.log(error);
+        }
+    });
+}
+
+function selectLayer(radioId) {
+
+    switch (radioId) {
+        case 'locationRadio' :
+            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(true);
+            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(false);
+            break;
+        case 'distributionRadio' :
+            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(false);
+            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(true);
+            break;
+        default : break;
+    }
+}
+
+     function createXyChart(name) {
             let root = createRoot(name);
 
             let chart = root.container.children.push(
@@ -343,5 +483,65 @@ $(document).ready(() => {
 
             legend.data.setAll(chart.series.values);
         }
+
+function drawGrid(gridData, layerName, color, legendKey, visible){
+
+    // 격자 배열
+    var gridFeatures = [];
+
+    // 각 좌표를 기반으로 격자 생성
+    gridData.forEach(function (data) {
+        var polygon = data.area.split(" ");
+
+        if(polygon.length === 5) {
+
+            var gridCell = new ol.geom.Polygon([[
+                ol.proj.transform(polygon[0].split(",").map(arg => parseFloat(arg)), 'EPSG:5179', 'EPSG:3857'),
+                ol.proj.transform(polygon[1].split(",").map(arg => parseFloat(arg)), 'EPSG:5179', 'EPSG:3857'),
+                ol.proj.transform(polygon[2].split(",").map(arg => parseFloat(arg)), 'EPSG:5179', 'EPSG:3857'),
+                ol.proj.transform(polygon[3].split(",").map(arg => parseFloat(arg)), 'EPSG:5179', 'EPSG:3857'),
+                ol.proj.transform(polygon[0].split(",").map(arg => parseFloat(arg)), 'EPSG:5179', 'EPSG:3857')
+            ]]);
+
+            var extent = gridCell.getExtent();
+            var gridFeature = new ol.Feature({
+                geometry: gridCell,
+                zIndex: 3,
+            });
+
+            var pointCount = DatahubMapObject.getLayer("heatMapDataLayer").getSource().getFeaturesInExtent(extent).length;
+
+            var polygonStyle = [
+                // 스타일 지정
+                new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#aaa',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(' + color + ',' + calculateRangeOpacity(legendKey, pointCount) + ')' // 포인트 개수에 따라 투명도 조절
+                    })
+                })];
+            gridFeature.setStyle(polygonStyle);
+            gridFeatures.push(gridFeature);
+        }
     });
-})
+
+    DatahubMapObject.createPolygonLayer(layerName, gridFeatures, visible);
+}
+function calculateRangeOpacity(legendKey, value) {
+    var rangeList = legendMap[legendKey];
+
+    let opacity = 0;
+
+    if(value > 0) {
+        switch (true) {
+            case (value >= rangeList[0]) : opacity = 0.6; break;
+            case (value < rangeList[0] && value >= rangeList[1]) : opacity = 0.45; break;
+            case (value < rangeList[1] && value >= rangeList[2]) : opacity = 0.3; break;
+            default : opacity = 0.15; break;
+        }
+    }
+
+    return opacity;
+}

@@ -7,10 +7,23 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
+<!-- 지도 관련 -->
+<link rel="stylesheet" href="<c:url value='/css/plugins/openlayer/ol.css' />">
+<script src="<c:url value='/js/plugins/openlayer/ol.js'/>"></script>
+<script src="<c:url value='/js/plugins/openlayer/proj4.js'/>"></script>
+<script src="<c:url value='/js/plugins/openlayer/DatahubMapObject.js'/>"></script>
+
 <script src="<c:url value="/js/views/evChargerCurrent.js"/>"></script>
 <link rel="stylesheet" href="<c:url value="/css/evChargerCurrent.css" />">
+<style>
+    .map {position: relative;}
+    .layer-group div {z-index: 30;}
+    .layer-radio-form {position: absolute; left: 0; top: 0;  height: 30px; padding-left: 10px;}
+    #vMap {left: 0; top: 0; width: 100%; height: 100%; position: absolute;}
+    .rowWrap .left .middle .search-list > .first > .left-txt {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 200px;}
+</style>
 <div class="rowWrap">
-<%--    검색--%>
+<%-- 검색 --%>
     <div class="left">
         <div class="top w100p h14p">
             <div class="display-column justify-content-evenly h100p">
@@ -19,7 +32,7 @@
                         <span class="icon_search w10p h100p"></span>
                         <input type="text" class="wh100" placeholder="검색어를 입력해주세요" />
                     </div>
-                    <button type="button" class="w20p h70p btn-black font-white">Search</button>
+                    <button type="button" class="w20p h70p btn-black font-white" id="searchButton">Search</button>
                 </div>
                 <div class="display-row w100p h30p ellipsis justify-content-start">
                     <button type="button" class="btn-white tagBtn">별빛누리공원<span class="icon_cross"></span></button>
@@ -27,150 +40,32 @@
             </div>
         </div>
         <div class="middle scroll">
-            <div class="search-list-form">
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-                <%--list--%>
-                <div class="search-list">
-                    <div class="first">
-                        <div class="left-txt">별빛누리공원</div>
-                        <div class="right-txt">
-                            <div class="rapidity-box">금속 50kw</div>
-                            <div class="status-green-box">정상</div>
-                        </div>
-                    </div>
-                    <div class="last"> 제주특별자치도 제주시 선돌목동길 60, 본관 주차장</div>
-                </div>
-            </div>
+            <div class="search-list-form"></div>
         </div>
         <%--하단바--%>
         <div class="bottom">
-            <div class="font-white font-20">1,535 results</div>
+            <div class="font-white font-20"><span id="searchListCount"></span> results</div>
         </div>
     </div>
     <%--    지도화면--%>
     <div class="right">
         <div class="font-white font-20 w100p h5p pd1rme">EV Charger Location Info</div>
         <div class="map w100p h95p">
+            <div id="vMap"></div>
+            <div class="layer-radio-form">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="mapControlRadio" id="locationRadio" checked>
+                    <label class="form-check-label" for="locationRadio">
+                        EV 충전기 위치
+                    </label>
+                </div>
+                <div class="form-check form-check-inline ">
+                    <input class="form-check-input" type="radio" name="mapControlRadio" id="distributionRadio">
+                    <label class="form-check-label" for="distributionRadio">
+                        EV 충전기 설치 대수 대비 이용시간
+                    </label>
+                </div>
+            </div>
             <div class="layer-group hidden">
                 <div class="gray-layer w100p h50p">
                     <div class="display-column align-items-start wh100">
@@ -274,6 +169,68 @@
                     <div class="display-column align-items-start wh100 h100p">
                         <div class="font-white font-18">EV Charger USE Time/Count</div>
                         <div class="CurrentChart" id="CurrentChart1"></div> <%--차트영역--%>
+                    </div>
+                </div>
+            </div>
+            <div class="layer-group" style="display: none;">
+                <div class="gray-layer w100p h50p">
+                    <div class="display-column align-items-start wh100">
+                        <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보</div>
+                        <div class="display-column h95p">
+                            <table class="table type4">
+                                <tr>
+                                    <th>충전기 대수 대비 이용시간(분)</th>
+                                    <td>42.9</td>
+                                </tr>
+                                <tr>
+                                    <th>건별 평균 이용시간(분)</th>
+                                    <td>23</td>
+                                </tr>
+                            </table>
+                            <div class="line"></div>
+                            <table class="table type4">
+                                <tr>
+                                    <th colspan="3">충전기 대수(대)</th>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <th>총 이용시간(분)</th>
+                                    <td>1,288</td>
+                                    <td>총 이용횟수</td>
+                                    <td>154</td>
+                                </tr>
+                            </table>
+                            <div class="line"></div>
+                            <table class="table type4-3">
+                                <tr>
+                                    <td colspan="4" class="font-10">최근 3개월 이용 현황</td>
+                                </tr>
+                                <tr>
+                                    <th>충전 일시</th>
+                                    <td>2023.12.11.</td>
+                                    <th>충전 시간</th>
+                                    <td>128분</td>
+                                </tr>
+                                <tr>
+                                    <th>충전 일시</th>
+                                    <td>2023.12.11.</td>
+                                    <th>충전 시간</th>
+                                    <td>128분</td>
+                                </tr>
+                                <tr>
+                                    <th>충전 일시</th>
+                                    <td>2023.12.11.</td>
+                                    <th>충전 시간</th>
+                                    <td>128분</td>
+                                </tr>
+                                <tr>
+                                    <th>충전 일시</th>
+                                    <td>2023.12.11.</td>
+                                    <th>충전 시간</th>
+                                    <td>128분</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
