@@ -31,12 +31,12 @@ public class ErrorController {
         try {
             int statusCode = Integer.parseInt(error_code);
             switch (statusCode) {
-                case 404 : message = "페이지를 찾을 수 없습니다."; break;
-                case 500 : message = "서버에 오류가 발생하였습니다."; break;
-                default: message = "알 수 없는 오류가 발생하였습니다."; break;
+                case 404 : message = "페이지를 찾을 수 없습니다. 관리자에게 문의 바랍니다."; break;
+                case 500 : message = "서버에 오류가 발생하였습니다. 관리자에게 문의 바랍니다."; break;
+                default: message = "알 수 없는 오류가 발생하였습니다. 관리자에게 문의 바랍니다."; break;
             }
         } catch (Exception e) {
-            message = "기타 오류가 발생하였습니다.";
+            message = "기타 오류가 발생하였습니다. 관리자에게 문의 바랍니다.";
         } finally {
             model.addAttribute("message",message);
             model.addAttribute("statusCode",request.getAttribute("javax.servlet.error.status_code"));
@@ -50,6 +50,6 @@ public class ErrorController {
                 LOG.error("key : "+entry.getKey()+", value : "+entry.getValue());
             }
         }
-        return "error/error";
+        return "error";
     }
 }

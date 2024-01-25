@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserService {
         userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
         userMapper.updateUser(userDto);
     }
+
+    @Override
+    public void deleteUser(UserDto userDto) throws Exception {
+        userMapper.deleteUser(userDto);
+    }
 }

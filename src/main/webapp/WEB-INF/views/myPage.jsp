@@ -26,20 +26,20 @@
                     <div class="joinFrame ">
                         <label class="font-white font-s14 h25p">현재 비밀번호</label>
                         <input type="password" class="inputBox w100p h55p font-opacity" placeholder="비밀번호" name="userPwdNow"  maxlength="20"/>
-                        <div class="req userPwd h20p"></div>
+                        <div class="req userPwdNow h20p"></div>
                         <img src="../images/icon_eyes.png" class="myPage_image1" onclick="openPassword('userPwdNow','myPage_image1')"/>
                     </div>
                     <div class="joinFrame ">
                         <label class="font-white font-s14 h25p">새 비밀번호</label>
                         <input type="password" class="inputBox w100p h55p font-opacity" placeholder="비밀번호" name="userPwd"  maxlength="20"/>
                         <div class="req userPwd h20p"></div>
-                        <img src="../images/icon_eyes.png" class="myPage_image2" onclick="openPassword('userPwd')"/>
+                        <img src="../images/icon_eyes.png" class="myPage_image2" onclick="openPassword('userPwd','myPage_image2')"/>
                     </div>
                     <div class="joinFrame ">
                         <label class="font-white font-s14 h25p">새 비밀번호 확인</label>
                         <input type="password" class="inputBox w100p h55p font-opacity" placeholder="비밀번호 확인" name="userPwCheck" maxlength="20"/>
                         <div class="req userPwCheck h20p"></div>
-                        <img src="../images/icon_eyes.png" class="myPage_image3" onclick="openPassword('userPwCheck')"/>
+                        <img src="../images/icon_eyes.png" class="myPage_image3" onclick="openPassword('userPwCheck','myPage_image3')"/>
                     </div>
                     <div class="joinFrame ">
                         <label class="font-white font-s14 h25p">이름</label>
@@ -55,7 +55,7 @@
                 </form>
                 <div class="w100p h20p joinBtn">
                     <button type="button" class="loginBtn p5 mt20 font-white w30p h50p" id="update_user">수정</button>
-                    <button type="submit" class="loginBtn p5 mt20 font-white w30p h50p">회원탈퇴</button>
+                    <button type="submit" class="loginBtn p5 mt20 font-white w30p h50p" id="delete_user">회원탈퇴</button>
                 </div>
             </div>
         </div>

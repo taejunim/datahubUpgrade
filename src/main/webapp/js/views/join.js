@@ -41,6 +41,7 @@ function fnDataValidation(){
 		type: "POST",
 		url: "/selectUser.json",
 		data: JSON.stringify({ userId: $('input[name=userId]').val() }),
+		contentType: "application/json",
 		processData: false,
 		success: function (data, textStatus, jqXHR){
 			// 등록된 아이디 false
@@ -67,6 +68,7 @@ function fnInsert(strData) {
 		type: "POST",
 		url: "/join.json",
 		data: JSON.stringify(strData),
+		contentType: "application/json",
 		success: function (data, textStatus, jqXHR){
 			if (data.result === "success") {
 				MsgBox.Alert('join', function (){

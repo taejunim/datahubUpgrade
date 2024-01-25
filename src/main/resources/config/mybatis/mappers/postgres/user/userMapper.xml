@@ -30,4 +30,10 @@
             user_phone = #{userPhone}
         where user_id = #{userId}
     </update>
+    <delete id="deleteUser" parameterType="userDto">
+        delete
+        from "datahubUpgrade".dh_user
+        where 1 = 1
+        and user_id = #{userId}
+    </delete>
 </mapper>

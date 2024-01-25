@@ -12,4 +12,6 @@ public interface UserMapper {
     int userJoin(UserDto userDto) throws Exception;
 
     void updateUser(UserDto userDto) throws Exception;
+
+    void deleteUser(UserDto userDto) throws Exception;
 }

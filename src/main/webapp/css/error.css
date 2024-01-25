@@ -1,0 +1,24 @@
+.row {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.page-error{
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+    margin-top: -25px;
+}
+.details {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.details a:hover {
+    text-decoration: none;
+    color: #007bff;
+}

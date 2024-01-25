@@ -162,4 +162,30 @@ public class UserController {
         }
         return result;
     }
+
+    @RequestMapping(value = "/deleteUser.json",method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String,Object> deleteUser(@RequestBody Map<String,Object> userDto,HttpServletRequest request) {
+        Map<String,Object> result = new HashMap<>();
+
+        HttpSession session = request.getSession();
+
+        UserDto user = new UserDto();
+        user.setUserId((String) userDto.get("userId"));
+        user.setUserPwd((String) userDto.get("userPwdNow"));                                                // 현재 비밀번호 검증
+
+        try {
+            UserDto userResult = userService.userLogin(user);
+            if (Objects.isNull(userResult)) {
+                result.put("message","not found");
+                return result;
+            }
+            userService.deleteUser(userResult);
+            session.invalidate();
+            result.put("message","success");
+        } catch (Exception e) {
+            result.put("message","fail");
+        }
+        return result;
+    }
 }
