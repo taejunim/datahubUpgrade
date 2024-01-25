@@ -75,7 +75,7 @@
                             <table class="table type4">
                                 <tr>
                                     <th>충전기 명</th>
-                                    <td>별빛누리공원</td>
+                                    <td id="chargerName"></td>
                                     <th>업체</th>
                                     <td>중앙제어</td>
                                 </tr>
@@ -91,7 +91,7 @@
                                 </tr>
                                 <tr>
                                     <th>도로명 주소</th>
-                                    <td colspan="3">제주특별자치도 제주시 삼봉로 79(도련 2동)</td>
+                                    <td colspan="3" id="chargerAddress"></td>
                                 </tr>
                             </table>
                             <div class="line"></div>

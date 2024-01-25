@@ -58,7 +58,6 @@ function fnDataValidation(){
 		},
 		async: false
 	});
-
 	return false;
 }
 

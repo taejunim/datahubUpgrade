@@ -4,13 +4,7 @@ const defaultPoint = [126.5443166,33.5035676];      //초기 중심 좌표
 var legendMap = {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]};
 $(document).ready(() => {
 
-    $(document).on('click', '.search-list', function() {
-        $('.layer-group').toggleClass('hidden');
-        maybeDisposeRoot("CurrentChart");
-        maybeDisposeRoot("CurrentChart1");
-        createXyChart("CurrentChart");
-        createBarChart("CurrentChart1");
-    });
+
 
     $('#searchButton').click(function() {
         searchChargers();
@@ -28,6 +22,16 @@ $(document).ready(() => {
     });
 
 });
+
+function searchListClick(index) {
+    $('.layer-group').toggleClass('hidden');
+    $('#chargerName').text($('[data-nameIndex='+index+']').text());
+    $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
+    maybeDisposeRoot("CurrentChart");
+    maybeDisposeRoot("CurrentChart1");
+    createXyChart("CurrentChart");
+    createBarChart("CurrentChart1");
+}
 
 function setMap() {
     view = new ol.View({ //뷰 생성
@@ -116,9 +120,9 @@ function searchChargers() {
                         locationList.push({x: location[0], y: location[1]});
                     }
 
-                    listDiv += '<div class="search-list"><div class="first"><div class="left-txt">';
+                    listDiv += '<div class="search-list" onclick="searchListClick('+i+')"><div class="first"><div class="left-txt" data-nameIndex='+i+'>';
                     listDiv += result[i].detail + '</div><div class="right-txt"><div class="rapidity-box">급속 50kw</div>';
-                    listDiv += '<div class="status-green-box">정상</div></div></div><div class="last">';
+                    listDiv += '<div class="status-green-box">정상</div></div></div><div class="last" data-addressIndex="'+i+'">';
                     listDiv += result[i].address + '</div></div>';
                 }
             }
