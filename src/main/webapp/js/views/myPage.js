@@ -16,44 +16,35 @@ $(document).ready(() => {
         let userPwCheck = $('input[name=userPwCheck]').val();
         var strData = $("#joinForm").serializeObject();
         // validation
+        if (!isStringValue(userPwdNow)) {
+            $('.userPwdNow').addClass("visibility-visible").text('* 현재 비밀번호를 입력해주세요.');
+            $(this).focus();
+            return false;
+        }
         if (!isPassword($('input[name=userPwd]').val())) {
             $('.userPwd').addClass("visibility-visible").text('* 8 ~ 16자 영문, 숫자 조합을'
                 + ' 입력해주세요.');
             $(this).focus();
             return false;
         }
-
         if ($('input[name=userPwd]').val() != $('input[name=userPwCheck]').val()) {
             $('.userPwCheck').addClass("visibility-visible").text('* 입력하신 비밀번호와 일치하지 않습니다.');
             $(this).focus();
             return false;
         }
-
         if (!isCorrect($('input[name=userName]').val())) {
             $('.userName').addClass("visibility-visible").text('* 한글만 입력만 입력해주세요');
             $(this).focus();
             return false;
         }
-
         if ($('input[name=userPhone]').val().length < 10) {
             $('.userPhone').addClass("visibility-visible").text('* 다시 확인하여 주세요.');
             $(this).focus();
             return false;
         }
-        if (!isStringValue(userPwdNow)) {
-            alert("현재 비밀번호를 입력해주세요.");
-            return false;
-        }
-        if (!isStringValue(userPwd) || !isStringValue(userPwCheck)) {
-            alert("비밀번호 또는 비밀번호확인을 입력해주세요.");
-            return false;
-        }
-        if(!pwdEq(userPwd,userPwCheck)) {
-            alert("비밀번호와 비밀번호확인이 일치하지 않습니다.");
-            return false;
-        }
         if (pwdEq(userPwdNow,userPwd)) {
-            alert("현재 비밀번호와 다르게 변경해주세요.")
+            $('.userPwd').addClass("visibility-visible").text('* 현재 비밀번호와 다르게 입력해주세요.');
+            $(this).focus();
             return false;
         }
         MsgBox.Confirm("updateAsk", () => {
@@ -82,7 +73,8 @@ $(document).ready(() => {
         let userPwdNow = $('input[name=userPwdNow]').val();
         var strData = $("#joinForm").serializeObject();
         if (!isStringValue(userPwdNow)) {
-            alert("현재 비밀번호를 입력해주세요.");
+            $('.userPwdNow').addClass("visibility-visible").text('* 현재 비밀번호를 입력해주세요.');
+            $(this).focus();
             return false;
         }
         MsgBox.Confirm("deleteAsk",() => {
@@ -99,7 +91,7 @@ $(document).ready(() => {
                     } else if (data.message === "not found"){
                         $('.userPwdNow').addClass("visibility-visible").text('* 비밀번호가 일치하지 않습니다.');
                     } else {
-                        alert("탈퇴가 완료되지 않았습니다. 잠시 후 다시 시도해주세요.");
+                        MsgBox.Alert("error");
                     }
                 },
                 async: false
