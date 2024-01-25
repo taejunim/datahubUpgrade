@@ -475,8 +475,6 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 
 .modal-body .content-box{border-radius: 10px; border: 1px solid #000000; padding: 1rem; font-weight: 900; background-color: #21222D;}
 
-.modal-body{height: 60vh!important;}
-
 .dropdown-menu{min-width: 8.7rem!important; text-align: center!important; background-color: #21222e!important; border: 1px solid rgba(169, 223, 216, .25)!important;}
 
 .dropdown-item{color: #FFFFFF!important; padding: 0.6rem 1rem!important;}

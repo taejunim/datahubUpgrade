@@ -41,7 +41,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body" style="text-align: center;">
+            <div class="modal-body" style="text-align: center;height: 60vh;">
                 <div class="font-14 pd1rme text-right font-gray"><span class="font-14" id="codeText"></span>은 금일 기준</div>
                 <table class="table type1 wh100 datatable"></table>
             </div>
