@@ -26,7 +26,7 @@
                                 <label  class="group-text" for="">시</label>
                             </div>
                             <div class="w60p">
-                                <select id="searchRegion" class="form-control" data-minimum-results-for-search="Infinity">
+                                <select id="searchRegion" class="form-control" >
                                     <option value="">전체</option>
                                     <option value="01">제주시</option>
                                     <option value="02">서귀포시</option>
@@ -43,7 +43,7 @@
                                 <label  class="group-text" for="">건물 용도</label>
                             </div>
                             <div class="w60p">
-                                <select id="searchBuildingPurposeCode" class="form-control" data-minimum-results-for-search="Infinity">
+                                <select id="searchBuildingPurposeCode" class="form-control">
                                     <option value="">전체</option>
                                     <option value="02000">공동주택</option>
                                     <option value="10000">교육연구시설</option>
@@ -61,7 +61,7 @@
                                 <label  class="group-text" for="">적합/부적합</label>
                             </div>
                             <div class="w60p">
-                                <select id="searchSuitability" class="form-control" data-minimum-results-for-search="Infinity">
+                                <select id="searchSuitability" class="form-control">
                                     <option value="">전체</option>
                                     <option value="Y">적합</option>
                                     <option value="N">부적합</option>

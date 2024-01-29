@@ -8,7 +8,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
 <script type="text/javascript" src="/js/views/main.js"></script>
-
+<script>
+	var totalCnt ='${totalBuilding.totalCnt}';
+	var normalCnt ='${totalBuilding.yCnt}';
+	var abnomalCnt ='${totalBuilding.nCnt}';
+</script>
 <div class="main w100p h93p">
     <div class="left">
         <div class="card">
@@ -140,20 +144,20 @@
         <div class="card  display-row gap0" style="height: 16vw;">
             <div class="display-column w80p h100p">
                 <div class="font-white font-18">EV 주차장 수요 대상 건물 적합/부적합</div>
-                <div id="mainChart" class="chartdiv"></div><%--차트영역--%>
+                <div id="mainChart" class="chartdiv"></div>
             </div>
             <div class="display-column w20p gap03v">
                 <div class="display-row gap0 wh100 text-right">
                     <div class="font-lightGray font-14 w45p">총 건물</div>
-                    <div class="font-lightGray font-14 font-bold w55p">7000 대</div>
+                    <div class="font-lightGray font-14 font-bold w55p">${totalBuilding.totalCnt} 대</div>
                 </div>
                 <div class="display-row gap0 wh100 text-right">
                     <div class="font-lightGray font-14 w45p">적합</div>
-                    <div class="font-lightGray font-14 font-bold w55p">4000 대</div>
+                    <div class="font-lightGray font-14 font-bold w55p">${totalBuilding.yCnt} 대</div>
                 </div>
                 <div class="display-row gap0 wh100 text-right">
                     <div class="font-lightGray font-14 w45p">부적합</div>
-                    <div class="font-lightGray font-14 font-bold w55p ">3000 대</div>
+                    <div class="font-lightGray font-14 font-bold w55p ">${totalBuilding.nCnt} 대</div>
                 </div>
             </div>
         </div>

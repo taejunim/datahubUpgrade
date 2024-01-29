@@ -27,16 +27,6 @@ $(document).ready(function() {
     return obj;
   };
 
-  /*******************^********************
-   *             Select Custom             *
-   ****************************************/
-  $('select').select2({
-    theme: 'bootstrap4',
-    width: 'element',
-    dropdownAutoWidth: false,
-    placeholder: "전체"
-  });
-
   /*************************************
    *             Date Picker            *
    *************************************/
