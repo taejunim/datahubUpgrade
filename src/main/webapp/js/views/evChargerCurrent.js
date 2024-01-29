@@ -2,13 +2,8 @@ var map;                                            //맵 변수 선언 : 지도
 var view;
 const defaultPoint = [126.5443166,33.5035676];      //초기 중심 좌표
 var legendMap = {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]};
+var dataTable;
 $(document).ready(() => {
-
-
-
-    $('#searchButton').click(function() {
-        searchChargers();
-    });
 
     setMap();
 
@@ -16,11 +11,24 @@ $(document).ready(() => {
     createXyChart("CurrentChart");
     createBarChart("CurrentChart1");
 
-    // 라디오 선택
-    $("input[name='mapControlRadio']").change(function(e) {
-        selectLayer($(e.currentTarget).attr('id'));
+    drawTable();
+
+    //Search
+    $('#searchButton').click(function() {
+        searchChargers();
     });
 
+    // 라디오 선택
+    $("input[name='mapControlRadio']").change(function(e) {
+        var selectLayerName = $(e.currentTarget).attr('id').replace('Radio','') + 'Layer';
+        DatahubMapObject.controlLayerHandler(selectLayerName);
+    });
+
+    // 지도 클릭 이벤트 정의
+    map.on("click", function (evt) {
+        var pixel = evt.pixel;
+        mapClickEvent(pixel);
+    });
 });
 
 function searchListClick(index) {
@@ -46,7 +54,6 @@ function setMap() {
 
     map = new ol.Map({ //맵 생성
         target: 'vMap', //html 요소 id 값
-        // layers : [mapLayerBase], //레이어
         view: view //뷰
     });
 
@@ -54,9 +61,6 @@ function setMap() {
 
     // 기본 layer
     DatahubMapObject.createVworldMapLayer('Base', 'base', true, 'png');
-    DatahubMapObject.createVworldMapLayer('Satellite', 'satellite', false, 'jpeg');
-    DatahubMapObject.createVworldMapLayer('Hybrid', 'hybrid', false, 'png');
-
 
     $(".ol-zoom").hide();
 
@@ -95,7 +99,7 @@ function drawInitLayers() {
 
     $.when(searchCharger, setGrid).done(function () {
         fnEndLoadingBar();
-        selectLayer(DatahubMapObject.layerNameList[0]);
+        DatahubMapObject.controlLayerHandler(DatahubMapObject.layerNameList[0]);
     });
 }
 
@@ -134,21 +138,6 @@ function searchChargers() {
             console.log(error);
         }
     });
-}
-
-function selectLayer(radioId) {
-
-    switch (radioId) {
-        case 'locationRadio' :
-            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(true);
-            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(false);
-            break;
-        case 'distributionRadio' :
-            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(false);
-            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(true);
-            break;
-        default : break;
-    }
 }
 
      function createXyChart(name) {
@@ -533,6 +522,49 @@ function drawGrid(gridData, layerName, color, legendKey, visible){
 
     DatahubMapObject.createPolygonLayer(layerName, gridFeatures, visible);
 }
+
+function mapClickEvent(pixel) {
+    // 클릭한 픽셀정보로  feature 체크
+    map.forEachFeatureAtPixel(pixel, function (feature, layer) {
+        if(layer.values_.title === DatahubMapObject.layerNameList[1]) {
+
+            var selectCell   = feature.values_.geometry.extent_;
+
+            var gridCell = new ol.geom.Polygon([[
+                [selectCell[0], selectCell[1]],
+                [selectCell[2], selectCell[1]],
+                [selectCell[2], selectCell[3]],
+                [selectCell[0], selectCell[3]],
+                [selectCell[0], selectCell[1]]
+            ]]);
+
+            var gridFeature = new ol.Feature({
+                id_: DatahubMapObject.selectCellFeatureId,
+                geometry: gridCell,
+                zIndex: 5
+            });
+
+            var polygonStyle = [
+                // 스타일 지정
+                new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#666',
+                        width: 2
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'rgba(255,0,0,' + 0.4 + ')' // 포인트 개수에 따라 투명도 조절
+                    })
+                })];
+            gridFeature.setStyle(polygonStyle);
+            var gridFeatures = [gridFeature];
+            if( DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().getFeatureById(DatahubMapObject.selectCellFeatureId) !== null)
+                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().removeFeature(DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().getFeatureById(DatahubMapObject.selectCellFeatureId));
+            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().addFeatures(gridFeatures);
+            //DatahubMapObject.createPolygonLayer('test', gridFeatures, true);
+        }
+    });
+}
+
 function calculateRangeOpacity(legendKey, value) {
     var rangeList = legendMap[legendKey];
 
@@ -548,4 +580,79 @@ function calculateRangeOpacity(legendKey, value) {
     }
 
     return opacity;
+}
+
+function drawTable() {
+
+    datatable = $('#dataTable2').DataTable({
+        responsive: true,
+        pageLength: 5,
+        destroy: true,
+        serverSide: true,
+        processing: true,
+        lengthChange: false,      // 상단 엔트리 개수 설정 비활성화
+        searching: false,         // 검색 기능 숨기기
+        ordering: false,          // 정렬 기능 숨기기
+        info: true,              //하단 페이지 수 비활성화
+        paging: true,            // 페이징 기능 숨기기
+        pagingType: "full_numbers",
+        bPaginate: true,
+        infoCallback : function (settings, start, end, max, total, pre){
+            return " 총 " + max + " 개소";
+        },
+        order: [ [ 1, 'desc' ] ],     //order : [ [ 열 번호, 정렬 순서 ], ... ],
+        language: {
+            "decimal" : "",
+            "emptyTable" : "데이터가 없습니다.",
+            "info" : "_START_ - _END_ (총 _TOTAL_ 개)",
+            "infoEmpty" : "0개",
+            "infoFiltered" : "(전체 _MAX_ 개 중 검색결과)",
+            "infoPostFix" : "",
+            "thousands" : ",",
+            "lengthMenu" : "_MENU_ 개씩 보기",
+            "loadingRecords" : "로딩중...",
+            "processing" : "불러오는중...",
+            "search" : "검색 : ",
+            "zeroRecords" : "검색된 데이터가 없습니다.",
+            "aria" : {
+                "sortAscending" : " :  오름차순 정렬",
+                "sortDescending" : " :  내림차순 정렬"
+            },
+            "paginate": {
+                "first": "<span></span>",
+                "next": "<span></span>",
+                "previous": "<span></span>",
+                "last": "<span></span>"
+            }
+        },
+        ajax: {
+            url: '/getBuildings.json',
+            type: 'POST',
+            data: function (d) {
+                d.searchRegion     = $('#searchRegion').val();
+                return d;
+            },
+            error: function () {}
+        },
+        columns: [
+            {title : "건물명", data: "buildingName"},
+            {title : "적합 판단", data: "suitability"},
+            {title : "지역", data: "region"}
+        ],
+        columnDefs:[
+            {targets:[0], width:"60%", padding:"0px"}
+            ,{targets:[1], width:"20%", padding:"0px"}
+            ,{targets:[2], width:"20%", padding:"0px"}
+        ],
+        fnRowCallback: function(nRow, aData, iDisplayIndex) {
+            $(nRow).mouseover(function () {
+                $(nRow, 'td').addClass("activeCursor");
+            });
+
+            $( nRow).mouseout(function() {
+                $(nRow).removeClass("activeCursor");
+            });
+        }
+
+    })
 }

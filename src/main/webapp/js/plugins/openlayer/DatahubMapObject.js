@@ -2,7 +2,7 @@ var vWorldKey = '7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF';
 var DatahubMapObject = {
     map: null,
     grid: null,
-    chargerMarkerList: [],
+    selectCellFeatureId: 'selectCell',
     layerNameList: ["locationLayer", "distributionLayer"],
     chargerMarkerList: ["/images/chargers/charger-green.png", '/images/chargers/charger-yellow.png', '/images/chargers/charger-red.png', '/images/chargers/charger-grey.png'],
     setMap: (map) => {
@@ -56,94 +56,17 @@ var DatahubMapObject = {
         });
         DatahubMapObject.map.addLayer(polygonLayer);
     },
-    createPolygonLayer2: (object, lyrEnName, visible, imgClass) => {
-
-        var polygonLayer = new ol.layer.Vector({
-            source : new ol.source.Vector(),
-            title : lyrEnName,
-            visible : visible
-        });
-        DatahubMapObject.map.addLayer(polygonLayer);
-
-        var styleSelector = document.querySelector('.'+ imgClass);
-
-        var polygonStyle = [
-            // 스타일 지정
-            new ol.style.Style({
-                stroke: new ol.style.Stroke({
-                    color: styleSelector !== undefined ? getComputedStyle(styleSelector).color : 'blue',
-                    width: 1
-                }),
-                fill: new ol.style.Fill({
-                    color: styleSelector !== undefined ? getComputedStyle(styleSelector).fill : 'rgba(0,0,255,0.1)'
-                })
-            })];
-
-        var polygonList = object.polygonList;
-        for(var i = 0; i < polygonList.length; i++) {
-            var polygonFeature = new ol.Feature({
-                geometry: new ol.geom.Polygon([polygonList[i].polygon]),
-                zIndex: 3,
-                pnu: polygonList[i].pnu,
-                buldNm: polygonList[i].buldNm,
-                buldDongNm: polygonList[i].buldDongNm,
-                groundFloorCo: polygonList[i].groundFloorCo,
-                undgrndFloorCo: polygonList[i].undgrndFloorCo,
-                totParkngCo: polygonList[i].totParkngCo,
-                bbox: polygonList[i].bbox,
-                prmisnDe: polygonList[i].prmisnDe,
-                useConfmDe: polygonList[i].useConfmDe
-            });
-            polygonFeature.setStyle(polygonStyle);
-
-            DatahubMapObject.getLayer(lyrEnName).getSource().addFeature(polygonFeature);
-        }
-
-        if(typeof twLayers !== 'undefined' && !twLayers.includes(lyrEnName)) twLayers.push(lyrEnName);
-    },
-    createMultiLayer: (object, lyrEnName, visible, imgClass, markerImageSrc) => {
-        var multiSource =  new ol.source.Vector({features: DatahubMapObject.makePolygonSource(object, imgClass)});
-
-        var polygonLayer = new ol.layer.Vector({
-            source : multiSource,
-            title : lyrEnName,
-            visible : visible
-        });
-
-        if(object.markerList.length > 0)
-            polygonLayer.getSource().addFeatures(NamuLayer.makePointSource(object.markerList, lyrEnName, visible, markerImageSrc));
-
-
-        DatahubMapObject.map.addLayer(polygonLayer);
-        if(typeof twLayers !== 'undefined' && !twLayers.includes(lyrEnName)) twLayers.push(lyrEnName);
-
-    },
-    layerCheckHandler: (target) => {
-        var selectLayer = NamuLayer.getLayer(target);
-        selectLayer.setVisible($("#chk" + target).is(':checked'));
-
-        if ($("#chk" + target).is(':checked')) {
-            if (target == "HybridMap") {
-                DatahubMapObject.getLayer("SatelliteMap").setVisible(true);
-            }
-        } else {
-            if (target == "HybridMap") {
-                DatahubMapObject.getLayer("SatelliteMap").setVisible($("#chkSatelliteMap").is(':checked'));
-            } else if (target == "SatelliteMap") {
-                DatahubMapObject.getLayer("SatelliteMap").setVisible($("#chkHybridMap").is(':checked'));
-            }
-        }
-    },
     controlLayerHandler: (layerName) => {
-        if (layerName == "HybridMap") {
-            DatahubMapObject.getLayer("SatelliteMap").setVisible(true);
-            DatahubMapObject.getLayer("HybridMap").setVisible(true);
-        } else if (layerName == "SatelliteMap") {
-            DatahubMapObject.getLayer("SatelliteMap").setVisible(true);
-            DatahubMapObject.getLayer("HybridMap").setVisible(false);
-        } else if (layerName == "2d-map") {
-            DatahubMapObject.getLayer("HybridMap").setVisible(false);
-            DatahubMapObject.getLayer("SatelliteMap").setVisible(false);
+        switch (layerName) {
+            case DatahubMapObject.layerNameList[0] :
+                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(true);
+                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(false);
+                break;
+            case DatahubMapObject.layerNameList[1] :
+                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(false);
+                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(true);
+                break;
+            default : break;
         }
     },
     addLayer: (layerName, layer) => {

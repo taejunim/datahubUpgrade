@@ -172,64 +172,49 @@
                     </div>
                 </div>
             </div>
-            <div class="layer-group" style="display: none;">
-                <div class="gray-layer w100p h50p">
+            <div class="layer-group">
+                <div class="gray-layer w100p h80p">
                     <div class="display-column align-items-start wh100">
                         <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보</div>
                         <div class="display-column h95p">
-                            <table class="table type4">
-                                <tr>
-                                    <th>충전기 대수 대비 이용시간(분)</th>
-                                    <td>42.9</td>
-                                </tr>
-                                <tr>
-                                    <th>건별 평균 이용시간(분)</th>
-                                    <td>23</td>
-                                </tr>
-                            </table>
+                            <div class="display-column align-items-start wh100 h100p">
+                                <table class="table type4 w100p">
+                                    <tr>
+                                        <th class="text-left">충전기 대수 대비 이용시간(분)</th>
+                                        <td class="text-center">42.9</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-left">건별 평균 이용시간(분)</th>
+                                        <td class="text-center">23</td>
+                                    </tr>
+                                </table>
                             <div class="line"></div>
-                            <table class="table type4">
+                            <table class="table type4 w100p">
                                 <tr>
-                                    <th colspan="3">충전기 대수(대)</th>
-                                    <td>30</td>
+                                    <th colspan="2" class="text-left">충전기 대수(대)</th>
+                                    <td colspan="2" class="text-center">30</td>
                                 </tr>
                                 <tr>
-                                    <th>총 이용시간(분)</th>
-                                    <td>1,288</td>
-                                    <td>총 이용횟수</td>
-                                    <td>154</td>
+                                    <th class="text-left">총 이용시간(분)</th>
+                                    <td class="text-center">1,288</td>
+                                    <th class="text-left">총 이용횟수</th>
+                                    <td class="text-center">154</td>
                                 </tr>
                             </table>
+                            </div>
                             <div class="line"></div>
-                            <table class="table type4-3">
-                                <tr>
-                                    <td colspan="4" class="font-10">최근 3개월 이용 현황</td>
-                                </tr>
-                                <tr>
-                                    <th>충전 일시</th>
-                                    <td>2023.12.11.</td>
-                                    <th>충전 시간</th>
-                                    <td>128분</td>
-                                </tr>
-                                <tr>
-                                    <th>충전 일시</th>
-                                    <td>2023.12.11.</td>
-                                    <th>충전 시간</th>
-                                    <td>128분</td>
-                                </tr>
-                                <tr>
-                                    <th>충전 일시</th>
-                                    <td>2023.12.11.</td>
-                                    <th>충전 시간</th>
-                                    <td>128분</td>
-                                </tr>
-                                <tr>
-                                    <th>충전 일시</th>
-                                    <td>2023.12.11.</td>
-                                    <th>충전 시간</th>
-                                    <td>128분</td>
-                                </tr>
-                            </table>
+                            <div class="display-column align-items-start wh100 h100p">
+                                <div class="font-white font-14">충전기 목록</div>
+                                <table id="dataTable2" class="table type4-3 w100p"> </table>
+                            </div>
+                            <div class="display-column align-items-start wh100 h100p">
+                                <div class="font-white font-14">운영사 점유 비율</div>
+                                <div class="CurrentChart" id="CurrentChart"></div> <%--차트영역--%>
+                            </div>
+                            <div class="display-column align-items-start wh100 h100p">
+                                <div class="font-white font-14">충전기 설치 대수/이용 건수 대비 이용시간</div>
+                                <div class="CurrentChart" id="CurrentChart1"></div> <%--차트영역--%>
+                            </div>
                         </div>
                     </div>
                 </div>
