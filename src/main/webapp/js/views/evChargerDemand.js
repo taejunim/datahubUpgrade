@@ -3,8 +3,9 @@ $(document).ready(() => {
     drawTable();
     $('#searchButton').click(function() {
         $('#dataTable').DataTable().ajax.reload();
-
     });
+
+    
 })
 
 function drawTable () {

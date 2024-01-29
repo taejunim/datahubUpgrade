@@ -1,4 +1,5 @@
 $(document).ready(() => {
+
 	createPieChart('mainChart')
 	// 미사용/고장 충전기 데이터 표출 모달
 	$('#table_popup').on('show.bs.modal', function (event) {
@@ -39,34 +40,8 @@ function drawTable (data) {
 			{
 				extend: 'excel'
 				, text: '엑셀'
-				, filename: data.title
-				, title: data.title
-				, customize: function(xlsx) {
-					var sheet = xlsx.xl.worksheets['sheet1.xml'];
-
-					$('row', sheet).each( function (k,v) {
-						// A열중에서 text가 '김원희'일 경우 style 20이, 해당 열의 B,C에 적용됨
-						if ( $('c[r^="A"]', this).text() == '김원희' ) {
-							$('c[r^="B"], c[r^="C"]', this).attr( 's', '20' );
-						}
-					});
-
-					$('row c[r^="C"]', sheet).each( function () {
-						// C열 중에서 인천은 style 39 를 적용
-						if ( $('is t', this).text() == '인천' ) {
-							$(this).attr( 's', '39' );
-						}
-					});
-
-					// A열의 1번째행의 제목을 수정하는 부분
-					$('c[r=A1] t', sheet).text( '제목 바꿔 치기' );
-
-					// A열의 2행, B열의 2행, C열의 2행을 수정하는 방법
-					$('c[r=A2]', sheet).attr( 's', '17' );
-					$('c[r=B2]', sheet).attr( 's', '7' );
-					$('c[r=C2]', sheet).attr( 's', '36' );
-
-				}
+				, filename: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
+				, title: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
 			},
 		],
 		columnDefs: [{"defaultContent":"-","targets":"_all"}],
@@ -79,7 +54,6 @@ function drawTable (data) {
 		paging: false,
 		scrollCollapse: true,
 		scrollX: false,
-		scrollY: "50vh",
 		order: [ [ 1, 'desc' ] ],     //order : [ [ 열 번호, 정렬 순서 ], ... ],
 		language: {
 			emptyTable: '데이터가 없습니다.',
@@ -222,11 +196,11 @@ function createPieChart(name) {
 	series.data.setAll([
 		{
 			EvCharger: "적합",
-			value: (4000/7000)
+			value: (normalCnt/totalCnt)
 		}
 		, {
 			EvCharger: "부적합",
-			value: (3000/7000)
+			value: (abnomalCnt/totalCnt)
 		}
 	]);
 

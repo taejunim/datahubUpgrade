@@ -405,7 +405,7 @@ input[type='radio']:checked::after {
 *            progressbar                *
 ****************************************/
 
-progress{ appearance: none; width: 90% !important; height: 15% !important; display: inline-block!important;}
+progress{ appearance: none; width: 90% !important; height: 0.4rem !important; display: inline-block!important;}
 
 prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10px;overflow : hidden;  }
 

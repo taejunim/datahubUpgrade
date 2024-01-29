@@ -23,8 +23,6 @@
 <link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/dataTables.bootstrap.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/buttons.bootstrap.min.css"/>">
-<link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2.min.css"/>">
-<link rel="stylesheet" href="<c:url value="/css/plugins/select2/select2-bootstrap4.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datetimepicker/datetimepicker.css"/>">
 
 <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
@@ -32,7 +30,6 @@
 <script src="<c:url value="/js/plugins/datatables/jquery.dataTables.min.js"/>"></script>
 <script src="<c:url value="/js/plugins/bootstrap/bootstrap.bundle.min.js"/>"></script>
 <script src="<c:url value="/js/common.js"/>"></script>
-<script src="<c:url value='/js/plugins/select2/select2.min.js' />"></script>
 <script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
 <script src="<c:url value="/js/plugins/amcharts5/index.js"/>"></script>
 <script src="<c:url value="/js/plugins/amcharts5/percent.js"/>"></script>

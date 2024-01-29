@@ -136,7 +136,7 @@
 }
 
 /***************************************
-*        button /  input       *
+*        button /  input / selectBox      *
 ***************************************/
 
 input:focus{outline: none;}
@@ -197,6 +197,13 @@ padding-right: 0 !important;
 
 .dateTime{padding: 0.45rem; border-radius: 0.25rem; border: none; color: #212529; font-size: 0.875rem !important;line-height: 1.7;}
 
+.form-control {
+    border:0 solid #ced4da!important;
+    border-top-right-radius: 0.25rem!important;
+    border-top-left-radius: 0!important;
+    border-bottom-right-radius: 0.25rem!important;
+    border-bottom-left-radius: 0!important;
+}
 
 /*************************************
 *           width / height           *
