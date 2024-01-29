@@ -3,23 +3,60 @@
 <mapper namespace="datahub.evChargerDemand.mappers.pg.EvChargerDemandMapper">
 
     <select id="selectBuildings" parameterType="evChargerDemandDto" resultType="evChargerDemandDto">
-        SELECT *
-        FROM "datahubUpgrade".dh_building_test
+        SELECT building_id AS buildingId
+             , building_name AS buildingName
+             , building_purpose_code AS buildingPurposeCode
+             , CASE
+                   WHEN building_purpose_code = '02000' THEN '공동주택'
+                   WHEN building_purpose_code = '10000' THEN '교육연구시설'
+                   WHEN building_purpose_code = '14000' THEN '업무시설'
+                   ELSE '-'
+               END AS buildingPurposeName
+             , region AS region
+             , CASE
+                   WHEN region = '01' THEN '제주시'
+                   WHEN region = '02' THEN '서귀포시'
+                   ELSE '-'
+               END AS regionName
+             , building_type AS buildingType
+             , CASE
+                   WHEN building_type = '1' THEN '집합'
+                   WHEN building_type = '2' THEN '일반'
+                   ELSE '-'
+               END AS buildingTypeName
+             , road_name_address AS roadNameAddress
+             , land_lot_number_address AS landLotNumberAddress
+             , TO_CHAR(permission_date::timestamp, 'YYYY-MM-DD') AS permissionDate
+             , TO_CHAR(completion_date::timestamp, 'YYYY-MM-DD') AS completionDate
+             , floors AS floors
+             , building_area AS buildingArea
+             , total_area AS totalArea
+             , plat_area AS platArea
+             , self_outdoor_parking_count AS selfOutdoorParkingCount
+             , self_indoor_parking_count AS selfIndoorParkingCount
+             , mechanical_outdoor_parking_count AS mechanicalOutdoorParkingCount
+             , mechanical_indoor_parking_count AS mechanicalIndoorParkingCount
+             , pnu_code AS pnuCode
+             , CASE
+                   WHEN suitability = 'Y' THEN '적합'
+                   ELSE '부적합'
+               END AS suitability
+        FROM  "datahubUpgrade".dh_building_test
         WHERE 1=1
         <if test="searchRegion != null and searchRegion != ''">
             AND region = #{searchRegion}
         </if>
-        <if test="buildingPurposeCode != null and buildingPurposeCode != ''">
-            AND building_purpose_code = #{buildingPurposeCode}
+        <if test="searchBuildingPurposeCode != null and searchBuildingPurposeCode != ''">
+            AND building_purpose_code = #{searchBuildingPurposeCode}
         </if>
-        <if test="suitability != null and suitability != ''">
-            AND suitability = #{suitability}
+        <if test="searchSuitability != null and searchSuitability != ''">
+            AND suitability = #{searchSuitability}
         </if>
-        <if test="permissionDateFrom != null">
-            <![CDATA[ AND permission_date >= ]]> #{permissionDateFrom}
+        <if test="searchPermissionDateFrom != null and searchPermissionDateFrom != ''">
+            <![CDATA[ AND permission_date >= ]]> TO_CHAR(#{searchPermissionDateFrom}::timestamp, 'YYYY-MM-DD')::timestamp
         </if>
-        <if test="permissionDateTo != null">
-            <![CDATA[ AND permission_date <= ]]> #{permissionDateTo}
+        <if test="searchPermissionDateTo != null and searchPermissionDateTo != ''">
+            <![CDATA[ AND permission_date <= ]]> TO_CHAR(#{searchPermissionDateTo}::timestamp, 'YYYY-MM-DD')::timestamp
         </if>
         ORDER BY region, permission_date DESC
         <if test="pagingYn == true and start != null and length != null" >
@@ -34,17 +71,17 @@
         <if test="searchRegion != null and searchRegion != ''">
             AND region = #{searchRegion}
         </if>
-        <if test="buildingPurposeCode != null and buildingPurposeCode != ''">
-            AND building_purpose_code = #{buildingPurposeCode}
+        <if test="searchBuildingPurposeCode != null and searchBuildingPurposeCode != ''">
+            AND building_purpose_code = #{searchBuildingPurposeCode}
         </if>
-        <if test="suitability != null and suitability != ''">
-            AND suitability = #{suitability}
+        <if test="searchSuitability != null and searchSuitability != ''">
+            AND suitability = #{searchSuitability}
         </if>
-        <if test="permissionDateFrom != null">
-            <![CDATA[ AND permission_date >= ]]> #{permissionDateFrom}
+        <if test="searchPermissionDateFrom != null and searchPermissionDateFrom != ''">
+            <![CDATA[ AND permission_date >= ]]> TO_CHAR(#{searchPermissionDateFrom}::timestamp, 'YYYY-MM-DD')::timestamp
         </if>
-        <if test="permissionDateTo != null">
-            <![CDATA[ AND permission_date <= ]]> #{permissionDateTo}
+        <if test="searchPermissionDateTo != null and searchPermissionDateTo != ''">
+            <![CDATA[ AND permission_date <= ]]> TO_CHAR(#{searchPermissionDateTo}::timestamp, 'YYYY-MM-DD')::timestamp
         </if>
     </select>
 

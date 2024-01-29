@@ -36,12 +36,8 @@ public class EvChargerDemandController {
 
     @RequestMapping(value = "/getBuildings.json", method = RequestMethod.POST)
     @ResponseBody public DataTableDto getOverallPmLendRtnHstryList(HttpServletRequest request, EvChargerDemandDto evChargerDemandDto) {
-        LOG.debug("getOverallPmLendRtnHstryList Controller starts!");
-
-        Map<String, Object> result = new HashMap<>();
 
         evChargerDemandDto.setPagingYn(true);
-        result.put("data", evChargerDemandService.getBuildings(evChargerDemandDto));
 
         List<EvChargerDemandDto> evChargerDemandDtoList = evChargerDemandService.getBuildings(evChargerDemandDto);
         int total = evChargerDemandService.countBuildings(evChargerDemandDto);

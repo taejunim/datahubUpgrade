@@ -15,8 +15,11 @@ public class EvChargerDemandDto extends DtoBase {
     private String buildingId;
     private String buildingName;
     private String buildingPurposeCode;
+    private String buildingPurposeName;
     private String region;
+    private String regionName;
     private String buildingType;
+    private String buildingTypeName;
     private String roadNameAddress;
     private String landLotNumberAddress;
     private String permissionDate;
@@ -33,6 +36,8 @@ public class EvChargerDemandDto extends DtoBase {
     private String suitability;
 
     private String searchRegion;
-    private String permissionDateFrom;
-    private String permissionDateTo;
+    private String searchBuildingPurposeCode;
+    private String searchSuitability;
+    private String searchPermissionDateFrom;
+    private String searchPermissionDateTo;
 }

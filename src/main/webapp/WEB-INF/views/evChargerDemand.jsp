@@ -43,10 +43,11 @@
                                 <label  class="group-text" for="">건물 용도</label>
                             </div>
                             <div class="w60p">
-                                <select id="searchPurpose" class="form-control" data-minimum-results-for-search="Infinity">
+                                <select id="searchBuildingPurposeCode" class="form-control" data-minimum-results-for-search="Infinity">
                                     <option value="">전체</option>
                                     <option value="02000">공동주택</option>
-                                    <option value="10000">교육시설</option>
+                                    <option value="10000">교육연구시설</option>
+                                    <option value="14000">업무시설</option>
                                 </select>
                             </div>
                         </div>
@@ -61,9 +62,9 @@
                             </div>
                             <div class="w60p">
                                 <select id="searchSuitability" class="form-control" data-minimum-results-for-search="Infinity">
-                                    <option>전체</option>
-                                    <option>적합</option>
-                                    <option>부적합</option>
+                                    <option value="">전체</option>
+                                    <option value="Y">적합</option>
+                                    <option value="N">부적합</option>
                                 </select>
                             </div>
                         </div>
@@ -96,7 +97,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog">
+<div id="buildingDetail" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog demand-modal" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -117,42 +118,50 @@
                             <col width="10%">
                             <col width="10%">
                             <col width="15%">
-                            <col width="20%">
+                            <col width="25%">
                             <col width="10%">
-                            <col width="15%">
+                            <col width="10%">
                         </colgroup>
                         <tr>
                             <th>건물 명</th>
-                            <td colspan="3">제주산학융합지구 제2동 기업연구관</td>
-                            <th>도로명 주소</th>
-                            <td>제주특별자치도 제주시 첨단로8길40</td>
-                            <th>허가일</th>
-                            <td>2018-04-11</td>
+                            <td colspan="3" id="buildingName">-</td>
+                            <th>주소(지번)</th>
+                            <td id="address">-</td>
+                            <th>건축주</th>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <th>주용도</th>
-                            <td>공장</td>
-                            <th>구분</th>
-                            <td>공공</td>
+                            <th>건축 허가일</th>
+                            <td colspan="3" id="permissionDate">-</td>
+                            <th>건축 준공일</th>
+                            <td id="completionDate">-</td>
                             <th>층수</th>
-                            <td>지하 1층, 지상 3층</td>
+                            <td id="floors">-</td>
+                        </tr>
+                        <tr>
+                            <th>구분</th>
+                            <td id="buildingTypeName">-</td>
+                            <th>주용도</th>
+                            <td id="buildingPurposeName">-</td>
+                            <th>건물 면적</th>
+                            <td id="buildingArea">- ㎡</td>
                             <th>시설 면적</th>
-                            <td>3,264.15㎡</td>
+                            <td id="totalArea">- ㎡</td>
                         </tr>
                         <tr>
                             <th>대지 면적</th>
-                            <td>-</td>
-                            <th>건물 면적</th>
-                            <td>1,100.49㎡</td>
-                            <th>주차면</th>
-                            <td>51</td>
+                            <td id="platArea">- ㎡</td>
+                            <th>설치 EV 충전기</th>
+                            <td id="chargerCount">-</td>
                             <th>EV 충전기(설치/기준)</th>
                             <td>
                                 <div class="display-row">
-                                    <div class="">1/3</div>
-                                    <div class="judgment-box font-red">부적합</div>
+                                    <div class="" id="chargerStandard">-</div>
+                                    <div class="judgment-box font-red" id="suitability">부적합</div>
                                 </div>
                             </td>
+                            <th>주차면</th>
+                            <td id="parkingCount">-</td>
                         </tr>
                         <tr>
                             <th>산정법</th>
