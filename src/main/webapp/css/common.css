@@ -117,7 +117,7 @@
 /*******************^********************
 *            datatable / paging        *
 ****************************************/
-#dataTable_wrapper { margin-left: 0; height: 35.5vw; }
+#dataTable_wrapper { margin-left: 0; height: 36vw; }
 
 .dataTable { margin-left: 0; }
 
@@ -129,7 +129,7 @@ div.dataTables_paginate > span{display: flex; gap: 0.8em;}
 
 #datatable_paginate {  margin-top: 0px; position: relative; }
 
-div.dataTables_info{ color:#ffff; position: absolute; bottom: 2.5rem; right: 0.5rem;}
+div.dataTables_info{ color:#ffff; position: absolute; right: 0.5rem;}
 
 .paginate_button{ color: #ffff; font-size: 1.2em; }
 
@@ -203,13 +203,13 @@ table.type1 th, table.type1 td{
 }
 
 /* type2 - 페이지 사용*/
-table.type2{  border-radius: 10px; border-collapse: collapse;}
+table.type2{  border-radius: 10px; border-collapse: collapse; border-bottom: 1px solid white;}
 
 .activeCursor{cursor: pointer; background: rgba(169, 223, 216, 0.14);}
 
 table.type2 th, table.type2 td{
     border-top:none !important;
-    padding: 0.5vw !important;
+    padding: 1.2rem !important;
     color: #ffff;
     vertical-align: middle;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10)inset;
@@ -218,7 +218,7 @@ table.type2 th, table.type2 td{
 
 table.type2 th{background-color: #45464d; font-size: 0.9rem; border-bottom: none!important;}
 
-table.type2 td{ font-size: 0.85rem;}
+table.type2 td{ font-size: 0.95rem;}
 
 table.type2 th:first-child{border-top-left-radius: 10px; border: none;}
 
