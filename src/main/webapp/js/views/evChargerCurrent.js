@@ -270,18 +270,43 @@ function searchChargers() {
             cursor.lineY.set("visible", false);
             cursor.lineX.set("visible", false);
 
-            createAxisAndSeries(20, false, "USE Time");
-            createAxisAndSeries(20, true, "USE Count");
+            if (name == "CurrentChart") {
+
+            }
+            switch (name) {
+                case "CurrentChart" :
+                    createAxisAndSeries(20, false, "USE Time");
+                    createAxisAndSeries(20, true, "USE Count");
+                    break;
+                case "CurrentChart3" :
+                    createAxisAndSeries(20, false, "이용시간/설치 대수");
+                    createAxisAndSeries(20, true, "이용시간/이용건 수");
+                    break;
+            }
 
             chart.appear(1000, 100);
             // XY CHART 범례 인스턴스 생성
-            var legend = chart.children.push(am5.Legend.new(root, {
-                layout: root.horizontalLayout,
-                x: am5.percent(80),
-                centerX: am5.percent(100),
-                y: am5.percent(100),
-                useDefaultMarker : true
-            }));
+            switch (name) {
+                case "CurrentChart" :
+                    var legend = chart.children.push(am5.Legend.new(root, {
+                        layout: root.horizontalLayout,
+                        x: am5.percent(80),
+                        centerX: am5.percent(100),
+                        y: am5.percent(100),
+                        useDefaultMarker : true
+                    }));
+                    break;
+                case "CurrentChart3" :
+                    var legend = chart.children.push(am5.Legend.new(root, {
+                        layout: root.horizontalLayout,
+                        x: am5.percent(85),
+                        centerX: am5.percent(100),
+                        y: am5.percent(100),
+                        useDefaultMarker : true
+                    }));
+                    break;
+            }
+
             // XY CHART 범례 마커 Radius 조정
             legend.markerRectangles.template.setAll({
                 cornerRadiusTL: 10,
