@@ -51,7 +51,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDto userDto) throws Exception {
-        userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
+        if (!userDto.getUserPwd().isEmpty()) {
+            userDto.setUserPwd(encoder.encode(userDto.getUserPwd()));
+        }
         userMapper.updateUser(userDto);
     }
 

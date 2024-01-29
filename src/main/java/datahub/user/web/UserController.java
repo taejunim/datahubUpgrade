@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Objects;
 
 import egovframework.rte.psl.dataaccess.util.EgovMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class UserController {
 
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
     @Inject
     private UserService userService;
     /**
@@ -123,10 +127,9 @@ public class UserController {
 
     @RequestMapping(value = "/myPage.do" , method = RequestMethod.GET)
     public String myPage(HttpServletRequest request, Model model) {
+
         HttpSession session = request.getSession();
         UserDto result = (UserDto) session.getAttribute(SessionConst.LOGIN_MEMBER);
-
-        System.out.println("result : " + result);
 
         model.addAttribute("myPage",result);
 

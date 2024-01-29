@@ -21,31 +21,33 @@ $(document).ready(() => {
             $(this).focus();
             return false;
         }
-        if (!isPassword($('input[name=userPwd]').val())) {
-            $('.userPwd').addClass("visibility-visible").text('* 8 ~ 16자 영문, 숫자 조합을'
-                + ' 입력해주세요.');
-            $(this).focus();
-            return false;
-        }
-        if ($('input[name=userPwd]').val() != $('input[name=userPwCheck]').val()) {
-            $('.userPwCheck').addClass("visibility-visible").text('* 입력하신 비밀번호와 일치하지 않습니다.');
-            $(this).focus();
-            return false;
-        }
-        if (!isCorrect($('input[name=userName]').val())) {
-            $('.userName').addClass("visibility-visible").text('* 한글만 입력만 입력해주세요');
-            $(this).focus();
-            return false;
-        }
-        if ($('input[name=userPhone]').val().length < 10) {
-            $('.userPhone').addClass("visibility-visible").text('* 다시 확인하여 주세요.');
-            $(this).focus();
-            return false;
-        }
-        if (pwdEq(userPwdNow,userPwd)) {
-            $('.userPwd').addClass("visibility-visible").text('* 현재 비밀번호와 다르게 입력해주세요.');
-            $(this).focus();
-            return false;
+        if (isStringValue($('input[name=userPwd]').val()) || isStringValue($('input[name=userPwCheck]').val())) {
+            if (!isPassword($('input[name=userPwd]').val())) {
+                $('.userPwd').addClass("visibility-visible").text('* 8 ~ 16자 영문, 숫자 조합을'
+                    + ' 입력해주세요.');
+                $(this).focus();
+                return false;
+            }
+            if ($('input[name=userPwd]').val() != $('input[name=userPwCheck]').val()) {
+                $('.userPwCheck').addClass("visibility-visible").text('* 입력하신 비밀번호와 일치하지 않습니다.');
+                $(this).focus();
+                return false;
+            }
+            if (!isCorrect($('input[name=userName]').val())) {
+                $('.userName').addClass("visibility-visible").text('* 한글만 입력만 입력해주세요');
+                $(this).focus();
+                return false;
+            }
+            if ($('input[name=userPhone]').val().length < 10) {
+                $('.userPhone').addClass("visibility-visible").text('* 다시 확인하여 주세요.');
+                $(this).focus();
+                return false;
+            }
+            if (pwdEq(userPwdNow,userPwd)) {
+                $('.userPwd').addClass("visibility-visible").text('* 현재 비밀번호와 다르게 입력해주세요.');
+                $(this).focus();
+                return false;
+            }
         }
         MsgBox.Confirm("updateAsk", () => {
             $.ajax({

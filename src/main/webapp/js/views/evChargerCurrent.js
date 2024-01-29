@@ -10,7 +10,8 @@ $(document).ready(() => {
     drawInitLayers();
     createXyChart("CurrentChart");
     createBarChart("CurrentChart1");
-
+    createPieChart("CurrentChart2");
+    createXyChart('CurrentChart3');
     drawTable();
 
     //Search
@@ -37,8 +38,12 @@ function searchListClick(index) {
     $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
     maybeDisposeRoot("CurrentChart");
     maybeDisposeRoot("CurrentChart1");
+    maybeDisposeRoot("CurrentChart2");
+    maybeDisposeRoot("CurrentChart3");
     createXyChart("CurrentChart");
     createBarChart("CurrentChart1");
+    createPieChart("CurrentChart2");
+    createXyChart('CurrentChart3');
 }
 
 function setMap() {
@@ -154,6 +159,14 @@ function searchChargers() {
                 })
             );
 
+            chart.get("colors").set("colors",[
+                am5.color(0xf2c8ed),
+                am5.color(0xbbf7ef),
+                am5.color(0x5aaa95),
+                am5.color(0x86a873),
+                am5.color(0xbb9f06)
+            ])
+
             var easing = am5.ease.linear;
             chart.get("colors").set("step", 2);
 
@@ -266,7 +279,7 @@ function searchChargers() {
                 layout: root.horizontalLayout,
                 x: am5.percent(80),
                 centerX: am5.percent(100),
-                y: am5.percent(90),
+                y: am5.percent(100),
                 useDefaultMarker : true
             }));
             // XY CHART 범례 마커 Radius 조정
@@ -656,3 +669,120 @@ function drawTable() {
 
     })
 }
+
+function createPieChart(name) {
+    let root = createRoot(name);
+
+    var chart = root.container.children.push(
+        am5percent.PieChart.new(root, {
+            width : am5.percent(100),
+            height : am5.percent(100),
+            centerX : am5.percent(100),
+            x : am5.percent(65),
+            centerY : am5.percent(90),
+            y : am5.percent(100),
+            radius: am5.percent(100),
+            layout : root.verticalLayout
+        })
+    );
+
+
+
+    var series = chart.series.push(
+        am5percent.PieSeries.new(root, {
+            valueField: "value",
+            categoryField: "EvCharger",
+            endAngle: 270,
+            alignLabels: false
+        })
+    );
+
+    series.get("colors").set("colors", [
+        am5.color(0xF72585),
+        am5.color(0xB5179E),
+        am5.color(0x7209B7),
+        am5.color(0x560BAD),
+        am5.color(0x3B009A),
+        am5.color(0x00B4D8),
+    ])
+
+    series.states.create("hidden", {
+        endAngle: -90
+    });
+
+    series.labels.template.set("forceHidden", true);
+
+    // series.labels.template.setAll({
+    //     fill : am5.color("#FFFFFF"),
+    //     inside : true,
+    //     centerX : am5.percent(100),
+    //     textType: "radial",
+    //     text : "{valuePercentTotal.formatNumber('0.00')}%"
+    // })
+
+    series.slices.template.set("toggleKey", "none");
+    // series.slices.template.setAll({
+    //     fillOpacity: 0.5
+    // })
+    // 차트 데이터 넣는곳
+    series.data.setAll([
+        {
+            EvCharger: "제주특별자치도",
+            value: (5/10)
+        }
+        , {
+            EvCharger: "환경부",
+            value: (1/10)
+        }
+        , {
+            EvCharger: "한국전력",
+            value: (1/10)
+        }
+        , {
+            EvCharger: "제주테크노파크",
+            value: (1/10)
+        }
+        , {
+            EvCharger: "제주에너지공사",
+            value: (1/10)
+        }
+        , {
+            EvCharger: "운영사",
+            value: (1/10)
+        }
+    ]);
+
+    let legend = chart.children.push(am5.Legend.new(root, {
+        layout: root.verticalLayout,
+        x: am5.percent(85),
+        centerX: am5.percent(100),
+        y : am5.percent(0),
+        centerY: am5.percent(0),
+        height : am5.percent(50),
+        useDefaultMarker : true
+    }))
+    // XY CHART 범례 마커 Radius 조정
+    legend.markerRectangles.template.setAll({
+        cornerRadiusTL: 10,
+        cornerRadiusTR: 10,
+        cornerRadiusBL: 10,
+        cornerRadiusBR: 10
+    })
+
+    // XY CHART 범례 마커 크기 조정
+    legend.markers.template.setAll({
+        width : 10,
+        height : 10
+    })
+    // XY CHART 범례 폰트 색상 변경
+    legend.labels.template.set('fill' ,
+        am5.color(0xFFFFFF)
+    )
+
+    legend.valueLabels.template.set("forceHidden", true);
+
+    legend.data.setAll(series.dataItems);  // 밑에 범례 추가시 사용
+
+    series.appear(1000, 100);
+}
+

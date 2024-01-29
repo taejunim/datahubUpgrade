@@ -173,7 +173,7 @@
                 </div>
             </div>
             <div class="layer-group">
-                <div class="gray-layer w100p h80p">
+                <div class="gray-layer w100p h100p">
                     <div class="display-column align-items-start wh100">
                         <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보</div>
                         <div class="display-column h95p">
@@ -209,11 +209,11 @@
                             </div>
                             <div class="display-column align-items-start wh100 h100p">
                                 <div class="font-white font-14">운영사 점유 비율</div>
-                                <div class="CurrentChart" id="CurrentChart"></div> <%--차트영역--%>
+                                <div class="CurrentChart" id="CurrentChart2"></div> <%--차트영역--%>
                             </div>
                             <div class="display-column align-items-start wh100 h100p">
                                 <div class="font-white font-14">충전기 설치 대수/이용 건수 대비 이용시간</div>
-                                <div class="CurrentChart" id="CurrentChart1"></div> <%--차트영역--%>
+                                <div class="CurrentChart wh100" id="CurrentChart3"></div> <%--차트영역--%>
                             </div>
                         </div>
                     </div>
