@@ -90,7 +90,7 @@
             </div>
         </div>
     </div>
-    <div class="frame">
+    <div class="">
         <table id="dataTable" class="table type2"> </table>
     </div>
 </div>
