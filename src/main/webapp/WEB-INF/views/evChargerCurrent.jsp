@@ -21,6 +21,7 @@
     .layer-radio-form {position: absolute; left: 0; top: 0;  height: 30px; padding-left: 10px;}
     #vMap {left: 0; top: 0; width: 100%; height: 100%; position: absolute;}
     .rowWrap .left .middle .search-list > .first > .left-txt {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 200px;}
+    .right-txt div{font-size: 0.6vw; }
 </style>
 <div class="rowWrap">
 <%-- 검색 --%>

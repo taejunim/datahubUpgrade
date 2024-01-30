@@ -1,7 +1,6 @@
 var map;                                            //맵 변수 선언 : 지도 객체
 var view;
 const defaultPoint = [126.5443166,33.5035676];      //초기 중심 좌표
-var legendMap = {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]};
 var dataTable;
 $(document).ready(() => {
 
@@ -34,6 +33,9 @@ $(document).ready(() => {
 
 function searchListClick(index) {
     $('.layer-group').toggleClass('hidden');
+
+    var moveTo = $('[data-locationIndex='+index+']').val().split(",");
+    DatahubMapObject.setCenter(moveTo);
     $('#chargerName').text($('[data-nameIndex='+index+']').text());
     $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
     maybeDisposeRoot("CurrentChart");
@@ -88,7 +90,7 @@ function drawInitLayers() {
                 if (allChargerList[i].location !== undefined && allChargerList[i].location !== '') {
                     var location = allChargerList[i].location.replace(",", " ").split(" ");
                     if (location.length > 0) {
-                        locationList.push({x: location[0], y: location[1]});
+                        locationList.push({x: location[0], y: location[1], status: allChargerList[i].status});
                     }
                 }
             }
@@ -96,7 +98,7 @@ function drawInitLayers() {
 
             if(res.result !== null)
                 DatahubMapObject.setGrid(res.result);
-            drawGrid(DatahubMapObject.grid, DatahubMapObject.layerNameList[1], "52, 139, 226", "legendRange2", false);
+            drawGrid(DatahubMapObject.grid, DatahubMapObject.basicLayerNameList[1], "52, 139, 226", "legendRange2", false);
         }, error: function (error) {
             console.log(error);
         }
@@ -104,7 +106,6 @@ function drawInitLayers() {
 
     $.when(searchCharger, setGrid).done(function () {
         fnEndLoadingBar();
-        DatahubMapObject.controlLayerHandler(DatahubMapObject.layerNameList[0]);
     });
 }
 
@@ -121,21 +122,20 @@ function searchChargers() {
             var locationList = [];
             //검색 결과용 List
             var listDiv = '';
-
             for(var i = 0; i < result.length; i ++) {
                 if (result[i].location !== undefined && result[i].location !== '') {
                     var location = result[i].location.replace(",", " ").split(" ");
                     if (location.length > 0) {
-                        locationList.push({x: location[0], y: location[1]});
+                        locationList.push({x: location[0], y: location[1], status: result[i].status});
                     }
-
                     listDiv += '<div class="search-list" onclick="searchListClick('+i+')"><div class="first"><div class="left-txt" data-nameIndex='+i+'>';
                     listDiv += result[i].detail + '</div><div class="right-txt"><div class="rapidity-box">급속 50kw</div>';
-                    listDiv += '<div class="status-green-box">정상</div></div></div><div class="last" data-addressIndex="'+i+'">';
+                    listDiv += '<input type="hidden" value='+ location +' data-locationIndex="' + i + '"/>';
+                    listDiv += '<div class="' + DatahubMapObject.chargerStatusClassMap[result[i].status] + '">' + result[i].statusName + '</div></div></div><div class="last" data-addressIndex="'+i+'">';
                     listDiv += result[i].address + '</div></div>';
                 }
             }
-            DatahubMapObject.createPointLayer(locationList, DatahubMapObject.layerNameList[0], true, '/images/chargers/charger-green.png', false);
+            DatahubMapObject.createPointLayer(locationList, DatahubMapObject.basicLayerNameList[0], true, DatahubMapObject.defaultChargerImage, false, [30,30]);
             $('.search-list-form').html(listDiv);
             $("#searchListCount").text(result.length.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
 
@@ -564,7 +564,7 @@ function drawGrid(gridData, layerName, color, legendKey, visible){
 function mapClickEvent(pixel) {
     // 클릭한 픽셀정보로  feature 체크
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-        if(layer.values_.title === DatahubMapObject.layerNameList[1]) {
+        if(layer.values_.title === DatahubMapObject.basicLayerNameList[1]) {
 
             var selectCell   = feature.values_.geometry.extent_;
 
@@ -577,7 +577,6 @@ function mapClickEvent(pixel) {
             ]]);
 
             var gridFeature = new ol.Feature({
-                id_: DatahubMapObject.selectCellFeatureId,
                 geometry: gridCell,
                 zIndex: 5
             });
@@ -590,21 +589,19 @@ function mapClickEvent(pixel) {
                         width: 2
                     }),
                     fill: new ol.style.Fill({
-                        color: 'rgba(255,0,0,' + 0.4 + ')' // 포인트 개수에 따라 투명도 조절
+                        color: 'rgba(255,0,0,' + 0.4 + ')'
                     })
                 })];
             gridFeature.setStyle(polygonStyle);
             var gridFeatures = [gridFeature];
-            if( DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().getFeatureById(DatahubMapObject.selectCellFeatureId) !== null)
-                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().removeFeature(DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().getFeatureById(DatahubMapObject.selectCellFeatureId));
-            DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).getSource().addFeatures(gridFeatures);
-            //DatahubMapObject.createPolygonLayer('test', gridFeatures, true);
+
+            DatahubMapObject.createPolygonLayer(DatahubMapObject.selectCellLayerName, gridFeatures, true);
         }
     });
 }
 
 function calculateRangeOpacity(legendKey, value) {
-    var rangeList = legendMap[legendKey];
+    var rangeList = DatahubMapObject.legendMap[legendKey];
 
     let opacity = 0;
 
@@ -673,9 +670,9 @@ function drawTable() {
             error: function () {}
         },
         columns: [
-            {title : "건물명", data: "buildingName"},
-            {title : "적합 판단", data: "suitability"},
-            {title : "지역", data: "region"}
+            {title : "충전기명", data: "buildingName"},
+            {title : "남원읍 공영주차장", data: "suitability"},
+            {title : "이용 시간(분)", data: "region"}
         ],
         columnDefs:[
             {targets:[0], width:"60%", padding:"0px"}

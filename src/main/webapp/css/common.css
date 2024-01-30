@@ -454,6 +454,7 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 .status-red-box {border-radius: 20px; background: rgba(243, 18, 96, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(243, 18, 96, 1);}
 .status-green-box {border-radius: 20px; background: rgba(24, 201, 100, 0.20); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(18, 161, 80, 1);}
 .status-orange-box {border-radius: 20px; background: rgba(245, 165, 36, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgba(195, 132, 29, 1);}
+.status-grey-box {border-radius: 20px; background: rgba(245, 165, 36, 0.2); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: rgb(144, 144, 144);}
 
 /*******************^********************
 *            Modal                  *

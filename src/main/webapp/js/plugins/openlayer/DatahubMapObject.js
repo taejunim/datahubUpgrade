@@ -2,9 +2,26 @@ var vWorldKey = '7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF';
 var DatahubMapObject = {
     map: null,
     grid: null,
-    selectCellFeatureId: 'selectCell',
-    layerNameList: ["locationLayer", "distributionLayer"],
-    chargerMarkerList: ["/images/chargers/charger-green.png", '/images/chargers/charger-yellow.png', '/images/chargers/charger-red.png', '/images/chargers/charger-grey.png'],
+    legendMap : {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]},
+    selectCellLayerName: 'selectCellLayer',
+    basicLayerNameList: ["locationLayer", "distributionLayer"],
+    defaultChargerImage: "/images/chargers/charger-grey.png",
+    chargerMarkerMap: {
+         "0" : "/images/chargers/charger-grey.png"      //알수없음
+       , "1" : "/images/chargers/charger-grey.png"      //통신이상
+       , "2" : "/images/chargers/charger-green.png"     //사용가능
+       , "3" : "/images/chargers/charger-yellow.png"    //충전중
+       , "4" : "/images/chargers/charger-red.png"       //운영중지
+       , "5" : "/images/chargers/charger-red.png"       //점검중
+    },
+    chargerStatusClassMap: {
+          "0" : "status-grey-box"      //알수없음
+        , "1" : "status-grey-box"      //통신이상
+        , "2" : "status-green-box"     //사용가능
+        , "3" : "status-orange-box"    //충전중
+        , "4" : "status-red-box"       //운영중지
+        , "5" : "status-red-box"       //점검중
+    },
     setMap: (map) => {
         DatahubMapObject.map = map;
     },
@@ -36,7 +53,7 @@ var DatahubMapObject = {
             DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(lyrEnName));
         }
 
-        var markerSource =  new ol.source.Vector({features: DatahubMapObject.makePointSource(list, lyrEnName, visible, markerImageSrc, makeTooltip, markerSize)});
+        var markerSource =  new ol.source.Vector({features: DatahubMapObject.makePointSource(list, lyrEnName, markerImageSrc, makeTooltip, markerSize)});
 
         // 마커 레이어 생성
         var markerLayer = new ol.layer.Vector({
@@ -47,6 +64,11 @@ var DatahubMapObject = {
         DatahubMapObject.map.addLayer(markerLayer);
     },
     createPolygonLayer: (lyrEnName, feature, visible) => {
+        //기존에 lyrEnName으로 그려진 layer 존재시 제거
+        if(DatahubMapObject.getLayer(lyrEnName) !== undefined) {
+            DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(lyrEnName));
+        }
+
         var polygonSource =  new ol.source.Vector({features: feature});
 
         var polygonLayer = new ol.layer.Vector({
@@ -58,13 +80,13 @@ var DatahubMapObject = {
     },
     controlLayerHandler: (layerName) => {
         switch (layerName) {
-            case DatahubMapObject.layerNameList[0] :
-                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(true);
-                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(false);
+            case DatahubMapObject.basicLayerNameList[0] :
+                DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).setVisible(true);
+                DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[1]).setVisible(false);
                 break;
-            case DatahubMapObject.layerNameList[1] :
-                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[0]).setVisible(false);
-                DatahubMapObject.getLayer(DatahubMapObject.layerNameList[1]).setVisible(true);
+            case DatahubMapObject.basicLayerNameList[1] :
+                DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).setVisible(false);
+                DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[1]).setVisible(true);
                 break;
             default : break;
         }
@@ -80,10 +102,6 @@ var DatahubMapObject = {
             }
         });
     },
-    delLayer: (layerName) => {
-        var layer = DatahubMapObject.getLayer(layerName);
-        DatahubMapObject.map.removeLayer(layer);
-    },
     removeLayer: (source, target) => {
         var array = [];
 
@@ -98,26 +116,7 @@ var DatahubMapObject = {
             DatahubMapObject.map.removeLayer(lastElement);
         }
     },
-    //오버레이 삭제
-    removeOverlay: function(id) {
-        this.map.removeOverlay(this.map.getOverlayById(id));
-    },
-    removeAllOverlay: function (type) {
-        var array = [];
-        var tooltips = document.querySelectorAll(".overlayElement");
-
-        tooltips.forEach((tooltip) => {
-            if (tooltip.dataset.type === type) {
-                array.push(tooltip);
-            }
-        })
-
-        while (array.length) {
-            var lastTooltip = array.pop();
-            this.removeOverlay(lastTooltip.dataset.uid);
-        }
-    },
-    makePointSource: function (list, title, visible, markerImageSrc, makeTooltip, markerSize) {
+    makePointSource: function (list, title, defaultMarkerImageSrc, makeTooltip, markerSize) {
         let features = [];
         for(var i = 0; i < list.length; i ++ ) {
             var marker = new ol.Feature({
@@ -127,6 +126,12 @@ var DatahubMapObject = {
                 text: makeTooltip && list[i].text ? list[i].text : null,
                 zIndex: 50
             });
+
+            let markerImageSrc = defaultMarkerImageSrc;
+
+            if(title === DatahubMapObject.basicLayerNameList[0] && list[i].status) {
+                markerImageSrc = DatahubMapObject.chargerMarkerMap[list[i].status];
+            }
 
             if(markerImageSrc !== '') {
                 var markerStyle = new ol.style.Style({

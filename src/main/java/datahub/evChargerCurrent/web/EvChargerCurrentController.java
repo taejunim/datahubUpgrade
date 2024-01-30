@@ -53,7 +53,7 @@ public class EvChargerCurrentController {
         String fullUrl = "https://apis.data.go.kr/B552584/EvCharger/getChargerInfo?serviceKey=4RGqCY56UThQj9rWI5bSDJgJpaY%2FyzwiG80iyAxo1qwn7xLn5EsHJiMr3544zZdC%2Fpumr7Wn9oJAC2q12fi0ZQ%3D%3D&pageNo=1&numOfRows=8000&zcode=50";
 
         try {
-            result.put("allChargerList", getChargers(fullUrl));
+            result.put("allChargerList", getChargers(fullUrl, ""));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,7 +71,7 @@ public class EvChargerCurrentController {
         String fullUrl = "https://apis.data.go.kr/B552584/EvCharger/getChargerInfo?serviceKey=4RGqCY56UThQj9rWI5bSDJgJpaY%2FyzwiG80iyAxo1qwn7xLn5EsHJiMr3544zZdC%2Fpumr7Wn9oJAC2q12fi0ZQ%3D%3D&pageNo=1&numOfRows=100&zcode=50";
 
         try {
-            result.put("result", getChargers(fullUrl));
+            result.put("result", getChargers(fullUrl, parameter));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class EvChargerCurrentController {
         return result;
     }
 
-    public List<Map<String, Object>> getChargers(String fullUrl) throws IOException {
+    public List<Map<String, Object>> getChargers(String fullUrl, String parameter) throws IOException {
         URL url = new URL(fullUrl);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -117,8 +117,15 @@ public class EvChargerCurrentController {
             if(list[i].contains(startKeyStatNm)) object.put("detail", list[i].substring(list[i].indexOf(startKeyStatNm) + startKeyStatNm.length(), list[i].indexOf(endKeyStatNm)));
             else object.put("detail", "-");
 
-            if(list[i].contains(startKeyStat)) object.put("status", list[i].substring(list[i].indexOf(startKeyStat) + startKeyStat.length(), list[i].indexOf(endKeyStat)));
-            else object.put("status", "-");
+            if(list[i].contains(startKeyStat)) {
+                String status = list[i].substring(list[i].indexOf(startKeyStat) + startKeyStat.length(), list[i].indexOf(endKeyStat));
+                object.put("statusName", getChargerStatus(status));
+                if(getChargerStatus(status).equals("알수없음"))  object.put("status", "1");
+                else object.put("status", status);
+            } else {
+                object.put("status", "1");
+                object.put("statusName", "-");
+            }
 
             if(list[i].contains(startKeyAddr)) object.put("address", list[i].substring(list[i].indexOf(startKeyAddr) + startKeyAddr.length(), list[i].indexOf(endKeyAddr)));
             else object.put("address\"", "-");
@@ -127,5 +134,26 @@ public class EvChargerCurrentController {
         }
 
         return resultList;
+    }
+
+    public String getChargerStatus(String code) {
+
+        String codeName = "알수없음";
+
+        switch (code) {
+            case "0" : break;
+            case "1" : codeName = "통신이상";
+                       break;
+            case "2" : codeName = "사용가능";
+                       break;
+            case "3" : codeName = "충전중";
+                       break;
+            case "4" : codeName = "운영중지";
+                       break;
+            case "5" : codeName = "점검중";
+                       break;
+        }
+
+        return codeName;
     }
 }
