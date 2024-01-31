@@ -32,7 +32,12 @@ $(document).ready(() => {
 });
 
 function searchListClick(index) {
-    $('.layer-group').toggleClass('hidden');
+
+    $("#locationRadio").prop('checked', true);
+    DatahubMapObject.controlLayerHandler(DatahubMapObject.basicLayerNameList[0]);
+    if(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getVisible()) {
+        $(".location-layer-component").removeClass("hidden");
+    }
 
     var moveTo = $('[data-locationIndex='+index+']').val().split(",");
     DatahubMapObject.setCenter(moveTo);
@@ -78,7 +83,7 @@ function setMap() {
 }
 
 function drawInitLayers() {
-    var searchCharger = searchChargers();
+    var searchCharger = searchChargers(true);
     var setGrid = $.ajax({
         url: '/selectGrid.json',
         type: "POST",
@@ -109,7 +114,7 @@ function drawInitLayers() {
     });
 }
 
-function searchChargers() {
+function searchChargers(firstLoad) {
     $.ajax({
         url: '/searchEvChargers.json',
         type: "POST",
@@ -141,6 +146,11 @@ function searchChargers() {
 
         }, error: function(error) {
             console.log(error);
+        }
+    }).done(function () {
+        if(!firstLoad) {
+            DatahubMapObject.setCenter(defaultPoint);
+            fnEndLoadingBar();
         }
     });
 }
@@ -596,6 +606,9 @@ function mapClickEvent(pixel) {
             var gridFeatures = [gridFeature];
 
             DatahubMapObject.createPolygonLayer(DatahubMapObject.selectCellLayerName, gridFeatures, true);
+            $(".location-layer-component").addClass("hidden");
+            $(".distribution-layer-component").removeClass("hidden");
+
         }
     });
 }
@@ -671,8 +684,8 @@ function drawTable() {
         },
         columns: [
             {title : "충전기명", data: "buildingName"},
-            {title : "남원읍 공영주차장", data: "suitability"},
-            {title : "이용 시간(분)", data: "region"}
+            {title : "이용횟수", data: "totalArea"},
+            {title : "이용 시간(분)", data: "totalArea"}
         ],
         columnDefs:[
             {targets:[0], width:"60%", padding:"0px"}

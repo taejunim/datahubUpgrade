@@ -100,37 +100,42 @@ public class EvChargerCurrentController {
         conn.disconnect();
 
         String apiResult = sb.toString();
-        apiResult = apiResult.substring(apiResult.indexOf("<item>"));
-        apiResult = apiResult.replaceAll("</items></body></response>","");
-
-        String[] list = apiResult.split("</item>");
-
         List<Map<String, Object>> resultList = new ArrayList<>();
 
-        for(int i = 0; i  < list.length; i ++) {
-            Map<String, Object> object = new HashMap<>();
+        if(apiResult.contains("<item>")) {
+            apiResult = apiResult.substring(apiResult.indexOf("<item>"));
+            apiResult = apiResult.replaceAll("</items></body></response>", "");
 
-            if(list[i].contains(startKeyLng) && list[i].contains(startKeyLat))
-                object.put("location", list[i].substring(list[i].indexOf(startKeyLng) + startKeyLng.length(), list[i].indexOf(endKeyLng))
-                        + "," + list[i].substring(list[i].indexOf(startKeyLat) + startKeyLat.length(), list[i].indexOf(endKeyLat)));
+            String[] list = apiResult.split("</item>");
 
-            if(list[i].contains(startKeyStatNm)) object.put("detail", list[i].substring(list[i].indexOf(startKeyStatNm) + startKeyStatNm.length(), list[i].indexOf(endKeyStatNm)));
-            else object.put("detail", "-");
 
-            if(list[i].contains(startKeyStat)) {
-                String status = list[i].substring(list[i].indexOf(startKeyStat) + startKeyStat.length(), list[i].indexOf(endKeyStat));
-                object.put("statusName", getChargerStatus(status));
-                if(getChargerStatus(status).equals("알수없음"))  object.put("status", "1");
-                else object.put("status", status);
-            } else {
-                object.put("status", "1");
-                object.put("statusName", "-");
+            for (int i = 0; i < list.length; i++) {
+                Map<String, Object> object = new HashMap<>();
+
+                if (list[i].contains(startKeyLng) && list[i].contains(startKeyLat))
+                    object.put("location", list[i].substring(list[i].indexOf(startKeyLng) + startKeyLng.length(), list[i].indexOf(endKeyLng))
+                            + "," + list[i].substring(list[i].indexOf(startKeyLat) + startKeyLat.length(), list[i].indexOf(endKeyLat)));
+
+                if (list[i].contains(startKeyStatNm))
+                    object.put("detail", list[i].substring(list[i].indexOf(startKeyStatNm) + startKeyStatNm.length(), list[i].indexOf(endKeyStatNm)));
+                else object.put("detail", "-");
+
+                if (list[i].contains(startKeyStat)) {
+                    String status = list[i].substring(list[i].indexOf(startKeyStat) + startKeyStat.length(), list[i].indexOf(endKeyStat));
+                    object.put("statusName", getChargerStatus(status));
+                    if (getChargerStatus(status).equals("알수없음")) object.put("status", "1");
+                    else object.put("status", status);
+                } else {
+                    object.put("status", "1");
+                    object.put("statusName", "-");
+                }
+
+                if (list[i].contains(startKeyAddr))
+                    object.put("address", list[i].substring(list[i].indexOf(startKeyAddr) + startKeyAddr.length(), list[i].indexOf(endKeyAddr)));
+                else object.put("address\"", "-");
+
+                resultList.add(object);
             }
-
-            if(list[i].contains(startKeyAddr)) object.put("address", list[i].substring(list[i].indexOf(startKeyAddr) + startKeyAddr.length(), list[i].indexOf(endKeyAddr)));
-            else object.put("address\"", "-");
-
-            resultList.add(object);
         }
 
         return resultList;

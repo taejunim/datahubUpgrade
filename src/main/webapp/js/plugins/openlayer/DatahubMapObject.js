@@ -126,9 +126,13 @@ var DatahubMapObject = {
             DatahubMapObject.getLayer(lyrEnName).getSource().addFeature(polygonFeature);
         }
 
-        if(typeof twLayers !== 'undefined' && !twLayers.includes(lyrEnName)) twLayers.push(lyrEnName);
     },
     controlLayerHandler: (layerName) => {
+
+        if(DatahubMapObject.getLayer(DatahubMapObject.selectCellLayerName) !== undefined) {
+            DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(DatahubMapObject.selectCellLayerName));
+        }
+        $(".layer-group").addClass("hidden");
         switch (layerName) {
             case DatahubMapObject.basicLayerNameList[0] :
                 DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).setVisible(true);

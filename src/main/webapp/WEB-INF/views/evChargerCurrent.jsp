@@ -22,6 +22,7 @@
     #vMap {left: 0; top: 0; width: 100%; height: 100%; position: absolute;}
     .rowWrap .left .middle .search-list > .first > .left-txt {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 200px;}
     .right-txt div{font-size: 0.6vw; }
+    .display-none {display: none!important;}
 </style>
 <div class="rowWrap">
 <%-- 검색 --%>
@@ -67,7 +68,7 @@
                     </label>
                 </div>
             </div>
-            <div class="layer-group hidden">
+            <div class="layer-group location-layer-component hidden">
                 <div class="gray-layer w100p h50p">
                     <div class="display-column align-items-start wh100">
                         <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">EV Charger Info
@@ -173,7 +174,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layer-group">
+            <div class="layer-group distribution-layer-component hidden">
                 <div class="gray-layer w100p h100p">
                     <div class="display-column align-items-start wh100">
                         <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보</div>
