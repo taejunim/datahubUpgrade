@@ -163,8 +163,6 @@ function createPieChart(name) {
 		})
 	);
 
-
-
 	var series = chart.series.push(
 		am5percent.PieSeries.new(root, {
 			valueField: "value",
@@ -183,13 +181,40 @@ function createPieChart(name) {
 		endAngle: -90
 	});
 
-	series.labels.template.setAll({
-		fill : am5.color("#FFFFFF"),
-		inside : true,
-		centerX : am5.percent(100),
-		textType: "radial",
-		text : "{valuePercentTotal.formatNumber('0.00')}%"
+	series.ticks.template.setAll({
+		stroke: am5.color(0xFFFFFF),
+		strokeWidth: 2
 	})
+
+	series.labels.template.adapters.add("text", function(text, target) {
+		if (target.dataItem) {
+			if (target.dataItem.get("valuePercentTotal") < 10) {
+				target.setAll({
+					textType: "aligned",
+					fill: am5.color("#FFFFFF"),
+					text : "{valuePercentTotal.formatNumber('0.00')}%",
+					centerX: am5.percent(50),
+					radius: null,
+					paddingLeft: 20,
+					paddingRight: 20
+				});
+				target.dataItem.get("tick").set('fill', am5.color("#FFFFFF"));
+			}
+			else {
+				target.setAll({
+					textType: "regular",
+					fill: am5.color("#FFFFFF"),
+					text : "{valuePercentTotal.formatNumber('0.00')}%",
+					centerX: am5.percent(50),
+					radius: -70,
+					paddingLeft: 0,
+					paddingRight: 0
+				});
+				target.dataItem.get("tick").set("forceHidden", true);
+			}
+		}
+		return text;
+	});
 
 	var gradient = am5.LinearGradient.new(root, {
 		stops : [{

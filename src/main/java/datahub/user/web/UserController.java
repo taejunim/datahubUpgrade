@@ -158,6 +158,7 @@ public class UserController {
             userService.updateUser(userResult);
             HttpSession session = request.getSession();
             session.setAttribute(SessionConst.LOGIN_MEMBER,userResult);
+            session.setAttribute("userName",userResult.getUserName());
 
             result.put("message","success");
         } catch (Exception e) {
