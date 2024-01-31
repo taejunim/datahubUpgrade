@@ -109,7 +109,7 @@ function drawTable () {
                         return '<div class="display-row"><div class="judgment-box font-green">' + data + '</div></div>';
 
                     } else {
-                        return '<div class="judgment-box font-red">' + data + '</div>';
+                        return '<div class="display-row"><div class="judgment-box font-red">' + data + '</div></div>';
                     }
                 }},
             //{title : "적합 판단", data: "suitability"},

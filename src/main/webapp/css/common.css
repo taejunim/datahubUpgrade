@@ -209,7 +209,6 @@ table.type2{  border-radius: 10px; border-collapse: collapse; border-bottom: 1px
 
 table.type2 th, table.type2 td{
     border-top:none !important;
-    padding: 1.2rem !important;
     color: #ffff;
     vertical-align: middle;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10)inset;
@@ -445,7 +444,7 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 }
 
 /*적합 판단 박스*/
-.judgment-box{ border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.7rem 1rem; text-align: center; font-weight: 900;}
+.judgment-box{ border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.7rem 1rem; text-align: center; font-weight: 900; width: 5rem;}
 
 /*급속전력 박스*/
 .rapidity-box {border-radius: 20px; background: rgba(255, 255, 255, 0.15); padding: 0.5rem 0.7rem; text-align: center; font-weight: 900; color: #FFFFFF;}
@@ -470,7 +469,9 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 
 .modal-content{ background-color: #171821 !important; color: #FFFFFF;}
 
-.modal-header{border-bottom: none !important;}
+.modal-header{border-bottom: none !important; padding: 0 1rem!important; margin-top: 1rem;}
+
+.modal-header .close{padding: 0!important; margin: 0rem 1rem -1rem auto!important;}
 
 .modal-header button > span{color:#FFFFFF;}
 

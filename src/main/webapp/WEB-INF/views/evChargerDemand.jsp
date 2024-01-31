@@ -102,7 +102,7 @@
 
 <!-- Modal -->
 <div id="buildingDetail" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog demand-modal" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Parking Lot Demand Detail Info</h5>
@@ -181,8 +181,8 @@
                     <div class="content-box display-column gap04v">
                         <div class="">건축물 지도 정보</div>
                         <div class="display-row w100p">
-                            <div class="w45p h50vh" id="vMap"></div>
-                            <div class="w45p h50vh" id="vMap3d"></div>
+                            <div class="w45p h22rem" id="vMap"></div>
+                            <div class="w45p h22rem" id="vMap3d"></div>
                         </div>
                     </div>
                 </div>

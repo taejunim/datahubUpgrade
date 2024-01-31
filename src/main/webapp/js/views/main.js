@@ -42,6 +42,20 @@ function drawTable (data) {
 				, text: '엑셀'
 				, filename: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
 				, title: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
+				,customize: function ( xlsx ) {
+					var sheet = xlsx.xl.worksheets['sheet1.xml'];
+
+					$('row:first c', sheet).attr( 's', '30' );
+
+					$('row c[r^="D"]', sheet).each( function () {
+						if ( $('is t', this).text() === '급속' ) {
+							$(this).attr( 's', '35' );
+						}
+						if ( $('is t', this).text() === '완속' ) {
+							$(this).attr( 's', '45' );
+						}
+					});
+				}
 			},
 		],
 		columnDefs: [{"defaultContent":"-","targets":"_all"}],
