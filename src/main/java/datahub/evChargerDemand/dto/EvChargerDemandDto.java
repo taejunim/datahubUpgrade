@@ -34,6 +34,10 @@ public class EvChargerDemandDto extends DtoBase {
     private String mechanicalIndoorParkingCount;
     private String pnuCode;
     private String suitability;
+    private String chargerStandard;
+    private String chargerCount;
+    private String fastChargerCount;
+    private String slowChargerCount;
 
     private String searchRegion;
     private String searchBuildingPurposeCode;

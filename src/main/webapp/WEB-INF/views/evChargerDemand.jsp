@@ -7,6 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
+<link rel="stylesheet" href="<c:url value='/css/plugins/openlayer/ol.css' />">
+<script src="<c:url value='/js/plugins/openlayer/ol.js'/>"></script>
+<script src="<c:url value='/js/plugins/openlayer/proj4.js'/>"></script>
+<script src="<c:url value='/js/plugins/openlayer/DatahubMapObject.js'/>"></script>
 <script type="text/javascript" src="/js/views/evChargerDemand.js"></script>
 <div class="columnWrap w100p h95p">
     <div class="frame h6p">
@@ -86,7 +90,7 @@
                 </div>
             </div>
             <div class="buttonFrame w20p h100p font-white">
-                <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target="#exampleModalCenter">초기화</button>
+                <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
                 <button type="button" class="btn-black w40p h50p" id="searchButton">검색</button>
             </div>
         </div>
@@ -177,8 +181,8 @@
                     <div class="content-box display-column gap04v">
                         <div class="">건축물 지도 정보</div>
                         <div class="display-row w100p">
-                            <div class="icon_eyes w45p h50vh"></div>
-                            <div class="icon_eyes w45p h50vh"></div>
+                            <div class="w45p h50vh" id="vMap"></div>
+                            <div class="w45p h50vh" id="vMap3d"></div>
                         </div>
                     </div>
                 </div>

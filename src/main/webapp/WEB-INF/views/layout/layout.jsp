@@ -14,6 +14,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>데이터허브 고도화</title>
+  <script type="text/javascript" src="https://map.vworld.kr/js/webglMapInit.js.do?version=2.0&apiKey=7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF"></script>
 
 <link rel="stylesheet" href="<c:url value="/css/jquery/jquery-ui.min.css" />">
 <link rel="stylesheet" href="<c:url value="/css/reset.css" />">

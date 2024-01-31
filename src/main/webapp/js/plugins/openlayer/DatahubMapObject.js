@@ -78,6 +78,56 @@ var DatahubMapObject = {
         });
         DatahubMapObject.map.addLayer(polygonLayer);
     },
+    createPolygonLayer2: (object, lyrEnName, visible, imgClass) => {
+
+        //기존에 lyrEnName으로 그려진 layer 존재시 제거
+        if(DatahubMapObject.getLayer(lyrEnName) !== undefined) {
+            DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(lyrEnName));
+        }
+
+        var polygonLayer = new ol.layer.Vector({
+            source : new ol.source.Vector(),
+            title : lyrEnName,
+            visible : visible
+        });
+        DatahubMapObject.map.addLayer(polygonLayer);
+
+        var styleSelector = document.querySelector('.'+ imgClass);
+
+        var polygonStyle = [
+            // 스타일 지정
+            new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: 'blue',
+                    width: 1
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(0,0,255,0.1)'
+                })
+            })];
+
+        var polygonList = object.polygonList;
+        for(var i = 0; i < polygonList.length; i++) {
+            var polygonFeature = new ol.Feature({
+                geometry: new ol.geom.Polygon([polygonList[i].polygon]),
+                zIndex: 3,
+                pnu: polygonList[i].pnu,
+                buldNm: polygonList[i].buldNm,
+                buldDongNm: polygonList[i].buldDongNm,
+                groundFloorCo: polygonList[i].groundFloorCo,
+                undgrndFloorCo: polygonList[i].undgrndFloorCo,
+                totParkngCo: polygonList[i].totParkngCo,
+                bbox: polygonList[i].bbox,
+                prmisnDe: polygonList[i].prmisnDe,
+                useConfmDe: polygonList[i].useConfmDe
+            });
+            polygonFeature.setStyle(polygonStyle);
+
+            DatahubMapObject.getLayer(lyrEnName).getSource().addFeature(polygonFeature);
+        }
+
+        if(typeof twLayers !== 'undefined' && !twLayers.includes(lyrEnName)) twLayers.push(lyrEnName);
+    },
     controlLayerHandler: (layerName) => {
         switch (layerName) {
             case DatahubMapObject.basicLayerNameList[0] :
