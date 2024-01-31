@@ -25,4 +25,10 @@ public class EvChargerDemandServiceImpl implements EvChargerDemandService {
     public int countBuildings(EvChargerDemandDto evChargerDemandDto) {
         return evChargerDemandMapper.countBuildings(evChargerDemandDto);
     }
+
+    @Override
+    public List<EvChargerDemandDto> getChargers(EvChargerDemandDto evChargerDemandDto) {
+
+        return evChargerDemandMapper.selectChargers(evChargerDemandDto);
+    }
 }

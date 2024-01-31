@@ -112,4 +112,26 @@
         </if>
     </select>
 
+    <select id="selectChargers" parameterType="evChargerDemandDto" resultType="evChargerDemandDto">
+        SELECT charging_station_name AS chargingStationName
+             , CASE WHEN output >= 40 THEN CONCAT ('급속(', COALESCE(output, 0), 'KW)')
+                    ELSE CONCAT ('완속(', COALESCE(output, 0), 'KW)')
+                END AS chargerType
+             , CASE WHEN limit_yn = 'N' THEN '개방형'
+                    ELSE '부분 개방형'
+                END AS limitYn
+             , agency_name AS agencyName
+             , CASE WHEN charger_status = '1' THEN '통신 이상'
+                    WHEN charger_status = '2' THEN '충전 대기'
+                    WHEN charger_status = '3' THEN '충전중'
+                    WHEN charger_status = '4' THEN '운영 중지'
+                    WHEN charger_status = '5' THEN '점검중'
+                    WHEN charger_status = '9' THEN '상태 미확인'
+                END AS chargerStatus
+             , COALESCE(TO_CHAR(last_charging_end_date::timestamp, 'YYYY-MM-DD HH24:MI:SS'), '-') AS lastChargingEndDate
+        FROM "datahubUpgrade".dh_charger_test
+        WHERE pnu_code = #{pnuCode}
+        ORDER BY charger_status ASC, output, last_charging_end_date DESC
+    </select>
+
 </mapper>

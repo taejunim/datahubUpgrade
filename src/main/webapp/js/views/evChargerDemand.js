@@ -185,6 +185,7 @@ function drawTable () {
                 $('#buildingDetail').modal('show');
 
                 getTwPolygonData("/getCtnlgsSpceWFS.json", 'getCtnlgsSpceWFSLayer', 'polygonSample4', aData.pnuCode, aData.landLotNumberAddress);
+                getChargers(aData.pnuCode);
             });
         }
     })
@@ -263,11 +264,46 @@ function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address) {
                     )
                 );
                 map3d = new vw.Map("vMap3d", mapOptions);
-
-
             });
         }
     })
+}
 
+function getChargers(pnuCode) {
+    $('#chargerTable tbody').empty();
 
+    $.ajax({
+        url: '/getChargers.json',
+        type: "POST",
+        data: JSON.stringify({ pnuCode: String(pnuCode) }),
+        contentType: "application/json",
+        beforeSend: function () {},
+        success: function (res) {
+
+            /*var newRow = $('<tr>');
+            newRow.append('<td>d</td>');
+            newRow.append('<td>d</td>');
+            newRow.append('<td>d</td>');
+            newRow.append('<td>d</td>');
+            newRow.append('<td>d</td>');
+            newRow.append('<td>d</td>');
+
+            $('#chargerTable tr').append(newRow);*/
+
+            var dataList = res.result;
+            // 테이블 행 동적 생성
+            for (var i = 0; i < dataList.length; i++) {
+                var newRow = $('<tr>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].chargingStationName + '</td>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].chargerType + '</td>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].limitYn + '</td>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].agencyName + '</td>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].chargerStatus + '</td>');
+                newRow.append('<td style="text-align: center;">' + dataList[i].lastChargingEndDate + '</td>');
+
+                $('#chargerTable tbody').append(newRow);
+            }
+        }
+    }).done(function () {
+    });
 }

@@ -9,4 +9,6 @@ public interface EvChargerDemandService {
     List<EvChargerDemandDto> getBuildings(EvChargerDemandDto evChargerDemandDto);
 
     int countBuildings(EvChargerDemandDto evChargerDemandDto);
+
+    List<EvChargerDemandDto> getChargers(EvChargerDemandDto evChargerDemandDto);
 }

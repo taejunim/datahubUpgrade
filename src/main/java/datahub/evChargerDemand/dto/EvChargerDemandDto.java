@@ -39,6 +39,13 @@ public class EvChargerDemandDto extends DtoBase {
     private String fastChargerCount;
     private String slowChargerCount;
 
+    private String chargingStationName;
+    private String chargerType;
+    private String limitYn;
+    private String agencyName;
+    private String chargerStatus;
+    private String lastChargingEndDate;
+
     private String searchRegion;
     private String searchBuildingPurposeCode;
     private String searchSuitability;

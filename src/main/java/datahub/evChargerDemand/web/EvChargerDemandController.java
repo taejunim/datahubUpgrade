@@ -111,4 +111,17 @@ public class EvChargerDemandController {
 
         return result;
     }
+
+    @RequestMapping(value = "/getChargers.json", method= RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> getChargers(@RequestBody EvChargerDemandDto evChargerDemandDto) {
+
+        Map<String, Object> result = new HashMap<>();
+
+        List<EvChargerDemandDto> chargerList = evChargerDemandService.getChargers(evChargerDemandDto);
+
+        result.put("result", chargerList);
+
+        return result;
+    }
 }

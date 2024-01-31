@@ -10,4 +10,6 @@ public interface EvChargerDemandMapper {
     List<EvChargerDemandDto> selectBuildings(EvChargerDemandDto evChargerDemandDto);
 
     int countBuildings(EvChargerDemandDto evChargerDemandDto);
+
+    List<EvChargerDemandDto> selectChargers(EvChargerDemandDto evChargerDemandDto);
 }
