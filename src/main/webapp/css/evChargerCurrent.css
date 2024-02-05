@@ -144,13 +144,6 @@
 .evReportTable3 > tbody > tr:last-child > td {
     border-bottom: none;
 }
-.printingBtn {
-    background: black;
-    color: white;
-    border: 2px solid;
-    padding: 0em 1em;
-    font-size: 1em;
-}
 .printingBtn:hover {
     border-color: orange;
     color: white;

@@ -71,8 +71,13 @@
             <div class="layer-group location-layer-component hidden">
                 <div class="gray-layer w100p h50p">
                     <div class="display-column align-items-start wh100">
-                        <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">EV Charger Info
-                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button></div>
+                        <div class="font-white font-18 display-info">EV Charger Info
+                            <a href="#" id="EvChargerReport" class="display-print" title="레포트 출력">
+                                <img src="<c:url value='/images/iconmonstr-printer-4.svg'/>" alt="레포트출력"/>
+                                <p>레포트 출력</p>
+                            </a>
+<%--                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button>--%>
+                        </div>
                         <div class="display-column h95p">
                             <table class="table type4">
                                 <tr>

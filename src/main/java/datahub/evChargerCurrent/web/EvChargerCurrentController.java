@@ -144,7 +144,6 @@ public class EvChargerCurrentController {
     public String getChargerStatus(String code) {
 
         String codeName = "알수없음";
-
         switch (code) {
             case "0" : break;
             case "1" : codeName = "통신이상";

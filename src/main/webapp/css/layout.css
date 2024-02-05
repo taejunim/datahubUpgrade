@@ -69,6 +69,16 @@
 
 .rowWrap .display-column{display: flex; flex-direction: column; align-items: center;}
 
+.rowWrap .display-column .display-info {display: flex; justify-content: space-between; width: 100%;}
+
+.rowWrap .display-column .display-info .display-print {display: flex; width: 30%; align-items: center;}
+
+.rowWrap .display-column .display-info .display-print:hover {text-decoration: none;}
+
+.rowWrap .display-column .display-info .display-print > image {width: 20px;}
+
+.rowWrap .display-column .display-info .display-print > p {margin: 0 auto;}
+
 .rowWrap .left{width: 25%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 0.5rem;}
 
 .rowWrap .left .top .display-row{display: flex; flex-direction: row; align-items: center; padding: 0 1rem;}
@@ -294,4 +304,4 @@ padding-right: 0 !important;
 
 #CurrentChart2 {width: 52%; height: 25%; position:absolute;}
 
-#CurrentChart3 {position: absolute;width: 33%;height: 24%;left: 65%;}
+#CurrentChart3 {position: absolute;width: 30%;height: 24%;left: 70%;}

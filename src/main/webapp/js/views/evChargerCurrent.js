@@ -280,9 +280,6 @@ function searchChargers(firstLoad) {
             cursor.lineY.set("visible", false);
             cursor.lineX.set("visible", false);
 
-            if (name == "CurrentChart") {
-
-            }
             switch (name) {
                 case "CurrentChart" :
                     createAxisAndSeries(20, false, "USE Time");
@@ -746,6 +743,8 @@ function createPieChart(name) {
     });
 
     series.labels.template.set("forceHidden", true);
+
+    series.ticks.template.set("forceHidden", true);
 
     // series.labels.template.setAll({
     //     fill : am5.color("#FFFFFF"),

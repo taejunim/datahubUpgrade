@@ -230,7 +230,7 @@ function createPieChart(name) {
 				target.setAll({
 					textType: "aligned",
 					fill: am5.color("#FFFFFF"),
-					text : "{valuePercentTotal.formatNumber('0.00')}%",
+					text : "{valuePercentTotal.formatNumber('0.0')}%",
 					centerX: am5.percent(50),
 					radius: null,
 					paddingLeft: 20,
@@ -242,7 +242,7 @@ function createPieChart(name) {
 				target.setAll({
 					textType: "regular",
 					fill: am5.color("#FFFFFF"),
-					text : "{valuePercentTotal.formatNumber('0.00')}%",
+					text : "{valuePercentTotal.formatNumber('0.0')}%",
 					centerX: am5.percent(50),
 					radius: -70,
 					paddingLeft: 0,
