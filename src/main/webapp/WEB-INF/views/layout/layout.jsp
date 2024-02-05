@@ -46,15 +46,15 @@
 <body class="">
 
 <div class="wrap-loading hidden">
-  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);"/></div>
+  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);width: 9rem;height: 9rem;"/></div>
 </div>
 <div class="wrapper">
-  <!-- 사이드바 -->
-  <tiles:insertAttribute name="sidebar"/>
+  <!-- 헤더 -->
+  <tiles:insertAttribute name="header"/>
 
-  <div class="content-wrapper w85p h100p">
-    <!-- 헤더 -->
-    <tiles:insertAttribute name="header"/>
+  <div class="content-wrapper wh100">
+    <!-- 사이드바 -->
+    <tiles:insertAttribute name="sidebar"/>
     <!-- 메인 -->
     <tiles:insertAttribute name="content"/>
   </div>

@@ -4,15 +4,15 @@
 *               Main Page               *
 ****************************************/
 
-.wrapper {height: 100vh; background: #171821; display: flex; flex-direction: row; align-items: flex-start;}
+.wrapper {height: 100vh; background: #171821; display: flex; flex-direction: column; align-items: flex-start;}
 
-.content-wrapper{display: flex; flex-direction: column; align-items: flex-start;}
+.content-wrapper{display: flex; flex-direction: row; align-items: flex-start;}
 
-.main{display: flex; flex-direction: row; justify-content: center; gap:1vw;}
+.main{width: 85%; height: 100%; display: flex; flex-direction: row; justify-content: center; gap: 1rem;}
 
-.main .left{width: 30%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 1.5vh;}
+.main .left{width: 30%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 1rem;}
 
-.main .right{width: 65%; height: 100%; display: flex; align-items: flex-start; flex-direction: column; gap: 1.5vh;}
+.main .right{width: 65%; height: 100%; display: flex; align-items: flex-start; flex-direction: column; gap: 1rem;}
 
 .main .card{width: 100%; border-radius: 10px; background: #21222D; padding: 0.7em;}
 
@@ -22,9 +22,9 @@
 
 .main .display-row{display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; gap: 0.8vw;}
 
-.main .display-row-center{display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+.main .display-row-center{display: flex; flex-direction: row; justify-content: space-between; align-items: center; gap: 0.8rem;}
 
-.main .sm-card{width: 100%; border-radius: 10px; background: #171821; padding: 0.5em 0.5em; gap: 0.2rem;}
+.main .sm-card{width: 100%; border-radius: 10px; background: #171821; padding: 0.5rem;height: 100%; display: flex; justify-content: space-around; align-items: flex-start;}
 
 
 
@@ -77,14 +77,14 @@
 .loginPage .loginBox .frame .topBox .bottomBox .loginBtn{width: 40%; height: 10%; cursor: pointer; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; justify-content: center;}
 
 
-@media screen and (max-width:1280px){
-  .wrapper {width: 1280px; overflow: auto; }
+@media screen and (max-width:1536px){
+  .wrapper {width: 1536px; overflow: auto; }
 }
 
 @media screen and (max-height:970px){
   .wrapper {height: 970px; overflow: auto; }
 }
 
-@media screen and (min-height:1330px){
-  .main {height: 1330px; overflow: auto; }
+@media screen and (min-height:1000px){
+  .main {height: 970px; overflow: auto; }
 }

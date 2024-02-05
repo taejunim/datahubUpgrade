@@ -31,25 +31,27 @@
 
 .sideBar{width: 15%; height: 100%; display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
 
-.sideBar .menu{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; padding: 7vh 0.5vw; justify-content: flex-start;}
+.sideBar .menu{width: 100%; height: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 1rem;}
 
-.sideBar .menu > div{ width: 100%; height: 6vh; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 0.5vw; padding: 0 1vw}
+.sideBar .menu > div{ width: 100%; height: 80px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 0.5rem; padding: 0 1vw}
+
+.sideBar .menu > div > div {font-size: 1rem;}
 
 .sideBar .menu > div:hover{background: #FFFFFF; border-radius: 6px;}
 
 .sideBar .menu .menuActive{border-radius: 6px; background: #A9DFD8; color: #171821 !important;}
 
-.sideBar .line, .main .line{width: 2px; height: 95%; background: #2C2D33;}
+.sideBar .line, .main .line{width: 2px; height: 100%; background: #2C2D33;}
 
-.sideBar .menu .dashboard{width: 1vw; height: 3vh; background: url(../images/dashboard.png) no-repeat center/100%;}
+.sideBar .menu .dashboard{width: 1.5rem; height: 1.5rem; background: url(../images/dashboard.png) no-repeat center/100%;}
 
-.sideBar .menu .evDemand{width: 1vw; height: 3vh; background: url(../images/evDemand.png) no-repeat center/100%;}
+.sideBar .menu .evDemand{width: 1.5rem; height: 1.5rem; background: url(../images/evDemand.png) no-repeat center/100%;}
 
-.sideBar .menu .evCurrent{width: 1vw; height: 3vh; background: url(../images/evCurrent.png) no-repeat center/100%;}
+.sideBar .menu .evCurrent{width: 1.5rem; height: 1.5rem; background: url(../images/evCurrent.png) no-repeat center/100%;}
 
-.sideBar .menu .userInfo{width: 1vw; height: 3vh; background: url(../images/user.png) no-repeat center/100%;}
+.sideBar .menu .userInfo{width: 1.5rem; height: 1.5rem; background: url(../images/user.png) no-repeat center/100%;}
 
-.sideBar .menu .setting{width: 1vw; height: 3vh; background: url(../images/setting.png) no-repeat center/100%;}
+.sideBar .menu .setting{width: 1.5rem; height: 1.5rem; background: url(../images/setting.png) no-repeat center/100%;}
 
 
 /***************************************
@@ -88,11 +90,11 @@
 *           images                   *
 ***************************************/
 
-.icon-total{width: 2.5vw; height: 2.5vw; background: url(../images/icon_total.png) no-repeat center/100%;}
+.icon-total{width: 2.5rem; height: 2.5rem; background: url(../images/icon_total.png) no-repeat center/100%;}
 
-.icon_normal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_normal.png) no-repeat center/100%;}
+.icon_normal{width: 2.5rem; height: 2.5rem; background: url(../images/icon_normal.png) no-repeat center/100%;}
 
-.icon_abnormal{width: 2.5vw; height: 2.5vw; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
+.icon_abnormal{width: 2.5rem; height: 2.5rem; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
 
 .icon_eyes{width: 2.5vw; height: 2.5vw; background: url(../images/icon_eyes.png) no-repeat center/100%;}
 
@@ -117,13 +119,13 @@
 /*******************^********************
 *            datatable / paging        *
 ****************************************/
-#dataTable_wrapper { margin-left: 0; height: 36vw; }
+#dataTable_wrapper { margin-left: 0; height: 42rem; }
 
 .dataTable { margin-left: 0; }
 
 div.dataTables_processing{background: inherit!important; color: white!important; }
 
-div.dataTables_paginate{position: absolute; bottom: 1rem; left: 50em; display: flex; gap: 0.8em;}
+div.dataTables_paginate{display: flex; gap: 0.8em; justify-content: center; position: absolute; left: 50%; bottom: -1rem;}
 
 div.dataTables_paginate > span{display: flex; gap: 0.8em;}
 
@@ -318,8 +320,6 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
     position: absolute;
     top:50%;
     left:50%;
-    margin-left: -119px;
-    margin-top: -117px;
 }
 
 .table-loading{
@@ -366,7 +366,7 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
     border: 0px solid #a9dfd8;
     font-size: 0;
     position: absolute;
-    bottom: 30%;
+    bottom: 40%;
     left: 0%;
     transform: translate(-50%, 50%);
     cursor: pointer;
@@ -380,7 +380,7 @@ ul.paging li a.on{border-bottom: 1px solid #121212;}
     border-radius: 50%;
     background-color: #a9dfd8;
     position: absolute;
-    bottom: 30%;
+    bottom: 40%;
     left: 0%;
     transform: translate(-50%, 50%);
     cursor: pointer;

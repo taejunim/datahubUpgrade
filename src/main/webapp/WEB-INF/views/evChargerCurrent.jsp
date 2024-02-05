@@ -46,7 +46,7 @@
         </div>
         <%--하단바--%>
         <div class="bottom">
-            <div class="font-white font-20"><span id="searchListCount"></span> results</div>
+            <div class="font-white font-20"><span id="searchListCount" class="font-20"></span> results</div>
         </div>
     </div>
     <%--    지도화면--%>
@@ -224,7 +224,7 @@
         </div>
     </div>
 </div>
-<div class="report-wrap">
+<div class="report-wrap" style="position: absolute;">
     <div class="report-body">
         <div class="page" style="display: none;">
             <h3 class="report-title">제주도내 전기차 충전기 구축현황(‘23. 11월말)</h3>

@@ -46,7 +46,7 @@
 <body class="">
 
 <div class="wrap-loading hidden">
-    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);"/></div>
+    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);width: 9rem;height: 9rem;"/></div>
 </div>
 <div class="wrapper w100p">
     <!-- 사이드바 -->
