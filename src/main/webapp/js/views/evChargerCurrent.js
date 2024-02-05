@@ -7,10 +7,6 @@ $(document).ready(() => {
     setMap();
 
     drawInitLayers();
-    createXyChart("CurrentChart");
-    createBarChart("CurrentChart1");
-    createPieChart("CurrentChart2");
-    createXyChart('CurrentChart3');
     drawTable();
 
     //Search
@@ -45,12 +41,8 @@ function searchListClick(index) {
     $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
     maybeDisposeRoot("CurrentChart");
     maybeDisposeRoot("CurrentChart1");
-    maybeDisposeRoot("CurrentChart2");
-    maybeDisposeRoot("CurrentChart3");
     createXyChart("CurrentChart");
     createBarChart("CurrentChart1");
-    createPieChart("CurrentChart2");
-    createXyChart('CurrentChart3');
 }
 
 function setMap() {
@@ -291,11 +283,13 @@ function searchChargers(firstLoad) {
                     break;
             }
 
+            var legend;
+
             chart.appear(1000, 100);
             // XY CHART 범례 인스턴스 생성
             switch (name) {
                 case "CurrentChart" :
-                    var legend = chart.children.push(am5.Legend.new(root, {
+                    legend = chart.children.push(am5.Legend.new(root, {
                         layout: root.horizontalLayout,
                         x: am5.percent(80),
                         centerX: am5.percent(100),
@@ -304,7 +298,7 @@ function searchChargers(firstLoad) {
                     }));
                     break;
                 case "CurrentChart3" :
-                    var legend = chart.children.push(am5.Legend.new(root, {
+                    legend = chart.children.push(am5.Legend.new(root, {
                         layout: root.horizontalLayout,
                         x: am5.percent(85),
                         centerX: am5.percent(100),
@@ -569,6 +563,10 @@ function drawGrid(gridData, layerName, color, legendKey, visible){
 }
 
 function mapClickEvent(pixel) {
+    maybeDisposeRoot("CurrentChart2");
+    maybeDisposeRoot("CurrentChart3");
+    createPieChart("CurrentChart2");
+    createXyChart('CurrentChart3');
     // 클릭한 픽셀정보로  feature 체크
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {
         if(layer.values_.title === DatahubMapObject.basicLayerNameList[1]) {

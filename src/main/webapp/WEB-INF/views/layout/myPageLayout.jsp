@@ -52,7 +52,7 @@
     <!-- 헤더 -->
     <tiles:insertAttribute name="header"/>
 
-    <div class="content-wrapper wh100 myPage_main">
+    <div class="content-wrapper wh100">
         <!-- 사이드바 -->
         <tiles:insertAttribute name="sidebar"/>
         <!-- 메인 -->
