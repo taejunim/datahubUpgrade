@@ -92,6 +92,7 @@
             <div class="buttonFrame w20p h100p font-white">
                 <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
                 <button type="button" class="btn-black w40p h50p" id="searchButton">검색</button>
+                <button type="button" class="btn-black w40p h50p" id="excelBtn"></button>
             </div>
         </div>
     </div>
@@ -170,9 +171,9 @@
                         <tr>
                             <th>산정법</th>
                             <td colspan="7">
-                                <span class="font-green">✓</span>건축물 용도에 따른 주차장 설치 대수 산정은 건축 주용도가 공장 일때, 시설 면적 350㎡ 당 1대를 기준으로 산정한다.<br>
-                                <span class="font-green">✓</span>전기차 충전기 설치 기준이 2대 이상이면 급속 1대를 필수로 설치한다.(설치 기준이 1대 일 경우 급속/완속 구분없이 설치 가능)<br>
-                                <span class="font-red">✗</span>친환경자동차법 따라 주차단위구획 총수를 기준으로 50면수 이상인 신축건물은 총 주차면수의 5% 이상, 기축건물(법 시행일 이전 건축허가를 받은 시설)은<br>
+                                <span class="font-green" id="areaStandard">✓</span>건축물 용도에 따른 주차장 설치 대수 산정은 건축 주용도가 공장 일때, 시설 면적 350㎡ 당 1대를 기준으로 산정한다.<br>
+                                <span class="font-green" id="fastChargerStandard">✓</span>전기차 충전기 설치 기준이 2대 이상이면 급속 1대를 필수로 설치한다.(설치 기준이 1대 일 경우 급속/완속 구분없이 설치 가능)<br>
+                                <span class="font-red" id="parkingCountStandard">✗</span>친환경자동차법 따라 주차단위구획 총수를 기준으로 50면수 이상인 신축건물은 총 주차면수의 5% 이상, 기축건물(법 시행일 이전 건축허가를 받은 시설)은<br>
                                 2% 이상의 전기차 충전기를 설치해야 한다.
                             </td>
                         </tr>
