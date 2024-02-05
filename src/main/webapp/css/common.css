@@ -96,7 +96,7 @@
 
 .icon_abnormal{width: 2.5rem; height: 2.5rem; background: url(../images/icon_abnormal.png) no-repeat center/100%;}
 
-.icon_eyes{width: 2.5vw; height: 2.5vw; background: url(../images/icon_eyes.png) no-repeat center/100%;}
+.icon_eyes{width: 3rem; height: 3rem; background: url(../images/icon_eyes.png) no-repeat center/50%;}
 
 .icon_calendar{background-size: 1.4rem; background-image: url(../images/calendar.png); background-repeat: no-repeat; background-position: right; background-origin: content-box;}
 
@@ -484,10 +484,3 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 .dropdown-item:focus, .dropdown-item:hover {color: #16181b!important; background-color: #a9dfd8!important;}
 
 .btn.focus, .btn:focus, .btn:hover {box-shadow: 0 0 0 0.2rem rgba(169, 223, 216, .25)!important;}
-
-
-@media screen and (min-width: 992px) {
-    .modal-lg, .modal-xl {
-        max-width: 70em !important;
-    }
-}

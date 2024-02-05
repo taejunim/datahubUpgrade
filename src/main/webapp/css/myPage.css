@@ -28,15 +28,11 @@
 
 .myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo{width: 100%;  height: 30%; display: flex; flex-direction: column; justify-content: space-around; align-items: center;}
 
-.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .inputBox{width: 70%; height: 60%; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; border: none; padding: 0 1.2rem;}
+.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .inputBox{width: 100%; height: 60%; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; border: none; padding: 0 1.2rem;}
+
+.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .inputBox > input{background: unset; border: none; width: 90%; height: 100%;}
 
 .myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .joinFrame{display: flex; flex-direction: column; align-items: flex-start; width: 100%; height:100%; padding: 0 2rem; gap: 0.3rem;}
-
-.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .joinFrame .myPage_image1{position: absolute;width: 4%;top: 30.1vh;left: 43.5vh; cursor: pointer}
-
-.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .joinFrame .myPage_image2{position: absolute;width: 4%;top: 40.7vh;left: 43.5vh; cursor: pointer}
-
-.myPage_main .myPage_container .frame .topBox .bottomBox .loginInfo .joinFrame .myPage_image3{position: absolute;width: 4%;top: 51.1vh;left: 43.5vh; cursor: pointer}
 
 .activeEyes {filter: invert(16%) sepia(89%) saturate(6054%) hue-rotate(358deg) brightness(97%) contrast(113%);}
 
