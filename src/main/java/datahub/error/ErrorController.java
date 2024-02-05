@@ -17,8 +17,8 @@ public class ErrorController {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/error{error_code}.do")
-    public String error(HttpServletRequest request, @PathVariable String error_code, Model model) {
+    @RequestMapping(value = "/error{errorCode}.do")
+    public String error(HttpServletRequest request, @PathVariable String errorCode, Model model) {
         String message = (String) request.getAttribute("javax.servlet.error.message");
 
         Map<String,Object> map = new HashMap<>();
@@ -29,7 +29,7 @@ public class ErrorController {
         map.put("SERVLET_NAME", request.getAttribute("javax.servlet.error.servlet_name"));
 
         try {
-            int statusCode = Integer.parseInt(error_code);
+            int statusCode = Integer.parseInt(errorCode);
             switch (statusCode) {
                 case 404 : message = "페이지를 찾을 수 없습니다. 관리자에게 문의 바랍니다."; break;
                 case 500 : message = "서버에 오류가 발생하였습니다. 관리자에게 문의 바랍니다."; break;

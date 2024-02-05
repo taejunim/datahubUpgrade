@@ -786,7 +786,7 @@ function createPieChart(name) {
 
     let legend = chart.children.push(am5.Legend.new(root, {
         layout: root.verticalLayout,
-        x: am5.percent(85),
+        x: am5.percent(80),
         centerX: am5.percent(100),
         y : am5.percent(0),
         centerY: am5.percent(0),
