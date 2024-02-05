@@ -42,19 +42,57 @@ function drawTable (data) {
 				, text: '엑셀'
 				, filename: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
 				, title: data.title + "("  + new Date().format("yyyy-MM-dd") + ")"
+				, createEmptyCells: true
 				,customize: function ( xlsx ) {
 					var sheet = xlsx.xl.worksheets['sheet1.xml'];
+					var sSh = xlsx.xl['styles.xml'];
+					var lastXfIndex = $('cellXfs xf', sSh).length - 1;
 
-					$('row:first c', sheet).attr( 's', '30' );
+					var f1 = '<fill><patternFill patternType="solid"><fgColor rgb="000000" /><bgColor indexed="64" /></patternFill></fill>';
+					var f2 = '<fill><patternFill patternType="solid"><fgColor rgb="FFFFA500" /><bgColor indexed="64" /></patternFill></fill>';
+					var f3 = '<fill><patternFill patternType="solid"><fgColor rgb="FF008000" /><bgColor indexed="64" /></patternFill></fill>';
+					var f4 = '<fill><patternFill patternType="solid"><fgColor rgb="FFD3D3D3" /><bgColor indexed="64" /></patternFill></fill>';
+					var f5 = '<fill><patternFill patternType="solid"><fgColor rgb="FF365F91" /><bgColor indexed="64" /></patternFill></fill>';
+					var s1 = '<xf numFmtId="0" fontId="1" fillId="0" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment vertical="top" horizontal="left" wrapText="1" /></xf>';
+					var s2 = '<xf numFmtId="0" fontId="0" fillId="6" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment vertical="top" horizontal="left" wrapText="1" /></xf>';
+					var s3 = '<xf numFmtId="0" fontId="1" fillId="10" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment horizontal="center" vertical="top" wrapText="1" /></xf>';
+					var s4 = '<xf numFmtId="0" fontId="0" fillId="7" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment vertical="top" horizontal="left" wrapText="1" /></xf>';
+					var s5 = '<xf numFmtId="0" fontId="0" fillId="8" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment vertical="top" horizontal="left" wrapText="1" /></xf>';
+					var s6 = '<xf numFmtId="0" fontId="0" fillId="9" borderId="1" applyFont="1" applyFill="1" applyBorder="1" xfId="0" applyAlignment="1"><alignment vertical="top" horizontal="left" wrapText="1" /></xf>';
+					sSh.childNodes[0].childNodes[2].innerHTML += f1 + f2 + f3 + f4 + f5;
+					sSh.childNodes[0].childNodes[5].innerHTML += s1 + s2 + s3 + s4 + s5 + s6;
+					var head = lastXfIndex + 3;
 
-					$('row c[r^="D"]', sheet).each( function () {
-						if ( $('is t', this).text() === '급속' ) {
-							$(this).attr( 's', '35' );
-						}
-						if ( $('is t', this).text() === '완속' ) {
-							$(this).attr( 's', '45' );
+					$('row c', sheet).attr('s', 0);
+					$('row c', sheet).attr('s', 51);
+					$('row:first c', sheet).attr('s', head);
+					$('row:nth-child(2) c', sheet).attr('s', head);
+
+					//width
+					var col = $('col', sheet);
+					$(col[0]).attr('width', 4);
+					$(col[1]).attr('width', 40);
+					$(col[2]).attr('width', 40);
+					$(col[3]).attr('width', 15);
+					$(col[4]).attr('width', 20);
+					$(col[5]).attr('width', 25);
+
+					//height
+					$('row* ', sheet).each(function(index) {
+						if (index === 0) {
+							$(this).attr('ht', 30);
+							$(this).attr('customHeight', 1);
+						} else {
+							$(this).attr('ht', 20);
+							$(this).attr('customHeight', 1);
 						}
 					});
+
+					// font-size
+					var tagName = sSh.getElementsByTagName('sz');
+					for (i = 0; i < tagName.length; i++) {
+						tagName[i].setAttribute("val", "16");
+					}
 				}
 			},
 		],
