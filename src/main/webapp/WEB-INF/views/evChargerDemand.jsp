@@ -15,7 +15,7 @@
 <div class="columnWrap w100p h95p">
     <div class="frame h6p">
         <div class="title wh100">
-            <div class="font-white font-16">주차장 수요 대상 건물</div>
+            <div class="font-white font-18">주차장 수요 대상 건물</div>
             <div class="font-gray font-12">EV 주차장 수 적합/부적합</div>
         </div>
     </div>
@@ -89,10 +89,10 @@
                     </div>
                 </div>
             </div>
-            <div class="buttonFrame w20p h100p font-white">
-                <button type="button" class="btn-black w40p h50p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
-                <button type="button" class="btn-black w40p h50p" id="searchButton">검색</button>
-                <button type="button" class="btn-black w40p h50p" id="excelBtn"></button>
+            <div class="buttonFrame w20p h100p font-white gap1rem">
+                <button type="button" class="btn-black w40p h30p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
+                <button type="button" class="btn-black w40p h30p" id="searchButton">검색</button>
+                <button type="button" class="btn-black w40p h30p" id="excelBtn"></button>
             </div>
         </div>
     </div>

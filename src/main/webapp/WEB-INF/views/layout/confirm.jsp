@@ -46,7 +46,7 @@
                 <table class="table type1 wh100 datatable"></table>
             </div>
             <div class="modal-footer custom-footer">
-                <button type="button" class="btn btn-theme" id="excelBtn"></button>
+                <button type="button" class="btn btn-theme excelBtn" id="excelBtn"></button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" >확인</button>
             </div>
         </div>

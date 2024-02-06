@@ -486,3 +486,5 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 .dropdown-item:focus, .dropdown-item:hover {color: #16181b!important; background-color: #a9dfd8!important;}
 
 .btn.focus, .btn:focus, .btn:hover {box-shadow: 0 0 0 0.2rem rgba(169, 223, 216, .25)!important;}
+
+.modal-backdrop {width:100%!important; height:100%!important;}
