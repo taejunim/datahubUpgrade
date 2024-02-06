@@ -285,14 +285,34 @@ function drawTable () {
 
                 $('#buildingDetail').modal('show');
 
-                getTwPolygonData("/getCtnlgsSpceWFS.json", 'getCtnlgsSpceWFSLayer', 'polygonSample4', aData.pnuCode, aData.landLotNumberAddress);
+                var maxArea = Math.max(Number(aData.buildingArea), Number(aData.totalArea), Number(aData.platArea));
+                var zoomLevel;
+                var cameraLevel;
+                if (maxArea > 120000) {
+                    zoomLevel = 15;
+                    cameraLevel = 900;
+                } else if (maxArea > 90000 && maxArea < 120000) {
+                    zoomLevel = 16;
+                    cameraLevel = 800;
+                } else if (maxArea > 20000 && maxArea < 90000) {
+                    zoomLevel = 17;
+                    cameraLevel = 700;
+                } else if (maxArea > 5000 && maxArea < 20000) {
+                    zoomLevel = 18;
+                    cameraLevel = 600;
+                } else if (maxArea > 0 && maxArea < 5000) {
+                    zoomLevel = 19;
+                    cameraLevel = 500;
+                }
+
+                getTwPolygonData("/getCtnlgsSpceWFS.json", 'getCtnlgsSpceWFSLayer', 'polygonSample4', aData.pnuCode, aData.landLotNumberAddress, zoomLevel, cameraLevel);
                 getChargers(aData.pnuCode);
             });
         }
     })
 }
 
-function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address) {
+function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address, zoomLevel, cameraLevel) {
 
     $.ajax({
         url: "https://api.vworld.kr/req/address?",
@@ -323,31 +343,35 @@ function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address) {
                     var areaObject;
                     var polygonList = [];
 
-                    for(var i = 0; i < result.length; i ++) {
-                        if (result[i].coordinates !== undefined && result[i].coordinates !== '') {
-                            var area = result[i].coordinates;
+                    try {
+                        for(var i = 0; i < result.length; i ++) {
+                            if (result[i].coordinates !== undefined && result[i].coordinates !== '') {
+                                var area = result[i].coordinates;
 
-                            var areaList = area.split(' ');
-                            var outerPolygon = [];
-                            for (var j = 0; j < areaList.length; j++) {
-                                var arr = areaList[j];
-                                arr = arr.split(',').map(arg => parseFloat(arg));
-                                outerPolygon.push(arr);
+                                var areaList = area.split(' ');
+                                var outerPolygon = [];
+                                for (var j = 0; j < areaList.length; j++) {
+                                    var arr = areaList[j];
+                                    arr = arr.split(',').map(arg => parseFloat(arg));
+                                    outerPolygon.push(arr);
+                                }
+                                polygonList.push({polygon: outerPolygon, pnu: result[i].pnu, buldNm: result[i].buldNm, buldDongNm: result[i].buldDongNm, groundFloorCo: result[i].groundFloorCo,
+                                    undgrndFloorCo: result[i].undgrndFloorCo, totParkngCo: result[i].totParkngCo ,bbox: result[i].bbox, prmisnDe: result[i].prmisnDe, useConfmDe: result[i].useConfmDe});
                             }
-                            polygonList.push({polygon: outerPolygon, pnu: result[i].pnu, buldNm: result[i].buldNm, buldDongNm: result[i].buldDongNm, groundFloorCo: result[i].groundFloorCo,
-                                undgrndFloorCo: result[i].undgrndFloorCo, totParkngCo: result[i].totParkngCo ,bbox: result[i].bbox, prmisnDe: result[i].prmisnDe, useConfmDe: result[i].useConfmDe});
                         }
+                    } catch (error) {
+                        MsgBox.Alert("polygon");
+                    } finally {
+                        console.log(polygonList);
+                        areaObject = {polygonList: polygonList};
+                        DatahubMapObject.createPolygonLayer2(areaObject, lyrEnName, true,  imgClass);
                     }
-
-                    console.log(polygonList);
-                    areaObject = {polygonList: polygonList};
-                    DatahubMapObject.createPolygonLayer2(areaObject, lyrEnName, true,  imgClass);
                 }
             }).done(function () {
 
                 var coordTransAddr = new ol.geom.Point([parseFloat(result.response.result.point.x), parseFloat(result.response.result.point.y)]).transform('EPSG:4326', 'EPSG:3857').getCoordinates();
                 map.getView().setCenter(coordTransAddr);
-                map.getView().setZoom(parseInt(18));
+                map.getView().setZoom(parseInt(zoomLevel));
 
                 var mapOptions = new vw.MapOptions(
                     vw.BasemapType.GRAPHIC,
@@ -356,11 +380,11 @@ function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address) {
                     vw.DensityType.BASIC,
                     false,
                     new vw.CameraPosition(
-                        new vw.CoordZ(parseFloat(result.response.result.point.x), parseFloat(result.response.result.point.y), 600),
+                        new vw.CoordZ(parseFloat(result.response.result.point.x), parseFloat(result.response.result.point.y), cameraLevel),
                         new vw.Direction(-90, 0, 0)
                     ),
                     new vw.CameraPosition(
-                        new vw.CoordZ(parseFloat(result.response.result.point.x), parseFloat(result.response.result.point.y), 600),
+                        new vw.CoordZ(parseFloat(result.response.result.point.x), parseFloat(result.response.result.point.y), cameraLevel),
                         new vw.Direction(0, -90, 0)
                     )
                 );

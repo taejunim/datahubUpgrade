@@ -319,6 +319,7 @@ function fnMsgBoxSet(type){
     case "session" : title = "이동"; txt = "세션이 만료되었습니다. 로그인페이지로 이동합니다."; break;
     case "error" : title = "문제 발생"; txt = "문제가 발생했습니다. 다시 시도해주세요."; break;
     case "join" : title = "가입 완료"; txt = "가입 완료되었습니다. 로그인해주세요"; break;
+    case "polygon" : title = ""; txt = "폴리곤 데이터가 없습니다. 데이터를 다시 확인해주세요."; break;
 
     default : title = "실패"; txt = "입력정보를 확인하여 주세요."; break;
   }
