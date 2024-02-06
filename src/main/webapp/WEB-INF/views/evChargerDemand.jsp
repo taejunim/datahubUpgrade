@@ -12,7 +12,7 @@
 <script src="<c:url value='/js/plugins/openlayer/proj4.js'/>"></script>
 <script src="<c:url value='/js/plugins/openlayer/DatahubMapObject.js'/>"></script>
 <script type="text/javascript" src="/js/views/evChargerDemand.js"></script>
-<div class="columnWrap w100p h95p">
+<div class="columnWrap w100p h100p">
     <div class="frame h6p">
         <div class="title wh100">
             <div class="font-white font-18">주차장 수요 대상 건물</div>
@@ -24,7 +24,7 @@
             <div class="searchFrame w80p h100p">
                 <div class="w20p">
                     <label class="">지역</label>
-                    <div class="group w100p">
+                    <div class="group w80p">
                         <div class="selectBox w100p">
                             <div class="group-prepend w40p">
                                 <label  class="group-text" for="">시</label>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="w20p">
                     <label class="">주용도</label>
-                    <div class="group w100p">
+                    <div class="group w80p">
                         <div class="selectBox w100p">
                             <div class="group-prepend w40p">
                                 <label  class="group-text" for="">건물 용도</label>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="w20p">
                     <label class="">적합 판단</label>
-                    <div class="group w100p">
+                    <div class="group w80p">
                         <div class="selectBox w100p">
                             <div class="group-prepend w40p">
                                 <label  class="group-text" for="">적합/부적합</label>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="w30p">
                     <label class="">건축허가일</label>
-                    <div class="group w100p">
+                    <div class="group w80p">
                         <div class="group w45p">
                             <input type="text" name="searchPermissionDateFrom" id="searchPermissionDateFrom" class="dateTime datepickerStart w100p icon_calendar"
                                    placeholder="날짜" readonly>
@@ -90,13 +90,13 @@
                 </div>
             </div>
             <div class="buttonFrame w20p h100p font-white gap1rem">
-                <button type="button" class="btn-black w40p h30p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
-                <button type="button" class="btn-black w40p h30p" id="searchButton">검색</button>
-                <button type="button" class="btn-black w40p h30p" id="excelBtn"></button>
+                <button type="button" class="btn-black w40p h40p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
+                <button type="button" class="btn-black w40p h40p" id="searchButton">검색</button>
+                <button type="button" class="btn-black w40p h40p" id="excelBtn"></button>
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="h78p">
         <table id="dataTable" class="table type2"> </table>
     </div>
 </div>

@@ -37,7 +37,7 @@
 
 .sideBar .menu > div > div {font-size: 1rem;}
 
-.sideBar .menu > div:hover{background: #FFFFFF; border-radius: 6px;}
+.sideBar .menu > div:hover{background: #FFFFFF; border-radius: 6px; cursor: pointer;}
 
 .sideBar .menu .menuActive{border-radius: 6px; background: #A9DFD8; color: #171821 !important;}
 
@@ -488,3 +488,5 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 .btn.focus, .btn:focus, .btn:hover {box-shadow: 0 0 0 0.2rem rgba(169, 223, 216, .25)!important;}
 
 .modal-backdrop {width:100%!important; height:100%!important;}
+
+.#table_popup.model-body{max-height: calc(100vh - 200px); overflow-y: auto;}

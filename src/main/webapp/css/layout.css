@@ -57,9 +57,9 @@
 
 .columnWrap .frame .searchFrame{display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 1vw;}
 
-.columnWrap .frame .searchFrame > div{display: inline-flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 1vh;}
+.columnWrap .frame .searchFrame > div{display: inline-flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;}
 
-.columnWrap .frame .searchFrame > div > label{color: #FFFFFF; font-size: 0.75rem;}
+.columnWrap .frame .searchFrame > div > label{color: #FFFFFF; font-size: 0.95rem;}
 
 .columnWrap .frame .buttonFrame{display: flex; flex-direction: row; justify-content: space-around; align-items: center;}
 
