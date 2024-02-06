@@ -37,6 +37,8 @@ function searchListClick(index) {
 
     var moveTo = $('[data-locationIndex='+index+']').val().split(",");
     DatahubMapObject.setCenter(moveTo);
+    selectMarker(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getSource().getFeatureById(index));
+
     $('#chargerName').text($('[data-nameIndex='+index+']').text());
     $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
     maybeDisposeRoot("CurrentChart");
@@ -569,9 +571,13 @@ function mapClickEvent(pixel) {
     maybeDisposeRoot("CurrentChart3");
     createPieChart("CurrentChart2");
     createXyChart('CurrentChart3');
+
     // 클릭한 픽셀정보로  feature 체크
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-        if(layer.values_.title === DatahubMapObject.basicLayerNameList[1]) {
+
+        if(layer.values_.title === DatahubMapObject.basicLayerNameList[0]) {
+            selectMarker(feature);
+        } else if(layer.values_.title === DatahubMapObject.basicLayerNameList[1]) {
 
             var selectCell   = feature.values_.geometry.extent_;
 
@@ -606,10 +612,32 @@ function mapClickEvent(pixel) {
             $(".location-layer-component").addClass("hidden");
             $(".distribution-layer-component").removeClass("hidden");
 
+        } else {
+            DatahubMapObject.selectedMarker.marker.setStyle(DatahubMapObject.selectedMarker.originalStyle);
+            DatahubMapObject.selectedMarker.marker              = null;
+            DatahubMapObject.selectedMarker.originalStyle       = null;
         }
+
     });
 }
+function selectMarker(feature) {
+    if (DatahubMapObject.selectedMarker.marker && feature) {
+        DatahubMapObject.selectedMarker.marker.setStyle(DatahubMapObject.selectedMarker.originalStyle); // 기본 스타일로 리셋
+    }
 
+    DatahubMapObject.selectedMarker.originalStyle = feature.style_;
+
+    // 클릭된 마커의 스타일 변경
+    feature.setStyle(new ol.style.Style({
+        image: new ol.style.Icon({
+            anchor: [1, 1],
+            scale: 1, // 기존 사이즈 대비 스케일 조정
+            src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+        })
+    }));
+
+    DatahubMapObject.selectedMarker.marker = feature;
+}
 function calculateRangeOpacity(legendKey, value) {
     var rangeList = DatahubMapObject.legendMap[legendKey];
 

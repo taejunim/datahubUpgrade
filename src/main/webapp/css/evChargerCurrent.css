@@ -149,3 +149,48 @@
     color: white;
     box-shadow: 0 0.2em 0.2em -0.2em yellow;
 }
+.rowWrap .left {
+    width: 20%;
+}
+.rowWrap .right {
+    width: 80%;
+}
+.map {
+    position: relative;
+}
+.layer-group div {
+    z-index: 30;
+}
+.layer-radio-form {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    padding-left: 10px;
+}
+#vMap {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.rowWrap .left .middle .search-list > .first > .left-txt {
+    font-size:1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 145px);
+}
+.right-txt div{
+    font-size: 0.6vw;
+}
+.display-none {
+    display: none!important;
+}
+.pd2rem {
+    padding: 2rem;
+}
+.mt-60 {
+    margin-top: 60px;
+}

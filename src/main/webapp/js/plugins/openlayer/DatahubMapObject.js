@@ -2,6 +2,10 @@ var vWorldKey = '7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF';
 var DatahubMapObject = {
     map: null,
     grid: null,
+    selectedMarker: {
+        marker: null,
+        originalStyle: null
+    },
     legendMap : {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]},
     selectCellLayerName: 'selectCellLayer',
     basicLayerNameList: ["locationLayer", "distributionLayer"],
@@ -180,6 +184,7 @@ var DatahubMapObject = {
                 text: makeTooltip && list[i].text ? list[i].text : null,
                 zIndex: 50
             });
+            marker.setId(i);
 
             let markerImageSrc = defaultMarkerImageSrc;
 

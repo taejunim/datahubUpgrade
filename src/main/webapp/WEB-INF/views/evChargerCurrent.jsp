@@ -15,29 +15,17 @@
 
 <script src="<c:url value="/js/views/evChargerCurrent.js"/>"></script>
 <link rel="stylesheet" href="<c:url value="/css/evChargerCurrent.css" />">
-<style>
-    .map {position: relative;}
-    .layer-group div {z-index: 30;}
-    .layer-radio-form {position: absolute; left: 0; top: 0;  height: 30px; padding-left: 10px;}
-    #vMap {left: 0; top: 0; width: 100%; height: 100%; position: absolute;}
-    .rowWrap .left .middle .search-list > .first > .left-txt {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 200px;}
-    .right-txt div{font-size: 0.6vw; }
-    .display-none {display: none!important;}
-</style>
 <div class="rowWrap">
 <%-- 검색 --%>
     <div class="left">
-        <div class="top w100p h14p">
-            <div class="display-column justify-content-evenly h100p">
+        <div class="top w100p h10p">
+            <div class="display-column justify-content-evenly h100p mt-1">
                 <div class="display-row w100p h60p justify-content-evenly gap1rem">
                     <div class="searchBox w80p h70p">
                         <span class="icon_search w10p h100p"></span>
                         <input type="text" class="wh100" placeholder="검색어를 입력해주세요" />
                     </div>
                     <button type="button" class="w20p h70p btn-black font-white" id="searchButton">Search</button>
-                </div>
-                <div class="display-row w100p h30p ellipsis justify-content-start">
-                    <button type="button" class="btn-white tagBtn">별빛누리공원<span class="icon_cross"></span></button>
                 </div>
             </div>
         </div>
