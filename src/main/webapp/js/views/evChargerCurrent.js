@@ -153,10 +153,10 @@ function searchChargers(firstLoad) {
             let chart = root.container.children.push(
                 am5xy.XYChart.new(root, {
                     focusable: true,
-                    panX: true,
-                    panY: true,
-                    wheelX: "panX",
-                    wheelY: "zoomX",
+                    panX: false,
+                    panY: false,
+                    wheelX: "none",
+                    wheelY: "none",
                     pinchZoomX: true
                 })
             );
@@ -173,7 +173,7 @@ function searchChargers(firstLoad) {
             chart.get("colors").set("step", 2);
 
             var xRenderer = am5xy.AxisRendererX.new(root, {
-                minGridDistance: 80,
+                minGridDistance: 100,
                 minorGridEnabled: true
             });
             xRenderer.labels.template.set('visible',false);
@@ -214,9 +214,11 @@ function searchChargers(firstLoad) {
                         yAxis: yAxis,
                         valueYField: "value",
                         valueXField: "date",
+                        seriesTooltipTarget : "bullet",
                         tooltip: am5.Tooltip.new(root, {
                             pointerOrientation: "horizontal",
-                            labelText: "{valueY}"
+                            labelText: "{valueY}",
+                            tooltipPosition: "pointer"
                         })
                     })
                 );
@@ -266,11 +268,11 @@ function searchChargers(firstLoad) {
             }
             // XY CHART 커서 옵션 세팅
             let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-                xAxis: xAxis,
-                behavior: "none"
+                xAxis : xAxis,
+                behavior: "zoomXY"
             }));
             cursor.lineY.set("visible", false);
-            cursor.lineX.set("visible", false);
+            // cursor.lineX.set("visible", false);
 
             switch (name) {
                 case "CurrentChart" :
@@ -407,7 +409,7 @@ function searchChargers(firstLoad) {
             }));
 
             xAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(0x8d8f94)
+                fill: am5.color(0xFFFFFF)
             });
 
             xRenderer.grid.template.setAll({
@@ -424,7 +426,7 @@ function searchChargers(firstLoad) {
             }));
 
             yAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(0x8d8f94)
+                fill: am5.color(0xFFFFFF)
             });
 
 
@@ -487,7 +489,7 @@ function searchChargers(firstLoad) {
 
             var legend = chart.children.unshift(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
-                x: am5.percent(50),
+                x: am5.percent(60),
                 centerX: am5.percent(100),
                 y: am5.percent(5),
                 centerY : am5.percent(100),
