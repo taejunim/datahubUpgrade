@@ -10,10 +10,12 @@
 
     <definition name="login" extends="login-layout">
         <put-attribute name="content"   value="/WEB-INF/views/login.jsp" />
+        <put-attribute name="confirm"    value="/WEB-INF/views/layout/confirm.jsp" />
     </definition>
 
     <definition name="join" extends="login-layout">
         <put-attribute name="content"   value="/WEB-INF/views/join.jsp" />
+        <put-attribute name="confirm"    value="/WEB-INF/views/layout/confirm.jsp" />
     </definition>
 
     <definition name="datahub-layout" template="/WEB-INF/views/layout/layout.jsp">

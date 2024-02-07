@@ -8,7 +8,6 @@ $(document).ready(function () {
 		} else {
 			rememberChecked = 'N'
 			console.log(rememberChecked);
-			alert("체크박스 해제");
 		}
 	})
 
@@ -25,7 +24,7 @@ function login() {
 	var userPwd = document.getElementById('userPwd').value;
 
 	if (userId === "" || userPwd === "") {
-		alert("아이디 또는 비밀번호를 입력해주세요.");
+		MsgBox.Alert('');
 		return false;
 	}
 
@@ -42,14 +41,14 @@ function login() {
 		},
 		body : params,
 	})
-	.then((data) => data.text())
-	.then((data) => {
-		if (data == "EMPTY USER") {
-			alert('등록되지 않은 아이디이거나 아이디 또는 비밀번호를 잘못 입력했습니다.')
-			window.location.href = '/login.do';
-		} else {
-			window.location.href = '/main.do';
-		}
-	})
+		.then((data) => data.text())
+		.then((data) => {
+			if (data == "EMPTY USER") {
+				MsgBox.Alert('loginFail', function (){
+					location.href = "<c:url value='/login.do'>" });
+			} else {
+				window.location.href = '/main.do';
+			}
+		})
 }
 

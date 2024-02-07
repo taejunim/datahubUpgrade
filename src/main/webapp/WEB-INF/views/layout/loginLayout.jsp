@@ -17,15 +17,19 @@
     <link rel="stylesheet" href="<c:url value="/css/layout.css" />">
     <link rel="stylesheet" href="<c:url value="/css/common.css" />">
     <link rel="stylesheet" href="<c:url value="/css/main.css" />">
+    <link rel="stylesheet" href="<c:url value="/css/plugins/bootstrap/bootstrap.min.css" />">
+
     <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
     <script src="<c:url value="/js/common.js"/>"></script>
     <script src="<c:url value='/js/plugins/datetimepicker/datetimepicker.full.min.js' />"></script>
-
+    <script src="<c:url value="/js/plugins/bootstrap/bootstrap.bundle.min.js"/>"></script>
 </head>
 <body>
 <div class="wrap-loading hidden">
     <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);width: 9rem;height: 9rem;"/></div>
 </div>
 <tiles:insertAttribute name="content" />
+<!-- confirm -->
+<tiles:insertAttribute name="confirm"/>
 </body>
 </html>
