@@ -239,7 +239,7 @@ function searchChargers(firstLoad) {
 
                 series.fills.template.setAll({
                     visible: true,
-                    fillOpacity: 0.5
+                    fillOpacity: 1
                 });
 
                 series.strokes.template.setAll({ strokeWidth: 2 });

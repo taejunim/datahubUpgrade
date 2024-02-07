@@ -363,17 +363,19 @@ function createRoot(name) {
   if (name == "mainChart") {
     scale = 1.2
   } else {
-    scale = 1.1
+    scale = 1
   }
 
-  var root = am5.Root.new(name, {
+  var root = am5.Root.new(name,
+      {
     calculateSize: function(dimensions) {
       return {
         width: dimensions.width * scale,
         height: dimensions.height * scale
       };
     }
-  })
+  }
+  )
   root._logo.dispose();           // water mark 제거
 
   root.setThemes([
