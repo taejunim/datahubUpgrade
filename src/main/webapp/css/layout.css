@@ -45,7 +45,7 @@
 /* Wrap */
 .headerWrap{ height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;}
 
-.columnWrap{ display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1vh; padding: 1.25rem;}
+.columnWrap{ display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1vh; padding: 1.25rem; width: 85%; height: 100%;}
 
 .columnWrap .display-column{ display: flex; flex-direction: column; align-items: center; justify-content: center;}
 
@@ -63,7 +63,7 @@
 
 .columnWrap .frame .buttonFrame{display: flex; flex-direction: row; justify-content: space-around; align-items: center;}
 
-.rowWrap{ display: flex; flex-direction: row; padding: 1.25rem;align-items: flex-start; justify-content: space-between; width: 100%; height: 95%; }
+.rowWrap{ display: flex; flex-direction: row; padding: 1.25rem;align-items: flex-start; justify-content: space-between; width: 85%; height: 100%; }
 
 .rowWrap .display-row{display: flex; flex-direction: row;}
 

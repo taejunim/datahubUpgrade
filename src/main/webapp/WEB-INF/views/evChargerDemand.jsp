@@ -12,7 +12,7 @@
 <script src="<c:url value='/js/plugins/openlayer/proj4.js'/>"></script>
 <script src="<c:url value='/js/plugins/openlayer/DatahubMapObject.js'/>"></script>
 <script type="text/javascript" src="/js/views/evChargerDemand.js"></script>
-<div class="columnWrap w100p h100p">
+<div class="columnWrap">
     <div class="frame h6p">
         <div class="title wh100">
             <div class="font-white font-18">주차장 수요 대상 건물</div>
@@ -97,7 +97,7 @@
         </div>
     </div>
     <div class="h78p">
-        <table id="dataTable" class="table type2"> </table>
+        <table id="dataTable" class="table type2 w100p"> </table>
     </div>
 </div>
 

@@ -489,4 +489,4 @@ prgress::-webkit-progress-bar{ background:rgba(43, 43, 54, 1); border-radius:10p
 
 .modal-backdrop {width:100%!important; height:100%!important;}
 
-.#table_popup.model-body{max-height: calc(100vh - 200px); overflow-y: auto;}
+#table_popup.model-body{max-height: calc(100vh - 200px); overflow-y: auto;}
