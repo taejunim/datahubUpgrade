@@ -90,13 +90,13 @@
                 </div>
             </div>
             <div class="buttonFrame w20p h100p font-white gap1rem">
-                <button type="button" class="btn-black w40p h40p" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
-                <button type="button" class="btn-black w40p h40p" id="searchButton">검색</button>
-                <button type="button" class="btn-black w40p h40p" id="excelBtn"></button>
+                <button type="button" class="btn-black w40p h40p font-18" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
+                <button type="button" class="btn-black w40p h40p font-18" id="searchButton">검색</button>
+                <button type="button" class="btn-black w40p h40p font-18" id="excelBtn"></button>
             </div>
         </div>
     </div>
-    <div class="h78p">
+    <div class="h78p w100p">
         <table id="dataTable" class="table type2 w100p"> </table>
     </div>
 </div>

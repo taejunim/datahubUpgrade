@@ -25,7 +25,7 @@
                         <span class="icon_search w10p h100p"></span>
                         <input type="text" class="wh100" placeholder="검색어를 입력해주세요" />
                     </div>
-                    <button type="button" class="w20p h70p btn-black font-white" id="searchButton">Search</button>
+                    <button type="button" class="w20p h70p btn-black font-white font-18" id="searchButton">Search</button>
                 </div>
             </div>
         </div>

@@ -7,13 +7,13 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
-<div class="myPage_main wh100">
+<div class="myPage_main">
     <div class="myPage_container wh100">
         <div class="frame">
             <div class="topBox wh100">
                 <div class="loginType">
                     <div class="">
-                        <div class="type">MyPage</div>
+                        <div class="type">My Page</div>
                         <div class="line"></div>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
                         </div>
                     </form>
                     <div class="w100p h20p joinBtn">
-                        <button type="button" class="loginBtn p5 mt20 font-white w30p h50p" id="update_user">수정</button>
-                        <button type="submit" class="loginBtn p5 mt20 font-white w30p h50p" id="delete_user">회원탈퇴</button>
+                        <button type="button" class="loginBtn p5 mt20 font-white w30p h50p btn-black" id="update_user">수정</button>
+                        <button type="submit" class="loginBtn p5 mt20 font-white w30p h50p btn-black" id="delete_user">회원탈퇴</button>
                     </div>
                 </div>
             </div>
