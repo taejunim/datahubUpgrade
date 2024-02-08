@@ -304,9 +304,10 @@ function createXyChart(name) {
         case "CurrentChart3" :
             legend = chart.children.push(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
-                x: am5.percent(85),
                 centerX: am5.percent(100),
-                y: am5.percent(100),
+                centerY: am5.percent(100),
+                x: am5.percent(85),
+                y: am5.percent(115),
                 useDefaultMarker : true
             }));
             break;
@@ -745,14 +746,14 @@ function createPieChart(name) {
 
     var chart = root.container.children.push(
       am5percent.PieChart.new(root, {
-          width : am5.percent(100),
-          height : am5.percent(100),
+          width : am5.percent(90),
+          height : am5.percent(90),
           centerX : am5.percent(100),
-          x : am5.percent(65),
-          centerY : am5.percent(90),
+          x : am5.percent(95),
+          centerY : am5.percent(105),
           y : am5.percent(100),
           radius: am5.percent(100),
-          layout : root.verticalLayout
+          layout : root.horizontalLayout
       })
     );
 
@@ -825,12 +826,11 @@ function createPieChart(name) {
     ]);
 
     let legend = chart.children.push(am5.Legend.new(root, {
-        layout: root.verticalLayout,
-        x: am5.percent(80),
         centerX: am5.percent(100),
-        y : am5.percent(0),
-        centerY: am5.percent(0),
-        height : am5.percent(50),
+        x : am5.percent(105),
+        centerY: am5.percent(60),
+        y : am5.percent(50),
+        layout: root.verticalLayout,
         useDefaultMarker : true
     }))
     // XY CHART 범례 마커 Radius 조정
