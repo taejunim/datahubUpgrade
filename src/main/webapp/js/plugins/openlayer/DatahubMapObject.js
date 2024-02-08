@@ -6,7 +6,7 @@ var DatahubMapObject = {
         marker: null,
         originalStyle: null
     },
-    legendMap : {"legendRange1" : [80, 60, 40], "legendRange2" : [30, 20, 10]},
+    legendMap : {"locationLegendRange" : [50, 30, 10]},
     selectCellLayerName: 'selectCellLayer',
     basicLayerNameList: ["locationLayer", "distributionLayer"],
     defaultChargerImage: "/images/chargers/charger-grey.png",
