@@ -137,6 +137,7 @@ var DatahubMapObject = {
             DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(DatahubMapObject.selectCellLayerName));
         }
         $(".layer-group").addClass("hidden");
+        $(".mapLegend").toggleClass("hidden");
         switch (layerName) {
             case DatahubMapObject.basicLayerNameList[0] :
                 DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).setVisible(true);

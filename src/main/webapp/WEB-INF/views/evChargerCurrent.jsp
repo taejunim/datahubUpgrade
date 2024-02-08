@@ -57,6 +57,26 @@
                 </div>
 
                 <div id="mapLegendContainer" class="gis-range-wrapper">
+                    <div class="mapLegend">
+                        <table>
+                            <tr>
+                                <td class="mapLegendHeader"><div class="gridLegend chargerGreenLegend borderNone"></div></td>
+                                <td class="mapLegendLabel">사용가능</td>
+                            </tr>
+                            <tr>
+                                <td class="mapLegendHeader"><div class="gridLegend chargerYellowLegend borderNone"></div></td>
+                                <td class="mapLegendLabel">사용중</td>
+                            </tr>
+                            <tr>
+                                <td class="mapLegendHeader"><div class="gridLegend chargerRedLegend borderNone"></div></td>
+                                <td class="mapLegendLabel">사용불가</td>
+                            </tr>
+                            <tr>
+                                <td class="mapLegendHeader"><div class="gridLegend chargerGreyLegend borderNone"></div></td>
+                                <td class="mapLegendLabel">알수없음</td>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="mapLegend hidden">
                         <table>
                             <tr>
