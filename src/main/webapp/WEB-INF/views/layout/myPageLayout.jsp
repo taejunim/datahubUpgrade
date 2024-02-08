@@ -46,7 +46,7 @@
 <body class="">
 
 <div class="wrap-loading hidden">
-    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);"/></div>
+    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="width: 13rem;height: 13rem;"/></div>
 </div>
 <div class="wrapper">
     <!-- 헤더 -->

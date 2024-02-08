@@ -55,29 +55,6 @@
                         EV 충전기 설치 대수 대비 이용시간
                     </label>
                 </div>
-
-                <div id="mapLegendContainer" class="gis-range-wrapper">
-                    <div class="mapLegend hidden">
-                        <table>
-                            <tr>
-                                <td class="mapLegendHeader"><div class="gridLegend legend1 level4Legend"></div></td>
-                                <td class="mapLegendLabel"><label><span class="legendValueInput locationLegendRange"></span></label>&nbsp;&nbsp;=<</td>
-                            </tr>
-                            <tr>
-                                <td class="mapLegendHeader"><div class="gridLegend legend1 level3Legend"></div></td>
-                                <td class="mapLegendLabel">&nbsp;&nbsp;>=&nbsp;&nbsp;<label><span class="legendValueInput locationLegendRange"></span></label></td>
-                            </tr>
-                            <tr>
-                                <td class="mapLegendHeader"><div class="gridLegend legend1 level2Legend"></div></td>
-                                <td class="mapLegendLabel">&nbsp;&nbsp;>=&nbsp;&nbsp;<label><span class="legendValueInput locationLegendRange"></span></label></td>
-                            </tr>
-                            <tr>
-                                <td class="mapLegendHeader"><div class="gridLegend legend1 level1Legend"></div></td>
-                                <td class="mapLegendLabel">< &nbsp;&nbsp;<label><span class="locationLegendRange"></span></label></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
             </div>
             <div class="layer-group location-layer-component hidden">
                 <div class="gray-layer w100p h50p">

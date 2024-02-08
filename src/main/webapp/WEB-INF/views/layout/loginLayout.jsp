@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="wrap-loading hidden">
-    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);width: 9rem;height: 9rem;"/></div>
+    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="width: 13rem;height: 13rem;"/></div>
 </div>
 <tiles:insertAttribute name="content" />
 <!-- confirm -->

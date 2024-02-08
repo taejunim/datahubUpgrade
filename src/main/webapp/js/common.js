@@ -1,7 +1,7 @@
-window.onbeforeunload = function () { fnStartLoadingBar(); }
-
 
 $(document).ready(function() {
+  fnStartLoadingBar();
+
   // jquery 확장
   jQuery.fn.serializeObject = function() {
     var obj = null;
@@ -22,7 +22,7 @@ $(document).ready(function() {
         }
       }
     }catch(e) {
-      alert(e.message);
+      console.log(e.message);
     }finally  {}
     return obj;
   };
@@ -85,7 +85,6 @@ $(document).ready(function() {
     });
   });
 
-
   $(function () {
     // 필수값 미입력시 표출 문구 선택시 제거
     $("input").click(function () {
@@ -93,6 +92,11 @@ $(document).ready(function() {
     });
   });
 });
+
+$(window).ready(function () {
+  fnEndLoadingBar();
+})
+
 
 String.prototype.string = function(len){var s = '', i = 0; while (i++ < len) { s += this; } return s;};
 String.prototype.zf = function(len){return "0".string(len - this.length) + this;};
@@ -363,19 +367,17 @@ function createRoot(name) {
   if (name == "mainChart") {
     scale = 1.2
   } else {
-    scale = 1
+    scale = 1.1
   }
 
-  var root = am5.Root.new(name,
-      {
+  var root = am5.Root.new(name, {
     calculateSize: function(dimensions) {
       return {
         width: dimensions.width * scale,
         height: dimensions.height * scale
       };
     }
-  }
-  )
+  })
   root._logo.dispose();           // water mark 제거
 
   root.setThemes([

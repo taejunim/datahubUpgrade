@@ -14,7 +14,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>데이터허브 고도화</title>
-  <script type="text/javascript" src="https://map.vworld.kr/js/webglMapInit.js.do?version=2.0&apiKey=7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF"></script>
 
 <link rel="stylesheet" href="<c:url value="/css/jquery/jquery-ui.min.css" />">
 <link rel="stylesheet" href="<c:url value="/css/reset.css" />">
@@ -26,6 +25,7 @@
 <link rel="stylesheet" href="<c:url value="/css/plugins/datatables/buttons.bootstrap.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/css/plugins/datetimepicker/datetimepicker.css"/>">
 
+<script type="text/javascript" src="https://map.vworld.kr/js/webglMapInit.js.do?version=2.0&apiKey=7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF"></script>
 <script src="<c:url value="/js/jquery/jQuery.js"/>"></script>
 <script src="<c:url value="/js/jquery/jquery-ui.min.js"/>"></script>
 <script src="<c:url value="/js/plugins/datatables/jquery.dataTables.min.js"/>"></script>
@@ -46,7 +46,7 @@
 <body class="">
 
 <div class="wrap-loading hidden">
-  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="filter: invert(1);width: 9rem;height: 9rem;"/></div>
+  <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="width: 13rem;height: 13rem;"/></div>
 </div>
 <div class="wrapper">
   <!-- 헤더 -->

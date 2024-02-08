@@ -79,7 +79,7 @@
 
 .rowWrap .display-column .display-info .display-print > p {margin: 0 auto;}
 
-.rowWrap .left{width: 25%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 0.5rem;}
+.rowWrap .left{width: 20%; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 0.5rem;}
 
 .rowWrap .left .top .display-row{display: flex; flex-direction: row; align-items: center; padding: 0 1rem;}
 
@@ -108,7 +108,7 @@
 .rowWrap .left .bottom{background: #21222d; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px; width: 100%; height: 4%; text-align: right; padding: 0.5rem 1rem;}
 
 .rowWrap .right{
-    width: 74%;
+    width: 79%;
     height: 100%;
     background-color: #1f202b;
     display: flex;
@@ -303,10 +303,10 @@ div.dt-buttons .dt-button{ width: 100%; height: 100%;;}
 ***************************************/
 .chartdiv {width: 100%; height: 100%;}
 
-#CurrentChart {position: absolute; width: 30%; height: 22%; top: 52.3%; left: 67.5rem;}
+#CurrentChart {position: relative; right: 2.9rem; width: 114%; height: 100%; bottom: 0.5rem;}
 
-#CurrentChart1 {position: relative; top: 1rem; left: 0.5rem; width: 100%; height: 100%;}
+#CurrentChart1 {position: relative; top: 0.6rem; left: -0.3rem; width: 100%; height: 100%;}
 
 #CurrentChart2 {width: 52%; height: 25%; position:absolute;}
 
-#CurrentChart3 {position: absolute;width: 29.5%; height: 26%; left: 72%;}
+#CurrentChart3 {position: absolute;width: 29.5%; height: 24%;left: 69.4%;}

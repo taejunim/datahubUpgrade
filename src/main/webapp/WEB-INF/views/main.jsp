@@ -239,7 +239,7 @@
                     </div>
                     <div class="display-row w100p h80p" id="bb">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100">
                             <colgroup>
@@ -306,7 +306,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100">
                             <colgroup>
@@ -373,7 +373,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100">
                             <colgroup>
@@ -440,7 +440,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100">
                             <colgroup>
@@ -510,7 +510,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100">
                             <colgroup>
@@ -564,7 +564,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100 ">
                             <colgroup>
@@ -638,7 +638,7 @@
                     </div>
                     <div class="display-row w100p h80p">
                         <div class="table-loading hidden">
-                            <img src="/images/loading.gif" alt="로딩이미지" style="filter: invert(1);width: 3rem;height: 3rem;">
+                            <img src="/images/loading.gif" alt="로딩이미지" style="width: 3rem;height: 3rem;">
                         </div>
                         <table class="table type1 wh100" id="datatable">
                             <colgroup>
