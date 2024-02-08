@@ -51,8 +51,8 @@ function setMap() {
     view = new ol.View({ //뷰 생성
         projection: 'EPSG:3857', //좌표계 설정 (EPSG:3857은 구글에서 사용하는 좌표계)
         center: new ol.geom.Point(defaultPoint)  //처음 중앙에 보여질 경도, 위도
-            .transform('EPSG:4326', 'EPSG:3857') //GPS 좌표계 -> 구글 좌표계
-            .getCoordinates(), //포인트의 좌표를 리턴함
+          .transform('EPSG:4326', 'EPSG:3857') //GPS 좌표계 -> 구글 좌표계
+          .getCoordinates(), //포인트의 좌표를 리턴함
         zoom: 16, //초기지도 zoom의 정도값
         minZoom: 11,
         maxZoom: 19
@@ -149,376 +149,376 @@ function searchChargers(firstLoad) {
     });
 }
 
-     function createXyChart(name) {
-            let root = createRoot(name);
+function createXyChart(name) {
+    let root = createRoot(name);
 
-            let chart = root.container.children.push(
-                am5xy.XYChart.new(root, {
-                    focusable: true,
-                    panX: false,
-                    panY: false,
-                    wheelX: "none",
-                    wheelY: "none",
-                    pinchZoomX: true
-                })
-            );
+    let chart = root.container.children.push(
+      am5xy.XYChart.new(root, {
+          focusable: true,
+          panX: false,
+          panY: false,
+          wheelX: "none",
+          wheelY: "none",
+          pinchZoomX: true
+      })
+    );
 
-            chart.get("colors").set("colors",[
-                am5.color(0xf2c8ed),
-                am5.color(0xbbf7ef),
-                am5.color(0x5aaa95),
-                am5.color(0x86a873),
-                am5.color(0xbb9f06)
-            ])
+    chart.get("colors").set("colors",[
+        am5.color(0xf2c8ed),
+        am5.color(0xbbf7ef),
+        am5.color(0x5aaa95),
+        am5.color(0x86a873),
+        am5.color(0xbb9f06)
+    ])
 
-            var easing = am5.ease.linear;
-            chart.get("colors").set("step", 2);
+    var easing = am5.ease.linear;
+    chart.get("colors").set("step", 2);
 
-            var xRenderer = am5xy.AxisRendererX.new(root, {
-                minGridDistance: 100,
-                minorGridEnabled: true
-            });
-            xRenderer.labels.template.set('visible',false);
+    var xRenderer = am5xy.AxisRendererX.new(root, {
+        minGridDistance: 100,
+        minorGridEnabled: true
+    });
+    xRenderer.labels.template.set('visible',false);
 
-            var xAxis = chart.xAxes.push(
-                am5xy.DateAxis.new(root, {
-                    maxDeviation: 0.1,
-                    groupData: false,
-                    baseInterval: {
-                        timeUnit: "day",
-                        count: 1
-                    },
-                    renderer: xRenderer
-                })
-            );
+    var xAxis = chart.xAxes.push(
+      am5xy.DateAxis.new(root, {
+          maxDeviation: 0.1,
+          groupData: false,
+          baseInterval: {
+              timeUnit: "day",
+              count: 1
+          },
+          renderer: xRenderer
+      })
+    );
 
-            function createAxisAndSeries(startValue, opposite, name) {
-                let yRenderer = am5xy.AxisRendererY.new(root, {
-                    opposite: opposite
-                });
-                yRenderer.hide();
-                yRenderer.labels.template.set('visible',false);
-                let yAxis = chart.yAxes.push(
-                    am5xy.ValueAxis.new(root, {
-                        // maxDeviation: 1,
-                        renderer: yRenderer
-                    })
-                );
+    function createAxisAndSeries(startValue, opposite, name) {
+        let yRenderer = am5xy.AxisRendererY.new(root, {
+            opposite: opposite
+        });
+        yRenderer.hide();
+        yRenderer.labels.template.set('visible',false);
+        let yAxis = chart.yAxes.push(
+          am5xy.ValueAxis.new(root, {
+              // maxDeviation: 1,
+              renderer: yRenderer
+          })
+        );
 
-                if (chart.yAxes.indexOf(yAxis) > 0) {
-                    yAxis.set("syncWithAxis", chart.yAxes.getIndex(0));
-                }
-
-                let series = chart.series.push(
-                    am5xy.LineSeries.new(root, {
-                        name : name,
-                        xAxis: xAxis,
-                        yAxis: yAxis,
-                        valueYField: "value",
-                        valueXField: "date",
-                        seriesTooltipTarget : "bullet",
-                        tooltip: am5.Tooltip.new(root, {
-                            pointerOrientation: "horizontal",
-                            labelText: "{valueY}",
-                            tooltipPosition: "pointer"
-                        })
-                    })
-                );
-
-                series.fills.template.set("fillGradient", am5.LinearGradient.new(root, {
-                    stops: [{
-                        opacity: 1,
-                        brighten : 0.2
-                    }, {
-                        color : am5.color(0x373741),
-                        opacity: 0.1,
-                        offset : 0.7
-                    }],
-                    rotation: 90
-                }));
-
-                series.fills.template.setAll({
-                    visible: true,
-                    fillOpacity: 0.5
-                });
-
-                series.strokes.template.setAll({ strokeWidth: 2 });
-
-                yRenderer.grid.template.set("strokeOpacity", 0.05);
-                yRenderer.labels.template.set("fill", series.get("fill"));
-                yRenderer.setAll({
-                    stroke: series.get("fill"),
-                    strokeOpacity: 1,
-                    opacity: 1
-                });
-
-                series.data.processor = am5.DataProcessor.new(root, {
-                    dateFormat: "yyyy-MM-dd",
-                    dateFields: ["date"]
-                });
-
-                series.bullets.push(function(root) {
-                    return am5.Bullet.new(root, {
-                        sprite: am5.Circle.new(root, {
-                            radius: 3,
-                            fill: series.get("fill")
-                        })
-                    });
-                });
-
-                series.data.setAll(generateChartData(startValue));
-            }
-            // XY CHART 커서 옵션 세팅
-            let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-                xAxis : xAxis,
-                behavior: "zoomXY"
-            }));
-            cursor.lineY.set("visible", false);
-            // cursor.lineX.set("visible", false);
-
-            switch (name) {
-                case "CurrentChart" :
-                    createAxisAndSeries(20, false, "USE Time");
-                    createAxisAndSeries(20, true, "USE Count");
-                    break;
-                case "CurrentChart3" :
-                    createAxisAndSeries(20, false, "이용시간/설치 대수");
-                    createAxisAndSeries(20, true, "이용시간/이용건 수");
-                    break;
-            }
-
-            var legend;
-
-            chart.appear(1000, 100);
-            // XY CHART 범례 인스턴스 생성
-            switch (name) {
-                case "CurrentChart" :
-                    legend = chart.children.push(am5.Legend.new(root, {
-                        layout: root.horizontalLayout,
-                        x: am5.percent(80),
-                        centerX: am5.percent(100),
-                        y: am5.percent(100),
-                        useDefaultMarker : true
-                    }));
-                    break;
-                case "CurrentChart3" :
-                    legend = chart.children.push(am5.Legend.new(root, {
-                        layout: root.horizontalLayout,
-                        x: am5.percent(85),
-                        centerX: am5.percent(100),
-                        y: am5.percent(100),
-                        useDefaultMarker : true
-                    }));
-                    break;
-            }
-
-            // XY CHART 범례 마커 Radius 조정
-            legend.markerRectangles.template.setAll({
-                cornerRadiusTL: 10,
-                cornerRadiusTR: 10,
-                cornerRadiusBL: 10,
-                cornerRadiusBR: 10
-            })
-            // XY CHART 범례 마커 크기 조정
-            legend.markers.template.setAll({
-                width : 10,
-                height : 10
-            })
-            // XY CHART 범례 폰트 색상 변경
-            legend.labels.template.set('fill' ,
-                am5.color(0xFFFFFF)
-            )
-
-            legend.valueLabels.template.set("forceHidden", true);
-            // XY CHART 범례 데이터 셋
-            legend.data.setAll(chart.series.values);
-
-            function generateChartData(value) {
-                var data = [];
-                var firstDate = new Date();
-                firstDate.setDate(firstDate.getDate() - 100);
-                firstDate.setHours(0, 0, 0, 0);
-
-                for (var i = 0; i < 10; i++) {
-                    var newDate = new Date(firstDate);
-                    newDate.setDate(newDate.getDate() + i);
-                    value += Math.round(
-                        ((Math.random() < 0.5 ? 1 : -1) * Math.random() * value) / 20
-                    );
-                    data.push({
-                        date: newDate,
-                        value: value
-                    });
-                }
-                return data;
-            }
+        if (chart.yAxes.indexOf(yAxis) > 0) {
+            yAxis.set("syncWithAxis", chart.yAxes.getIndex(0));
         }
 
-        function createBarChart(name) {
-            var root = createRoot(name);
+        let series = chart.series.push(
+          am5xy.LineSeries.new(root, {
+              name : name,
+              xAxis: xAxis,
+              yAxis: yAxis,
+              valueYField: "value",
+              valueXField: "date",
+              seriesTooltipTarget : "bullet",
+              tooltip: am5.Tooltip.new(root, {
+                  pointerOrientation: "horizontal",
+                  labelText: "{valueY}",
+                  tooltipPosition: "pointer"
+              })
+          })
+        );
 
-            var chart = root.container.children.push(am5xy.XYChart.new(root, {
-                panX: true,
-                panY: false,
-                wheelX: "panX",
-                wheelY: "zoomX",
-                paddingLeft: 0,
-                layout: root.verticalLayout
-            }));
-
-            chart.get("colors").set("colors", [
-                am5.color(0xa796fd),
-                am5.color(0x6aeca1)
-            ])
-            var data = [{
-                "country": "12/8",
-                "USE Time": 30,
-                "USE Count": 20
+        series.fills.template.set("fillGradient", am5.LinearGradient.new(root, {
+            stops: [{
+                opacity: 1,
+                brighten : 0.2
             }, {
-                "country": "12/7",
-                "USE Time": 35,
-                "USE Count": 24
-            }, {
-                "country": "12/6",
-                "USE Time": 25,
-                "USE Count": 15
-            }, {
-                "country": "12/5",
-                "USE Time": 33,
-                "USE Count": 21
-            }, {
-                "country": "12/4",
-                "USE Time": 36,
-                "USE Count": 25
-            }, {
-                "country": "12/3",
-                "USE Time": 18,
-                "USE Count": 15
-            }, {
-                "country": "12/2",
-                "USE Time": 29,
-                "USE Count": 20
-            }];
+                color : am5.color(0x373741),
+                opacity: 0.1,
+                offset : 0.7
+            }],
+            rotation: 90
+        }));
 
-            var xRenderer = am5xy.AxisRendererX.new(root, {
-                minGridDistance: 30,
-                minorGridEnabled: true
-            });
+        series.fills.template.setAll({
+            visible: true,
+            fillOpacity: 0.5
+        });
 
-            var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-                categoryField: "country",
-                renderer: xRenderer
-            }));
+        series.strokes.template.setAll({ strokeWidth: 2 });
 
-            xAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(0xFFFFFF)
-            });
+        yRenderer.grid.template.set("strokeOpacity", 0.05);
+        yRenderer.labels.template.set("fill", series.get("fill"));
+        yRenderer.setAll({
+            stroke: series.get("fill"),
+            strokeOpacity: 1,
+            opacity: 1
+        });
 
-            xRenderer.grid.template.setAll({
-                location: 1
-            })
+        series.data.processor = am5.DataProcessor.new(root, {
+            dateFormat: "yyyy-MM-dd",
+            dateFields: ["date"]
+        });
 
-            xAxis.data.setAll(data);
-
-            var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-                min: 0,
-                renderer: am5xy.AxisRendererY.new(root, {
-                    strokeOpacity: 0.1
+        series.bullets.push(function(root) {
+            return am5.Bullet.new(root, {
+                sprite: am5.Circle.new(root, {
+                    radius: 3,
+                    fill: series.get("fill")
                 })
-            }));
-
-            yAxis.get("renderer").labels.template.setAll({
-                fill: am5.color(0xFFFFFF)
             });
+        });
 
+        series.data.setAll(generateChartData(startValue));
+    }
+    // XY CHART 커서 옵션 세팅
+    let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+        xAxis : xAxis,
+        behavior: "zoomXY"
+    }));
+    cursor.lineY.set("visible", false);
+    // cursor.lineX.set("visible", false);
 
-            var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-                name: "USE Time",
-                xAxis: xAxis,
-                yAxis: yAxis,
-                valueYField: "USE Time",
-                categoryXField: "country",
-                clustered: false,
-                tooltip: am5.Tooltip.new(root, {
-                    labelText: "USE Time: {valueY}"
-                })
-            }));
+    switch (name) {
+        case "CurrentChart" :
+            createAxisAndSeries(20, false, "USE Time");
+            createAxisAndSeries(20, true, "USE Count");
+            break;
+        case "CurrentChart3" :
+            createAxisAndSeries(20, false, "이용시간/설치 대수");
+            createAxisAndSeries(20, true, "이용시간/이용건 수");
+            break;
+    }
 
-            series.columns.template.setAll({
-                width: am5.percent(40),
-                tooltipY: 0,
-                strokeOpacity: 0,
-                fillOpacity: 0.5,
-                strokeWidth: 2,
-                cornerRadiusTL: 10,
-                cornerRadiusTR: 10
-            });
+    var legend;
 
-            series.data.setAll(data);
-
-            var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
-                name: "USE Count",
-                xAxis: xAxis,
-                yAxis: yAxis,
-                valueYField: "USE Count",
-                categoryXField: "country",
-                clustered: false,
-                tooltip: am5.Tooltip.new(root, {
-                    labelText: "USE Count: {valueY}"
-                })
-            }));
-
-            series2.columns.template.setAll({
-                width: am5.percent(40),
-                tooltipY: 0,
-                strokeOpacity: 0,
-                cornerRadiusTL: 10,
-                cornerRadiusTR: 10
-            });
-
-            series2.data.setAll(data);
-
-            chart.appear(1000, 100);
-            series.appear();
-            series2.appear();
-
-            var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-                xAxis: xAxis,
-                behavior: "none"
-            }));
-            cursor.lineY.set("visible", false);
-            cursor.lineX.set("visible", false);
-
-            var legend = chart.children.unshift(am5.Legend.new(root, {
+    chart.appear(1000, 100);
+    // XY CHART 범례 인스턴스 생성
+    switch (name) {
+        case "CurrentChart" :
+            legend = chart.children.push(am5.Legend.new(root, {
                 layout: root.horizontalLayout,
-                x: am5.percent(60),
+                x: am5.percent(80),
                 centerX: am5.percent(100),
-                y: am5.percent(5),
-                centerY : am5.percent(100),
+                y: am5.percent(100),
                 useDefaultMarker : true
             }));
+            break;
+        case "CurrentChart3" :
+            legend = chart.children.push(am5.Legend.new(root, {
+                layout: root.horizontalLayout,
+                x: am5.percent(85),
+                centerX: am5.percent(100),
+                y: am5.percent(100),
+                useDefaultMarker : true
+            }));
+            break;
+    }
 
-            // XY CHART 범례 마커 Radius 조정
-            legend.markerRectangles.template.setAll({
-                cornerRadiusTL: 10,
-                cornerRadiusTR: 10,
-                cornerRadiusBL: 10,
-                cornerRadiusBR: 10
-            })
-            // XY CHART 범례 마커 크기 조정
-            legend.markers.template.setAll({
-                width : 10,
-                height : 10
-            })
-            // XY CHART 범례 폰트 색상 변경
-            legend.labels.template.set('fill' ,
-                am5.color(0xFFFFFF)
-            )
+    // XY CHART 범례 마커 Radius 조정
+    legend.markerRectangles.template.setAll({
+        cornerRadiusTL: 10,
+        cornerRadiusTR: 10,
+        cornerRadiusBL: 10,
+        cornerRadiusBR: 10
+    })
+    // XY CHART 범례 마커 크기 조정
+    legend.markers.template.setAll({
+        width : 10,
+        height : 10
+    })
+    // XY CHART 범례 폰트 색상 변경
+    legend.labels.template.set('fill' ,
+      am5.color(0xFFFFFF)
+    )
 
-            legend.valueLabels.template.set("forceHidden", true);
+    legend.valueLabels.template.set("forceHidden", true);
+    // XY CHART 범례 데이터 셋
+    legend.data.setAll(chart.series.values);
 
-            legend.data.setAll(chart.series.values);
+    function generateChartData(value) {
+        var data = [];
+        var firstDate = new Date();
+        firstDate.setDate(firstDate.getDate() - 100);
+        firstDate.setHours(0, 0, 0, 0);
+
+        for (var i = 0; i < 10; i++) {
+            var newDate = new Date(firstDate);
+            newDate.setDate(newDate.getDate() + i);
+            value += Math.round(
+              ((Math.random() < 0.5 ? 1 : -1) * Math.random() * value) / 20
+            );
+            data.push({
+                date: newDate,
+                value: value
+            });
         }
+        return data;
+    }
+}
+
+function createBarChart(name) {
+    var root = createRoot(name);
+
+    var chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true,
+        panY: false,
+        wheelX: "panX",
+        wheelY: "zoomX",
+        paddingLeft: 0,
+        layout: root.verticalLayout
+    }));
+
+    chart.get("colors").set("colors", [
+        am5.color(0xa796fd),
+        am5.color(0x6aeca1)
+    ])
+    var data = [{
+        "country": "12/8",
+        "USE Time": 30,
+        "USE Count": 20
+    }, {
+        "country": "12/7",
+        "USE Time": 35,
+        "USE Count": 24
+    }, {
+        "country": "12/6",
+        "USE Time": 25,
+        "USE Count": 15
+    }, {
+        "country": "12/5",
+        "USE Time": 33,
+        "USE Count": 21
+    }, {
+        "country": "12/4",
+        "USE Time": 36,
+        "USE Count": 25
+    }, {
+        "country": "12/3",
+        "USE Time": 18,
+        "USE Count": 15
+    }, {
+        "country": "12/2",
+        "USE Time": 29,
+        "USE Count": 20
+    }];
+
+    var xRenderer = am5xy.AxisRendererX.new(root, {
+        minGridDistance: 30,
+        minorGridEnabled: true
+    });
+
+    var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+        categoryField: "country",
+        renderer: xRenderer
+    }));
+
+    xAxis.get("renderer").labels.template.setAll({
+        fill: am5.color(0xFFFFFF)
+    });
+
+    xRenderer.grid.template.setAll({
+        location: 1
+    })
+
+    xAxis.data.setAll(data);
+
+    var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        renderer: am5xy.AxisRendererY.new(root, {
+            strokeOpacity: 0.1
+        })
+    }));
+
+    yAxis.get("renderer").labels.template.setAll({
+        fill: am5.color(0xFFFFFF)
+    });
+
+
+    var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+        name: "USE Time",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "USE Time",
+        categoryXField: "country",
+        clustered: false,
+        tooltip: am5.Tooltip.new(root, {
+            labelText: "USE Time: {valueY}"
+        })
+    }));
+
+    series.columns.template.setAll({
+        width: am5.percent(40),
+        tooltipY: 0,
+        strokeOpacity: 0,
+        fillOpacity: 0.5,
+        strokeWidth: 2,
+        cornerRadiusTL: 10,
+        cornerRadiusTR: 10
+    });
+
+    series.data.setAll(data);
+
+    var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
+        name: "USE Count",
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "USE Count",
+        categoryXField: "country",
+        clustered: false,
+        tooltip: am5.Tooltip.new(root, {
+            labelText: "USE Count: {valueY}"
+        })
+    }));
+
+    series2.columns.template.setAll({
+        width: am5.percent(40),
+        tooltipY: 0,
+        strokeOpacity: 0,
+        cornerRadiusTL: 10,
+        cornerRadiusTR: 10
+    });
+
+    series2.data.setAll(data);
+
+    chart.appear(1000, 100);
+    series.appear();
+    series2.appear();
+
+    var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+        xAxis: xAxis,
+        behavior: "none"
+    }));
+    cursor.lineY.set("visible", false);
+    cursor.lineX.set("visible", false);
+
+    var legend = chart.children.unshift(am5.Legend.new(root, {
+        layout: root.horizontalLayout,
+        x: am5.percent(60),
+        centerX: am5.percent(100),
+        y: am5.percent(5),
+        centerY : am5.percent(100),
+        useDefaultMarker : true
+    }));
+
+    // XY CHART 범례 마커 Radius 조정
+    legend.markerRectangles.template.setAll({
+        cornerRadiusTL: 10,
+        cornerRadiusTR: 10,
+        cornerRadiusBL: 10,
+        cornerRadiusBR: 10
+    })
+    // XY CHART 범례 마커 크기 조정
+    legend.markers.template.setAll({
+        width : 10,
+        height : 10
+    })
+    // XY CHART 범례 폰트 색상 변경
+    legend.labels.template.set('fill' ,
+      am5.color(0xFFFFFF)
+    )
+
+    legend.valueLabels.template.set("forceHidden", true);
+
+    legend.data.setAll(chart.series.values);
+}
 
 function drawGrid(gridData, layerName, color, legendKey, visible){
 
@@ -734,27 +734,27 @@ function createPieChart(name) {
     let root = createRoot(name);
 
     var chart = root.container.children.push(
-        am5percent.PieChart.new(root, {
-            width : am5.percent(100),
-            height : am5.percent(100),
-            centerX : am5.percent(100),
-            x : am5.percent(65),
-            centerY : am5.percent(90),
-            y : am5.percent(100),
-            radius: am5.percent(100),
-            layout : root.verticalLayout
-        })
+      am5percent.PieChart.new(root, {
+          width : am5.percent(100),
+          height : am5.percent(100),
+          centerX : am5.percent(100),
+          x : am5.percent(65),
+          centerY : am5.percent(90),
+          y : am5.percent(100),
+          radius: am5.percent(100),
+          layout : root.verticalLayout
+      })
     );
 
 
 
     var series = chart.series.push(
-        am5percent.PieSeries.new(root, {
-            valueField: "value",
-            categoryField: "EvCharger",
-            endAngle: 270,
-            alignLabels: false
-        })
+      am5percent.PieSeries.new(root, {
+          valueField: "value",
+          categoryField: "EvCharger",
+          endAngle: 270,
+          alignLabels: false
+      })
     );
 
     series.get("colors").set("colors", [
@@ -838,7 +838,7 @@ function createPieChart(name) {
     })
     // XY CHART 범례 폰트 색상 변경
     legend.labels.template.set('fill' ,
-        am5.color(0xFFFFFF)
+      am5.color(0xFFFFFF)
     )
 
     legend.valueLabels.template.set("forceHidden", true);

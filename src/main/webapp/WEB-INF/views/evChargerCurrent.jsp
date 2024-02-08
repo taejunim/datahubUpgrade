@@ -16,7 +16,7 @@
 <script src="<c:url value="/js/views/evChargerCurrent.js"/>"></script>
 <link rel="stylesheet" href="<c:url value="/css/evChargerCurrent.css" />">
 <div class="rowWrap">
-<%-- 검색 --%>
+    <%-- 검색 --%>
     <div class="left">
         <div class="top w100p h10p">
             <div class="display-column justify-content-evenly h100p mt-1">
@@ -64,7 +64,7 @@
                                 <img src="<c:url value='/images/iconmonstr-printer-4.svg'/>" alt="레포트출력"/>
                                 <p>레포트 출력</p>
                             </a>
-<%--                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button>--%>
+                            <%--                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button>--%>
                         </div>
                         <div class="display-column h95p">
                             <table class="table type4">
@@ -183,19 +183,19 @@
                                         <td class="text-center">23</td>
                                     </tr>
                                 </table>
-                            <div class="line"></div>
-                            <table class="table type4 w100p">
-                                <tr>
-                                    <th colspan="2" class="text-left">충전기 대수(대)</th>
-                                    <td colspan="2" class="text-center">30</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-left">총 이용시간(분)</th>
-                                    <td class="text-center">1,288</td>
-                                    <th class="text-left">총 이용횟수</th>
-                                    <td class="text-center">154</td>
-                                </tr>
-                            </table>
+                                <div class="line"></div>
+                                <table class="table type4 w100p">
+                                    <tr>
+                                        <th colspan="2" class="text-left">충전기 대수(대)</th>
+                                        <td colspan="2" class="text-center">30</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-left">총 이용시간(분)</th>
+                                        <td class="text-center">1,288</td>
+                                        <th class="text-left">총 이용횟수</th>
+                                        <td class="text-center">154</td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="line"></div>
                             <div class="display-column align-items-start wh100 h100p">
@@ -424,41 +424,41 @@
 </div>
 <form id="reportForm" style="display: none;"></form>
 <script type="text/javascript">
-    $('#EvChargerReport').click(function () {
-        $('.page').show();
-        printReport().then($('.page').hide());
-    });
-    const printReport = async () => {
-        var form = $("#reportForm");
-        var url = "/EvCharger.mng";
-        var target = "제주도내 전기차 충전기 구축현황";
-        let captureDiv = document.getElementsByClassName('page')[0];
-        let captureCanvas;
-        var img = new Image;
-        console.log(captureDiv);
-        await html2canvas(captureDiv, {
-            scale:4,
-            useCORS : true
-        }).then(canvas => {
-            captureCanvas = canvas.toDataURL('image/png');
+	$('#EvChargerReport').click(function () {
+		$('.page').show();
+		printReport().then($('.page').hide());
+	});
+	const printReport = async () => {
+		var form = $("#reportForm");
+		var url = "/EvCharger.mng";
+		var target = "제주도내 전기차 충전기 구축현황";
+		let captureDiv = document.getElementsByClassName('page')[0];
+		let captureCanvas;
+		var img = new Image;
+		console.log(captureDiv);
+		await html2canvas(captureDiv, {
+			scale:4,
+			useCORS : true
+		}).then(canvas => {
+			captureCanvas = canvas.toDataURL('image/png');
 
-            img.src = captureCanvas;
-            img.crossOrigin = 'Anonymous';
-            console.log("captureCanvas : " + img);
-        })
+			img.src = captureCanvas;
+			img.crossOrigin = 'Anonymous';
+			console.log("captureCanvas : " + img);
+		})
 
-        window.open(url,target);
+		window.open(url,target);
 
-        form.attr('action', url);
-        form.attr('target', target); // window.open 타이틀과 매칭 되어야함
-        form.attr('method', 'post');
-        form.append('<input type="text" name="capture" value="'+img.src+'">');
+		form.attr('action', url);
+		form.attr('target', target); // window.open 타이틀과 매칭 되어야함
+		form.attr('method', 'post');
+		form.append('<input type="text" name="capture" value="'+img.src+'">');
 
-        form.submit();
-        form.empty();
-    }
+		form.submit();
+		form.empty();
+	}
 
-    const domtoiamge = async () => {
+	const domtoiamge = async () => {
 
-    }
+	}
 </script>
