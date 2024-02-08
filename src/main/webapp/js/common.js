@@ -339,7 +339,7 @@ function fnMsgBoxSet(type){
  * ajax Setup
  */
 $.ajaxSetup({
-  contentType: "application/json",
+  // contentType: "application/json",
   beforeSend: function(xhr) {
     fnStartLoadingBar();
     xhr.setRequestHeader("AJAX", true);
