@@ -8,7 +8,7 @@ $(document).ready(() => {
 
     drawInitLayers();
     drawTable();
-
+    setMapLegendValue("locationLegendRange");
     //Search
     $('#searchButton').click(function() {
         searchChargers();
@@ -97,7 +97,7 @@ function drawInitLayers() {
 
             if(res.result !== null)
                 DatahubMapObject.setGrid(res.result);
-            drawGrid(DatahubMapObject.grid, DatahubMapObject.basicLayerNameList[1], "52, 139, 226", "legendRange2", false);
+            drawGrid(DatahubMapObject.grid, DatahubMapObject.basicLayerNameList[1], "52, 139, 226", "locationLegendRange", false);
         }, error: function (error) {
             console.log(error);
         }
@@ -239,7 +239,7 @@ function createXyChart(name) {
 
         series.fills.template.setAll({
             visible: true,
-            fillOpacity: 0.5
+            fillOpacity: 1
         });
 
         series.strokes.template.setAll({ strokeWidth: 2 });
@@ -654,7 +654,17 @@ function calculateRangeOpacity(legendKey, value) {
 
     return opacity;
 }
+function setMapLegendValue(legendKey) {
+    var rangeList = DatahubMapObject.legendMap[legendKey];
+    let rangeInputList = $('.' + legendKey);
 
+    if(rangeInputList.length === 4) {
+        $(rangeInputList[0]).text(rangeList[0]);
+        $(rangeInputList[1]).text(rangeList[1]);
+        $(rangeInputList[2]).text(rangeList[2]);
+        $(rangeInputList[3]).text(rangeList[2]);
+    }
+}
 function drawTable() {
 
     datatable = $('#dataTable2').DataTable({
