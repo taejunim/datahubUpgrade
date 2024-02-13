@@ -348,7 +348,6 @@ function getTwPolygonData(url, lyrEnName, imgClass, pnuCode, address, zoomLevel,
                     } catch (error) {
                         MsgBox.Alert("polygon");
                     } finally {
-                        console.log(polygonList);
                         areaObject = {polygonList: polygonList};
                         DatahubMapObject.createPolygonLayer2(areaObject, lyrEnName, true,  imgClass);
                     }
@@ -390,16 +389,6 @@ function getChargers(pnuCode) {
         contentType: "application/json",
         beforeSend: function () {},
         success: function (res) {
-
-            /*var newRow = $('<tr>');
-            newRow.append('<td>d</td>');
-            newRow.append('<td>d</td>');
-            newRow.append('<td>d</td>');
-            newRow.append('<td>d</td>');
-            newRow.append('<td>d</td>');
-            newRow.append('<td>d</td>');
-
-            $('#chargerTable tr').append(newRow);*/
 
             var dataList = res.result;
             // 테이블 행 동적 생성
