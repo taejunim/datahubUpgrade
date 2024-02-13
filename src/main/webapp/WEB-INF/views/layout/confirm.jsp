@@ -19,7 +19,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body h5" style="text-align: center;"></div>
+            <div class="modal-body h5" style="text-align: center;padding: 1.5rem 1.2rem;line-height:initial;"></div>
             <div class="modal-footer custom-footer" id="btn_confirm">
                 <button type="button" id="confirm_yes" class="btn btn-theme" data-dismiss="modal" >확인</button>
                 <button type="button" id="confirm_no"class="btn btn-default" data-dismiss="modal">취소</button>
