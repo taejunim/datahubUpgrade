@@ -37,6 +37,7 @@
 <script src="<c:url value="/js/plugins/amcharts5/xy.js"/>"></script>
 <script src="<c:url value="/js/plugins/amcharts5/themes/Animated.js"/>"></script>
 <script src="<c:url value="/js/plugins/html2canvas/html2canvas.js"/>"></script>
+<script src="<c:url value="/js/views/evChargerChart.js"/>"></script>
 
   <!-- 엑셀 -->
 <script src="<c:url value="/js/plugins/datatables/buttons.bootstrap.min.js"/>"></script>

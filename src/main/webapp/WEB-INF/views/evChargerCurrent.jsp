@@ -104,7 +104,7 @@
                     <div class="display-column align-items-start wh100">
                         <div class="font-white font-18 display-info">EV Charger Info
                             <a href="#" id="EvChargerReport" class="display-print" title="레포트 출력">
-                                <img src="<c:url value='/images/iconmonstr-printer-4.svg'/>" alt="레포트출력"/>
+                                <img class="report-img" src="<c:url value='/images/iconmonstr-printer-4.svg'/>" alt="레포트출력"/>
                                 <p>레포트 출력</p>
                             </a>
                             <%--                            <button id="EvChargerReport" class="printingBtn">레포트 출력</button>--%>

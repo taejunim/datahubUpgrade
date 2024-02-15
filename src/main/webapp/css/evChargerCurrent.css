@@ -235,3 +235,6 @@
 .borderNone {
     border: none!important;
 }
+.report-img {
+    filter: invert(99%) sepia(1%) saturate(776%) hue-rotate(218deg) brightness(118%) contrast(100%);
+}
