@@ -32,15 +32,21 @@ public class UserController {
      * @return login.jsp
      * */
     @RequestMapping(value="/login.do")
-    public String login(HttpServletRequest request) {
+    public String login(HttpServletRequest request) throws Exception {
         HttpSession session = request.getSession();
-        Object save = session.getAttribute(SessionConst.SAVE_ID);
 
-        if (save != null) {
-            return "redirect:/main.do";
-        }
+        UserDto user = new UserDto();
+        user.setUserId("admin");
+        user.setUserPwd("1234");
 
-        return "login";
+        user = userService.userLogin(user);
+
+        session.setAttribute(SessionConst.LOGIN_MEMBER, user);                                   // 로그인에 성공하면 세션에 내용을 저장한다.
+        session.setAttribute("userName", user.getUserName());
+
+        return "ssoMain";
+
+//        return "login";
     }
     /**
      * 회원 가입 화면

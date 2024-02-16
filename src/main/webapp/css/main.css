@@ -79,6 +79,67 @@
 .loginPage .loginBox .frame .topBox .bottomBox .loginBtn{width: 40%; height: 10%; cursor: pointer; background: rgba(41.44, 0, 0, 0.46); border-radius: 16px; display: flex; align-items: center; justify-content: center; letter-spacing: 0.1rem;}
 
 
+
+/*******************^********************
+*              Sso Main Page               *
+****************************************/
+
+.ssoMain {height: 100vh; background: url(../images/sso/sso_bg.png)no-repeat center/100%;}
+
+.ssoMain .opacity {position: absolute; width: 100%;  height: 100%; opacity: 0.1;  background: #919191;  }
+
+.ssoMain .frame {width: 100%; height: 100%; display: flex; align-items: center;justify-content: center;}
+
+.ssoMain .frame .content {width: 50%; height: 50%; display: flex; flex-direction: row;}
+
+.ssoMain .frame .content .card {width: 100%; height: 100%; border: none; border-radius: inherit; background: #00185766; border: 1px solid #24354e;}
+
+.ssoMain .frame .content .mark {background: url(../images/sso/sso_card_bg.png) no-repeat center/100%; background-size: cover;}
+
+.ssoMain .frame .content .left {display: flex; flex-direction: column; align-items: flex-start; justify-content: space-around; width: 100%; height: 100%; padding: 6rem 2rem 0 2rem;}
+
+.ssoMain .frame .content .left > div > span{color: #FFFFFF; font-weight: 900; line-height: normal; letter-spacing: normal;}
+
+.ssoMain .frame .content .left .logout-display{display: flex; align-items: center;}
+
+.ssoMain .frame .content .left .logout{width: 2.5rem; height: 2.5rem; background: url(../images/sso/logout.png) no-repeat center/100%;}
+
+.ssoMain .frame .content .right {display: flex; flex-direction: column; align-items: center; width: 100%;  height: 100%; position: absolute; }
+
+.ssoMain .frame .content .right .card-box{ width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; border: 1px solid #24354e; border-bottom: none; border-left: none;}
+
+.ssoMain .frame .content .right .card-box:hover{}
+
+.ssoMain .frame .content .right .card-box .div {font-weight: 900; line-height: normal; letter-spacing: normal;}
+
+.ssoMain .frame .content .right .charger {width: 70%; height: 60%; background: url(../images/sso/sso_charger.png) no-repeat center/100%;}
+
+.ssoMain .frame .content .right .transportation {width: 70%; height: 60%; background: url(../images/sso/sso_transportation.png) no-repeat center/100%;}
+
+.ssoMain .frame .content .right .pm {width: 70%; height: 60%; background: url(../images/sso/sso_pm.png) no-repeat center/100%;}
+
+.ssoMain .frame .content .category {width: 100%; height:100%; display: flex; flex-direction: column; align-items: flex-start; background: #ffffffb3; animation: fade-in 1s;
+  animation-fill-mode: forwards;}
+
+.ssoMain .frame .content .category .header{width: 100%; height:10%; display: flex; flex-direction: row; justify-content: space-between; align-items: center;  padding: 0 1.5rem;}
+
+.ssoMain .frame .content .category .close{width: 2rem; height: 2rem; background: url(../images/sso/close.png) no-repeat center/100%;}
+
+.ssoMain .frame .content .category .category-list {width: 100%; height: 90%; display: flex; flex-direction: column; align-items: center; justify-content: space-around; padding: 1rem;}
+
+.ssoMain .frame .content .category .category-list .list{width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+
+.ssoMain .frame .content .category .btn{width: 47%; border-radius: 20px; box-shadow: 1px 1px 2px 1px #637798;  padding: 1rem 0.5rem; background: #829cc8; color: #ffffff;  font-size: 1.25rem; letter-spacing: normal;}
+
+.ssoMain .display-row {display: flex; flex-direction: row;}
+
+.ssoMain .display-column {display: flex; flex-direction: column;}
+
+
+@media screen and (max-width:1920px){
+  .ssoMain {width: 1920px; overflow: auto;}
+}
+
 @media screen and (max-width:1536px){
   .wrapper {width: 1536px; overflow: auto; }
 

@@ -18,6 +18,14 @@
         <put-attribute name="confirm"    value="/WEB-INF/views/layout/confirm.jsp" />
     </definition>
 
+    <definition name="sso-layout" template="/WEB-INF/views/layout/ssoLayout.jsp">
+        <put-attribute name="content"    value="" />
+    </definition>
+
+    <definition name="ssoMain" extends="sso-layout">
+        <put-attribute name="content"   value="/WEB-INF/views/ssoMain.jsp" />
+    </definition>
+
     <definition name="datahub-layout" template="/WEB-INF/views/layout/layout.jsp">
         <put-attribute name="header"    value="/WEB-INF/views/layout/header.jsp" />
         <put-attribute name="sidebar"    value="/WEB-INF/views/layout/sidebar.jsp" />

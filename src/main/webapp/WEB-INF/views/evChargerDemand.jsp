@@ -19,7 +19,7 @@
             <div class="font-gray font-12">EV 주차장 수 적합/부적합</div>
         </div>
     </div>
-    <div class="frame h13p">
+    <div class="frame h10p">
         <div class="wh100">
             <div class="searchFrame w80p h100p">
                 <div class="w20p">
@@ -90,13 +90,13 @@
                 </div>
             </div>
             <div class="buttonFrame w20p h100p font-white gap1rem">
-                <button type="button" class="btn-black w40p h40p font-18" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
-                <button type="button" class="btn-black w40p h40p font-18" id="searchButton">검색</button>
-                <button type="button" class="btn-black w40p h40p font-18" id="excelBtn"></button>
+                <button type="button" class="btn-black w40p h60p font-18" data-toggle="modal" data-target="#exampleModalCenter" onclick="history.go(0);">초기화</button>
+                <button type="button" class="btn-black w40p h60p font-18" id="searchButton">검색</button>
+                <button type="button" class="btn-black w40p h60p font-18" id="excelBtn"></button>
             </div>
         </div>
     </div>
-    <div class="h78p w100p">
+    <div class="h80p w100p">
         <table id="dataTable" class="table type2 w100p"> </table>
     </div>
 </div>
