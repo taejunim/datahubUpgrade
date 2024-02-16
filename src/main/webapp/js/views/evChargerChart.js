@@ -11,31 +11,31 @@ let evChartObject = {
    yAxis : null,
    cursor : null,
    data : [{
-       "country": "12/8",
+       "date": new Date().setDate(new Date().getDate() + 1).toString(),
        "USE Time": 30,
        "USE Count": 20
    }, {
-       "country": "12/7",
+       "date": new Date().setDate(new Date().getDate() + 2).toString(),
        "USE Time": 35,
        "USE Count": 24
    }, {
-       "country": "12/6",
+       "date": new Date().setDate(new Date().getDate() + 3).toString(),
        "USE Time": 25,
        "USE Count": 15
    }, {
-       "country": "12/5",
+       "date": new Date().setDate(new Date().getDate() + 4).toString(),
        "USE Time": 33,
        "USE Count": 21
    }, {
-       "country": "12/4",
+       "date": new Date().setDate(new Date().getDate() + 5).toString(),
        "USE Time": 36,
        "USE Count": 25
    }, {
-       "country": "12/3",
+       "date": new Date().setDate(new Date().getDate() + 6).toString(),
        "USE Time": 18,
        "USE Count": 15
    }, {
-       "country": "12/2",
+       "date": new Date().setDate(new Date().getDate() + 7).toString(),
        "USE Time": 29,
        "USE Count": 20
    }],
@@ -64,6 +64,8 @@ let evChartObject = {
        )
        evChartObject.root._logo.dispose();           // water mark 제거
 
+       evChartObject.root.utc = true;
+
        evChartObject.root.setThemes([
            am5themes_Animated.new(evChartObject.root)
        ]);
@@ -83,7 +85,6 @@ let evChartObject = {
      *  amChart Root 생성 및 소멸 함수 END
      * */
     createChart: (name) => {
-        console.log("name : " + name);
         switch (name) {
             case 'mainChart' :
             evChartObject.chart = evChartObject.root.container.children.push(
@@ -159,7 +160,7 @@ let evChartObject = {
                     xAxis: evChartObject.xAxis,
                     yAxis: evChartObject.yAxis,
                     valueYField: "USE Time",
-                    categoryXField: "country",
+                    categoryXField: "date",
                     clustered: false,
                     tooltip: am5.Tooltip.new(evChartObject.root, {
                         labelText: "USE Time: {valueY}"
@@ -171,7 +172,7 @@ let evChartObject = {
                     xAxis: evChartObject.xAxis,
                     yAxis: evChartObject.yAxis,
                     valueYField: "USE Count",
-                    categoryXField: "country",
+                    categoryXField: "date",
                     clustered: false,
                     tooltip: am5.Tooltip.new(evChartObject.root, {
                         labelText: "USE Count: {valueY}"
@@ -370,13 +371,21 @@ let evChartObject = {
                         renderer: evChartObject.xRenderer
                     })
                 );
+            evChartObject.xAxis.get("dateFormats")["day"] = "MM/dd";
+            evChartObject.xAxis.get("periodChangeDateFormats")["day"] = "MMM";
             break;
             case 'CurrentChart1' :
             evChartObject.xAxis = evChartObject.chart.xAxes.push(
-                am5xy.CategoryAxis.new(evChartObject.root, {
-                categoryField: "country",
+                am5xy.CategoryDateAxis.new(evChartObject.root, {
+                categoryField: "date",
+                baseInterval: {
+                    timeUnit: "day",
+                    count: 1
+                },
                 renderer: evChartObject.xRenderer
             }));
+            evChartObject.xAxis.get("dateFormats")["day"] = "MM/dd";
+            evChartObject.xAxis.get("periodChangeDateFormats")["day"] = "MM/dd";
             evChartObject.xAxis.get("renderer").labels.template.setAll({
                 fill: am5.color(0xFFFFFF)
             });
@@ -591,6 +600,19 @@ let evChartObject = {
             yAxis.set("syncWithAxis", evChartObject.chart.yAxes.getIndex(0));
         }
 
+        let tooltip = am5.Tooltip.new(evChartObject.root, {
+            pointerOrientation: "horizontal"
+        })
+
+        tooltip.get("background").setAll({
+            fill: am5.color(0xFFFFFF)
+        });
+
+        tooltip.label.setAll({
+            text : "[bold]{date.formatDate()}:[/]\n[width: 130px]{name}[/]{value}"
+        })
+
+
         let series = evChartObject.chart.series.push(
           am5xy.LineSeries.new(evChartObject.root, {
               name : name,
@@ -599,11 +621,7 @@ let evChartObject = {
               valueYField: "value",
               valueXField: "date",
               seriesTooltipTarget : "bullet",
-              tooltip: am5.Tooltip.new(evChartObject.root, {
-                  pointerOrientation: "horizontal",
-                  labelText: "{valueY}",
-                  tooltipPosition: "pointer"
-              })
+              tooltip : tooltip
           })
         );
 
@@ -627,7 +645,7 @@ let evChartObject = {
         series.strokes.template.setAll({ strokeWidth: 2 });
 
         yRenderer.grid.template.set("strokeOpacity", 0.05);
-        yRenderer.labels.template.set("fill", series.get("fill"));
+        yRenderer.labels.template.set("fill", am5.color(0xFFFFFF));
         yRenderer.setAll({
             stroke: series.get("fill"),
             strokeOpacity: 1,
