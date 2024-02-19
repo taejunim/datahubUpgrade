@@ -208,10 +208,10 @@
 .gridLegend {
     width: 30px; height: 30px; border: solid #ddd 1px;background-size: cover;
 }
-.chargerGreenLegend {background: url("/images/chargers/charger-green.png");}
-.chargerGreyLegend {background: url("/images/chargers/charger-grey.png");}
-.chargerRedLegend {background: url("/images/chargers/charger-red.png");}
-.chargerYellowLegend {background: url("/images/chargers/charger-yellow.png");}
+.chargerGreenLegend {background: url("/images/chargers/charger-green.png") no-repeat 5px 0;}
+.chargerGreyLegend {background: url("/images/chargers/charger-grey.png") no-repeat 5px 0;}
+.chargerRedLegend {background: url("/images/chargers/charger-red.png") no-repeat 5px 0;}
+.chargerYellowLegend {background: url("/images/chargers/charger-yellow.png") no-repeat 5px 0;}
 .level4Legend { opacity: 0.6;}
 .level3Legend { opacity: 0.45;}
 .level2Legend { opacity: 0.3;}

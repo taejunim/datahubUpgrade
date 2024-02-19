@@ -18,6 +18,16 @@ $(document).ready(() => {
     $("input[name='mapControlRadio']").change(function(e) {
         var selectLayerName = $(e.currentTarget).attr('id').replace('Radio','') + 'Layer';
         DatahubMapObject.controlLayerHandler(selectLayerName);
+        switch (selectLayerName) {
+            case 'locationLayer' :
+                $('#locationMapLegend').removeClass("hidden");
+                $('#timeMapLegend').addClass("hidden");
+                break;
+            case 'distributionLayer' :
+                $('#timeMapLegend').removeClass("hidden");
+                $('#locationMapLegend').addClass("hidden");
+                break;
+        }
     });
 
     // 지도 클릭 이벤트 정의
@@ -34,6 +44,8 @@ function searchListClick(index) {
     if(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getVisible()) {
         $(".location-layer-component").removeClass("hidden");
     }
+    $('#locationMapLegend').removeClass("hidden");
+    $('#timeMapLegend').addClass("hidden");
 
     var moveTo = $('[data-locationIndex='+index+']').val().split(",");
     DatahubMapObject.setCenter(moveTo);
@@ -200,6 +212,10 @@ function mapClickEvent(pixel) {
     evChartObject.maybeDisposeRoot("CurrentChart3");
     evChartObject.createPieChart("CurrentChart2");
     evChartObject.createXyChart('CurrentChart3');
+    if ($('#distributionRadio').is(':checked')) {
+        $('#timeMapLegend').removeClass("hidden");
+        $('#locationMapLegend').addClass("hidden");
+    }
 
     // 클릭한 픽셀정보로  feature 체크
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {

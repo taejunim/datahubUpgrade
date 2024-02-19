@@ -84,6 +84,7 @@ let evChartObject = {
     /**
      *  amChart Root 생성 및 소멸 함수 END
      * */
+    // 차트를 생성한다.
     createChart: (name) => {
         switch (name) {
             case 'mainChart' :
@@ -609,7 +610,7 @@ let evChartObject = {
         });
 
         tooltip.label.setAll({
-            text : "[bold]{date.formatDate()}:[/]\n[width: 130px]{name}[/]{value}"
+            text : "[bold]{date.formatDate()}[/]\n[width: 60px]{name}:[/]{value}"
         })
 
 
@@ -671,7 +672,6 @@ let evChartObject = {
     generateChartData: (value) => {
         let data = [];
         let firstDate = new Date();
-        firstDate.setDate(firstDate.getDate() - 100);
         firstDate.setHours(0, 0, 0, 0);
 
         for (let i = 0; i < 10; i++) {

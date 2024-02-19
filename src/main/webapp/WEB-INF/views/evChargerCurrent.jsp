@@ -57,7 +57,7 @@
                 </div>
 
                 <div id="mapLegendContainer" class="gis-range-wrapper">
-                    <div class="mapLegend">
+                    <div class="mapLegend" id="locationMapLegend">
                         <table>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend chargerGreenLegend borderNone"></div></td>
@@ -77,7 +77,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="mapLegend hidden">
+                    <div class="mapLegend hidden" id="timeMapLegend">
                         <table>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend legend1 level4Legend"></div></td>
