@@ -589,7 +589,7 @@ let evChartObject = {
             opposite: opposite
         });
         yRenderer.hide();
-        // yRenderer.labels.template.set('visible',false);
+        yRenderer.labels.template.set('visible',false);
         let yAxis = evChartObject.chart.yAxes.push(
           am5xy.ValueAxis.new(evChartObject.root, {
               maxDeviation: 1,
