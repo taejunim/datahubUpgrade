@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="datahub.main.mappers.pg1.PostgrelTestMapper">
+    <select id="countTest" resultType="Integer">
+        select
+            count(*)
+        from
+            datahub.jeju.br_recap_title_info
+    </select>
+</mapper>

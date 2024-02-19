@@ -30,6 +30,7 @@ public class MainController {
     public String main(ModelMap model) throws Exception {
         model.addAttribute("totalBuilding",mainService.totalBuildingCount());
         model.addAttribute("totalCharger",mainService.totalChargerCount());
+        LOG.info("test {} ",mainService.countTest());
         return "main";
     }
 

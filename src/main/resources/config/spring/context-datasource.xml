@@ -12,11 +12,11 @@
     </bean>
 
     <!-- Multi dataSource -->
-    <alias name="dataSource-${application.db.DbType}" alias="dataSourceMysql"/>
+    <alias name="dataSource-${application.db.DbType}" alias="dataSourcePostgres1"/>
     <alias name="dataSource-${application.db.DbType2}" alias="dataSourcePostgres"/>
 
     <!-- MySQL -->
-    <bean id="dataSource-mysql" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <bean id="dataSource-Postgres1" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${application.db.DriverClassName}"/>
         <property name="url" value="${application.db.Url}" />
         <property name="username" value="${application.db.UserName}"/>

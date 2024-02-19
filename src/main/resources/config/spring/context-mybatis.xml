@@ -2,12 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-	<bean id="sqlSessionMysql" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource-mysql" />
+	<bean id="sqlSessionPostgres1" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource-Postgres1" />
 		<property name="configLocation" value="classpath:/config/mybatis/mybatis-config.xml" />
-		<!-- <property name="mapperLocations" value="classpath:/config/mybatis/mappers/mysql/*/*.xml" />-->
-		<property name="mapperLocations" value="classpath:/config/mybatis/mappers/mysql/*/*.xml" />
-		<!-- <property name="mapperLocations" value="classpath:/config/mybatis/mappers/mssql/*/*.xml" /> -->
+		<property name="mapperLocations" value="classpath:/config/mybatis/mappers/postgres1/*/*.xml" />
 	</bean>
 
 	<bean id="sqlSessionPostgres" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -18,8 +16,8 @@
 	</bean>
 
 	<bean id="scannerMysql" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="datahub.**.mappers.my"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionMysql"/>
+		<property name="basePackage" value="datahub.**.mappers.pg1"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionPostgres1"/>
 	</bean>
 
 	<bean id="scannerPostgres" class="org.mybatis.spring.mapper.MapperScannerConfigurer">

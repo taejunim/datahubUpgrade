@@ -12,4 +12,6 @@ public interface MainService {
     EgovMap totalChargerCount() throws Exception;
 
     List<EgovMap> topEvChargerList() throws Exception;
+
+    int countTest() throws Exception;
 }
