@@ -84,7 +84,7 @@
 *              Sso Main Page               *
 ****************************************/
 
-.ssoMain {height: 100vh; background: url(../images/sso/sso_bg.png)no-repeat center/100%;}
+.ssoMain {height: 100vh; background: url(../images/sso/sso_bg.png)no-repeat center/100%; background-size: cover;}
 
 .ssoMain .opacity {position: absolute; width: 100%;  height: 100%; opacity: 0.1;  background: #919191;  }
 
@@ -112,11 +112,11 @@
 
 .ssoMain .frame .content .right .card-box .div {font-weight: 900; line-height: normal; letter-spacing: normal;}
 
-.ssoMain .frame .content .right .charger {width: 70%; height: 60%; background: url(../images/sso/sso_charger.png) no-repeat center/100%;}
+.ssoMain .frame .content .right .charger {width: 60%; height: 60%; background: url(../images/sso/sso_charger.png) no-repeat center/100%;}
 
-.ssoMain .frame .content .right .transportation {width: 70%; height: 60%; background: url(../images/sso/sso_transportation.png) no-repeat center/100%;}
+.ssoMain .frame .content .right .transportation {width: 60%; height: 60%; background: url(../images/sso/sso_transportation.png) no-repeat center/100%;}
 
-.ssoMain .frame .content .right .pm {width: 70%; height: 60%; background: url(../images/sso/sso_pm.png) no-repeat center/100%;}
+.ssoMain .frame .content .right .pm {width: 60%; height: 65%; background: url(../images/sso/sso_pm.png) no-repeat center/100%;}
 
 .ssoMain .frame .content .category {width: 100%; height:100%; display: flex; flex-direction: column; align-items: flex-start; background: #ffffffb3; animation: fade-in 1s;
   animation-fill-mode: forwards;}
@@ -147,7 +147,7 @@
 }
 
 @media screen and (max-height:970px){
-  .wrapper {height: 970px; overflow: auto; }
+  .wrapper , .ssoMain{height: 970px; overflow: auto; }
 }
 
 @media screen and (min-height:1000px){
