@@ -272,7 +272,7 @@
                             </tr>
                             <tr>
                                 <td>02</td>
-                                <td>제주시</td>
+                                <td>서귀포시</td>
                                 <td>46/100</td>
                                 <td>
                                     <progress class="progress progress-blue" value="46" min="0" max="100"></progress>
@@ -339,7 +339,7 @@
                             </tr>
                             <tr>
                                 <td>02</td>
-                                <td>제주시</td>
+                                <td>서귀포시</td>
                                 <td>46/100</td>
                                 <td>
                                     <progress class="progress progress-blue" value="46" min="0" max="100"></progress>

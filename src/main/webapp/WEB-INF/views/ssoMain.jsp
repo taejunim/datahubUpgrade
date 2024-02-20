@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/tags.jspf"%>
+<div class="wrap-loading hidden">
+    <div><img src="<c:url value='/images/loading.gif'/>"  alt ="로딩이미지" style="width: 13rem;height: 13rem;"/></div>
+</div>
 <div class="ssoMain">
     <div class="opacity"></div>
     <div class="frame">
@@ -70,15 +73,21 @@
 </div>
 
 <script type="text/javascript">
+	window.onbeforeunload = function () {
+		$('.wrap-loading').removeClass('hidden');
+	};
+	$(window).load(function () {
+		$('.wrap-loading').addClass('hidden');
+	});
 
-function categoryShow() {
-	$('.right').fadeOut();
-	$('.category').fadeIn();
-}
+	function categoryShow() {
+		$('.right').fadeOut();
+		$('.category').fadeIn();
+	}
 
-function categoryHide() {
-	$('.category').fadeOut();
-	$('.right').fadeIn();
-}
+	function categoryHide() {
+		$('.category').fadeOut();
+		$('.right').fadeIn();
+	}
 
 </script>
