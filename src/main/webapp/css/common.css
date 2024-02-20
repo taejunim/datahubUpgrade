@@ -127,7 +127,7 @@
 
 div.dataTables_processing{background: inherit!important; color: white!important; }
 
-div.dataTables_paginate{display: flex; gap: 0.8em; justify-content: center; position: absolute; left: 50%; bottom: -1rem;}
+div.dataTables_paginate{display: flex; gap: 0.8em; justify-content: center;}
 
 div.dataTables_paginate > span{display: flex; gap: 0.8em;}
 
@@ -275,7 +275,7 @@ table.type4-3 th{font-size: 0.85rem; font-weight: bold; text-align: center;}
 table.type4-3 td{
     font-weight: normal;
     font-size: 0.75rem;
-    text-align: right;
+    text-align: center;
     line-height: 1.25rem;
     text-overflow: ellipsis;
     overflow: hidden;

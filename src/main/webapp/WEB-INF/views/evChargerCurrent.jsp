@@ -212,44 +212,50 @@
             </div>
             <div class="layer-group distribution-layer-component hidden">
                 <div class="gray-layer w100p h100p">
-                    <div class="display-column align-items-start wh100">
-                        <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보</div>
+                    <div class="display-column align-items-start wh100" style="padding: 1.5rem 0 0 0;">
+                        <div class="font-white font-18" style="display: flex; justify-content: space-between; width: 100%;">충전기 이용 상세 정보<div class="status-box">보통</div></div>
                         <div class="display-column h95p">
-                            <div class="display-column align-items-start wh100 h100p">
-                                <table class="table type4 w100p">
+                            <div class="display-column align-items-start wh100 h60p" style="justify-content: flex-end;">
+                                <table class="table type4 w100p h30p" style="height: 40% !important;">
                                     <tr>
                                         <th class="text-left">충전기 대수 대비 이용시간(분)</th>
-                                        <td class="text-center">42.9</td>
+                                        <td class="text-right">42.9</td>
                                     </tr>
                                     <tr>
                                         <th class="text-left">건별 평균 이용시간(분)</th>
-                                        <td class="text-center">23</td>
+                                        <td class="text-right">23</td>
                                     </tr>
                                 </table>
-                                <div class="line"></div>
-                                <table class="table type4 w100p">
+                                <div class="line-type1"></div>
+                                <table class="table type4 w100p h30p" style="height: 40% !important;">
                                     <tr>
                                         <th colspan="2" class="text-left">충전기 대수(대)</th>
-                                        <td colspan="2" class="text-center">30</td>
+                                        <td colspan="2" class="text-right">30</td>
                                     </tr>
                                     <tr>
                                         <th class="text-left">총 이용시간(분)</th>
-                                        <td class="text-center">1,288</td>
+                                        <td class="text-right">1,288</td>
                                         <th class="text-left">총 이용횟수</th>
-                                        <td class="text-center">154</td>
+                                        <td class="text-right">154</td>
                                     </tr>
                                 </table>
+                                <div class="line-type1"></div>
                             </div>
-                            <div class="line"></div>
-                            <div class="display-column align-items-start wh100 h100p">
-                                <div class="font-white font-14">충전기 목록</div>
+                            <div class="display-column align-items-start wh100 h70p" style="justify-content: flex-end;">
+                                <div class="font-white font-14 display-list">충전기 목록
+                                    <select class="select-type1">
+                                        <option>이용시간순</option>
+                                        <option>1</option>
+                                        <option>1</option>
+                                    </select>
+                                </div>
                                 <table id="dataTable2" class="table type4-3 w100p"> </table>
                             </div>
-                            <div class="display-column align-items-start wh100 h100p">
+                            <div class="display-column align-items-start wh100 h80p" style="padding-top: 1.5rem;">
                                 <div class="font-white font-14">운영사 점유 비율</div>
                                 <div class="CurrentChart" id="CurrentChart2"></div> <%--차트영역--%>
                             </div>
-                            <div class="display-column align-items-start wh100 h100p">
+                            <div class="display-column align-items-start wh100 h80p">
                                 <div class="font-white font-14">충전기 설치 대수/이용 건수 대비 이용시간</div>
                                 <div class="CurrentChart wh100" id="CurrentChart3"></div> <%--차트영역--%>
                             </div>

@@ -485,7 +485,7 @@ let evChartObject = {
                     centerX: am5.percent(100),
                     centerY: am5.percent(100),
                     x: am5.percent(85),
-                    y: am5.percent(115),
+                    y: am5.percent(110),
                     useDefaultMarker : true
                 }));
                 break;
