@@ -1,12 +1,19 @@
+var status = false;
 
 window.onbeforeunload = function () {
   fnStartLoadingBar();
 };
 
 $(window).on('load', function () {
+  status = true;
   fnEndLoadingBar();
 });
 
+$(window).bind('pageshow', function (event) {
+  if(status) {
+    fnEndLoadingBar();
+  }
+});
 
 $(document).ready(function() {
   // jquery 확장

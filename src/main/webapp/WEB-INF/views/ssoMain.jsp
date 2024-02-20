@@ -73,21 +73,31 @@
 </div>
 
 <script type="text/javascript">
-	window.onbeforeunload = function () {
-		$('.wrap-loading').removeClass('hidden');
-	};
-	$(window).load(function () {
-		$('.wrap-loading').addClass('hidden');
-	});
+  var status = false;
 
-	function categoryShow() {
-		$('.right').fadeOut();
-		$('.category').fadeIn();
-	}
+  window.onbeforeunload = function () {
+    $('.wrap-loading').removeClass('hidden');
+  };
 
-	function categoryHide() {
-		$('.category').fadeOut();
-		$('.right').fadeIn();
-	}
+  $(window).on('load', function () {
+    status = true;
+    $('.wrap-loading').addClass('hidden');
+  });
+
+  $(window).bind('pageshow', function (event) {
+    if(status) {
+	    $('.wrap-loading').addClass('hidden');
+    }
+  });
+
+  function categoryShow() {
+    $('.right').fadeOut();
+    $('.category').fadeIn();
+  }
+
+  function categoryHide() {
+    $('.category').fadeOut();
+    $('.right').fadeIn();
+  }
 
 </script>
