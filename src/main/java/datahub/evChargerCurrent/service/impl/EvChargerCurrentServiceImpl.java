@@ -1,5 +1,7 @@
 package datahub.evChargerCurrent.service.impl;
 
+import datahub.evChargerCurrent.dto.ChargerDto;
+import datahub.evChargerCurrent.dto.ChargerSearchDto;
 import datahub.evChargerCurrent.dto.GridDto;
 import datahub.evChargerCurrent.mappers.pg.EvChargerCurrentMapper;
 import datahub.evChargerCurrent.service.EvChargerCurrentService;
@@ -31,5 +33,10 @@ public class EvChargerCurrentServiceImpl implements EvChargerCurrentService {
     @Override//격자 조회
     public List<GridDto> selectGrid() throws Exception {
         return evChargerCurrentMapper.selectGrid();
+    }
+
+    @Override//충전기 조회
+    public List<ChargerDto> selectCharger(ChargerSearchDto chargerSearchDto) throws Exception {
+        return evChargerCurrentMapper.selectCharger(chargerSearchDto);
     }
 }

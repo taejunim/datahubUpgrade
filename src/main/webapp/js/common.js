@@ -334,6 +334,7 @@ function fnMsgBoxSet(type){
     case "join" : title = "가입 완료"; txt = "가입 완료되었습니다. 로그인해주세요"; break;
     case "loginFail" : title = "로그인 실패"; txt = "등록되지 않은 아이디이거나 <br/>아이디 또는 비밀번호를 잘못 입력했습니다."; break;
     case "polygon" : title = "데이터 확인"; txt = "폴리곤 데이터가 없습니다. 데이터를 다시 확인해주세요."; break;
+    case "chargerApi" : title = "API 응답 실패"; txt = "충전기 상태 API 조회에 실패하였습니다. 다시 시도해주십시오."; break;
 
     default : title = "실패"; txt = "입력정보를 확인하여 주세요."; break;
   }

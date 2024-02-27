@@ -1,5 +1,7 @@
 package datahub.evChargerCurrent.mappers.pg;
 
+import datahub.evChargerCurrent.dto.ChargerDto;
+import datahub.evChargerCurrent.dto.ChargerSearchDto;
 import datahub.evChargerCurrent.dto.GridDto;
 import org.mybatis.spring.annotation.MapperScan;
 
@@ -24,4 +26,7 @@ public interface EvChargerCurrentMapper {
 
     //격자 조회
     List<GridDto> selectGrid() throws Exception;
+
+    //충전기 조회
+    List<ChargerDto> selectCharger(ChargerSearchDto chargerSearchDto) throws Exception;
 }

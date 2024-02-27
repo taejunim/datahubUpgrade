@@ -14,20 +14,13 @@ $(document).ready(() => {
         searchChargers();
     });
 
+    for(let i = 0; i < DatahubMapObject.zscodeList.length; i ++)
+        searchChargerStatus(DatahubMapObject.zscodeList[i]);
+
     // 라디오 선택
     $("input[name='mapControlRadio']").change(function(e) {
         var selectLayerName = $(e.currentTarget).attr('id').replace('Radio','') + 'Layer';
-        DatahubMapObject.controlLayerHandler(selectLayerName);
-        switch (selectLayerName) {
-            case 'locationLayer' :
-                $('#locationMapLegend').removeClass("hidden");
-                $('#timeMapLegend').addClass("hidden");
-                break;
-            case 'distributionLayer' :
-                $('#timeMapLegend').removeClass("hidden");
-                $('#locationMapLegend').addClass("hidden");
-                break;
-        }
+        layerControl(selectLayerName);
     });
 
     // 지도 클릭 이벤트 정의
@@ -36,7 +29,19 @@ $(document).ready(() => {
         mapClickEvent(pixel);
     });
 });
-
+function layerControl(layerName) {
+    DatahubMapObject.controlLayerHandler(layerName);
+    switch (layerName) {
+        case 'locationLayer' :
+            $('#locationMapLegend').removeClass("hidden");
+            $('#timeMapLegend').addClass("hidden");
+            break;
+        case 'distributionLayer' :
+            $('#timeMapLegend').removeClass("hidden");
+            $('#locationMapLegend').addClass("hidden");
+            break;
+    }
+}
 function searchListClick(index) {
 
     $("#locationRadio").prop('checked', true);
@@ -49,7 +54,7 @@ function searchListClick(index) {
 
     var moveTo = $('[data-locationIndex='+index+']').val().split(",");
     DatahubMapObject.setCenter(moveTo);
-    selectMarker(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getSource().getFeatureById(index));
+    selectMarker(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getSource().getFeatureById($('[data-stationIdIndex='+ index +']').val()));
 
     $('#chargerName').text($('[data-nameIndex='+index+']').text());
     $('#chargerAddress').text($('[data-addressIndex='+index+']').text());
@@ -89,6 +94,10 @@ function setMap() {
 }
 
 function drawInitLayers() {
+    for(let i = 0; i < DatahubMapObject.basicLayerNameList.length; i ++) {
+        DatahubMapObject.createEmptyLayer(DatahubMapObject.basicLayerNameList[i]);
+    }
+
     var searchCharger = searchChargers(true);
     var setGrid = $.ajax({
         url: '/selectGrid.json',
@@ -97,7 +106,7 @@ function drawInitLayers() {
         success: function (res) {
             var allChargerList = res.allChargerList;
             var locationList = [];
-            for (var i = 0; i < allChargerList.length; i++) {
+            for (let i = 0; i < allChargerList.length; i++) {
                 if (allChargerList[i].location !== undefined && allChargerList[i].location !== '') {
                     var location = allChargerList[i].location.replace(",", " ").split(" ");
                     if (location.length > 0) {
@@ -116,16 +125,22 @@ function drawInitLayers() {
     });
 
     $.when(searchCharger, setGrid).done(function () {
-        fnEndLoadingBar();
+        var selectLayerName = $('input[name="mapControlRadio"]:checked').attr('id').replace('Radio','') + 'Layer';
+        layerControl(selectLayerName);
     });
 }
 
+//충전기 정보 조회 (DB)
 function searchChargers(firstLoad) {
+
+    var parameter = $("#parameter").val();
+
     $.ajax({
-        url: '/searchEvChargers.json',
+        url: '/selectCharger.json',
         type: "POST",
         contentType: "application/json",
-        beforeSend: function () {fnStartLoadingBar();},
+        data: JSON.stringify( {parameter: parameter}),
+        beforeSend: function () { },
         success: function (res) {
             var result = res.result;
 
@@ -133,32 +148,88 @@ function searchChargers(firstLoad) {
             var locationList = [];
             //검색 결과용 List
             var listDiv = '';
-            for(var i = 0; i < result.length; i ++) {
-                if (result[i].location !== undefined && result[i].location !== '') {
-                    var location = result[i].location.replace(",", " ").split(" ");
+
+            result.forEach((object, index) => {
+                if (object.location !== undefined && object.location !== '') {
+                    var location = object.location.replace(",", " ").split(" ");
                     if (location.length > 0) {
-                        locationList.push({x: location[0], y: location[1], status: result[i].status});
+                        locationList.push({x: location[0], y: location[1], status: object.status, id: object.stationId + object.chargerId});
                     }
-                    listDiv += '<div class="search-list" onclick="searchListClick('+i+')"><div class="first"><div class="left-txt" data-nameIndex='+i+'>';
-                    listDiv += result[i].detail + '</div><div class="right-txt"><div class="rapidity-box">급속 50kw</div>';
-                    listDiv += '<input type="hidden" value='+ location +' data-locationIndex="' + i + '"/>';
-                    listDiv += '<div class="' + DatahubMapObject.chargerStatusClassMap[result[i].status] + '">' + result[i].statusName + '</div></div></div><div class="last" data-addressIndex="'+i+'">';
-                    listDiv += result[i].address + '</div></div>';
+                    listDiv += '<div class="search-list" onclick="searchListClick('+ index +')"><div class="first"><div class="left-txt" data-nameIndex='+ index +'>';
+                    listDiv += object.detail + '</div><div class="right-txt"><div class="rapidity-box">급속 50kw</div>';
+                    listDiv += '<input type="hidden" value='+ location +' data-locationIndex="' + index + '"/>';
+                    listDiv += '<input type="hidden" value='+ object.stationId + object.chargerId + ' class="chargerId" data-stationIdIndex="' + index + '"/>';
+                    listDiv += '<div class="status-grey-box">' + object.statusName + '</div></div></div><div class="last" data-addressIndex="' + index + '">';
+                    listDiv += object.address + '</div></div>';
                 }
-            }
-            DatahubMapObject.createPointLayer(locationList, DatahubMapObject.basicLayerNameList[0], true, DatahubMapObject.defaultChargerImage, false, [30,30]);
+            });
+
+            if(result.length > 0) $(".noDataDiv").addClass("hidden");
+            else $(".noDataDiv").removeClass("hidden");
+
             $('.search-list-form').html(listDiv);
             $("#searchListCount").text(result.length.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
 
+            DatahubMapObject.createPointLayer(locationList, DatahubMapObject.basicLayerNameList[0], false, DatahubMapObject.defaultChargerImage, false, [30,30]);
         }, error: function(error) {
             console.log(error);
         }
     }).done(function () {
         if(!firstLoad) {
             DatahubMapObject.setCenter(defaultPoint);
-            fnEndLoadingBar();
         }
     });
+}
+
+
+//충전기 상태 조회 (API)
+function searchChargerStatus(zscode) {
+
+    $.ajax({
+        url: '/searchEvChargerStatus.json',
+        type: "POST",
+        contentType: "application/json",
+        data: zscode,
+        beforeSend: function () { },
+        success: function (res) {
+            try {
+                let result = res.result;
+                setChargerStatus(result);
+            } catch (e) {
+                console.log(e);
+                MsgBox.Alert('chargerApi');
+            }
+        }, error: function(error) {
+            alert("충전기 상태 조회에 실패하였습니다.");
+            console.log(error);
+        }
+    });
+}
+function setChargerStatus(list) {
+
+    for (const object of list) {
+        let chargerIdx = object.stationId + object.chargerId;
+        let input = $('input[value=' + chargerIdx + '][class="chargerId"]').next();
+        $(input).text(object.statusName);
+        $(input).addClass(DatahubMapObject.chargerStatusClassMap[object.status]);
+
+        var feature = DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getSource().getFeatureById(chargerIdx);
+
+        if(feature !== null) {
+            // 클릭된 마커의 스타일 변경
+            feature.setStyle(new ol.style.Style({
+                image: new ol.style.Icon({
+                    anchor: [30, 30],
+                    anchorXUnits: 'pixels',
+                    anchorYUnits: 'pixels',
+                    opacity: 1,                                              // 마커 투명도 1=100%
+                    scale: 0.8,                                              // 크기 1=100%
+                    src: DatahubMapObject.chargerMarkerMap[object.status],                              // 마커 이미지
+                    size: [30, 30]
+                })
+            }));
+        }
+    }
 }
 
 function drawGrid(gridData, layerName, color, legendKey, visible){
@@ -208,10 +279,7 @@ function drawGrid(gridData, layerName, color, legendKey, visible){
 }
 
 function mapClickEvent(pixel) {
-    evChartObject.maybeDisposeRoot("CurrentChart2");
-    evChartObject.maybeDisposeRoot("CurrentChart3");
-    evChartObject.createPieChart("CurrentChart2");
-    evChartObject.createXyChart('CurrentChart3');
+
     if ($('#distributionRadio').is(':checked')) {
         $('#timeMapLegend').removeClass("hidden");
         $('#locationMapLegend').addClass("hidden");
@@ -219,10 +287,20 @@ function mapClickEvent(pixel) {
 
     // 클릭한 픽셀정보로  feature 체크
     map.forEachFeatureAtPixel(pixel, function (feature, layer) {
-
         if(layer.values_.title === DatahubMapObject.basicLayerNameList[0]) {
             selectMarker(feature);
+            evChartObject.maybeDisposeRoot("CurrentChart");
+            evChartObject.maybeDisposeRoot("CurrentChart1");
+            evChartObject.createXyChart("CurrentChart");
+            evChartObject.createBarChart("CurrentChart1");
+            if(DatahubMapObject.getLayer(DatahubMapObject.basicLayerNameList[0]).getVisible()) {
+                $(".location-layer-component").removeClass("hidden");
+            }
         } else if(layer.values_.title === DatahubMapObject.basicLayerNameList[1]) {
+            evChartObject.maybeDisposeRoot("CurrentChart2");
+            evChartObject.maybeDisposeRoot("CurrentChart3");
+            evChartObject.createPieChart("CurrentChart2");
+            evChartObject.createXyChart('CurrentChart3');
 
             var selectCell   = feature.values_.geometry.extent_;
 
@@ -262,7 +340,6 @@ function mapClickEvent(pixel) {
             DatahubMapObject.selectedMarker.marker              = null;
             DatahubMapObject.selectedMarker.originalStyle       = null;
         }
-
     });
 }
 function selectMarker(feature) {
@@ -341,7 +418,7 @@ function drawTable() {
             "loadingRecords" : "로딩중...",
             "processing" : "불러오는중...",
             "search" : "검색 : ",
-            "zeroRecords" : "검색된 데이터가 없습니다.",
+            "zeroRecords" : "조회된 데이터가 없습니다.",
             "aria" : {
                 "sortAscending" : " :  오름차순 정렬",
                 "sortDescending" : " :  내림차순 정렬"

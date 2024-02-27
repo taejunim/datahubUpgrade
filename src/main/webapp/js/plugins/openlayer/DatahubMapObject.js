@@ -2,6 +2,7 @@ var vWorldKey = '7E40F84D-DC6B-3185-AB2F-CCD55CEAB3FF';
 var DatahubMapObject = {
     map: null,
     grid: null,
+    zscodeList: ['50110', '50130'], /** 50110 : 제주시, 50130 : 서귀포 */
     selectedMarker: {
         marker: null,
         originalStyle: null
@@ -17,6 +18,7 @@ var DatahubMapObject = {
        , "3" : "/images/chargers/charger-yellow.png"    //충전중
        , "4" : "/images/chargers/charger-red.png"       //운영중지
        , "5" : "/images/chargers/charger-red.png"       //점검중
+       , "9" : "/images/chargers/charger-grey.png"      //알수없음
     },
     chargerStatusClassMap: {
           "0" : "status-grey-box"      //알수없음
@@ -32,12 +34,6 @@ var DatahubMapObject = {
     setGrid: (grid) => {
         DatahubMapObject.grid = grid;
     },
-    createLayerCheckbox: (layerBoxName, lyrKoName, lyrEnName) => {
-        var html ='<label for="chk'+lyrEnName+'"><input type="checkbox" class="layerChk" id="chk'+lyrEnName+'" value="'+lyrEnName+'" onchange="NamuLayer.layerCheckHandler(this.value)"/>';
-        html+='<span>'+lyrKoName+'</span></label>';
-
-        $(layerBoxName).append(html);
-    },
     createVworldMapLayer: (title, type, visible, imgType) => {
         var layer = new ol.layer.Tile({ //타일 생성
             title: title + 'Map', //이름
@@ -49,6 +45,14 @@ var DatahubMapObject = {
         });
         DatahubMapObject.map.addLayer(layer);
         return layer;
+    },
+    createEmptyLayer: (lyrEnName) => {
+        var layer = new ol.layer.Vector({
+            source: null,
+            title : lyrEnName,
+            visible: false
+        });
+        DatahubMapObject.map.addLayer(layer);
     },
     createPointLayer: (list, lyrEnName, visible, markerImageSrc, makeTooltip, markerSize) => {
 
@@ -179,20 +183,12 @@ var DatahubMapObject = {
         for(var i = 0; i < list.length; i ++ ) {
             var marker = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([parseFloat(list[i].x), parseFloat(list[i].y)])),    //마커 좌표 설정
-                safetyZoneType: list[i].safetyZoneType ? list[i].safetyZoneType : null ,
-                address: list[i].address ? list[i].address : null,
                 text: makeTooltip && list[i].text ? list[i].text : null,
                 zIndex: 50
             });
-            marker.setId(i);
+            marker.setId(list[i].id ? list[i].id : i);
 
-            let markerImageSrc = defaultMarkerImageSrc;
-
-            if(title === DatahubMapObject.basicLayerNameList[0] && list[i].status) {
-                markerImageSrc = DatahubMapObject.chargerMarkerMap[list[i].status];
-            }
-
-            if(markerImageSrc !== '') {
+            if(list[i].text !== undefined && list[i].text !== 'undefined') {
                 var markerStyle = new ol.style.Style({
                     image: new ol.style.Icon({
                         anchor: markerSize ? [30, 30] : [10, 10],
@@ -200,8 +196,8 @@ var DatahubMapObject = {
                         anchorYUnits: 'pixels',
                         opacity: 1,                                              // 마커 투명도 1=100%
                         scale: 0.8,                                              // 크기 1=100%
-                        src: markerImageSrc,                                     // 마커 이미지
-                        size: markerSize ? markerSize : [20, 20]                  // 마커 사이즈 (기본 [20, 20])
+                        src: defaultMarkerImageSrc,                              // 마커 이미지
+                        size: markerSize ? markerSize : [20, 20]                 // 마커 사이즈 (기본 [20, 20])
                     }),
                     text: list[i].text !== undefined && list[i].text !== 'undefined' && !makeTooltip ? new ol.style.Text({
                         text: list[i].text,                                      //텍스트를 넘겨주면 넘겨준 텍스트 표시
@@ -215,6 +211,20 @@ var DatahubMapObject = {
                             width: 2
                         })
                     }) : null
+                });
+                marker.setStyle(markerStyle);
+            } else if(defaultMarkerImageSrc !== '') {
+
+                var markerStyle = new ol.style.Style({
+                    image: new ol.style.Icon({
+                        anchor: markerSize ? [30, 30] : [10, 10],
+                        anchorXUnits: 'pixels',
+                        anchorYUnits: 'pixels',
+                        opacity: 1,                                              // 마커 투명도 1=100%
+                        scale: 0.8,                                              // 크기 1=100%
+                        src: defaultMarkerImageSrc,                              // 마커 이미지
+                        size: markerSize ? markerSize : [20, 20]                 // 마커 사이즈 (기본 [20, 20])
+                    })
                 });
                 marker.setStyle(markerStyle);
             }

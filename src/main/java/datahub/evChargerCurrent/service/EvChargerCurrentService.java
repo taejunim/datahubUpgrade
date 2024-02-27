@@ -1,5 +1,7 @@
 package datahub.evChargerCurrent.service;
 
+import datahub.evChargerCurrent.dto.ChargerDto;
+import datahub.evChargerCurrent.dto.ChargerSearchDto;
 import datahub.evChargerCurrent.dto.GridDto;
 
 import java.util.List;
@@ -22,4 +24,7 @@ public interface EvChargerCurrentService {
 
     //격자 조회
     List<GridDto> selectGrid() throws Exception;
+
+    //충전기 조회
+    List<ChargerDto> selectCharger(ChargerSearchDto chargerSearchDto) throws Exception;
 }

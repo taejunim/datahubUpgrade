@@ -169,11 +169,13 @@
     z-index: 30;
 }
 .layer-radio-form {
+    /*border: 1px solid #ddd;*/
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 4px 0px;
+    white-space: nowrap;
     position: absolute;
-    left: 0;
-    top: 0;
-    height: 30px;
-    padding-left: 10px;
+    left: 10px;
+    top: 10px;
+    height: 40px;
 }
 #vMap {
     left: 0;
@@ -194,19 +196,21 @@
     position: absolute;
     display: block!important;
     text-align: center;
-    top: 40px;
+    top: 50px;
     left: 0;
     z-index: 99;
     height: 160px;
     width: 90px;
     font-size: 15px;
     color: black;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid #ddd;
 }
 #mapLegendContainer table tr {height: 40px; line-height: 40px;}
 #mapLegendContainer table td {padding-left: 5px;}
 #mapLegendContainer input { width: 50px;}
 .gridLegend {
-    width: 30px; height: 30px; border: solid #ddd 1px;background-size: cover;
+    width: 30px; height: 30px; border: solid #ddd 1px;background-size: cover!important;
 }
 .chargerGreenLegend {background: url("/images/chargers/charger-green.png") no-repeat 5px 0;}
 .chargerGreyLegend {background: url("/images/chargers/charger-grey.png") no-repeat 5px 0;}
@@ -232,9 +236,43 @@
 .mt-60 {
     margin-top: 60px!important;
 }
+.lh-23 {
+    line-height: 23px!important;
+}
 .borderNone {
     border: none!important;
 }
 .report-img {
     filter: invert(99%) sepia(1%) saturate(776%) hue-rotate(218deg) brightness(118%) contrast(100%);
+}
+.layer-radio-form input[type='radio'] {
+    display: none;
+}
+.layer-radio-form input[type='radio']:checked + label {
+    background: #323232;
+    color: #f6f7f7;
+}
+.layer-radio-form label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+}
+.layer-radio-form .form-check-inline {
+    background: white;
+    height: 40px;
+    float: left;
+    margin-right: 0!important;
+}
+.layer-radio-form-label {
+    text-align: center;
+    width: 120px;
+    height: 100%;
+    margin: 0 auto;
+}
+.noDataDiv {
+    height: calc(100% - 30px);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

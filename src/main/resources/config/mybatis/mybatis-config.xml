@@ -17,6 +17,8 @@
 		<typeAlias type="datahub.main.dto.BuildingDto" alias="buildingDto" />
 		<typeAlias type="datahub.evChargerDemand.dto.EvChargerDemandDto" alias="evChargerDemandDto" />
 		<typeAlias type="datahub.evChargerCurrent.dto.GridDto" alias="gridDto" />
+		<typeAlias type="datahub.evChargerCurrent.dto.ChargerDto" alias="chargerDto" />
+		<typeAlias type="datahub.evChargerCurrent.dto.ChargerSearchDto" alias="chargerSearchDto" />
 <!--		<typeAlias alias="cmsMenuConnHist" type="net.jcms.framework.menu.model.MenuConnHist" />-->
 <!--		<typeAlias alias="cmsMenuConnHistSearch" type="net.jcms.framework.menu.model.MenuConnHistSearch" />-->
 

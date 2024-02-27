@@ -23,18 +23,20 @@
                 <div class="display-row w100p h60p justify-content-evenly gap1rem">
                     <div class="searchBox w80p h70p">
                         <span class="icon_search w10p h100p"></span>
-                        <input type="text" class="wh100" placeholder="검색어를 입력해주세요" />
+                        <input type="text" id="parameter" class="wh100" placeholder="검색어를 입력해주세요" />
                     </div>
                     <button type="button" class="w20p h70p btn-black font-white font-18" id="searchButton">Search</button>
                 </div>
             </div>
         </div>
         <div class="middle scroll">
-            <div class="search-list-form"></div>
+            <div class="search-list-form">
+            </div>
+            <div class="noDataDiv">조회된 데이터가 없습니다.</div>
         </div>
         <%--하단바--%>
         <div class="bottom">
-            <div class="font-white font-20"><span id="searchListCount" class="font-20"></span> results</div>
+            <div class="font-white font-20"><span id="searchListCount" class="font-20">0</span> results</div>
         </div>
     </div>
     <%--    지도화면--%>
@@ -45,14 +47,14 @@
             <div class="layer-radio-form">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="mapControlRadio" id="locationRadio" checked>
-                    <label class="form-check-label" for="locationRadio">
+                    <label class="form-check-label layer-radio-form-label lh-23" for="locationRadio">
                         EV 충전기 위치
                     </label>
                 </div>
                 <div class="form-check form-check-inline ">
                     <input class="form-check-input" type="radio" name="mapControlRadio" id="distributionRadio">
-                    <label class="form-check-label" for="distributionRadio">
-                        EV 충전기 설치 대수 대비 이용시간
+                    <label class="form-check-label layer-radio-form-label" for="distributionRadio">
+                        EV충전기 설치대수<br>대비 이용시간
                     </label>
                 </div>
 
@@ -81,19 +83,19 @@
                         <table>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend legend1 level4Legend"></div></td>
-                                <td class="mapLegendLabel"><label><span class="legendValueInput locationLegendRange"></span></label>&nbsp;&nbsp;=<</td>
+                                <td class="mapLegendLabel"><label><span class="legendValueInput locationLegendRange"></span></label>&nbsp;&nbsp;이상</td>
                             </tr>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend legend1 level3Legend"></div></td>
-                                <td class="mapLegendLabel">&nbsp;&nbsp;>=&nbsp;&nbsp;<label><span class="legendValueInput locationLegendRange"></span></label></td>
+                                <td class="mapLegendLabel"><label><span class="legendValueInput locationLegendRange"></span></label>&nbsp;&nbsp;이상</td>
                             </tr>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend legend1 level2Legend"></div></td>
-                                <td class="mapLegendLabel">&nbsp;&nbsp;>=&nbsp;&nbsp;<label><span class="legendValueInput locationLegendRange"></span></label></td>
+                                <td class="mapLegendLabel"><label><span class="legendValueInput locationLegendRange"></span></label>&nbsp;&nbsp;이상</td>
                             </tr>
                             <tr>
                                 <td class="mapLegendHeader"><div class="gridLegend legend1 level1Legend"></div></td>
-                                <td class="mapLegendLabel">< &nbsp;&nbsp;<label><span class="locationLegendRange"></span></label></td>
+                                <td class="mapLegendLabel"><label><span class="locationLegendRange"></span></label>&nbsp;&nbsp;미만</td>
                             </tr>
                         </table>
                     </div>

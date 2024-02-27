@@ -10,4 +10,23 @@
                  GROUP BY data_1000cd
              ) a
     </select>
+    <select id="selectCharger" resultType="chargerDto" parameterType="chargerSearchDto">
+        SELECT stat_id               as stationId
+             , chger_id              as chargerId
+             , stat_nm               as detail
+             , concat(lng, ',', lat) as location
+             , addr                  as address
+             , output                as output
+             , busi_id               as businessId
+             , bnm                   as businessName
+             , busi_call             as businessCall
+             , '0'                   as status
+             , '알수없음'               as statusName
+        FROM "datahubUpgrade".dh_charger_test2
+        WHERE del_yn != 'Y'
+        <if test="parameter != null and parameter != ''">
+            AND (stat_nm LIKE CONCAT('%',#{parameter},'%') OR addr LIKE  CONCAT('%',#{parameter},'%'))
+        </if>
+        ORDER BY stat_nm
+    </select>
 </mapper>
