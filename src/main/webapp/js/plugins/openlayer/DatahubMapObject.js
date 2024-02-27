@@ -136,7 +136,10 @@ var DatahubMapObject = {
 
     },
     controlLayerHandler: (layerName) => {
-
+        
+        if (DatahubMapObject.selectedMarker.marker) {
+            DatahubMapObject.selectedMarker.marker.setStyle(DatahubMapObject.selectedMarker.originalStyle); // 기본 스타일로 리셋
+        }
         if(DatahubMapObject.getLayer(DatahubMapObject.selectCellLayerName) !== undefined) {
             DatahubMapObject.map.removeLayer(DatahubMapObject.getLayer(DatahubMapObject.selectCellLayerName));
         }
